@@ -1,0 +1,160 @@
+{
+  "updated": "2026-02-24",
+  "date": "02/24",
+  "picks": [
+    {
+      "date": "02/24",
+      "matchup": "Bradley Braves @ UIC Flames",
+      "pick": "UIC Flames",
+      "confidence": "High (70-80%)",
+      "model_prob": 78.7,
+      "vegas_ml": "-167",
+      "implied_prob": 62.6,
+      "edge": 16.1,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "02/24",
+      "matchup": "Cincinnati Bearcats @ Texas Tech Red Raiders",
+      "pick": "Texas Tech Red Raiders",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 89.0,
+      "vegas_ml": "-301",
+      "implied_prob": 75.1,
+      "edge": 14.0,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "02/24",
+      "matchup": "Marquette Golden Eagles @ Georgetown Hoyas",
+      "pick": "Georgetown Hoyas",
+      "confidence": "High (70-80%)",
+      "model_prob": 75.6,
+      "vegas_ml": "-171",
+      "implied_prob": 63.1,
+      "edge": 12.5,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "02/24",
+      "matchup": "St. John's Red Storm @ UConn Huskies",
+      "pick": "UConn Huskies",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 80.4,
+      "vegas_ml": "-220",
+      "implied_prob": 68.8,
+      "edge": 11.6,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "02/24",
+      "matchup": "West Virginia Mountaineers @ Oklahoma St Cowboys",
+      "pick": "Oklahoma St Cowboys",
+      "confidence": "Medium (60-70%)",
+      "model_prob": 66.5,
+      "vegas_ml": "-126",
+      "implied_prob": 55.8,
+      "edge": 10.7,
+      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence"
+    },
+    {
+      "date": "02/24",
+      "matchup": "Xavier Musketeers @ Providence Friars",
+      "pick": "Providence Friars",
+      "confidence": "High (70-80%)",
+      "model_prob": 79.7,
+      "vegas_ml": "-258",
+      "implied_prob": 72.1,
+      "edge": 7.7,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "02/24",
+      "matchup": "Northwestern Wildcats @ Indiana Hoosiers",
+      "pick": "Indiana Hoosiers",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 87.8,
+      "vegas_ml": "-443",
+      "implied_prob": 81.6,
+      "edge": 6.2,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "02/24",
+      "matchup": "Northern Illinois Huskies @ Toledo Rockets",
+      "pick": "Toledo Rockets",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 93.7,
+      "vegas_ml": "-723",
+      "implied_prob": 87.8,
+      "edge": 5.9,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "02/24",
+      "matchup": "USC Trojans @ UCLA Bruins",
+      "pick": "UCLA Bruins",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 82.1,
+      "vegas_ml": "-333",
+      "implied_prob": 76.9,
+      "edge": 5.2,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "02/24",
+      "matchup": "New Mexico Lobos @ Nevada Wolf Pack",
+      "pick": "Nevada Wolf Pack",
+      "confidence": "Medium (60-70%)",
+      "model_prob": 60.5,
+      "vegas_ml": "-124",
+      "implied_prob": 55.4,
+      "edge": 5.1,
+      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence"
+    },
+    {
+      "date": "02/24",
+      "matchup": "Southern Indiana Screaming Eagles @ Morehead St Eagles",
+      "pick": "Morehead St Eagles",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 84.9,
+      "vegas_ml": "-401",
+      "implied_prob": 80.1,
+      "edge": 4.8,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
+    },
+    {
+      "date": "02/24",
+      "matchup": "NC State Wolfpack @ Virginia Cavaliers",
+      "pick": "Virginia Cavaliers",
+      "confidence": "High (70-80%)",
+      "model_prob": 78.7,
+      "vegas_ml": "-287",
+      "implied_prob": 74.2,
+      "edge": 4.5,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
+    },
+    {
+      "date": "02/24",
+      "matchup": "Saint Louis Billikens @ Dayton Flyers",
+      "pick": "Saint Louis Billikens",
+      "confidence": "Medium (60-70%)",
+      "model_prob": 64.9,
+      "vegas_ml": "-186",
+      "implied_prob": 65.0,
+      "edge": 4.5,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
+    },
+    {
+      "date": "02/24",
+      "matchup": "Southern Miss Golden Eagles @ Arkansas St Red Wolves",
+      "pick": "Arkansas St Red Wolves",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 85.8,
+      "vegas_ml": "-446",
+      "implied_prob": 81.7,
+      "edge": 4.1,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
+    }
+  ]
+}
