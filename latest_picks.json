@@ -15,6 +15,17 @@
     },
     {
       "date": "02/24",
+      "matchup": "Marquette Golden Eagles @ Georgetown Hoyas",
+      "pick": "Georgetown Hoyas",
+      "confidence": "High (70-80%)",
+      "model_prob": 75.6,
+      "vegas_ml": "-157",
+      "implied_prob": 61.1,
+      "edge": 14.5,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "02/24",
       "matchup": "Cincinnati Bearcats @ Texas Tech Red Raiders",
       "pick": "Texas Tech Red Raiders",
       "confidence": "LOCK (80%+)",
@@ -22,17 +33,6 @@
       "vegas_ml": "-301",
       "implied_prob": 75.1,
       "edge": 14.0,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
-    },
-    {
-      "date": "02/24",
-      "matchup": "Marquette Golden Eagles @ Georgetown Hoyas",
-      "pick": "Georgetown Hoyas",
-      "confidence": "High (70-80%)",
-      "model_prob": 75.6,
-      "vegas_ml": "-171",
-      "implied_prob": 63.1,
-      "edge": 12.5,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
@@ -81,17 +81,6 @@
     },
     {
       "date": "02/24",
-      "matchup": "Northern Illinois Huskies @ Toledo Rockets",
-      "pick": "Toledo Rockets",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 93.7,
-      "vegas_ml": "-723",
-      "implied_prob": 87.8,
-      "edge": 5.9,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
-    },
-    {
-      "date": "02/24",
       "matchup": "USC Trojans @ UCLA Bruins",
       "pick": "UCLA Bruins",
       "confidence": "LOCK (80%+)",
@@ -114,6 +103,17 @@
     },
     {
       "date": "02/24",
+      "matchup": "Saint Louis Billikens @ Dayton Flyers",
+      "pick": "Saint Louis Billikens",
+      "confidence": "Medium (60-70%)",
+      "model_prob": 64.9,
+      "vegas_ml": "-182",
+      "implied_prob": 64.6,
+      "edge": 4.9,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
+    },
+    {
+      "date": "02/24",
       "matchup": "Southern Indiana Screaming Eagles @ Morehead St Eagles",
       "pick": "Morehead St Eagles",
       "confidence": "LOCK (80%+)",
@@ -132,28 +132,6 @@
       "vegas_ml": "-287",
       "implied_prob": 74.2,
       "edge": 4.5,
-      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
-    },
-    {
-      "date": "02/24",
-      "matchup": "Saint Louis Billikens @ Dayton Flyers",
-      "pick": "Saint Louis Billikens",
-      "confidence": "Medium (60-70%)",
-      "model_prob": 64.9,
-      "vegas_ml": "-186",
-      "implied_prob": 65.0,
-      "edge": 4.5,
-      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
-    },
-    {
-      "date": "02/24",
-      "matchup": "Southern Miss Golden Eagles @ Arkansas St Red Wolves",
-      "pick": "Arkansas St Red Wolves",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 85.8,
-      "vegas_ml": "-446",
-      "implied_prob": 81.7,
-      "edge": 4.1,
       "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
     }
   ]
