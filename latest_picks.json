@@ -103,17 +103,6 @@
     },
     {
       "date": "02/24",
-      "matchup": "Saint Louis Billikens @ Dayton Flyers",
-      "pick": "Saint Louis Billikens",
-      "confidence": "Medium (60-70%)",
-      "model_prob": 64.9,
-      "vegas_ml": "-182",
-      "implied_prob": 64.6,
-      "edge": 4.9,
-      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
-    },
-    {
-      "date": "02/24",
       "matchup": "Southern Indiana Screaming Eagles @ Morehead St Eagles",
       "pick": "Morehead St Eagles",
       "confidence": "LOCK (80%+)",
