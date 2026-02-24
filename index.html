@@ -458,6 +458,21 @@
   .mt-2 { margin-top: 1rem; }
   .mt-3 { margin-top: 1.5rem; }
   .mb-1 { margin-bottom: 0.5rem; }
+  .picks-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1rem; }
+.pick-card { background:#111; border:1px solid #222; border-radius:10px; padding:1.2rem 1.4rem; }
+.pick-card.strong { border-left:3px solid #22c55e; }
+.pick-card.value { border-left:3px solid #f59e0b; }
+.pick-card.lean { border-left:3px solid #6b7280; }
+.pick-matchup { font-size:0.78rem; color:#666; margin-bottom:0.3rem; }
+.pick-team { font-size:1.1rem; font-weight:700; color:#f0f0f0; margin-bottom:0.8rem; }
+.pick-stats { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.4rem; margin-bottom:0.8rem; }
+.pick-stat-label { font-size:0.62rem; color:#555; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.15rem; }
+.pick-stat-value { font-size:0.9rem; font-weight:600; color:#ddd; }
+.pick-stat-value.green { color:#22c55e; }
+.pick-badge { display:inline-block; font-size:0.7rem; padding:0.2rem 0.6rem; border-radius:4px; font-weight:600; }
+.pick-badge.lock { background:#14532d; color:#86efac; }
+.pick-badge.high { background:#1e3a5f; color:#93c5fd; }
+.pick-badge.medium { background:#3b2f14; color:#fcd34d; }
 </style>
 </head>
 <body>
@@ -472,6 +487,8 @@
     <button class="tab-btn" data-tab="matchups">Matchup Probs</button>
     <button class="tab-btn" data-tab="history">Historical</button>
     <button class="tab-btn" data-tab="papers">Papers</button>
+    <button class="tab-btn" data-tab="papers">Papers</button>
+    <button class="tab-btn" data-tab="picks">Daily Picks</button>
   </nav>
 </header>
 
@@ -905,6 +922,16 @@
   </div>
 </div>
 
+<!-- TAB — DAILY PICKS -->
+<div class="tab-panel" id="tab-picks">
+  <div class="section-header">
+    <div class="section-title">Daily Picks</div>
+    <div class="section-sub">Model-driven plays · Verified against Vegas lines</div>
+  </div>
+  <div id="picks-meta" style="font-size:0.8rem;color:#666;margin-bottom:1.5rem"></div>
+  <div id="picks-container"><div style="text-align:center;padding:3rem;color:#666">⏳ Loading picks...</div></div>
+  <p style="margin-top:1.5rem;font-size:0.75rem;color:#555;text-align:center">⚠️ All picks are informational. Verify odds before betting.</p>
+</div>
 
 </main>
 
@@ -1861,7 +1888,43 @@ function toggleMMViewer() {
   const v = document.getElementById('mm-pdf-viewer');
   v.style.display = v.style.display === 'none' ? 'block' : 'none';
 }
+// ── Daily Picks ──────────────────────────────────────────────
+async function loadPicks() {
+  const container = document.getElementById('picks-container');
+  const meta = document.getElementById('picks-meta');
+  try {
+    const res = await fetch('latest_picks.json?t=' + Date.now());
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    if (meta) meta.innerHTML = `<strong>${data.date}</strong> · ${data.picks.length} plays · Updated ${data.updated}`;
+    if (!data.picks.length) { container.innerHTML = '<div style="text-align:center;padding:3rem;color:#666">No picks today.</div>'; return; }
+    let html = '<div class="picks-grid">';
+    data.picks.forEach(p => {
+      const cardClass = p.recommendation.includes('STRONG') ? 'strong' : p.recommendation.includes('VALUE') ? 'value' : 'lean';
+      const badgeClass = p.confidence.includes('80') ? 'lock' : p.confidence.includes('70') ? 'high' : 'medium';
+      const badgeLabel = p.confidence.includes('80') ? 'LOCK 🔒' : p.confidence.includes('70') ? 'HIGH' : 'MED';
+      html += `<div class="pick-card ${cardClass}">
+        <div class="pick-matchup">${p.matchup}</div>
+        <div class="pick-team">✦ ${p.pick}</div>
+        <div class="pick-stats">
+          <div><div class="pick-stat-label">Model</div><div class="pick-stat-value">${p.model_prob}%</div></div>
+          <div><div class="pick-stat-label">Vegas ML</div><div class="pick-stat-value">${p.vegas_ml}</div></div>
+          <div><div class="pick-stat-label">Implied</div><div class="pick-stat-value">${p.implied_prob}%</div></div>
+          <div><div class="pick-stat-label">Edge</div><div class="pick-stat-value green">+${p.edge}pp</div></div>
+        </div>
+        <span class="pick-badge ${badgeClass}">${badgeLabel}</span>
+      </div>`;
+    });
+    html += '</div>';
+    container.innerHTML = html;
+  } catch(e) {
+    container.innerHTML = '<div style="text-align:center;padding:3rem;color:#666">No picks available yet.</div>';
+  }
+}
 
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => { if (btn.dataset.tab === 'picks') loadPicks(); });
+});
 </script>
 </body>
 </html>
