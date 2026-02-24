@@ -484,9 +484,7 @@
   </div>
   <nav>
     <button class="tab-btn active" data-tab="generator">Generator</button>
-    <button class="tab-btn" data-tab="matchups">Matchup Probs</button>
     <button class="tab-btn" data-tab="history">Historical</button>
-    <button class="tab-btn" data-tab="papers">Papers</button>
     <button class="tab-btn" data-tab="papers">Papers</button>
     <button class="tab-btn" data-tab="picks">Daily Picks</button>
   </nav>
@@ -1902,7 +1900,7 @@ async function loadPicks() {
     data.picks.forEach(p => {
       const cardClass = p.recommendation.includes('STRONG') ? 'strong' : p.recommendation.includes('VALUE') ? 'value' : 'lean';
       const badgeClass = p.confidence.includes('80') ? 'lock' : p.confidence.includes('70') ? 'high' : 'medium';
-      const badgeLabel = p.confidence.includes('80') ? 'LOCK 🔒' : p.confidence.includes('70') ? 'HIGH' : 'MED';
+      const badgeLabel = p.confidence.includes('80') ? 'STRONG' : p.confidence.includes('70') ? 'HIGH' : 'MED';
       html += `<div class="pick-card ${cardClass}">
         <div class="pick-matchup">${p.matchup}</div>
         <div class="pick-team">✦ ${p.pick}</div>
