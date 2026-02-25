@@ -6,7 +6,31 @@
 <title>Basketball IQ — March Madness Analytics</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
+
+  .perf-hero { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-bottom:2rem; }
+@media (max-width:700px) { .perf-hero { grid-template-columns:repeat(2,1fr); } }
+.perf-stat-big { background:#111; border:1px solid #222; border-radius:10px; padding:1.4rem 1rem; text-align:center; }
+.perf-stat-big-value { font-size:2rem; font-weight:800; color:#f0f0f0; letter-spacing:-0.02em; line-height:1; margin-bottom:0.4rem; }
+.perf-stat-big-label { font-size:0.72rem; color:#555; text-transform:uppercase; letter-spacing:0.06em; }
+.perf-breakdown-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:2rem; }
+@media (max-width:800px) { .perf-breakdown-grid { grid-template-columns:1fr; } }
+.perf-breakdown-card { background:#111; border:1px solid #222; border-radius:10px; padding:1.2rem; }
+.perf-breakdown-title { font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#888; margin-bottom:0.8rem; }
+.perf-table { width:100%; border-collapse:collapse; font-size:0.85rem; }
+.perf-table th { text-align:left; color:#555; font-size:0.7rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; padding:0.3rem 0.4rem; border-bottom:1px solid #1a1a1a; }
+.perf-table td { padding:0.45rem 0.4rem; color:#ccc; border-bottom:1px solid #1a1a1a; }
+.perf-table tr:last-child td { border-bottom:none; }
+.perf-hit-rate { font-weight:700; }
+.perf-hit-rate.good { color:#22c55e; }
+.perf-hit-rate.mid { color:#f59e0b; }
+.perf-hit-rate.bad { color:#ef4444; }
+.perf-result-win { color:#22c55e; font-weight:700; }
+.perf-result-loss { color:#ef4444; font-weight:700; }
+.perf-recent-header { font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#888; margin-bottom:0.8rem; }
+.perf-recent-wrap { background:#111; border:1px solid #222; border-radius:10px; padding:1rem 1.2rem; overflow-x:auto; }
+.perf-recent-table { min-width:600px; }
   :root {
     --bg:       #0a0c0f;
     --surface:  #111418;
@@ -487,6 +511,7 @@
     <button class="tab-btn active" data-tab="generator">Generator</button>
     <button class="tab-btn" data-tab="history">Historical</button>
     <button class="tab-btn" data-tab="papers">Papers</button>
+    <button class="tab-btn" data-tab="performance">Performance</button>
   </nav>
 </header>
 
@@ -931,9 +956,107 @@
   <p style="margin-top:1.5rem;font-size:0.75rem;color:#555;text-align:center">⚠️ All picks are informational. Verify odds before betting.</p>
 </div>
 
+<div class="tab-panel" id="tab-performance">
+  <div class="section-header">
+    <div class="section-title">Performance Log</div>
+    <div class="section-sub">Live hit rate tracking · Updated each morning</div>
+  </div>
+  <div id="perf-loading" style="text-align:center;padding:3rem;color:#666">⏳ Loading performance data...</div>
+  <div id="perf-content" style="display:none">
+    <div class="perf-hero">
+      <div class="perf-stat-big">
+        <div class="perf-stat-big-value" id="perf-overall-rate">—</div>
+        <div class="perf-stat-big-label">Overall Hit Rate</div>
+      </div>
+      <div class="perf-stat-big">
+        <div class="perf-stat-big-value" id="perf-record">—</div>
+        <div class="perf-stat-big-label">Record</div>
+      </div>
+      <div class="perf-stat-big">
+        <div class="perf-stat-big-value" id="perf-total">—</div>
+        <div class="perf-stat-big-label">Total Picks</div>
+      </div>
+      <div class="perf-stat-big">
+        <div class="perf-stat-big-value" id="perf-updated">—</div>
+        <div class="perf-stat-big-label">Last Updated</div>
+      </div>
+    </div>
+    <div class="perf-breakdown-grid">
+      <div class="perf-breakdown-card">
+        <div class="perf-breakdown-title">By Recommendation</div>
+        <table class="perf-table"><thead><tr><th>Type</th><th>W</th><th>L</th><th>Hit Rate</th></tr></thead>
+        <tbody id="perf-by-rec"></tbody></table>
+      </div>
+      <div class="perf-breakdown-card">
+        <div class="perf-breakdown-title">By Confidence</div>
+        <table class="perf-table"><thead><tr><th>Tier</th><th>W</th><th>L</th><th>Hit Rate</th></tr></thead>
+        <tbody id="perf-by-conf"></tbody></table>
+      </div>
+      <div class="perf-breakdown-card">
+        <div class="perf-breakdown-title">By Edge Band</div>
+        <table class="perf-table"><thead><tr><th>Edge</th><th>W</th><th>L</th><th>Hit Rate</th></tr></thead>
+        <tbody id="perf-by-edge"></tbody></table>
+      </div>
+    </div>
+    <div class="perf-recent-header">Recent Results</div>
+    <div class="perf-recent-wrap">
+      <table class="perf-table perf-recent-table">
+        <thead><tr><th>Date</th><th>Pick</th><th>Matchup</th><th>Edge</th><th>Result</th><th>Score</th></tr></thead>
+        <tbody id="perf-recent"></tbody>
+      </table>
+    </div>
+  </div>
+  <div id="perf-empty" style="display:none;text-align:center;padding:3rem;color:#666">
+    No performance data yet. Results will appear after the first morning run.
+  </div>
+</div>
+
 </main>
 
+
 <script>
+  async function loadPerformance() {
+  const loading = document.getElementById('perf-loading');
+  const content = document.getElementById('perf-content');
+  const empty   = document.getElementById('perf-empty');
+  try {
+    const res = await fetch('performance_log.json?t=' + Date.now());
+    if (!res.ok) throw new Error();
+    const d = await res.json();
+    if (!d.overall || d.overall.total === 0) { loading.style.display='none'; empty.style.display='block'; return; }
+    function rateClass(r) { return r >= 65 ? 'perf-hit-rate good' : r >= 55 ? 'perf-hit-rate mid' : 'perf-hit-rate bad'; }
+    const hr = d.overall.hit_rate;
+    document.getElementById('perf-overall-rate').textContent = hr + '%';
+    document.getElementById('perf-overall-rate').className = 'perf-stat-big-value ' + rateClass(hr);
+    document.getElementById('perf-record').textContent  = d.overall.wins + 'W – ' + d.overall.losses + 'L';
+    document.getElementById('perf-total').textContent   = d.overall.total;
+    document.getElementById('perf-updated').textContent = d.updated;
+    const recOrder = ['STRONG BET','VALUE BET','LEAN BET'];
+    const recLabels = {'STRONG BET':'✅ Strong','VALUE BET':'🟡 Value','LEAN BET':'· Lean'};
+    document.getElementById('perf-by-rec').innerHTML = recOrder.filter(k => d.by_recommendation[k]?.total > 0)
+      .map(k => { const r=d.by_recommendation[k]; return `<tr><td>${recLabels[k]}</td><td>${r.wins}</td><td>${r.total-r.wins}</td><td class="${rateClass(r.hit_rate)} perf-hit-rate">${r.hit_rate}%</td></tr>`; }).join('') || '<tr><td colspan="4" style="color:#555">No data yet</td></tr>';
+    const confOrder = ['LOCK (80%+)','High (70-80%)','Medium (60-70%)'];
+    const confLabels = {'LOCK (80%+)':'Strong (80%+)','High (70-80%)':'High (70–80%)','Medium (60-70%)':'Med (60–70%)'};
+    document.getElementById('perf-by-conf').innerHTML = confOrder.filter(k => d.by_confidence[k]?.total > 0)
+      .map(k => { const r=d.by_confidence[k]; return `<tr><td>${confLabels[k]}</td><td>${r.wins}</td><td>${r.total-r.wins}</td><td class="${rateClass(r.hit_rate)} perf-hit-rate">${r.hit_rate}%</td></tr>`; }).join('') || '<tr><td colspan="4" style="color:#555">No data yet</td></tr>';
+    const edgeOrder = ['15pp+','10-15pp','5-10pp','<5pp'];
+    document.getElementById('perf-by-edge').innerHTML = edgeOrder.filter(k => d.by_edge[k]?.total > 0)
+      .map(k => { const r=d.by_edge[k]; return `<tr><td>${k}</td><td>${r.wins}</td><td>${r.total-r.wins}</td><td class="${rateClass(r.hit_rate)} perf-hit-rate">${r.hit_rate}%</td></tr>`; }).join('') || '<tr><td colspan="4" style="color:#555">No data yet</td></tr>';
+    const recent = (d.recent||[]).slice().reverse();
+    document.getElementById('perf-recent').innerHTML = recent.map(r => `<tr>
+      <td>${r.date}</td>
+      <td style="font-weight:600;color:#f0f0f0">${r.pick}</td>
+      <td style="color:#666;font-size:0.8rem">${r.matchup}</td>
+      <td>+${r.edge}pp</td>
+      <td class="${r.result==='WIN'?'perf-result-win':'perf-result-loss'}">${r.result==='WIN'?'✅':'❌'} ${r.result}</td>
+      <td style="color:#666;font-size:0.8rem">${r.score||'—'}</td>
+    </tr>`).join('') || '<tr><td colspan="6" style="color:#555">No results yet</td></tr>';
+    loading.style.display='none'; content.style.display='block';
+  } catch(e) { loading.style.display='none'; empty.style.display='block'; }
+}
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => { if (btn.dataset.tab==='performance') loadPerformance(); });
+});
 // ═══════════════════════════════════════════════════════════════
 // STATE
 // ═══════════════════════════════════════════════════════════════
