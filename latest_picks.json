@@ -8,9 +8,9 @@
       "pick": "SMU Mustangs",
       "confidence": "LOCK (80%+)",
       "model_prob": 87.0,
-      "vegas_ml": "-176",
-      "implied_prob": 63.8,
-      "edge": 23.2,
+      "vegas_ml": "-178",
+      "implied_prob": 64.0,
+      "edge": 23.0,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
@@ -63,9 +63,9 @@
       "pick": "Austin Peay Governors",
       "confidence": "High (70-80%)",
       "model_prob": 75.8,
-      "vegas_ml": "-171",
-      "implied_prob": 63.1,
-      "edge": 12.7,
+      "vegas_ml": "-176",
+      "implied_prob": 63.8,
+      "edge": 12.0,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
@@ -77,6 +77,17 @@
       "vegas_ml": "-236",
       "implied_prob": 70.3,
       "edge": 11.5,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "02/25",
+      "matchup": "Lehigh Mountain Hawks @ American Eagles",
+      "pick": "American Eagles",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 84.1,
+      "vegas_ml": "-276",
+      "implied_prob": 73.5,
+      "edge": 10.7,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
@@ -96,9 +107,9 @@
       "pick": "Army Knights",
       "confidence": "High (70-80%)",
       "model_prob": 70.2,
-      "vegas_ml": "-157",
-      "implied_prob": 61.1,
-      "edge": 9.1,
+      "vegas_ml": "-158",
+      "implied_prob": 61.2,
+      "edge": 9.0,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
@@ -125,13 +136,24 @@
     },
     {
       "date": "02/25",
+      "matchup": "DePaul Blue Demons @ Creighton Bluejays",
+      "pick": "Creighton Bluejays",
+      "confidence": "High (70-80%)",
+      "model_prob": 77.7,
+      "vegas_ml": "-231",
+      "implied_prob": 69.8,
+      "edge": 7.9,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "02/25",
       "matchup": "Wofford Terriers @ East Tennessee St Buccaneers",
       "pick": "East Tennessee St Buccaneers",
       "confidence": "LOCK (80%+)",
       "model_prob": 86.7,
-      "vegas_ml": "-380",
-      "implied_prob": 79.2,
-      "edge": 7.5,
+      "vegas_ml": "-388",
+      "implied_prob": 79.5,
+      "edge": 7.2,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
@@ -147,25 +169,47 @@
     },
     {
       "date": "02/25",
-      "matchup": "Holy Cross Crusaders @ Boston Univ. Terriers",
-      "pick": "Boston Univ. Terriers",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 85.7,
-      "vegas_ml": "-385",
-      "implied_prob": 79.4,
-      "edge": 6.3,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
-    },
-    {
-      "date": "02/25",
       "matchup": "Davidson Wildcats @ Duquesne Dukes",
       "pick": "Duquesne Dukes",
       "confidence": "Medium (60-70%)",
       "model_prob": 68.1,
-      "vegas_ml": "-163",
-      "implied_prob": 62.1,
-      "edge": 6.0,
+      "vegas_ml": "-162",
+      "implied_prob": 61.8,
+      "edge": 6.3,
       "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence"
+    },
+    {
+      "date": "02/25",
+      "matchup": "Holy Cross Crusaders @ Boston Univ. Terriers",
+      "pick": "Boston Univ. Terriers",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 85.7,
+      "vegas_ml": "-390",
+      "implied_prob": 79.6,
+      "edge": 6.1,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "02/25",
+      "matchup": "Lafayette Leopards @ Colgate Raiders",
+      "pick": "Colgate Raiders",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 88.3,
+      "vegas_ml": "-462",
+      "implied_prob": 82.2,
+      "edge": 6.0,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "02/25",
+      "matchup": "Illinois St Redbirds @ Northern Iowa Panthers",
+      "pick": "Northern Iowa Panthers",
+      "confidence": "High (70-80%)",
+      "model_prob": 76.9,
+      "vegas_ml": "-255",
+      "implied_prob": 71.8,
+      "edge": 5.1,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
       "date": "02/25",
@@ -176,17 +220,6 @@
       "vegas_ml": "-470",
       "implied_prob": 82.5,
       "edge": 4.8,
-      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
-    },
-    {
-      "date": "02/25",
-      "matchup": "Illinois St Redbirds @ Northern Iowa Panthers",
-      "pick": "Northern Iowa Panthers",
-      "confidence": "High (70-80%)",
-      "model_prob": 76.9,
-      "vegas_ml": "-260",
-      "implied_prob": 72.2,
-      "edge": 4.7,
       "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
     },
     {
@@ -208,6 +241,17 @@
       "model_prob": 78.9,
       "vegas_ml": "-305",
       "implied_prob": 75.3,
+      "edge": 3.6,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
+    },
+    {
+      "date": "02/25",
+      "matchup": "Texas A&M Aggies @ Arkansas Razorbacks",
+      "pick": "Arkansas Razorbacks",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 82.4,
+      "vegas_ml": "-371",
+      "implied_prob": 78.8,
       "edge": 3.6,
       "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
     }
