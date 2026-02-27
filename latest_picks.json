@@ -48,6 +48,17 @@
     },
     {
       "date": "02/27",
+      "matchup": "Dartmouth Big Green @ Pennsylvania Quakers",
+      "pick": "Pennsylvania Quakers",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 83.7,
+      "vegas_ml": "-308",
+      "implied_prob": 75.5,
+      "edge": 8.2,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "02/27",
       "matchup": "Mt. St. Mary's Mountaineers @ Sacred Heart Pioneers",
       "pick": "Sacred Heart Pioneers",
       "confidence": "High (70-80%)",
@@ -88,6 +99,17 @@
       "vegas_ml": "-251",
       "implied_prob": 71.6,
       "edge": 3.1,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
+    },
+    {
+      "date": "02/27",
+      "matchup": "Rider Broncs @ Iona Gaels",
+      "pick": "Iona Gaels",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 94.5,
+      "vegas_ml": "-1075",
+      "implied_prob": 91.5,
+      "edge": 3.0,
       "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
     }
   ]
