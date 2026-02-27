@@ -7,7 +7,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
+
+
 <style>
+
+  
 
   .perf-hero { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-bottom:2rem; }
 @media (max-width:700px) { .perf-hero { grid-template-columns:repeat(2,1fr); } }
@@ -497,6 +501,151 @@
 .pick-badge.lock { background:#14532d; color:#86efac; }
 .pick-badge.high { background:#1e3a5f; color:#93c5fd; }
 .pick-badge.medium { background:#3b2f14; color:#fcd34d; }
+
+.parlay-card {
+    background: var(--surface, #111);
+    border: 1px solid var(--border, #222);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.75rem;
+    transition: border-color 0.2s;
+  }
+  .parlay-card:hover { border-color: var(--accent, #c8f135); }
+
+  .parlay-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.6rem;
+    gap: 1rem;
+  }
+  .parlay-rank {
+    font-size: 0.65rem;
+    color: var(--muted, #555);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+  .parlay-odds {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent, #c8f135);
+    white-space: nowrap;
+  }
+  .parlay-legs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-bottom: 0.7rem;
+  }
+  .parlay-leg {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+  }
+  .parlay-leg-pick {
+    font-weight: 600;
+    color: var(--text, #eee);
+  }
+  .parlay-leg-meta {
+    color: var(--muted, #555);
+    font-size: 0.72rem;
+  }
+  .parlay-leg-sep {
+    color: var(--border2, #333);
+    font-size: 0.7rem;
+  }
+  .parlay-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--border, #222);
+  }
+  .parlay-stat { text-align: center; }
+  .parlay-stat-val {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text, #eee);
+  }
+  .parlay-stat-val.positive { color: var(--accent, #c8f135); }
+  .parlay-stat-lbl {
+    font-size: 0.6rem;
+    color: var(--muted, #555);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 1px;
+  }
+  .parlay-risk {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+  }
+  .parlay-risk.conservative { background: rgba(34,197,94,0.15); color: #22c55e; }
+  .parlay-risk.moderate { background: rgba(234,179,8,0.15); color: #eab308; }
+  .parlay-risk.aggressive { background: rgba(239,68,68,0.15); color: #ef4444; }
+
+  .parlay-section-title {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted, #555);
+    font-weight: 600;
+    margin: 1.2rem 0 0.6rem;
+  }
+  .parlay-empty {
+    text-align: center;
+    color: var(--muted, #555);
+    padding: 2rem;
+    font-size: 0.85rem;
+  }
+  .parlay-disclaimer {
+    font-size: 0.65rem;
+    color: var(--muted, #555);
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border, #222);
+    line-height: 1.6;
+  }
+  .parlay-methodology {
+    background: var(--surface, #111);
+    border: 1px solid var(--border, #222);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+    color: var(--muted, #666);
+    line-height: 1.6;
+  }
+  .parlay-methodology strong { color: var(--text, #eee); }
+  .eligible-legs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+  .eligible-leg-chip {
+    background: var(--surface, #111);
+    border: 1px solid var(--border, #222);
+    border-radius: 5px;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.72rem;
+  }
+  .eligible-leg-chip-name {
+    font-weight: 600;
+    color: var(--text, #eee);
+    margin-bottom: 1px;
+  }
+  .eligible-leg-chip-meta { color: var(--muted, #555); }
+
+
 </style>
 </head>
 <body>
@@ -511,6 +660,7 @@
     <button class="tab-btn active" data-tab="generator">Generator</button>
     <button class="tab-btn" data-tab="history">Historical</button>
     <button class="tab-btn" data-tab="performance">Performance</button>
+     <button class="tab-btn" data-tab="parlays">Parlays</button>
   </nav>
 </header>
 
@@ -921,6 +1071,29 @@
   <div id="perf-empty" style="display:none;text-align:center;padding:3rem;color:#666">
     No performance data yet. Results will appear after the first morning run.
   </div>
+</div>
+
+<div class="tab-panel" id="tab-parlays">
+
+  <div class="section-header">
+    <div>
+      <div class="section-title">Parlay Builder</div>
+      <div class="section-sub" id="parlays-sub">Optimal parlays built from today's +EV picks · Quarter-Kelly sizing · 2–3 legs only</div>
+    </div>
+  </div>
+
+  <!-- Methodology note -->
+  <div class="parlay-methodology">
+    <strong>Methodology:</strong> Only picks with ≥5pp model edge and ≥70% model confidence are eligible.
+    Parlays are ranked by combined EV = ∏(p<sub>i</sub> × o<sub>i</sub>) − 1.
+    Sizing uses quarter-Kelly capped at 1% of bankroll.
+    Based on Kelly (1956), Grant & Buchen (2012), and Baker & McHale (2013).
+  </div>
+
+  <div id="parlays-content">
+    <div class="parlay-empty">Loading parlays…</div>
+  </div>
+
 </div>
 
 </main>
@@ -1957,6 +2130,121 @@ async function loadPicks() {
 
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => { if (btn.dataset.tab === 'picks') loadPicks(); });
+});
+
+async function loadParlays() {
+  const el = document.getElementById('parlays-content');
+  const sub = document.getElementById('parlays-sub');
+  
+  try {
+    const res = await fetch('latest_parlays.json?t=' + Date.now());
+    if (!res.ok) throw new Error('No parlay data');
+    const data = await res.json();
+    
+    sub.textContent = `${data.date} · ${data.total_eligible_legs} eligible legs · ${data.total_two_leg_considered} 2-leg combinations · ${data.total_three_leg_considered} 3-leg combinations`;
+    
+    let html = '';
+    
+    // Eligible legs summary
+    if (data.eligible_legs && data.eligible_legs.length > 0) {
+      html += `<div class="parlay-section-title">Eligible Legs (${data.eligible_legs.length})</div>`;
+      html += `<div class="eligible-legs-grid">`;
+      data.eligible_legs.forEach(leg => {
+        html += `
+          <div class="eligible-leg-chip">
+            <div class="eligible-leg-chip-name">${leg.pick}</div>
+            <div class="eligible-leg-chip-meta">${leg.model_prob_pct}% model · +${leg.edge_pp}pp edge</div>
+          </div>`;
+      });
+      html += `</div>`;
+    }
+
+    // 2-leg parlays
+    html += `<div class="parlay-section-title">Top 2-Leg Parlays</div>`;
+    if (data.two_leg && data.two_leg.length > 0) {
+      data.two_leg.forEach((p, i) => {
+        html += buildParlayCard(p, i + 1);
+      });
+    } else {
+      html += `<div class="parlay-empty">No qualifying 2-leg parlays today.</div>`;
+    }
+
+    // 3-leg parlays
+    html += `<div class="parlay-section-title">Top 3-Leg Parlays</div>`;
+    if (data.three_leg && data.three_leg.length > 0) {
+      data.three_leg.forEach((p, i) => {
+        html += buildParlayCard(p, i + 1);
+      });
+    } else {
+      html += `<div class="parlay-empty">No qualifying 3-leg parlays today.</div>`;
+    }
+
+    html += `
+      <div class="parlay-disclaimer">
+        Parlays amplify edge multiplicatively — but only when each leg is +EV. Sizing uses quarter-Kelly 
+        capped at 1% of bankroll. Stakes shown per $1,000 bankroll — scale proportionally. 
+        Not financial advice. Verify all lines before placing bets.
+      </div>`;
+
+    el.innerHTML = html;
+
+  } catch (e) {
+    el.innerHTML = `<div class="parlay-empty">No parlay data available. Run parlay_builder.py after morning_routine.sh.</div>`;
+  }
+}
+
+function buildParlayCard(p, rank) {
+  const riskClass = p.risk_label.toLowerCase().replace(' ', '-');
+  
+  const legsHtml = p.legs.map((leg, i) => `
+    <div class="parlay-leg">
+      <span class="parlay-leg-pick">${leg.pick}</span>
+      <span class="parlay-leg-meta">${leg.model_prob_pct}% · ML ${leg.vegas_ml > 0 ? '+' : ''}${leg.vegas_ml} · +${leg.edge_pp}pp</span>
+      ${i < p.legs.length - 1 ? '<span class="parlay-leg-sep">+</span>' : ''}
+    </div>`).join('');
+
+  return `
+    <div class="parlay-card">
+      <div class="parlay-header">
+        <div>
+          <div class="parlay-rank">#${rank} · ${p.num_legs}-Leg Parlay</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.6rem">
+          <span class="parlay-risk ${riskClass}">${p.risk_label}</span>
+          <span class="parlay-odds">${p.combined_american_odds}</span>
+        </div>
+      </div>
+      <div class="parlay-legs">${legsHtml}</div>
+      <div class="parlay-stats">
+        <div class="parlay-stat">
+          <div class="parlay-stat-val positive">+${p.ev_pct}%</div>
+          <div class="parlay-stat-lbl">Combined EV</div>
+        </div>
+        <div class="parlay-stat">
+          <div class="parlay-stat-val">${p.combined_win_prob}%</div>
+          <div class="parlay-stat-lbl">Win Prob</div>
+        </div>
+        <div class="parlay-stat">
+          <div class="parlay-stat-val positive">${p.kelly_fractional_pct}%</div>
+          <div class="parlay-stat-lbl">¼-Kelly</div>
+        </div>
+        <div class="parlay-stat">
+          <div class="parlay-stat-val">$${p.recommended_stake_dollars}</div>
+          <div class="parlay-stat-lbl">Stake/$1k</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+// Load when parlays tab is clicked
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.dataset.tab === 'parlays') {
+        loadParlays();
+      }
+    });
+  });
 });
 </script>
 </body>

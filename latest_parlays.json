@@ -1,0 +1,484 @@
+{
+  "date": "02/26",
+  "eligible_legs": [
+    {
+      "pick": "Radford Highlanders",
+      "matchup": "South Carolina Upstate Spartans @ Radford Highlanders",
+      "model_prob": 0.943,
+      "model_prob_pct": 94.3,
+      "vegas_ml": -268.0,
+      "decimal_odds": 1.373134328358209,
+      "edge_pp": 21.4,
+      "confidence_tier": ""
+    },
+    {
+      "pick": "SE Missouri St Redhawks",
+      "matchup": "Tennessee St Tigers @ SE Missouri St Redhawks",
+      "model_prob": 0.84,
+      "model_prob_pct": 84.0,
+      "vegas_ml": -189.0,
+      "decimal_odds": 1.529100529100529,
+      "edge_pp": 18.5,
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Le Moyne Dolphins",
+      "matchup": "Fairleigh Dickinson Knights @ Le Moyne Dolphins",
+      "model_prob": 0.821,
+      "model_prob_pct": 82.1,
+      "vegas_ml": -215.0,
+      "decimal_odds": 1.4651162790697674,
+      "edge_pp": 13.8,
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Florida Atlantic Owls",
+      "matchup": "Temple Owls @ Florida Atlantic Owls",
+      "model_prob": 0.818,
+      "model_prob_pct": 81.8,
+      "vegas_ml": -213.0,
+      "decimal_odds": 1.4694835680751175,
+      "edge_pp": 13.8,
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Montana St Bobcats",
+      "matchup": "Portland St Vikings @ Montana St Bobcats",
+      "model_prob": 0.725,
+      "model_prob_pct": 72.5,
+      "vegas_ml": -145.0,
+      "decimal_odds": 1.6896551724137931,
+      "edge_pp": 13.3,
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Montana Grizzlies",
+      "matchup": "Sacramento St Hornets @ Montana Grizzlies",
+      "model_prob": 0.863,
+      "model_prob_pct": 86.3,
+      "vegas_ml": -335.0,
+      "decimal_odds": 1.2985074626865671,
+      "edge_pp": 9.3,
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Chattanooga Mocs",
+      "matchup": "UNC Greensboro Spartans @ Chattanooga Mocs",
+      "model_prob": 0.7440000000000001,
+      "model_prob_pct": 74.4,
+      "vegas_ml": -187.0,
+      "decimal_odds": 1.53475935828877,
+      "edge_pp": 9.2,
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Cal Poly Mustangs",
+      "matchup": "Long Beach St 49ers @ Cal Poly Mustangs",
+      "model_prob": 0.77,
+      "model_prob_pct": 77.0,
+      "vegas_ml": -213.0,
+      "decimal_odds": 1.4694835680751175,
+      "edge_pp": 9.0,
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Middle Tennessee Blue Raiders",
+      "matchup": "UTEP Miners @ Middle Tennessee Blue Raiders",
+      "model_prob": 0.8690000000000001,
+      "model_prob_pct": 86.9,
+      "vegas_ml": -361.0,
+      "decimal_odds": 1.2770083102493075,
+      "edge_pp": 8.5,
+      "confidence_tier": ""
+    },
+    {
+      "pick": "UMBC Retrievers",
+      "matchup": "Bryant Bulldogs @ UMBC Retrievers",
+      "model_prob": 0.958,
+      "model_prob_pct": 95.8,
+      "vegas_ml": -725.0,
+      "decimal_odds": 1.1379310344827587,
+      "edge_pp": 7.9,
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Cal Baptist Lancers",
+      "matchup": "UT-Arlington Mavericks @ Cal Baptist Lancers",
+      "model_prob": 0.8240000000000001,
+      "model_prob_pct": 82.4,
+      "vegas_ml": -294.0,
+      "decimal_odds": 1.3401360544217686,
+      "edge_pp": 7.8,
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Purdue Boilermakers",
+      "matchup": "Michigan St Spartans @ Purdue Boilermakers",
+      "model_prob": 0.846,
+      "model_prob_pct": 84.6,
+      "vegas_ml": -336.0,
+      "decimal_odds": 1.2976190476190477,
+      "edge_pp": 7.5,
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Tenn-Martin Skyhawks",
+      "matchup": "Tennessee Tech Golden Eagles @ Tenn-Martin Skyhawks",
+      "model_prob": 0.888,
+      "model_prob_pct": 88.8,
+      "vegas_ml": -435.0,
+      "decimal_odds": 1.2298850574712643,
+      "edge_pp": 7.5,
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Texas Southern Tigers",
+      "matchup": "Alcorn St Braves @ Texas Southern Tigers",
+      "model_prob": 0.8390000000000001,
+      "model_prob_pct": 83.9,
+      "vegas_ml": -346.0,
+      "decimal_odds": 1.2890173410404624,
+      "edge_pp": 6.3,
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Monmouth Hawks",
+      "matchup": "Stony Brook Seawolves @ Monmouth Hawks",
+      "model_prob": 0.73,
+      "model_prob_pct": 73.0,
+      "vegas_ml": -205.0,
+      "decimal_odds": 1.4878048780487805,
+      "edge_pp": 5.8,
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Prairie View Panthers",
+      "matchup": "Jackson St Tigers @ Prairie View Panthers",
+      "model_prob": 0.762,
+      "model_prob_pct": 76.2,
+      "vegas_ml": -238.0,
+      "decimal_odds": 1.4201680672268908,
+      "edge_pp": 5.8,
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Lindenwood Lions",
+      "matchup": "Eastern Illinois Panthers @ Lindenwood Lions",
+      "model_prob": 0.852,
+      "model_prob_pct": 85.2,
+      "vegas_ml": -391.0,
+      "decimal_odds": 1.2557544757033248,
+      "edge_pp": 5.5,
+      "confidence_tier": ""
+    }
+  ],
+  "two_leg": [
+    {
+      "legs": [
+        {
+          "pick": "Radford Highlanders",
+          "matchup": "South Carolina Upstate Spartans @ Radford Highlanders",
+          "model_prob": 0.943,
+          "model_prob_pct": 94.3,
+          "vegas_ml": -268.0,
+          "decimal_odds": 1.373134328358209,
+          "edge_pp": 21.4,
+          "confidence_tier": ""
+        },
+        {
+          "pick": "SE Missouri St Redhawks",
+          "matchup": "Tennessee St Tigers @ SE Missouri St Redhawks",
+          "model_prob": 0.84,
+          "model_prob_pct": 84.0,
+          "vegas_ml": -189.0,
+          "decimal_odds": 1.529100529100529,
+          "edge_pp": 18.5,
+          "confidence_tier": ""
+        }
+      ],
+      "num_legs": 2,
+      "combined_win_prob": 79.2,
+      "combined_decimal_odds": 2.1,
+      "combined_american_odds": "+109",
+      "ev_pct": 66.3,
+      "kelly_full_pct": 60.31,
+      "kelly_fractional_pct": 15.08,
+      "recommended_stake_pct": 1.0,
+      "recommended_stake_dollars": 10.0,
+      "risk_label": "Conservative"
+    },
+    {
+      "legs": [
+        {
+          "pick": "Radford Highlanders",
+          "matchup": "South Carolina Upstate Spartans @ Radford Highlanders",
+          "model_prob": 0.943,
+          "model_prob_pct": 94.3,
+          "vegas_ml": -268.0,
+          "decimal_odds": 1.373134328358209,
+          "edge_pp": 21.4,
+          "confidence_tier": ""
+        },
+        {
+          "pick": "Montana St Bobcats",
+          "matchup": "Portland St Vikings @ Montana St Bobcats",
+          "model_prob": 0.725,
+          "model_prob_pct": 72.5,
+          "vegas_ml": -145.0,
+          "decimal_odds": 1.6896551724137931,
+          "edge_pp": 13.3,
+          "confidence_tier": ""
+        }
+      ],
+      "num_legs": 2,
+      "combined_win_prob": 68.4,
+      "combined_decimal_odds": 2.32,
+      "combined_american_odds": "+132",
+      "ev_pct": 58.6,
+      "kelly_full_pct": 44.41,
+      "kelly_fractional_pct": 11.1,
+      "recommended_stake_pct": 1.0,
+      "recommended_stake_dollars": 10.0,
+      "risk_label": "Conservative"
+    },
+    {
+      "legs": [
+        {
+          "pick": "SE Missouri St Redhawks",
+          "matchup": "Tennessee St Tigers @ SE Missouri St Redhawks",
+          "model_prob": 0.84,
+          "model_prob_pct": 84.0,
+          "vegas_ml": -189.0,
+          "decimal_odds": 1.529100529100529,
+          "edge_pp": 18.5,
+          "confidence_tier": ""
+        },
+        {
+          "pick": "Montana St Bobcats",
+          "matchup": "Portland St Vikings @ Montana St Bobcats",
+          "model_prob": 0.725,
+          "model_prob_pct": 72.5,
+          "vegas_ml": -145.0,
+          "decimal_odds": 1.6896551724137931,
+          "edge_pp": 13.3,
+          "confidence_tier": ""
+        }
+      ],
+      "num_legs": 2,
+      "combined_win_prob": 60.9,
+      "combined_decimal_odds": 2.58,
+      "combined_american_odds": "+158",
+      "ev_pct": 57.3,
+      "kelly_full_pct": 36.21,
+      "kelly_fractional_pct": 9.05,
+      "recommended_stake_pct": 1.0,
+      "recommended_stake_dollars": 10.0,
+      "risk_label": "Conservative"
+    },
+    {
+      "legs": [
+        {
+          "pick": "Radford Highlanders",
+          "matchup": "South Carolina Upstate Spartans @ Radford Highlanders",
+          "model_prob": 0.943,
+          "model_prob_pct": 94.3,
+          "vegas_ml": -268.0,
+          "decimal_odds": 1.373134328358209,
+          "edge_pp": 21.4,
+          "confidence_tier": ""
+        },
+        {
+          "pick": "Le Moyne Dolphins",
+          "matchup": "Fairleigh Dickinson Knights @ Le Moyne Dolphins",
+          "model_prob": 0.821,
+          "model_prob_pct": 82.1,
+          "vegas_ml": -215.0,
+          "decimal_odds": 1.4651162790697674,
+          "edge_pp": 13.8,
+          "confidence_tier": ""
+        }
+      ],
+      "num_legs": 2,
+      "combined_win_prob": 77.4,
+      "combined_decimal_odds": 2.01,
+      "combined_american_odds": "+101",
+      "ev_pct": 55.8,
+      "kelly_full_pct": 55.1,
+      "kelly_fractional_pct": 13.78,
+      "recommended_stake_pct": 1.0,
+      "recommended_stake_dollars": 10.0,
+      "risk_label": "Conservative"
+    },
+    {
+      "legs": [
+        {
+          "pick": "Radford Highlanders",
+          "matchup": "South Carolina Upstate Spartans @ Radford Highlanders",
+          "model_prob": 0.943,
+          "model_prob_pct": 94.3,
+          "vegas_ml": -268.0,
+          "decimal_odds": 1.373134328358209,
+          "edge_pp": 21.4,
+          "confidence_tier": ""
+        },
+        {
+          "pick": "Florida Atlantic Owls",
+          "matchup": "Temple Owls @ Florida Atlantic Owls",
+          "model_prob": 0.818,
+          "model_prob_pct": 81.8,
+          "vegas_ml": -213.0,
+          "decimal_odds": 1.4694835680751175,
+          "edge_pp": 13.8,
+          "confidence_tier": ""
+        }
+      ],
+      "num_legs": 2,
+      "combined_win_prob": 77.1,
+      "combined_decimal_odds": 2.02,
+      "combined_american_odds": "+101",
+      "ev_pct": 55.6,
+      "kelly_full_pct": 54.67,
+      "kelly_fractional_pct": 13.67,
+      "recommended_stake_pct": 1.0,
+      "recommended_stake_dollars": 10.0,
+      "risk_label": "Conservative"
+    }
+  ],
+  "three_leg": [
+    {
+      "legs": [
+        {
+          "pick": "Radford Highlanders",
+          "matchup": "South Carolina Upstate Spartans @ Radford Highlanders",
+          "model_prob": 0.943,
+          "model_prob_pct": 94.3,
+          "vegas_ml": -268.0,
+          "decimal_odds": 1.373134328358209,
+          "edge_pp": 21.4,
+          "confidence_tier": ""
+        },
+        {
+          "pick": "SE Missouri St Redhawks",
+          "matchup": "Tennessee St Tigers @ SE Missouri St Redhawks",
+          "model_prob": 0.84,
+          "model_prob_pct": 84.0,
+          "vegas_ml": -189.0,
+          "decimal_odds": 1.529100529100529,
+          "edge_pp": 18.5,
+          "confidence_tier": ""
+        },
+        {
+          "pick": "Montana St Bobcats",
+          "matchup": "Portland St Vikings @ Montana St Bobcats",
+          "model_prob": 0.725,
+          "model_prob_pct": 72.5,
+          "vegas_ml": -145.0,
+          "decimal_odds": 1.6896551724137931,
+          "edge_pp": 13.3,
+          "confidence_tier": ""
+        }
+      ],
+      "num_legs": 3,
+      "combined_win_prob": 57.4,
+      "combined_decimal_odds": 3.55,
+      "combined_american_odds": "+254",
+      "ev_pct": 103.7,
+      "kelly_full_pct": 40.72,
+      "kelly_fractional_pct": 10.18,
+      "recommended_stake_pct": 0.5,
+      "recommended_stake_dollars": 5.0,
+      "risk_label": "Moderate"
+    },
+    {
+      "legs": [
+        {
+          "pick": "Radford Highlanders",
+          "matchup": "South Carolina Upstate Spartans @ Radford Highlanders",
+          "model_prob": 0.943,
+          "model_prob_pct": 94.3,
+          "vegas_ml": -268.0,
+          "decimal_odds": 1.373134328358209,
+          "edge_pp": 21.4,
+          "confidence_tier": ""
+        },
+        {
+          "pick": "SE Missouri St Redhawks",
+          "matchup": "Tennessee St Tigers @ SE Missouri St Redhawks",
+          "model_prob": 0.84,
+          "model_prob_pct": 84.0,
+          "vegas_ml": -189.0,
+          "decimal_odds": 1.529100529100529,
+          "edge_pp": 18.5,
+          "confidence_tier": ""
+        },
+        {
+          "pick": "Le Moyne Dolphins",
+          "matchup": "Fairleigh Dickinson Knights @ Le Moyne Dolphins",
+          "model_prob": 0.821,
+          "model_prob_pct": 82.1,
+          "vegas_ml": -215.0,
+          "decimal_odds": 1.4651162790697674,
+          "edge_pp": 13.8,
+          "confidence_tier": ""
+        }
+      ],
+      "num_legs": 3,
+      "combined_win_prob": 65.0,
+      "combined_decimal_odds": 3.08,
+      "combined_american_odds": "+207",
+      "ev_pct": 100.1,
+      "kelly_full_pct": 48.19,
+      "kelly_fractional_pct": 12.05,
+      "recommended_stake_pct": 1.0,
+      "recommended_stake_dollars": 10.0,
+      "risk_label": "Conservative"
+    },
+    {
+      "legs": [
+        {
+          "pick": "Radford Highlanders",
+          "matchup": "South Carolina Upstate Spartans @ Radford Highlanders",
+          "model_prob": 0.943,
+          "model_prob_pct": 94.3,
+          "vegas_ml": -268.0,
+          "decimal_odds": 1.373134328358209,
+          "edge_pp": 21.4,
+          "confidence_tier": ""
+        },
+        {
+          "pick": "SE Missouri St Redhawks",
+          "matchup": "Tennessee St Tigers @ SE Missouri St Redhawks",
+          "model_prob": 0.84,
+          "model_prob_pct": 84.0,
+          "vegas_ml": -189.0,
+          "decimal_odds": 1.529100529100529,
+          "edge_pp": 18.5,
+          "confidence_tier": ""
+        },
+        {
+          "pick": "Florida Atlantic Owls",
+          "matchup": "Temple Owls @ Florida Atlantic Owls",
+          "model_prob": 0.818,
+          "model_prob_pct": 81.8,
+          "vegas_ml": -213.0,
+          "decimal_odds": 1.4694835680751175,
+          "edge_pp": 13.8,
+          "confidence_tier": ""
+        }
+      ],
+      "num_legs": 3,
+      "combined_win_prob": 64.8,
+      "combined_decimal_odds": 3.09,
+      "combined_american_odds": "+208",
+      "ev_pct": 99.9,
+      "kelly_full_pct": 47.91,
+      "kelly_fractional_pct": 11.98,
+      "recommended_stake_pct": 1.0,
+      "recommended_stake_dollars": 10.0,
+      "risk_label": "Conservative"
+    }
+  ],
+  "total_eligible_legs": 17,
+  "total_two_leg_considered": 136,
+  "total_three_leg_considered": 680
+}
