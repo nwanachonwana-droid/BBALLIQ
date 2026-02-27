@@ -1,124 +1,68 @@
 {
-  "updated": "2026-02-26",
+  "updated": "2026-02-27",
   "overall": {
-    "wins": 18,
-    "losses": 14,
-    "total": 32,
-    "hit_rate": 56.2
+    "wins": 35,
+    "losses": 19,
+    "total": 54,
+    "hit_rate": 64.8
   },
   "by_confidence": {
     "High (70-80%)": {
-      "wins": 4,
-      "total": 11,
-      "hit_rate": 36.4
+      "wins": 8,
+      "total": 16,
+      "hit_rate": 50.0
     },
     "LOCK (80%+)": {
-      "wins": 11,
-      "total": 16,
-      "hit_rate": 68.8
+      "wins": 22,
+      "total": 30,
+      "hit_rate": 73.3
     },
     "Medium (60-70%)": {
-      "wins": 3,
-      "total": 5,
-      "hit_rate": 60.0
+      "wins": 5,
+      "total": 8,
+      "hit_rate": 62.5
     }
   },
   "by_recommendation": {
     "STRONG BET": {
-      "wins": 10,
-      "total": 21,
-      "hit_rate": 47.6
+      "wins": 23,
+      "total": 38,
+      "hit_rate": 60.5
     },
     "VALUE BET": {
-      "wins": 3,
-      "total": 5,
-      "hit_rate": 60.0
+      "wins": 4,
+      "total": 7,
+      "hit_rate": 57.1
     },
     "LEAN BET": {
-      "wins": 5,
-      "total": 6,
-      "hit_rate": 83.3
+      "wins": 8,
+      "total": 9,
+      "hit_rate": 88.9
     }
   },
   "by_edge": {
     "15pp+": {
-      "wins": 2,
-      "total": 4,
+      "wins": 3,
+      "total": 6,
       "hit_rate": 50.0
     },
     "10-15pp": {
-      "wins": 6,
-      "total": 9,
-      "hit_rate": 66.7
+      "wins": 9,
+      "total": 13,
+      "hit_rate": 69.2
     },
     "5-10pp": {
-      "wins": 5,
-      "total": 13,
-      "hit_rate": 38.5
+      "wins": 15,
+      "total": 26,
+      "hit_rate": 57.7
     },
     "<5pp": {
-      "wins": 5,
-      "total": 6,
-      "hit_rate": 83.3
+      "wins": 8,
+      "total": 9,
+      "hit_rate": 88.9
     }
   },
   "recent": [
-    {
-      "date": "02/24",
-      "matchup": "Bradley Braves @ UIC Flames",
-      "pick": "UIC Flames",
-      "confidence": "High (70-80%)",
-      "model_prob": 78.7,
-      "vegas_ml": -167,
-      "implied_prob": 62.6,
-      "edge": 16.1,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "WIN",
-      "score": "Flames 93 - Braves 86",
-      "edge_band": "15pp+"
-    },
-    {
-      "date": "02/24",
-      "matchup": "Marquette Golden Eagles @ Georgetown Hoyas",
-      "pick": "Georgetown Hoyas",
-      "confidence": "High (70-80%)",
-      "model_prob": 75.6,
-      "vegas_ml": -157,
-      "implied_prob": 61.1,
-      "edge": 14.5,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "LOSS",
-      "score": "Hoyas 60 - Eagles 76",
-      "edge_band": "10-15pp"
-    },
-    {
-      "date": "02/24",
-      "matchup": "Cincinnati Bearcats @ Texas Tech Red Raiders",
-      "pick": "Texas Tech Red Raiders",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 89.0,
-      "vegas_ml": -301,
-      "implied_prob": 75.1,
-      "edge": 14.0,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "WIN",
-      "score": "Raiders 80 - Bearcats 68",
-      "edge_band": "10-15pp"
-    },
-    {
-      "date": "02/24",
-      "matchup": "West Virginia Mountaineers @ Oklahoma St Cowboys",
-      "pick": "Oklahoma St Cowboys",
-      "confidence": "Medium (60-70%)",
-      "model_prob": 66.5,
-      "vegas_ml": -126,
-      "implied_prob": 55.8,
-      "edge": 10.7,
-      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence",
-      "result": "WIN",
-      "score": "Cowboys 91 - Mountaineers 84",
-      "edge_band": "10-15pp"
-    },
     {
       "date": "02/24",
       "matchup": "Northwestern Wildcats @ Indiana Hoosiers",
@@ -509,6 +453,314 @@
       "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement",
       "result": "WIN",
       "score": "Razorbacks 99 - Aggies 84",
+      "edge_band": "<5pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "South Carolina Upstate Spartans @ Radford Highlanders",
+      "pick": "Radford Highlanders",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 94.3,
+      "vegas_ml": "-268",
+      "implied_prob": 72.8,
+      "edge": 21.4,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "WIN",
+      "score": "Highlanders 71 - Spartans 59",
+      "edge_band": "15pp+"
+    },
+    {
+      "date": "02/26",
+      "matchup": "Tennessee St Tigers @ SE Missouri St Redhawks",
+      "pick": "SE Missouri St Redhawks",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 84.0,
+      "vegas_ml": "-189",
+      "implied_prob": 65.5,
+      "edge": 18.5,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "LOSS",
+      "score": "Redhawks 71 - Tigers 79",
+      "edge_band": "15pp+"
+    },
+    {
+      "date": "02/26",
+      "matchup": "Fairleigh Dickinson Knights @ Le Moyne Dolphins",
+      "pick": "Le Moyne Dolphins",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 82.1,
+      "vegas_ml": "-215",
+      "implied_prob": 68.2,
+      "edge": 13.8,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "WIN",
+      "score": "Dolphins 76 - Knights 59",
+      "edge_band": "10-15pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "Temple Owls @ Florida Atlantic Owls",
+      "pick": "Florida Atlantic Owls",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 81.8,
+      "vegas_ml": "-213",
+      "implied_prob": 68.1,
+      "edge": 13.8,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "WIN",
+      "score": "Owls 77 - Owls 73",
+      "edge_band": "10-15pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "Portland St Vikings @ Montana St Bobcats",
+      "pick": "Montana St Bobcats",
+      "confidence": "High (70-80%)",
+      "model_prob": 72.5,
+      "vegas_ml": "-145",
+      "implied_prob": 59.2,
+      "edge": 13.3,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "WIN",
+      "score": "Bobcats 84 - Vikings 69",
+      "edge_band": "10-15pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "Wichita St Shockers @ Memphis Tigers",
+      "pick": "Memphis Tigers",
+      "confidence": "Medium (60-70%)",
+      "model_prob": 66.2,
+      "vegas_ml": "-118",
+      "implied_prob": 54.1,
+      "edge": 12.0,
+      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence",
+      "result": "LOSS",
+      "score": "Tigers 82 - Shockers 88",
+      "edge_band": "10-15pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "Sacramento St Hornets @ Montana Grizzlies",
+      "pick": "Montana Grizzlies",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 86.3,
+      "vegas_ml": "-335",
+      "implied_prob": 77.0,
+      "edge": 9.3,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "WIN",
+      "score": "Grizzlies 81 - Hornets 73",
+      "edge_band": "5-10pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "UNC Greensboro Spartans @ Chattanooga Mocs",
+      "pick": "Chattanooga Mocs",
+      "confidence": "High (70-80%)",
+      "model_prob": 74.4,
+      "vegas_ml": "-187",
+      "implied_prob": 65.2,
+      "edge": 9.2,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "LOSS",
+      "score": "Mocs 80 - Spartans 85",
+      "edge_band": "5-10pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "Long Beach St 49ers @ Cal Poly Mustangs",
+      "pick": "Cal Poly Mustangs",
+      "confidence": "High (70-80%)",
+      "model_prob": 77.0,
+      "vegas_ml": "-213",
+      "implied_prob": 68.1,
+      "edge": 9.0,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "WIN",
+      "score": "Bears 73 - Mustangs 69",
+      "edge_band": "5-10pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "UTEP Miners @ Middle Tennessee Blue Raiders",
+      "pick": "Middle Tennessee Blue Raiders",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 86.9,
+      "vegas_ml": "-361",
+      "implied_prob": 78.3,
+      "edge": 8.5,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "WIN",
+      "score": "Raiders 77 - Miners 67",
+      "edge_band": "5-10pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "Bryant Bulldogs @ UMBC Retrievers",
+      "pick": "UMBC Retrievers",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 95.8,
+      "vegas_ml": "-725",
+      "implied_prob": 87.9,
+      "edge": 7.9,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "WIN",
+      "score": "Retrievers 70 - Bulldogs 58",
+      "edge_band": "5-10pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "UT-Arlington Mavericks @ Cal Baptist Lancers",
+      "pick": "Cal Baptist Lancers",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 82.4,
+      "vegas_ml": "-294",
+      "implied_prob": 74.6,
+      "edge": 7.8,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "WIN",
+      "score": "Lancers 68 - Mavericks 56",
+      "edge_band": "5-10pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "Michigan St Spartans @ Purdue Boilermakers",
+      "pick": "Purdue Boilermakers",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 84.6,
+      "vegas_ml": "-336",
+      "implied_prob": 77.1,
+      "edge": 7.5,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "LOSS",
+      "score": "Boilermakers 74 - Spartans 76",
+      "edge_band": "5-10pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "Tennessee Tech Golden Eagles @ Tenn-Martin Skyhawks",
+      "pick": "Tenn-Martin Skyhawks",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 88.8,
+      "vegas_ml": "-435",
+      "implied_prob": 81.3,
+      "edge": 7.5,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "WIN",
+      "score": "Skyhawks 64 - Eagles 49",
+      "edge_band": "5-10pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "Alcorn St Braves @ Texas Southern Tigers",
+      "pick": "Texas Southern Tigers",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 83.9,
+      "vegas_ml": "-346",
+      "implied_prob": 77.6,
+      "edge": 6.3,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "WIN",
+      "score": "Tigers 92 - Braves 87",
+      "edge_band": "5-10pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "Stony Brook Seawolves @ Monmouth Hawks",
+      "pick": "Monmouth Hawks",
+      "confidence": "High (70-80%)",
+      "model_prob": 73.0,
+      "vegas_ml": "-205",
+      "implied_prob": 67.2,
+      "edge": 5.8,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "WIN",
+      "score": "Hawks 82 - Seawolves 69",
+      "edge_band": "5-10pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "Jackson St Tigers @ Prairie View Panthers",
+      "pick": "Prairie View Panthers",
+      "confidence": "High (70-80%)",
+      "model_prob": 76.2,
+      "vegas_ml": "-238",
+      "implied_prob": 70.4,
+      "edge": 5.8,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "WIN",
+      "score": "Panthers 85 - Tigers 76",
+      "edge_band": "5-10pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "Eastern Illinois Panthers @ Lindenwood Lions",
+      "pick": "Lindenwood Lions",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 85.2,
+      "vegas_ml": "-391",
+      "implied_prob": 79.7,
+      "edge": 5.5,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "LOSS",
+      "score": "Lions 67 - Panthers 71",
+      "edge_band": "5-10pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "North Dakota St Bison @ St. Thomas (MN) Tommies",
+      "pick": "St. Thomas (MN) Tommies",
+      "confidence": "Medium (60-70%)",
+      "model_prob": 69.8,
+      "vegas_ml": "-182",
+      "implied_prob": 64.5,
+      "edge": 5.2,
+      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence",
+      "result": "WIN",
+      "score": "Tommies 84 - Bison 62",
+      "edge_band": "5-10pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "Northeastern Huskies @ William & Mary Tribe",
+      "pick": "William & Mary Tribe",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 92.0,
+      "vegas_ml": "-700",
+      "implied_prob": 87.5,
+      "edge": 4.5,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement",
+      "result": "WIN",
+      "score": "Tribe 84 - Huskies 77",
+      "edge_band": "<5pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "Rhode Island Rams @ St. Bonaventure Bonnies",
+      "pick": "St. Bonaventure Bonnies",
+      "confidence": "Medium (60-70%)",
+      "model_prob": 64.2,
+      "vegas_ml": "-153",
+      "implied_prob": 60.5,
+      "edge": 3.7,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement",
+      "result": "WIN",
+      "score": "Bonnies 94 - Rams 76",
+      "edge_band": "<5pp"
+    },
+    {
+      "date": "02/26",
+      "matchup": "UC Riverside Highlanders @ UC Santa Barbara Gauchos",
+      "pick": "UC Santa Barbara Gauchos",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 91.7,
+      "vegas_ml": "-783",
+      "implied_prob": 88.7,
+      "edge": 3.0,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement",
+      "result": "WIN",
+      "score": "Gauchos 70 - Highlanders 59",
       "edge_band": "<5pp"
     }
   ]
