@@ -645,7 +645,184 @@
   }
   .eligible-leg-chip-meta { color: var(--muted, #555); }
 
+.bettor-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+.bettor-stat {
+  background: var(--surface);
+  padding: 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  transition: background 0.2s;
+}
+.bettor-stat:hover { background: var(--card); }
+.bettor-stat-label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  font-weight: 500;
+}
+.bettor-stat-value {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.bettor-stat-value.green  { color: #22c55e; }
+.bettor-stat-value.yellow { color: var(--accent); }
+.bettor-stat-value.red    { color: #ef4444; }
+.bettor-stat-value.white  { color: var(--text); }
+.bettor-stat-sub {
+  font-size: 0.68rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
 
+/* ── CHART AREA ───────────────────────── */
+.bettor-chart-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.4rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.bettor-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+.bettor-chart-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.bettor-chart-badge {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: rgba(232,255,60,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(232,255,60,0.2);
+}
+#bettor-chart { height: 220px !important; }
+
+/* ── BETS TABLE ───────────────────────── */
+.bettor-section-title {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  font-weight: 600;
+  margin: 1.4rem 0 0.6rem;
+}
+.bettor-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+.bettor-table th {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  font-weight: 400;
+  border-bottom: 1px solid var(--border);
+}
+.bettor-table td {
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: middle;
+}
+.bettor-table tr:last-child td { border-bottom: none; }
+.bettor-table tr:hover td { background: var(--surface); }
+.bet-result-win  { color: #22c55e; font-weight: 700; }
+.bet-result-loss { color: #ef4444; font-weight: 700; }
+.bet-result-pending {
+  color: var(--accent);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.pnl-positive { color: #22c55e; font-weight: 700; }
+.pnl-negative { color: #ef4444; font-weight: 700; }
+.pnl-pending  { color: var(--muted); }
+
+/* ── PENDING BETS CARD ───────────────── */
+.pending-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.pending-card-left { flex: 1; }
+.pending-pick { font-weight: 600; font-size: 0.85rem; color: var(--text); }
+.pending-meta { font-size: 0.68rem; color: var(--muted); margin-top: 3px; }
+.pending-card-right { text-align: right; }
+.pending-stake {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.pending-towin { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
+.pending-pulse {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 5px;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* ── BETTOR DISCLAIMER ───────────────── */
+.bettor-disclaimer {
+  font-size: 0.62rem;
+  color: var(--muted);
+  margin-top: 1.2rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  line-height: 1.6;
+}
+
+/* ── EMPTY STATE ─────────────────────── */
+.bettor-empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 2.5rem;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 700px) {
+  .bettor-hero { grid-template-columns: 1fr 1fr; }
+  .bettor-stat-value { font-size: 1.5rem; }
+}
 </style>
 </head>
 <body>
@@ -661,6 +838,7 @@
     <button class="tab-btn" data-tab="history">Historical</button>
     <button class="tab-btn" data-tab="performance">Performance</button>
      <button class="tab-btn" data-tab="parlays">Parlays</button>
+     <button class="tab-btn" data-tab="bettor">AI Bettor</button>
   </nav>
 </header>
 
@@ -1092,6 +1270,21 @@
 
   <div id="parlays-content">
     <div class="parlay-empty">Loading parlays…</div>
+  </div>
+
+</div>
+
+<div class="tab-panel" id="tab-bettor">
+
+  <div class="section-header">
+    <div>
+      <div class="section-title">AI Bettor</div>
+      <div class="section-sub" id="bettor-sub">Quarter-Kelly sizing · $100 starting bankroll · Real picks, real math</div>
+    </div>
+  </div>
+
+  <div id="bettor-content">
+    <div class="bettor-empty">Loading AI Bettor…</div>
   </div>
 
 </div>
@@ -2243,9 +2436,246 @@ document.addEventListener('DOMContentLoaded', () => {
       if (btn.dataset.tab === 'parlays') {
         loadParlays();
       }
+
+      if (btn.dataset.tab === 'bettor') loadBettor();
     });
   });
 });
+let bettorChart = null;
+
+async function loadBettor() {
+  const el  = document.getElementById('bettor-content');
+  const sub = document.getElementById('bettor-sub');
+
+  try {
+    const res = await fetch('ai_bankroll.json?t=' + Date.now());
+    if (!res.ok) throw new Error('No bettor data');
+    const d = await res.json();
+
+    const start   = d.starting_bankroll;
+    const current = d.current_bankroll;
+    const roi     = ((current - start) / start * 100);
+    const roiSign = roi >= 0 ? '+' : '';
+    const roiClass = roi >= 0 ? 'green' : 'red';
+    const totalBets = d.total_bets || 0;
+    const wins   = d.wins || 0;
+    const losses = d.losses || 0;
+    const wr     = totalBets > 0 ? (wins / totalBets * 100).toFixed(1) : '—';
+    const pnl    = current - start;
+    const pnlSign = pnl >= 0 ? '+' : '';
+
+    sub.textContent = `Started ${d.starting_date} · ${totalBets} bets settled · Updated ${d.last_updated}`;
+
+    let html = '';
+
+    // ── HERO STATS ──────────────────────────────────
+    html += `
+    <div class="bettor-hero">
+      <div class="bettor-stat">
+        <div class="bettor-stat-label">Current Bankroll</div>
+        <div class="bettor-stat-value white">$${current.toFixed(2)}</div>
+        <div class="bettor-stat-sub">Started at $${start.toFixed(2)}</div>
+      </div>
+      <div class="bettor-stat">
+        <div class="bettor-stat-label">Total Return</div>
+        <div class="bettor-stat-value ${roiClass}">${roiSign}${roi.toFixed(1)}%</div>
+        <div class="bettor-stat-sub">${pnlSign}$${Math.abs(pnl).toFixed(2)} P&amp;L</div>
+      </div>
+      <div class="bettor-stat">
+        <div class="bettor-stat-label">Win Rate</div>
+        <div class="bettor-stat-value yellow">${wr}%</div>
+        <div class="bettor-stat-sub">${wins}W – ${losses}L (${totalBets} settled)</div>
+      </div>
+      <div class="bettor-stat">
+        <div class="bettor-stat-label">Pending Bets</div>
+        <div class="bettor-stat-value white">${d.pending_bets.length}</div>
+        <div class="bettor-stat-sub">$${d.pending_bets.reduce((s,b) => s+b.stake, 0).toFixed(2)} at risk</div>
+      </div>
+    </div>`;
+
+    // ── GROWTH CHART ─────────────────────────────────
+    html += `
+    <div class="bettor-chart-wrap">
+      <div class="bettor-chart-header">
+        <div class="bettor-chart-title">Bankroll Growth</div>
+        <div class="bettor-chart-badge">Live</div>
+      </div>
+      <canvas id="bettor-chart"></canvas>
+    </div>`;
+
+    // ── PENDING BETS ──────────────────────────────────
+    if (d.pending_bets.length > 0) {
+      html += `<div class="bettor-section-title"><span class="pending-pulse"></span>Pending Bets (${d.pending_bets.length})</div>`;
+      d.pending_bets.forEach(b => {
+        const mlStr = b.ml > 0 ? `+${b.ml}` : `${b.ml}`;
+        html += `
+        <div class="pending-card">
+          <div class="pending-card-left">
+            <div class="pending-pick">${b.pick}</div>
+            <div class="pending-meta">${b.matchup} · ML ${mlStr} · Model ${b.model_prob}% · Edge +${b.edge_pp}pp</div>
+          </div>
+          <div class="pending-card-right">
+            <div class="pending-stake">$${b.stake.toFixed(2)}</div>
+            <div class="pending-towin">to win $${b.to_win.toFixed(2)}</div>
+          </div>
+        </div>`;
+      });
+    }
+
+    // ── BET HISTORY ───────────────────────────────────
+    const settled = [...d.settled_bets].reverse().slice(0, 30);
+    if (settled.length > 0) {
+      html += `<div class="bettor-section-title">Bet History (last ${settled.length})</div>`;
+      html += `
+      <table class="bettor-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Pick</th>
+            <th>ML</th>
+            <th>Model</th>
+            <th>Edge</th>
+            <th>Stake</th>
+            <th>Result</th>
+            <th>P&amp;L</th>
+          </tr>
+        </thead>
+        <tbody>`;
+      settled.forEach(b => {
+        const mlStr   = b.ml > 0 ? `+${b.ml}` : `${b.ml}`;
+        const resClass = b.result === 'WIN' ? 'bet-result-win' : b.result === 'LOSS' ? 'bet-result-loss' : 'bet-result-pending';
+        const resLabel = b.result || 'Pending';
+        const pnlClass = b.pnl > 0 ? 'pnl-positive' : b.pnl < 0 ? 'pnl-negative' : 'pnl-pending';
+        const pnlLabel = b.pnl !== null ? (b.pnl >= 0 ? `+$${b.pnl.toFixed(2)}` : `-$${Math.abs(b.pnl).toFixed(2)}`) : '—';
+        html += `
+          <tr>
+            <td>${b.date}</td>
+            <td>${b.pick}</td>
+            <td>${mlStr}</td>
+            <td>${b.model_prob}%</td>
+            <td>+${b.edge_pp}pp</td>
+            <td>$${b.stake.toFixed(2)}</td>
+            <td class="${resClass}">${resLabel}</td>
+            <td class="${pnlClass}">${pnlLabel}</td>
+          </tr>`;
+      });
+      html += `</tbody></table>`;
+    }
+
+    html += `
+    <div class="bettor-disclaimer">
+      This is a simulated AI bettor using Basketball IQ's validated prediction model. 
+      Bets are sized using quarter-Kelly criterion capped at 2% of bankroll per bet.
+      Only picks with 5–14pp model edge and ≥70% confidence are eligible. 
+      Not financial advice. Past performance does not guarantee future results.
+    </div>`;
+
+    el.innerHTML = html;
+
+    // ── RENDER CHART ─────────────────────────────────
+    renderBettorChart(d);
+
+  } catch(e) {
+    el.innerHTML = `
+    <div class="bettor-empty">
+      No bankroll data yet.<br>
+      Run: <code style="color:var(--accent)">python3 ai_bettor.py --init 100</code>
+    </div>`;
+  }
+}
+
+function renderBettorChart(d) {
+  const snapshots = d.daily_snapshots || [];
+  if (snapshots.length < 2) return;
+
+  const labels = snapshots.map(s => s.date);
+  const values = snapshots.map(s => s.bankroll);
+  const start  = d.starting_bankroll;
+
+  if (bettorChart) bettorChart.destroy();
+
+  const ctx = document.getElementById('bettor-chart');
+  if (!ctx) return;
+
+  const isUp = values[values.length-1] >= start;
+  const lineColor = isUp ? '#22c55e' : '#ef4444';
+  const fillColor = isUp ? 'rgba(34,197,94,0.08)' : 'rgba(239,68,68,0.08)';
+
+  bettorChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        data: values,
+        borderColor: lineColor,
+        backgroundColor: fillColor,
+        borderWidth: 2,
+        pointRadius: snapshots.length <= 14 ? 4 : 2,
+        pointBackgroundColor: lineColor,
+        pointBorderColor: 'var(--bg)',
+        pointBorderWidth: 2,
+        fill: true,
+        tension: 0.35,
+      }, {
+        // Starting line reference
+        data: snapshots.map(() => start),
+        borderColor: 'rgba(107,114,128,0.3)',
+        borderWidth: 1,
+        borderDash: [4, 4],
+        pointRadius: 0,
+        fill: false,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: 'rgba(17,20,24,0.95)',
+          borderColor: 'var(--border2)',
+          borderWidth: 1,
+          titleColor: 'var(--muted)',
+          bodyColor: 'var(--text)',
+          titleFont: { family: 'JetBrains Mono', size: 10 },
+          bodyFont: { family: 'JetBrains Mono', size: 11 },
+          callbacks: {
+            title: items => items[0].label,
+            label: item => {
+              if (item.datasetIndex === 1) return null;
+              const val = item.parsed.y;
+              const roi = ((val - start) / start * 100);
+              const sign = roi >= 0 ? '+' : '';
+              return [`$${val.toFixed(2)}`, `ROI: ${sign}${roi.toFixed(1)}%`];
+            },
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(31,35,41,0.6)' },
+          ticks: {
+            color: 'var(--muted)',
+            font: { family: 'JetBrains Mono', size: 9 },
+            maxTicksLimit: 10,
+          }
+        },
+        y: {
+          grid: { color: 'rgba(31,35,41,0.6)' },
+          ticks: {
+            color: 'var(--muted)',
+            font: { family: 'JetBrains Mono', size: 9 },
+            callback: v => `$${v.toFixed(0)}`
+          }
+        }
+      }
+    }
+  });
+}
+
+// Hook into tab click — add this line in your existing tab-click listener:
+// if (btn.dataset.tab === 'bettor') loadBettor();
 </script>
 </body>
 </html>
