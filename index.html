@@ -892,6 +892,18 @@
     padding-top: 1rem; line-height: 1.7;
   }
 
+
+  .perf-sport-btn {
+    background: var(--card); border: 1px solid var(--border);
+    color: var(--muted); font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 0.72rem; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 0.4rem 1rem;
+    border-radius: 4px; cursor: pointer; transition: all 0.15s;
+  }
+  .perf-sport-btn:hover { color: var(--text); border-color: var(--text); }
+  .perf-sport-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .perf-sport-panel { }
+
 </style>
 </head>
 <body>
@@ -1271,53 +1283,141 @@
     <div class="section-title">Performance Log</div>
     <div class="section-sub">Live hit rate tracking · Updated each morning</div>
   </div>
+
+  <!-- Sport switcher -->
+  <div style="display:flex;gap:0.5rem;margin-bottom:1.5rem">
+    <button class="perf-sport-btn active" data-sport="ncaab" onclick="switchPerfSport('ncaab',this)">🏀 NCAAB</button>
+    <button class="perf-sport-btn" data-sport="nba" onclick="switchPerfSport('nba',this)">🏀 NBA Props</button>
+    <button class="perf-sport-btn" data-sport="combined" onclick="switchPerfSport('combined',this)">📊 Combined</button>
+  </div>
+
   <div id="perf-loading" style="text-align:center;padding:3rem;color:#666">⏳ Loading performance data...</div>
-  <div id="perf-content" style="display:none">
+
+  <!-- NCAAB Panel -->
+  <div id="perf-ncaab" class="perf-sport-panel">
+    <div id="perf-content" style="display:none">
+      <div class="perf-hero">
+        <div class="perf-stat-big">
+          <div class="perf-stat-big-value" id="perf-overall-rate">—</div>
+          <div class="perf-stat-big-label">Hit Rate</div>
+        </div>
+        <div class="perf-stat-big">
+          <div class="perf-stat-big-value" id="perf-record">—</div>
+          <div class="perf-stat-big-label">Record</div>
+        </div>
+        <div class="perf-stat-big">
+          <div class="perf-stat-big-value" id="perf-total">—</div>
+          <div class="perf-stat-big-label">Total Picks</div>
+        </div>
+        <div class="perf-stat-big">
+          <div class="perf-stat-big-value" id="perf-updated">—</div>
+          <div class="perf-stat-big-label">Last Updated</div>
+        </div>
+      </div>
+      <div class="perf-breakdown-grid">
+        <div class="perf-breakdown-card">
+          <div class="perf-breakdown-title">By Recommendation</div>
+          <table class="perf-table"><thead><tr><th>Type</th><th>W</th><th>L</th><th>Hit Rate</th></tr></thead>
+          <tbody id="perf-by-rec"></tbody></table>
+        </div>
+        <div class="perf-breakdown-card">
+          <div class="perf-breakdown-title">By Confidence</div>
+          <table class="perf-table"><thead><tr><th>Tier</th><th>W</th><th>L</th><th>Hit Rate</th></tr></thead>
+          <tbody id="perf-by-conf"></tbody></table>
+        </div>
+        <div class="perf-breakdown-card">
+          <div class="perf-breakdown-title">By Edge Band</div>
+          <table class="perf-table"><thead><tr><th>Edge</th><th>W</th><th>L</th><th>Hit Rate</th></tr></thead>
+          <tbody id="perf-by-edge"></tbody></table>
+        </div>
+      </div>
+      <div class="perf-recent-header">Recent Results</div>
+      <div class="perf-recent-wrap">
+        <table class="perf-table perf-recent-table">
+          <thead><tr><th>Date</th><th>Pick</th><th>Matchup</th><th>Edge</th><th>Result</th><th>Score</th></tr></thead>
+          <tbody id="perf-recent"></tbody>
+        </table>
+      </div>
+    </div>
+    <div id="perf-empty" style="display:none;text-align:center;padding:3rem;color:#666">
+      No NCAAB data yet. Results appear after morning settlement runs.
+    </div>
+  </div>
+
+  <!-- NBA Props Panel -->
+  <div id="perf-nba" class="perf-sport-panel" style="display:none">
+    <div id="perf-nba-content" style="display:none">
+      <div class="perf-hero">
+        <div class="perf-stat-big">
+          <div class="perf-stat-big-value" id="nba-perf-rate">—</div>
+          <div class="perf-stat-big-label">Hit Rate</div>
+        </div>
+        <div class="perf-stat-big">
+          <div class="perf-stat-big-value" id="nba-perf-record">—</div>
+          <div class="perf-stat-big-label">Record</div>
+        </div>
+        <div class="perf-stat-big">
+          <div class="perf-stat-big-value" id="nba-perf-pnl">—</div>
+          <div class="perf-stat-big-label">Total P&L</div>
+        </div>
+        <div class="perf-stat-big">
+          <div class="perf-stat-big-value" id="nba-perf-total">—</div>
+          <div class="perf-stat-big-label">Total Props</div>
+        </div>
+      </div>
+      <div class="perf-breakdown-grid">
+        <div class="perf-breakdown-card">
+          <div class="perf-breakdown-title">By Stat Type</div>
+          <table class="perf-table"><thead><tr><th>Stat</th><th>W</th><th>L</th><th>Hit Rate</th></tr></thead>
+          <tbody id="nba-perf-by-stat"></tbody></table>
+        </div>
+        <div class="perf-breakdown-card">
+          <div class="perf-breakdown-title">By Direction</div>
+          <table class="perf-table"><thead><tr><th>Dir</th><th>W</th><th>L</th><th>Hit Rate</th></tr></thead>
+          <tbody id="nba-perf-by-dir"></tbody></table>
+        </div>
+        <div class="perf-breakdown-card">
+          <div class="perf-breakdown-title">By Edge Band</div>
+          <table class="perf-table"><thead><tr><th>Edge</th><th>W</th><th>L</th><th>Hit Rate</th></tr></thead>
+          <tbody id="nba-perf-by-edge"></tbody></table>
+        </div>
+      </div>
+      <div class="perf-recent-header">Recent Prop Results</div>
+      <div class="perf-recent-wrap">
+        <table class="perf-table perf-recent-table">
+          <thead><tr><th>Date</th><th>Player</th><th>Stat</th><th>Line</th><th>Dir</th><th>Edge</th><th>Result</th><th>P&L</th></tr></thead>
+          <tbody id="nba-perf-recent"></tbody>
+        </table>
+      </div>
+    </div>
+    <div id="perf-nba-empty" style="text-align:center;padding:3rem;color:#666">
+      No NBA prop results yet. Data appears after first prop settlement run.
+    </div>
+  </div>
+
+  <!-- Combined Panel -->
+  <div id="perf-combined" class="perf-sport-panel" style="display:none">
     <div class="perf-hero">
       <div class="perf-stat-big">
-        <div class="perf-stat-big-value" id="perf-overall-rate">—</div>
+        <div class="perf-stat-big-value" id="comb-rate">—</div>
         <div class="perf-stat-big-label">Overall Hit Rate</div>
       </div>
       <div class="perf-stat-big">
-        <div class="perf-stat-big-value" id="perf-record">—</div>
-        <div class="perf-stat-big-label">Record</div>
+        <div class="perf-stat-big-value" id="comb-record">—</div>
+        <div class="perf-stat-big-label">Combined Record</div>
       </div>
       <div class="perf-stat-big">
-        <div class="perf-stat-big-value" id="perf-total">—</div>
-        <div class="perf-stat-big-label">Total Picks</div>
+        <div class="perf-stat-big-value" id="comb-ncaab">—</div>
+        <div class="perf-stat-big-label">NCAAB Hit Rate</div>
       </div>
       <div class="perf-stat-big">
-        <div class="perf-stat-big-value" id="perf-updated">—</div>
-        <div class="perf-stat-big-label">Last Updated</div>
+        <div class="perf-stat-big-value" id="comb-nba">—</div>
+        <div class="perf-stat-big-label">NBA Props Hit Rate</div>
       </div>
     </div>
-    <div class="perf-breakdown-grid">
-      <div class="perf-breakdown-card">
-        <div class="perf-breakdown-title">By Recommendation</div>
-        <table class="perf-table"><thead><tr><th>Type</th><th>W</th><th>L</th><th>Hit Rate</th></tr></thead>
-        <tbody id="perf-by-rec"></tbody></table>
-      </div>
-      <div class="perf-breakdown-card">
-        <div class="perf-breakdown-title">By Confidence</div>
-        <table class="perf-table"><thead><tr><th>Tier</th><th>W</th><th>L</th><th>Hit Rate</th></tr></thead>
-        <tbody id="perf-by-conf"></tbody></table>
-      </div>
-      <div class="perf-breakdown-card">
-        <div class="perf-breakdown-title">By Edge Band</div>
-        <table class="perf-table"><thead><tr><th>Edge</th><th>W</th><th>L</th><th>Hit Rate</th></tr></thead>
-        <tbody id="perf-by-edge"></tbody></table>
-      </div>
+    <div style="text-align:center;color:#555;font-size:0.8rem;padding:1rem 0">
+      Combined view updates daily as both NCAAB and NBA prop results settle.
     </div>
-    <div class="perf-recent-header">Recent Results</div>
-    <div class="perf-recent-wrap">
-      <table class="perf-table perf-recent-table">
-        <thead><tr><th>Date</th><th>Pick</th><th>Matchup</th><th>Edge</th><th>Result</th><th>Score</th></tr></thead>
-        <tbody id="perf-recent"></tbody>
-      </table>
-    </div>
-  </div>
-  <div id="perf-empty" style="display:none;text-align:center;padding:3rem;color:#666">
-    No performance data yet. Results will appear after the first morning run.
   </div>
 </div>
 
@@ -1401,45 +1501,187 @@
 
 
 <script>
-  async function loadPerformance() {
+
+// ═══════════════════════════════════════════════════════
+// PERFORMANCE TAB — Multi-sport
+// ═══════════════════════════════════════════════════════
+let perfDataNCAAB = null;
+let perfDataNBA   = null;
+
+function rateClass(r) {
+  return r >= 65 ? 'perf-hit-rate good' : r >= 55 ? 'perf-hit-rate mid' : 'perf-hit-rate bad';
+}
+
+function switchPerfSport(sport, btn) {
+  document.querySelectorAll('.perf-sport-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('perf-ncaab').style.display    = sport === 'ncaab'    ? '' : 'none';
+  document.getElementById('perf-nba').style.display      = sport === 'nba'      ? '' : 'none';
+  document.getElementById('perf-combined').style.display = sport === 'combined' ? '' : 'none';
+  if (sport === 'combined') renderCombined();
+}
+
+async function loadPerformance() {
   const loading = document.getElementById('perf-loading');
-  const content = document.getElementById('perf-content');
-  const empty   = document.getElementById('perf-empty');
+  loading.style.display = 'block';
+
+  // Load NCAAB
   try {
     const res = await fetch('performance_log.json?t=' + Date.now());
-    if (!res.ok) throw new Error();
-    const d = await res.json();
-    if (!d.overall || d.overall.total === 0) { loading.style.display='none'; empty.style.display='block'; return; }
-    function rateClass(r) { return r >= 65 ? 'perf-hit-rate good' : r >= 55 ? 'perf-hit-rate mid' : 'perf-hit-rate bad'; }
-    const hr = d.overall.hit_rate;
-    document.getElementById('perf-overall-rate').textContent = hr + '%';
-    document.getElementById('perf-overall-rate').className = 'perf-stat-big-value ' + rateClass(hr);
-    document.getElementById('perf-record').textContent  = d.overall.wins + 'W – ' + d.overall.losses + 'L';
-    document.getElementById('perf-total').textContent   = d.overall.total;
-    document.getElementById('perf-updated').textContent = d.updated;
-    const recOrder = ['STRONG BET','VALUE BET','LEAN BET'];
-    const recLabels = {'STRONG BET':'✅ Strong','VALUE BET':'🟡 Value','LEAN BET':'· Lean'};
-    document.getElementById('perf-by-rec').innerHTML = recOrder.filter(k => d.by_recommendation[k]?.total > 0)
-      .map(k => { const r=d.by_recommendation[k]; return `<tr><td>${recLabels[k]}</td><td>${r.wins}</td><td>${r.total-r.wins}</td><td class="${rateClass(r.hit_rate)} perf-hit-rate">${r.hit_rate}%</td></tr>`; }).join('') || '<tr><td colspan="4" style="color:#555">No data yet</td></tr>';
-    const confOrder = ['LOCK (80%+)','High (70-80%)','Medium (60-70%)'];
-    const confLabels = {'LOCK (80%+)':'Strong (80%+)','High (70-80%)':'High (70–80%)','Medium (60-70%)':'Med (60–70%)'};
-    document.getElementById('perf-by-conf').innerHTML = confOrder.filter(k => d.by_confidence[k]?.total > 0)
-      .map(k => { const r=d.by_confidence[k]; return `<tr><td>${confLabels[k]}</td><td>${r.wins}</td><td>${r.total-r.wins}</td><td class="${rateClass(r.hit_rate)} perf-hit-rate">${r.hit_rate}%</td></tr>`; }).join('') || '<tr><td colspan="4" style="color:#555">No data yet</td></tr>';
-    const edgeOrder = ['15pp+','10-15pp','5-10pp','<5pp'];
-    document.getElementById('perf-by-edge').innerHTML = edgeOrder.filter(k => d.by_edge[k]?.total > 0)
-      .map(k => { const r=d.by_edge[k]; return `<tr><td>${k}</td><td>${r.wins}</td><td>${r.total-r.wins}</td><td class="${rateClass(r.hit_rate)} perf-hit-rate">${r.hit_rate}%</td></tr>`; }).join('') || '<tr><td colspan="4" style="color:#555">No data yet</td></tr>';
-    const recent = (d.recent||[]).slice().reverse();
-    document.getElementById('perf-recent').innerHTML = recent.map(r => `<tr>
-      <td>${r.date}</td>
-      <td style="font-weight:600;color:#f0f0f0">${r.pick}</td>
-      <td style="color:#666;font-size:0.8rem">${r.matchup}</td>
-      <td>+${r.edge}pp</td>
-      <td class="${r.result==='WIN'?'perf-result-win':'perf-result-loss'}">${r.result==='WIN'?'✅':'❌'} ${r.result}</td>
-      <td style="color:#666;font-size:0.8rem">${r.score||'—'}</td>
-    </tr>`).join('') || '<tr><td colspan="6" style="color:#555">No results yet</td></tr>';
-    loading.style.display='none'; content.style.display='block';
-  } catch(e) { loading.style.display='none'; empty.style.display='block'; }
+    if (res.ok) {
+      perfDataNCAAB = await res.json();
+      renderNCAAB(perfDataNCAAB);
+    }
+  } catch(e) {}
+
+  // Load NBA props
+  try {
+    const res = await fetch('props_performance_log.json?t=' + Date.now());
+    if (res.ok) {
+      perfDataNBA = await res.json();
+      renderNBAProps(perfDataNBA);
+    }
+  } catch(e) {}
+
+  loading.style.display = 'none';
 }
+
+function renderNCAAB(d) {
+  if (!d || !d.overall || d.overall.total === 0) {
+    document.getElementById('perf-empty').style.display = 'block';
+    return;
+  }
+  const hr = d.overall.hit_rate;
+  document.getElementById('perf-overall-rate').textContent = hr + '%';
+  document.getElementById('perf-overall-rate').className = 'perf-stat-big-value ' + rateClass(hr);
+  document.getElementById('perf-record').textContent  = d.overall.wins + 'W – ' + d.overall.losses + 'L';
+  document.getElementById('perf-total').textContent   = d.overall.total;
+  document.getElementById('perf-updated').textContent = d.updated;
+
+  const recOrder  = ['STRONG BET','VALUE BET','LEAN BET'];
+  const recLabels = {'STRONG BET':'✅ Strong','VALUE BET':'🟡 Value','LEAN BET':'· Lean'};
+  document.getElementById('perf-by-rec').innerHTML = recOrder.filter(k => d.by_recommendation[k]?.total > 0)
+    .map(k => { const r=d.by_recommendation[k]; return `<tr><td>${recLabels[k]}</td><td>${r.wins}</td><td>${r.total-r.wins}</td><td class="${rateClass(r.hit_rate)} perf-hit-rate">${r.hit_rate}%</td></tr>`; }).join('') || '<tr><td colspan="4" style="color:#555">No data yet</td></tr>';
+
+  const confOrder  = ['LOCK (80%+)','High (70-80%)','Medium (60-70%)'];
+  const confLabels = {'LOCK (80%+)':'Strong (80%+)','High (70-80%)':'High (70–80%)','Medium (60-70%)':'Med (60–70%)'};
+  document.getElementById('perf-by-conf').innerHTML = confOrder.filter(k => d.by_confidence[k]?.total > 0)
+    .map(k => { const r=d.by_confidence[k]; return `<tr><td>${confLabels[k]}</td><td>${r.wins}</td><td>${r.total-r.wins}</td><td class="${rateClass(r.hit_rate)} perf-hit-rate">${r.hit_rate}%</td></tr>`; }).join('') || '<tr><td colspan="4" style="color:#555">No data yet</td></tr>';
+
+  const edgeOrder = ['15pp+','10-15pp','5-10pp','<5pp'];
+  document.getElementById('perf-by-edge').innerHTML = edgeOrder.filter(k => d.by_edge[k]?.total > 0)
+    .map(k => { const r=d.by_edge[k]; return `<tr><td>${k}</td><td>${r.wins}</td><td>${r.total-r.wins}</td><td class="${rateClass(r.hit_rate)} perf-hit-rate">${r.hit_rate}%</td></tr>`; }).join('') || '<tr><td colspan="4" style="color:#555">No data yet</td></tr>';
+
+  const recent = (d.recent||[]).slice().reverse();
+  document.getElementById('perf-recent').innerHTML = recent.map(r => `<tr>
+    <td>${r.date}</td>
+    <td style="font-weight:600;color:#f0f0f0">${r.pick}</td>
+    <td style="color:#666;font-size:0.8rem">${r.matchup}</td>
+    <td>+${r.edge}pp</td>
+    <td class="${r.result==='WIN'?'perf-result-win':'perf-result-loss'}">${r.result==='WIN'?'✅':'❌'} ${r.result}</td>
+    <td style="color:#666;font-size:0.8rem">${r.score||'—'}</td>
+  </tr>`).join('') || '<tr><td colspan="6" style="color:#555">No results yet</td></tr>';
+
+  document.getElementById('perf-content').style.display = 'block';
+}
+
+function renderNBAProps(entries) {
+  const el_content = document.getElementById('perf-nba-content');
+  const el_empty   = document.getElementById('perf-nba-empty');
+
+  if (!entries || entries.length === 0) {
+    el_empty.style.display = 'block';
+    return;
+  }
+
+  const wins   = entries.filter(e => e.result === 'WIN').length;
+  const losses = entries.filter(e => e.result === 'LOSS').length;
+  const total  = wins + losses;
+  const hr     = total > 0 ? Math.round(wins / total * 1000) / 10 : 0;
+  const pnl    = entries.reduce((s, e) => s + (parseFloat(e.pnl) || 0), 0);
+
+  document.getElementById('nba-perf-rate').textContent   = hr + '%';
+  document.getElementById('nba-perf-rate').className     = 'perf-stat-big-value ' + rateClass(hr);
+  document.getElementById('nba-perf-record').textContent = wins + 'W – ' + losses + 'L';
+  document.getElementById('nba-perf-pnl').textContent    = (pnl >= 0 ? '+' : '') + '$' + pnl.toFixed(2);
+  document.getElementById('nba-perf-pnl').style.color    = pnl >= 0 ? 'var(--accent)' : 'var(--chaos)';
+  document.getElementById('nba-perf-total').textContent  = total;
+
+  // By stat
+  const statMap = {};
+  entries.forEach(e => {
+    const s = (e.stat||'?').toUpperCase();
+    if (!statMap[s]) statMap[s] = {w:0,l:0};
+    if (e.result==='WIN') statMap[s].w++; else statMap[s].l++;
+  });
+  document.getElementById('nba-perf-by-stat').innerHTML = Object.entries(statMap)
+    .map(([s,r]) => { const hr2=Math.round(r.w/(r.w+r.l)*1000)/10; return `<tr><td>${s}</td><td>${r.w}</td><td>${r.l}</td><td class="${rateClass(hr2)} perf-hit-rate">${hr2}%</td></tr>`; }).join('') || '<tr><td colspan="4" style="color:#555">No data</td></tr>';
+
+  // By direction
+  const dirMap = {};
+  entries.forEach(e => {
+    const d2 = (e.direction||'?').toUpperCase();
+    if (!dirMap[d2]) dirMap[d2] = {w:0,l:0};
+    if (e.result==='WIN') dirMap[d2].w++; else dirMap[d2].l++;
+  });
+  document.getElementById('nba-perf-by-dir').innerHTML = Object.entries(dirMap)
+    .map(([d2,r]) => { const hr2=Math.round(r.w/(r.w+r.l)*1000)/10; return `<tr><td>${d2}</td><td>${r.w}</td><td>${r.l}</td><td class="${rateClass(hr2)} perf-hit-rate">${hr2}%</td></tr>`; }).join('') || '<tr><td colspan="4" style="color:#555">No data</td></tr>';
+
+  // By edge band
+  const edgeBands = {'3.5-4.5u':[3.5,4.5],'4.5-6u':[4.5,6],'6u+':[6,99]};
+  const edgeMap = {};
+  entries.forEach(e => {
+    const edge = Math.abs(parseFloat(e.edge_pp)||0);
+    const band = edge >= 6 ? '6u+' : edge >= 4.5 ? '4.5-6u' : '3.5-4.5u';
+    if (!edgeMap[band]) edgeMap[band] = {w:0,l:0};
+    if (e.result==='WIN') edgeMap[band].w++; else edgeMap[band].l++;
+  });
+  document.getElementById('nba-perf-by-edge').innerHTML = Object.entries(edgeMap)
+    .map(([b,r]) => { const hr2=Math.round(r.w/(r.w+r.l)*1000)/10; return `<tr><td>${b}</td><td>${r.w}</td><td>${r.l}</td><td class="${rateClass(hr2)} perf-hit-rate">${hr2}%</td></tr>`; }).join('') || '<tr><td colspan="4" style="color:#555">No data</td></tr>';
+
+  // Recent
+  const recent = [...entries].reverse().slice(0, 20);
+  document.getElementById('nba-perf-recent').innerHTML = recent.map(r => {
+    const dc = r.direction === 'over' ? 'color:var(--accent)' : 'color:var(--chaos)';
+    const pnlStr = (parseFloat(r.pnl)||0) >= 0 ? '+$'+Math.abs(r.pnl).toFixed(2) : '-$'+Math.abs(r.pnl).toFixed(2);
+    return `<tr>
+      <td>${r.date}</td>
+      <td style="font-weight:600;color:#f0f0f0">${r.player}</td>
+      <td style="color:#888;font-size:0.78rem">${(r.stat||'').toUpperCase()}</td>
+      <td>${r.line}</td>
+      <td style="${dc};font-weight:700;font-size:0.78rem">${(r.direction||'').toUpperCase()}</td>
+      <td>${r.edge_pp ? '+'+parseFloat(r.edge_pp).toFixed(1)+'u' : '—'}</td>
+      <td class="${r.result==='WIN'?'perf-result-win':'perf-result-loss'}">${r.result==='WIN'?'✅':'❌'} ${r.result}</td>
+      <td style="${(parseFloat(r.pnl)||0)>=0?'color:var(--accent)':'color:var(--chaos)'}">${pnlStr}</td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="8" style="color:#555">No results yet</td></tr>';
+
+  el_content.style.display = 'block';
+  el_empty.style.display   = 'none';
+}
+
+function renderCombined() {
+  const ncaab = perfDataNCAAB?.overall || {wins:0,losses:0,total:0,hit_rate:0};
+  const nbaEntries = perfDataNBA || [];
+  const nbaW = nbaEntries.filter(e=>e.result==='WIN').length;
+  const nbaL = nbaEntries.filter(e=>e.result==='LOSS').length;
+  const nbaT = nbaW + nbaL;
+  const nbaHr = nbaT > 0 ? Math.round(nbaW/nbaT*1000)/10 : 0;
+
+  const totalW = ncaab.wins + nbaW;
+  const totalL = ncaab.losses + nbaL;
+  const totalT = totalW + totalL;
+  const totalHr = totalT > 0 ? Math.round(totalW/totalT*1000)/10 : 0;
+
+  document.getElementById('comb-rate').textContent   = totalHr + '%';
+  document.getElementById('comb-rate').className     = 'perf-stat-big-value ' + rateClass(totalHr);
+  document.getElementById('comb-record').textContent = totalW + 'W – ' + totalL + 'L';
+  document.getElementById('comb-ncaab').textContent  = ncaab.hit_rate + '%';
+  document.getElementById('comb-ncaab').className    = 'perf-stat-big-value ' + rateClass(ncaab.hit_rate);
+  document.getElementById('comb-nba').textContent    = nbaHr + '%';
+  document.getElementById('comb-nba').className      = 'perf-stat-big-value ' + rateClass(nbaHr);
+}
+
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => { if (btn.dataset.tab==='performance') loadPerformance(); });
 });
