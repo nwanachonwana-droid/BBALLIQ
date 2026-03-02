@@ -1288,6 +1288,7 @@
   <div style="display:flex;gap:0.5rem;margin-bottom:1.5rem">
     <button class="perf-sport-btn active" data-sport="ncaab" onclick="switchPerfSport('ncaab',this)">🏀 NCAAB</button>
     <button class="perf-sport-btn" data-sport="nba" onclick="switchPerfSport('nba',this)">🏀 NBA Props</button>
+    <button class="perf-sport-btn" data-sport="nbagames" onclick="switchPerfSport('nbagames',this)">🏀 NBA Games</button>
     <button class="perf-sport-btn" data-sport="combined" onclick="switchPerfSport('combined',this)">📊 Combined</button>
   </div>
 
@@ -1395,6 +1396,31 @@
     </div>
   </div>
 
+  <!-- NBA Games Panel -->
+  <div id="perf-nbagames" class="perf-sport-panel" style="display:none">
+    <div id="perf-nbagames-content" style="display:none">
+      <div class="perf-hero">
+        <div class="perf-stat-big"><div class="perf-stat-big-value" id="nbag-perf-rate">—</div><div class="perf-stat-big-label">Hit Rate</div></div>
+        <div class="perf-stat-big"><div class="perf-stat-big-value" id="nbag-perf-record">—</div><div class="perf-stat-big-label">Record</div></div>
+        <div class="perf-stat-big"><div class="perf-stat-big-value" id="nbag-perf-pnl">—</div><div class="perf-stat-big-label">Total P&L</div></div>
+        <div class="perf-stat-big"><div class="perf-stat-big-value" id="nbag-perf-total">—</div><div class="perf-stat-big-label">Total Bets</div></div>
+      </div>
+      <div class="perf-breakdown-grid">
+        <div class="perf-breakdown-card"><div class="perf-breakdown-title">By Edge Band</div>
+          <table class="perf-table"><thead><tr><th>Edge</th><th>W</th><th>L</th><th>Hit Rate</th></tr></thead><tbody id="nbag-perf-by-edge"></tbody></table></div>
+        <div class="perf-breakdown-card"><div class="perf-breakdown-title">By Confidence</div>
+          <table class="perf-table"><thead><tr><th>Conf</th><th>W</th><th>L</th><th>Hit Rate</th></tr></thead><tbody id="nbag-perf-by-conf"></tbody></table></div>
+      </div>
+      <div class="perf-recent-header">Recent NBA Game Results</div>
+      <div class="perf-recent-wrap">
+        <table class="perf-table perf-recent-table">
+          <thead><tr><th>Date</th><th>Pick</th><th>Model</th><th>Edge</th><th>Odds</th><th>Result</th><th>P&L</th></tr></thead>
+          <tbody id="nbag-perf-recent"></tbody>
+        </table>
+      </div>
+    </div>
+    <div id="perf-nbagames-empty" style="text-align:center;padding:3rem;color:#666">No NBA game results yet.</div>
+  </div>
   <!-- Combined Panel -->
   <div id="perf-combined" class="perf-sport-panel" style="display:none">
     <div class="perf-hero">
@@ -1517,6 +1543,7 @@ function switchPerfSport(sport, btn) {
   btn.classList.add('active');
   document.getElementById('perf-ncaab').style.display    = sport === 'ncaab'    ? '' : 'none';
   document.getElementById('perf-nba').style.display      = sport === 'nba'      ? '' : 'none';
+  document.getElementById('perf-nbagames').style.display  = sport === 'nbagames' ? '' : 'none';
   document.getElementById('perf-combined').style.display = sport === 'combined' ? '' : 'none';
   if (sport === 'combined') renderCombined();
 }
@@ -1541,6 +1568,12 @@ async function loadPerformance() {
       perfDataNBA = await res.json();
       renderNBAProps(perfDataNBA);
     }
+  } catch(e) {}
+
+  // Load NBA game results
+  try {
+    const res = await fetch('nba_games_performance_log.json?t=' + Date.now());
+    if (res.ok) { perfDataNBAGames = await res.json(); renderNBAGames(perfDataNBAGames); }
   } catch(e) {}
 
   loading.style.display = 'none';
@@ -1660,9 +1693,33 @@ function renderNBAProps(entries) {
   el_empty.style.display   = 'none';
 }
 
+function renderNBAGames(entries) {
+  const ec = document.getElementById('perf-nbagames-content');
+  const ee = document.getElementById('perf-nbagames-empty');
+  if (!entries || !entries.length) { ee.style.display='block'; return; }
+  const wins=entries.filter(e=>e.result==='WIN').length, losses=entries.filter(e=>e.result==='LOSS').length, total=wins+losses;
+  const hr=total>0?Math.round(wins/total*1000)/10:0;
+  const pnl=entries.reduce((s,e)=>s+(parseFloat(e.pnl)||0),0);
+  document.getElementById('nbag-perf-rate').textContent=hr+'%';
+  document.getElementById('nbag-perf-rate').className='perf-stat-big-value '+rateClass(hr);
+  document.getElementById('nbag-perf-record').textContent=wins+'W – '+losses+'L';
+  document.getElementById('nbag-perf-pnl').textContent=(pnl>=0?'+$':'-$')+Math.abs(pnl).toFixed(2);
+  document.getElementById('nbag-perf-pnl').style.color=pnl>=0?'var(--accent)':'var(--chaos)';
+  document.getElementById('nbag-perf-total').textContent=total;
+  const edgeMap={};
+  entries.forEach(e=>{const ed=Math.abs(parseFloat(e.edge_pp)||0),b=ed>=8?'8pp+':ed>=5?'5-8pp':'3-5pp';if(!edgeMap[b])edgeMap[b]={w:0,l:0};if(e.result==='WIN')edgeMap[b].w++;else edgeMap[b].l++;});
+  document.getElementById('nbag-perf-by-edge').innerHTML=Object.entries(edgeMap).map(([b,r])=>{const h2=Math.round(r.w/(r.w+r.l)*1000)/10;return`<tr><td>${b}</td><td>${r.w}</td><td>${r.l}</td><td class="${rateClass(h2)} perf-hit-rate">${h2}%</td></tr>`;}).join('')||'<tr><td colspan="4" style="color:#555">No data</td></tr>';
+  const confMap={};
+  entries.forEach(e=>{const p=parseFloat(e.model_prob)||0,b=p>=75?'75%+':p>=65?'65-75%':'60-65%';if(!confMap[b])confMap[b]={w:0,l:0};if(e.result==='WIN')confMap[b].w++;else confMap[b].l++;});
+  document.getElementById('nbag-perf-by-conf').innerHTML=Object.entries(confMap).map(([b,r])=>{const h2=Math.round(r.w/(r.w+r.l)*1000)/10;return`<tr><td>${b}</td><td>${r.w}</td><td>${r.l}</td><td class="${rateClass(h2)} perf-hit-rate">${h2}%</td></tr>`;}).join('')||'<tr><td colspan="4" style="color:#555">No data</td></tr>';
+  const recent=[...entries].reverse().slice(0,20);
+  document.getElementById('nbag-perf-recent').innerHTML=recent.map(r=>{const pv=parseFloat(r.pnl)||0,ps=(pv>=0?'+$':'-$')+Math.abs(pv).toFixed(2),odds=r.odds?(r.odds>0?'+'+Math.round(r.odds):Math.round(r.odds)):'—';return`<tr><td>${r.date}</td><td style="font-weight:600;color:#f0f0f0">${r.pick}</td><td>${r.model_prob?parseFloat(r.model_prob).toFixed(1)+'%':'—'}</td><td>${r.edge_pp?'+'+parseFloat(r.edge_pp).toFixed(1)+'pp':'—'}</td><td style="color:#888">${odds}</td><td class="${r.result==='WIN'?'perf-result-win':'perf-result-loss'}">${r.result==='WIN'?'✅':'❌'} ${r.result}</td><td style="${pv>=0?'color:var(--accent)':'color:var(--chaos)'}">${ps}</td></tr>`;}).join('')||'<tr><td colspan="7" style="color:#555">No results yet</td></tr>';
+  ec.style.display='block'; ee.style.display='none';
+}
+
 function renderCombined() {
   const ncaab = perfDataNCAAB?.overall || {wins:0,losses:0,total:0,hit_rate:0};
-  const nbaEntries = perfDataNBA || [];
+  const nbaEntries = [...(perfDataNBA||[]), ...(perfDataNBAGames||[])];
   const nbaW = nbaEntries.filter(e=>e.result==='WIN').length;
   const nbaL = nbaEntries.filter(e=>e.result==='LOSS').length;
   const nbaT = nbaW + nbaL;
