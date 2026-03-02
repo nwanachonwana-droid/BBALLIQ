@@ -4,46 +4,13 @@
   "picks": [
     {
       "date": "03/02",
-      "matchup": "East Texas A&M Lions @ Texas A&M-CC Islanders",
-      "pick": "Texas A&M-CC Islanders",
+      "matchup": "SE Louisiana Lions @ New Orleans Privateers",
+      "pick": "New Orleans Privateers",
       "confidence": "LOCK (80%+)",
-      "model_prob": 96.5,
-      "vegas_ml": "-383",
-      "implied_prob": 79.3,
-      "edge": 17.2,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
-    },
-    {
-      "date": "03/02",
-      "matchup": "North Carolina Central Eagles @ Maryland-Eastern Shore Hawks",
-      "pick": "Maryland-Eastern Shore Hawks",
-      "confidence": "High (70-80%)",
-      "model_prob": 71.8,
-      "vegas_ml": "-126",
-      "implied_prob": 55.8,
-      "edge": 16.0,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
-    },
-    {
-      "date": "03/02",
-      "matchup": "Idaho State Bengals @ Sacramento St Hornets",
-      "pick": "Sacramento St Hornets",
-      "confidence": "Medium (60-70%)",
-      "model_prob": 69.5,
-      "vegas_ml": "-124",
-      "implied_prob": 55.4,
-      "edge": 14.0,
-      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence"
-    },
-    {
-      "date": "03/02",
-      "matchup": "Montana Grizzlies @ N Colorado Bears",
-      "pick": "N Colorado Bears",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 87.6,
-      "vegas_ml": "-280",
-      "implied_prob": 73.7,
-      "edge": 13.9,
+      "model_prob": 87.2,
+      "vegas_ml": "-337",
+      "implied_prob": 77.1,
+      "edge": 10.0,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
@@ -52,21 +19,10 @@
       "pick": "Cleveland St Vikings",
       "confidence": "Medium (60-70%)",
       "model_prob": 65.1,
-      "vegas_ml": "-125",
-      "implied_prob": 55.6,
-      "edge": 9.5,
+      "vegas_ml": "-126",
+      "implied_prob": 55.8,
+      "edge": 9.4,
       "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence"
-    },
-    {
-      "date": "03/02",
-      "matchup": "SE Louisiana Lions @ New Orleans Privateers",
-      "pick": "New Orleans Privateers",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 87.2,
-      "vegas_ml": "-362",
-      "implied_prob": 78.4,
-      "edge": 8.8,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
       "date": "03/02",
@@ -85,9 +41,9 @@
       "pick": "Delaware St Hornets",
       "confidence": "Medium (60-70%)",
       "model_prob": 63.1,
-      "vegas_ml": "-138",
-      "implied_prob": 58.0,
-      "edge": 5.0,
+      "vegas_ml": "-136",
+      "implied_prob": 57.8,
+      "edge": 5.3,
       "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence"
     },
     {
@@ -96,9 +52,9 @@
       "pick": "Arizona Wildcats",
       "confidence": "LOCK (80%+)",
       "model_prob": 83.0,
-      "vegas_ml": "-380",
-      "implied_prob": 79.2,
-      "edge": 3.9,
+      "vegas_ml": "-371",
+      "implied_prob": 78.8,
+      "edge": 4.2,
       "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
     }
   ]
