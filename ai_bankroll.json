@@ -1,137 +1,12 @@
 {
   "starting_bankroll": 100.0,
-  "current_bankroll": 100.0,
+  "current_bankroll": 91.58,
   "starting_date": "03/01/2026",
   "last_updated": "03/02/2026",
-  "total_bets": 0,
-  "wins": 0,
-  "losses": 0,
+  "total_bets": 6,
+  "wins": 1,
+  "losses": 5,
   "pending_bets": [
-    {
-      "date": "03/01",
-      "type": "single",
-      "pick": "Fairfield Stags",
-      "matchup": "Mt. St. Mary's Mountaineers @ Fairfield Stags",
-      "ml": -202.0,
-      "model_prob": 79.8,
-      "edge_pp": 12.9,
-      "stake": 2.0,
-      "to_win": 0.99,
-      "dec_odds": 1.495,
-      "status": "pending",
-      "result": null,
-      "pnl": null
-    },
-    {
-      "date": "03/01",
-      "type": "single",
-      "pick": "Marquette Golden Eagles",
-      "matchup": "DePaul Blue Demons @ Marquette Golden Eagles",
-      "ml": -197.0,
-      "model_prob": 76.8,
-      "edge_pp": 10.5,
-      "stake": 2.0,
-      "to_win": 1.02,
-      "dec_odds": 1.508,
-      "status": "pending",
-      "result": null,
-      "pnl": null
-    },
-    {
-      "date": "03/01",
-      "type": "single",
-      "pick": "Maryland Terrapins",
-      "matchup": "Rutgers Scarlet Knights @ Maryland Terrapins",
-      "ml": -230.0,
-      "model_prob": 77.9,
-      "edge_pp": 8.2,
-      "stake": 2.0,
-      "to_win": 0.87,
-      "dec_odds": 1.435,
-      "status": "pending",
-      "result": null,
-      "pnl": null
-    },
-    {
-      "date": "03/01",
-      "type": "single",
-      "pick": "Florida Atlantic Owls",
-      "matchup": "Charlotte 49ers @ Florida Atlantic Owls",
-      "ml": -343.0,
-      "model_prob": 83.8,
-      "edge_pp": 6.4,
-      "stake": 2.0,
-      "to_win": 0.58,
-      "dec_odds": 1.292,
-      "status": "pending",
-      "result": null,
-      "pnl": null
-    },
-    {
-      "date": "03/01",
-      "type": "single",
-      "pick": "Temple Owls",
-      "matchup": "Rice Owls @ Temple Owls",
-      "ml": -333.0,
-      "model_prob": 82.9,
-      "edge_pp": 6.0,
-      "stake": 2.0,
-      "to_win": 0.6,
-      "dec_odds": 1.3,
-      "status": "pending",
-      "result": null,
-      "pnl": null
-    },
-    {
-      "date": "03/01",
-      "type": "parlay",
-      "pick": "Fairfield Stags + Marquette Golden Eagles + Maryland Terrapins",
-      "legs": [
-        {
-          "pick": "Fairfield Stags",
-          "matchup": "Mt. St. Mary's Mountaineers @ Fairfield Stags",
-          "model_prob": 0.7979999999999999,
-          "model_prob_pct": 79.8,
-          "vegas_ml": -202.0,
-          "decimal_odds": 1.495049504950495,
-          "edge_pp": 12.9,
-          "confidence_tier": ""
-        },
-        {
-          "pick": "Marquette Golden Eagles",
-          "matchup": "DePaul Blue Demons @ Marquette Golden Eagles",
-          "model_prob": 0.768,
-          "model_prob_pct": 76.8,
-          "vegas_ml": -197.0,
-          "decimal_odds": 1.5076142131979695,
-          "edge_pp": 10.5,
-          "confidence_tier": ""
-        },
-        {
-          "pick": "Maryland Terrapins",
-          "matchup": "Rutgers Scarlet Knights @ Maryland Terrapins",
-          "model_prob": 0.779,
-          "model_prob_pct": 77.9,
-          "vegas_ml": -230.0,
-          "decimal_odds": 1.434782608695652,
-          "edge_pp": 8.2,
-          "confidence_tier": ""
-        }
-      ],
-      "num_legs": 3,
-      "matchup": "3-leg parlay",
-      "ml": "+223",
-      "model_prob": 47.7,
-      "edge_pp": 54.4,
-      "ev_pct": 54.4,
-      "combo_odds": 3.23,
-      "stake": 1.0,
-      "to_win": 2.23,
-      "dec_odds": 3.23,
-      "status": "pending",
-      "result": null,
-      "pnl": null
-    },
     {
       "date": "03/02",
       "type": "single",
@@ -300,12 +175,151 @@
       "pnl": null
     }
   ],
-  "settled_bets": [],
+  "settled_bets": [
+    {
+      "date": "03/01",
+      "type": "single",
+      "pick": "Fairfield Stags",
+      "matchup": "Mt. St. Mary's Mountaineers @ Fairfield Stags",
+      "ml": -202.0,
+      "model_prob": 79.8,
+      "edge_pp": 12.9,
+      "stake": 2.0,
+      "to_win": 0.99,
+      "dec_odds": 1.495,
+      "status": "settled",
+      "result": "LOSS",
+      "pnl": -2.0
+    },
+    {
+      "date": "03/01",
+      "type": "single",
+      "pick": "Marquette Golden Eagles",
+      "matchup": "DePaul Blue Demons @ Marquette Golden Eagles",
+      "ml": -197.0,
+      "model_prob": 76.8,
+      "edge_pp": 10.5,
+      "stake": 2.0,
+      "to_win": 1.02,
+      "dec_odds": 1.508,
+      "status": "settled",
+      "result": "LOSS",
+      "pnl": -2.0
+    },
+    {
+      "date": "03/01",
+      "type": "single",
+      "pick": "Maryland Terrapins",
+      "matchup": "Rutgers Scarlet Knights @ Maryland Terrapins",
+      "ml": -230.0,
+      "model_prob": 77.9,
+      "edge_pp": 8.2,
+      "stake": 2.0,
+      "to_win": 0.87,
+      "dec_odds": 1.435,
+      "status": "settled",
+      "result": "LOSS",
+      "pnl": -2.0
+    },
+    {
+      "date": "03/01",
+      "type": "single",
+      "pick": "Florida Atlantic Owls",
+      "matchup": "Charlotte 49ers @ Florida Atlantic Owls",
+      "ml": -343.0,
+      "model_prob": 83.8,
+      "edge_pp": 6.4,
+      "stake": 2.0,
+      "to_win": 0.58,
+      "dec_odds": 1.292,
+      "status": "settled",
+      "result": "WIN",
+      "pnl": 0.58
+    },
+    {
+      "date": "03/01",
+      "type": "single",
+      "pick": "Temple Owls",
+      "matchup": "Rice Owls @ Temple Owls",
+      "ml": -333.0,
+      "model_prob": 82.9,
+      "edge_pp": 6.0,
+      "stake": 2.0,
+      "to_win": 0.6,
+      "dec_odds": 1.3,
+      "status": "settled",
+      "result": "LOSS",
+      "pnl": -2.0
+    },
+    {
+      "date": "03/01",
+      "type": "parlay",
+      "pick": "Fairfield Stags + Marquette Golden Eagles + Maryland Terrapins",
+      "legs": [
+        {
+          "pick": "Fairfield Stags",
+          "matchup": "Mt. St. Mary's Mountaineers @ Fairfield Stags",
+          "model_prob": 0.7979999999999999,
+          "model_prob_pct": 79.8,
+          "vegas_ml": -202.0,
+          "decimal_odds": 1.495049504950495,
+          "edge_pp": 12.9,
+          "confidence_tier": ""
+        },
+        {
+          "pick": "Marquette Golden Eagles",
+          "matchup": "DePaul Blue Demons @ Marquette Golden Eagles",
+          "model_prob": 0.768,
+          "model_prob_pct": 76.8,
+          "vegas_ml": -197.0,
+          "decimal_odds": 1.5076142131979695,
+          "edge_pp": 10.5,
+          "confidence_tier": ""
+        },
+        {
+          "pick": "Maryland Terrapins",
+          "matchup": "Rutgers Scarlet Knights @ Maryland Terrapins",
+          "model_prob": 0.779,
+          "model_prob_pct": 77.9,
+          "vegas_ml": -230.0,
+          "decimal_odds": 1.434782608695652,
+          "edge_pp": 8.2,
+          "confidence_tier": ""
+        }
+      ],
+      "num_legs": 3,
+      "matchup": "3-leg parlay",
+      "ml": "+223",
+      "model_prob": 47.7,
+      "edge_pp": 54.4,
+      "ev_pct": 54.4,
+      "combo_odds": 3.23,
+      "stake": 1.0,
+      "to_win": 2.23,
+      "dec_odds": 3.23,
+      "status": "settled",
+      "result": "LOSS",
+      "pnl": -1.0,
+      "leg_results": [
+        "LOSS",
+        "LOSS",
+        "LOSS"
+      ]
+    }
+  ],
   "daily_snapshots": [
     {
       "date": "03/01/2026",
       "bankroll": 100.0,
       "note": "Initial deposit"
+    },
+    {
+      "date": "03/01",
+      "bankroll": 91.58,
+      "pnl": -8.42,
+      "bets": 6,
+      "wins": 1,
+      "losses": 5
     }
   ]
 }
