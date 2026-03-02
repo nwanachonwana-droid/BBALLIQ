@@ -2,6 +2,90 @@
   "date": "03/01",
   "eligible_legs": [
     {
+      "pick": "UNC Wilmington Seahawks",
+      "matchup": "Charleston Cougars @ UNC Wilmington Seahawks",
+      "model_prob": 0.812,
+      "model_prob_pct": 81.2,
+      "vegas_ml": "-197",
+      "decimal_odds": 1.5076142131979695,
+      "edge_pp": 14.8,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Fairfield Stags",
+      "matchup": "Mt. St. Mary's Mountaineers @ Fairfield Stags",
+      "model_prob": 0.7979999999999999,
+      "model_prob_pct": 79.8,
+      "vegas_ml": "-202",
+      "decimal_odds": 1.495049504950495,
+      "edge_pp": 12.9,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Marquette Golden Eagles",
+      "matchup": "DePaul Blue Demons @ Marquette Golden Eagles",
+      "model_prob": 0.768,
+      "model_prob_pct": 76.8,
+      "vegas_ml": "-197",
+      "decimal_odds": 1.5076142131979695,
+      "edge_pp": 10.5,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Maryland Terrapins",
+      "matchup": "Rutgers Scarlet Knights @ Maryland Terrapins",
+      "model_prob": 0.779,
+      "model_prob_pct": 77.9,
+      "vegas_ml": "-230",
+      "decimal_odds": 1.434782608695652,
+      "edge_pp": 8.2,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Florida Atlantic Owls",
+      "matchup": "Charlotte 49ers @ Florida Atlantic Owls",
+      "model_prob": 0.838,
+      "model_prob_pct": 83.8,
+      "vegas_ml": "-343",
+      "decimal_odds": 1.2915451895043732,
+      "edge_pp": 6.4,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Temple Owls",
+      "matchup": "Rice Owls @ Temple Owls",
+      "model_prob": 0.8290000000000001,
+      "model_prob_pct": 82.9,
+      "vegas_ml": "-333",
+      "decimal_odds": 1.3003003003003002,
+      "edge_pp": 6.0,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "UAB Blazers",
+      "matchup": "North Texas Mean Green @ UAB Blazers",
+      "model_prob": 0.768,
+      "model_prob_pct": 76.8,
+      "vegas_ml": "-246",
+      "decimal_odds": 1.4065040650406504,
+      "edge_pp": 5.6,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
       "pick": "Christian Braun OVER 12.5 POINTS",
       "matchup": "Denver Nuggets @ Utah Jazz",
       "model_prob": 0.782,
@@ -430,7 +514,7 @@
       "risk_label": "Moderate"
     }
   ],
-  "total_eligible_legs": 7,
-  "total_two_leg_considered": 21,
-  "total_three_leg_considered": 35
+  "total_eligible_legs": 14,
+  "total_two_leg_considered": 91,
+  "total_three_leg_considered": 364
 }
