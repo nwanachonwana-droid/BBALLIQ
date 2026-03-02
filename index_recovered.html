@@ -823,75 +823,6 @@
   .bettor-hero { grid-template-columns: 1fr 1fr; }
   .bettor-stat-value { font-size: 1.5rem; }
 }
-
-  /* ── NBA TAB ── */
-  .nba-sport-badge {
-    font-family: 'Syne', sans-serif; font-weight: 800;
-    font-size: 0.65rem; letter-spacing: 0.12em;
-    text-transform: uppercase; padding: 2px 8px;
-    border-radius: 3px; background: var(--accent2);
-    color: var(--bg);
-  }
-  .nba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
-  @media(max-width:900px){ .nba-grid { grid-template-columns: 1fr; } }
-  .nba-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 8px; padding: 1.25rem;
-  }
-  .nba-card-title {
-    font-family: 'Syne', sans-serif; font-weight: 700;
-    font-size: 0.8rem; letter-spacing: 0.06em;
-    text-transform: uppercase; color: var(--muted);
-    margin-bottom: 1rem;
-  }
-  .nba-pick-row {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0.65rem 0; border-bottom: 1px solid var(--border); gap: 0.75rem;
-  }
-  .nba-pick-row:last-child { border-bottom: none; }
-  .nba-pick-team { font-weight: 500; font-size: 0.88rem; flex: 1; }
-  .nba-pick-meta { font-size: 0.72rem; color: var(--muted); }
-  .nba-pick-prob {
-    font-family: 'Syne', sans-serif; font-weight: 800;
-    font-size: 1rem; min-width: 48px; text-align: right;
-  }
-  .nba-pick-prob.hot  { color: var(--accent); }
-  .nba-pick-prob.mid  { color: var(--accent2); }
-  .nba-pick-prob.mild { color: var(--text); }
-  .nba-edge-badge {
-    font-size: 0.68rem; padding: 2px 6px; border-radius: 3px; font-weight: 600;
-  }
-  .nba-edge-badge.pos { background: rgba(232,255,60,0.12); color: var(--accent); }
-  .nba-edge-badge.b2b { background: rgba(255,107,53,0.12); color: var(--chaos); }
-  .nba-props-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
-  .nba-props-table th {
-    text-align: left; color: var(--muted); font-weight: 400;
-    font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase;
-    padding: 0 0.5rem 0.6rem; border-bottom: 1px solid var(--border);
-  }
-  .nba-props-table td {
-    padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: middle;
-  }
-  .nba-props-table tr:last-child td { border-bottom: none; }
-  .nba-props-table tr:hover td { background: rgba(255,255,255,0.02); }
-  .prop-player { font-weight: 500; }
-  .prop-stat   { color: var(--muted); font-size: 0.72rem; text-transform: uppercase; }
-  .prop-line   { font-family: 'Syne', sans-serif; font-weight: 700; }
-  .prop-proj   { color: var(--accent2); font-weight: 600; }
-  .prop-dir    { font-weight: 700; font-size: 0.75rem; }
-  .prop-dir.over  { color: var(--accent); }
-  .prop-dir.under { color: var(--chaos); }
-  .prop-b2b    { color: var(--chaos); font-size: 0.8rem; }
-  .nba-empty {
-    text-align: center; padding: 3rem 1rem;
-    color: var(--muted); font-size: 0.82rem; line-height: 1.8;
-  }
-  .nba-model-note {
-    font-size: 0.72rem; color: var(--muted);
-    border-top: 1px solid var(--border); margin-top: 1.5rem;
-    padding-top: 1rem; line-height: 1.7;
-  }
-
 </style>
 </head>
 <body>
@@ -908,7 +839,6 @@
     <button class="tab-btn" data-tab="performance">Performance</button>
      <button class="tab-btn" data-tab="parlays">Parlays</button>
      <button class="tab-btn" data-tab="bettor">AI Bettor</button>
-     <button class="tab-btn" data-tab="nba">NBA Picks</button>
   </nav>
 </header>
 
@@ -1358,43 +1288,6 @@
     <div class="bettor-empty">Loading AI Bettor…</div>
   </div>
 
-</div>
-
-
-<!-- ═══════════════════════════════════════════════════════
-     TAB — NBA PICKS
-════════════════════════════════════════════════════════ -->
-<div class="tab-panel" id="tab-nba">
-  <div class="section-header">
-    <span class="nba-sport-badge">NBA</span>
-    <div>
-      <div class="section-title">NBA Daily Picks</div>
-      <div class="section-sub" id="nba-date-sub">Loading today's picks...</div>
-    </div>
-  </div>
-
-  <div class="nba-grid">
-    <div class="nba-card">
-      <div class="nba-card-title">Game Picks · Model Edge vs Market</div>
-      <div id="nba-game-picks"><div class="nba-empty">Loading...</div></div>
-      <div class="nba-model-note">
-        Net rating efficiency + home court (+3pp) + B2B penalties. Edge threshold: 3–10pp, model ≥60%.
-      </div>
-    </div>
-    <div class="nba-card">
-      <div class="nba-card-title">Player Props · Projection vs Line</div>
-      <div id="nba-prop-picks"><div class="nba-empty">Loading...</div></div>
-      <div class="nba-model-note">
-        Weighted 10-game rolling avg · home/away split · opponent DEF RTG · B2B flag (⚡).
-        Edge: ≥3.5 units, ≥8%, model 55–88%. ⚠️ = plus odds (book uncertain).
-      </div>
-    </div>
-  </div>
-
-  <div class="nba-card" style="margin-bottom:2rem">
-    <div class="nba-card-title">All Games Today · Full Market View</div>
-    <div id="nba-all-games"><div class="nba-empty">Loading...</div></div>
-  </div>
 </div>
 
 </main>
@@ -2784,126 +2677,6 @@ function renderBettorChart(d) {
 
 // Hook into tab click — add this line in your existing tab-click listener:
 // if (btn.dataset.tab === 'bettor') loadBettor();
-
-// ═══════════════════════════════════════════════════════════════
-// NBA TAB
-// ═══════════════════════════════════════════════════════════════
-async function loadNBAData() {
-  await Promise.all([loadNBAGamePicks(), loadNBAProps()]);
-}
-
-async function loadNBAGamePicks() {
-  try {
-    const r = await fetch('output/nba_picks_today.json');
-    if (!r.ok) throw new Error();
-    const data = await r.json();
-    document.getElementById('nba-date-sub').textContent =
-      `${data.date || ''} · ${data.all_games?.length ?? 0} games · model v3`;
-    renderAllGames(data.all_games || []);
-    renderGamePicks(data.picks || []);
-  } catch(e) {
-    document.getElementById('nba-game-picks').innerHTML =
-      `<div class="nba-empty">No game picks today.<br><span style="font-size:0.7rem">Run nba_step3.py to generate</span></div>`;
-    document.getElementById('nba-all-games').innerHTML =
-      `<div class="nba-empty">No game data available.</div>`;
-  }
-}
-
-function renderGamePicks(picks) {
-  const el = document.getElementById('nba-game-picks');
-  if (!picks.length) {
-    el.innerHTML = `<div class="nba-empty">No actionable game picks today.<br>
-      <span style="font-size:0.7rem">Edge 3–10pp threshold not met — correct on efficient days.</span></div>`;
-    return;
-  }
-  el.innerHTML = picks.map(p => {
-    const cls     = p.model_prob >= 80 ? 'hot' : p.model_prob >= 70 ? 'mid' : 'mild';
-    const b2b     = p.flags && p.flags !== '—' ? `<span class="nba-edge-badge b2b">${p.flags}</span>` : '';
-    const edgeStr = p.edge_pp > 0 ? `+${p.edge_pp.toFixed(1)}pp` : `${p.edge_pp.toFixed(1)}pp`;
-    const mlStr   = p.vegas_ml ? (p.vegas_ml > 0 ? `+${Math.round(p.vegas_ml)}` : Math.round(p.vegas_ml)) : '';
-    return `<div class="nba-pick-row">
-      <div>
-        <div class="nba-pick-team">${p.pick} <span class="nba-pick-meta">(${p.pick_side || ''})</span></div>
-        <div class="nba-pick-meta">${p.matchup} · ML ${mlStr}</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:0.5rem;flex-shrink:0">
-        ${b2b}
-        <span class="nba-edge-badge pos">${edgeStr}</span>
-        <span class="nba-pick-prob ${cls}">${p.model_prob.toFixed(1)}%</span>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function renderAllGames(games) {
-  const el = document.getElementById('nba-all-games');
-  if (!games.length) { el.innerHTML = '<div class="nba-empty">No game data.</div>'; return; }
-  const sorted = [...games].sort((a,b) => b.edge_pp - a.edge_pp);
-  el.innerHTML = `<table class="nba-props-table">
-    <thead><tr><th>Matchup</th><th>Pick</th><th>Model</th><th>Market</th><th>Edge</th><th>ML</th><th>Flags</th></tr></thead>
-    <tbody>${sorted.map(g => {
-      const ec  = Math.abs(g.edge_pp) > 10 ? 'color:var(--chaos)' : g.edge_pp >= 3 ? 'color:var(--accent)' : 'color:var(--muted)';
-      const ml  = g.vegas_ml ? (g.vegas_ml > 0 ? `+${Math.round(g.vegas_ml)}` : Math.round(g.vegas_ml)) : '—';
-      const flg = g.flags && g.flags !== '—' ? `<span class="nba-edge-badge b2b">${g.flags}</span>` : '—';
-      return `<tr>
-        <td class="nba-pick-meta">${g.matchup}</td>
-        <td class="prop-player">${g.pick}</td>
-        <td>${g.model_prob.toFixed(1)}%</td>
-        <td>${g.vegas_fair.toFixed(1)}%</td>
-        <td style="${ec};font-weight:600">${g.edge_pp > 0 ? '+' : ''}${g.edge_pp.toFixed(1)}pp</td>
-        <td>${ml}</td><td>${flg}</td>
-      </tr>`;
-    }).join('')}</tbody></table>`;
-}
-
-async function loadNBAProps() {
-  try {
-    const r = await fetch('output/nba_props_today.json');
-    if (!r.ok) throw new Error();
-    const data = await r.json();
-    renderProps(data.picks || []);
-  } catch(e) {
-    document.getElementById('nba-prop-picks').innerHTML =
-      `<div class="nba-empty">No prop picks today.<br><span style="font-size:0.7rem">Run nba_props_model.py to generate</span></div>`;
-  }
-}
-
-function renderProps(picks) {
-  const el = document.getElementById('nba-prop-picks');
-  if (!picks.length) {
-    el.innerHTML = `<div class="nba-empty">No actionable props today.<br>
-      <span style="font-size:0.7rem">Edge ≥3.5 units + ≥8% threshold not met.</span></div>`;
-    return;
-  }
-  el.innerHTML = `<table class="nba-props-table">
-    <thead><tr><th>Player</th><th>Stat</th><th>Line</th><th>Proj</th><th>Dir</th><th>Edge</th><th>Odds</th><th></th></tr></thead>
-    <tbody>${picks.map(p => {
-      const dc  = p.direction === 'over' ? 'over' : 'under';
-      const ds  = p.direction === 'over' ? 'OVR'  : 'UND';
-      const odd = p.price > 0 ? `+${Math.round(p.price)}` : Math.round(p.price);
-      const b2b = p.b2b ? '<span class="prop-b2b">⚡</span>' : '';
-      const plus = p.price > 0 ? ' ⚠️' : '';
-      const edg = p.raw_edge > 0 ? `+${p.raw_edge.toFixed(1)}` : p.raw_edge.toFixed(1);
-      return `<tr>
-        <td class="prop-player">${p.player}</td>
-        <td class="prop-stat">${p.stat}</td>
-        <td class="prop-line">${p.line}</td>
-        <td class="prop-proj">${p.projection.toFixed(1)}</td>
-        <td class="prop-dir ${dc}">${ds}</td>
-        <td>${edg}</td>
-        <td>${odd}${plus}</td>
-        <td>${b2b}</td>
-      </tr>`;
-    }).join('')}</tbody></table>`;
-}
-
-document.querySelector('[data-tab="nba"]').addEventListener('click', () => {
-  if (!document.getElementById('nba-game-picks').dataset.loaded) {
-    document.getElementById('nba-game-picks').dataset.loaded = '1';
-    loadNBAData();
-  }
-});
-
 </script>
 </body>
 </html>
