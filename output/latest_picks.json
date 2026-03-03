@@ -1,0 +1,171 @@
+{
+  "updated": "2026-03-03",
+  "date": "03/03",
+  "picks": [
+    {
+      "date": "03/03",
+      "matchup": "TCU Horned Frogs @ Texas Tech Red Raiders",
+      "pick": "Texas Tech Red Raiders",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 94.1,
+      "vegas_ml": "-416",
+      "implied_prob": 80.7,
+      "edge": 13.5,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/03",
+      "matchup": "Ball State Cardinals @ Western Michigan Broncos",
+      "pick": "Western Michigan Broncos",
+      "confidence": "High (70-80%)",
+      "model_prob": 74.1,
+      "vegas_ml": "-162",
+      "implied_prob": 61.8,
+      "edge": 12.3,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/03",
+      "matchup": "Clemson Tigers @ North Carolina Tar Heels",
+      "pick": "North Carolina Tar Heels",
+      "confidence": "High (70-80%)",
+      "model_prob": 76.7,
+      "vegas_ml": "-185",
+      "implied_prob": 65.0,
+      "edge": 11.7,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/03",
+      "matchup": "San Jos\u00e9 St Spartans @ Fresno St Bulldogs",
+      "pick": "Fresno St Bulldogs",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 86.2,
+      "vegas_ml": "-294",
+      "implied_prob": 74.6,
+      "edge": 11.6,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/03",
+      "matchup": "BYU Cougars @ Cincinnati Bearcats",
+      "pick": "Cincinnati Bearcats",
+      "confidence": "Medium (60-70%)",
+      "model_prob": 68.7,
+      "vegas_ml": "-140",
+      "implied_prob": 58.4,
+      "edge": 10.3,
+      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence"
+    },
+    {
+      "date": "03/03",
+      "matchup": "Holy Cross Crusaders @ Lafayette Leopards",
+      "pick": "Lafayette Leopards",
+      "confidence": "High (70-80%)",
+      "model_prob": 78.4,
+      "vegas_ml": "-220",
+      "implied_prob": 68.8,
+      "edge": 9.6,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/03",
+      "matchup": "Eastern Michigan Eagles @ Buffalo Bulls",
+      "pick": "Buffalo Bulls",
+      "confidence": "High (70-80%)",
+      "model_prob": 73.7,
+      "vegas_ml": "-179",
+      "implied_prob": 64.2,
+      "edge": 9.4,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/03",
+      "matchup": "San Diego St Aztecs @ Boise State Broncos",
+      "pick": "Boise State Broncos",
+      "confidence": "Medium (60-70%)",
+      "model_prob": 62.1,
+      "vegas_ml": "-114",
+      "implied_prob": 53.3,
+      "edge": 8.7,
+      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence"
+    },
+    {
+      "date": "03/03",
+      "matchup": "Missouri Tigers @ Oklahoma Sooners",
+      "pick": "Oklahoma Sooners",
+      "confidence": "Medium (60-70%)",
+      "model_prob": 66.8,
+      "vegas_ml": "-140",
+      "implied_prob": 58.4,
+      "edge": 8.4,
+      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence"
+    },
+    {
+      "date": "03/03",
+      "matchup": "Toledo Rockets @ Miami (OH) RedHawks",
+      "pick": "Miami (OH) RedHawks",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 86.9,
+      "vegas_ml": "-376",
+      "implied_prob": 79.0,
+      "edge": 7.8,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/03",
+      "matchup": "Grambling St Tigers @ Alabama A&M Bulldogs",
+      "pick": "Alabama A&M Bulldogs",
+      "confidence": "Medium (60-70%)",
+      "model_prob": 68.6,
+      "vegas_ml": "-162",
+      "implied_prob": 61.8,
+      "edge": 6.8,
+      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence"
+    },
+    {
+      "date": "03/03",
+      "matchup": "Miss Valley St Delta Devils @ Alcorn St Braves",
+      "pick": "Alcorn St Braves",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 90.1,
+      "vegas_ml": "-566",
+      "implied_prob": 85.0,
+      "edge": 5.1,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/03",
+      "matchup": "George Mason Patriots @ VCU Rams",
+      "pick": "VCU Rams",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 90.6,
+      "vegas_ml": "-626",
+      "implied_prob": 86.2,
+      "edge": 4.3,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
+    },
+    {
+      "date": "03/03",
+      "matchup": "Southern Jaguars @ Alabama St Hornets",
+      "pick": "Alabama St Hornets",
+      "confidence": "Medium (60-70%)",
+      "model_prob": 61.5,
+      "vegas_ml": "-134",
+      "implied_prob": 57.3,
+      "edge": 4.2,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
+    },
+    {
+      "date": "03/03",
+      "matchup": "Texas Longhorns @ Arkansas Razorbacks",
+      "pick": "Arkansas Razorbacks",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 82.4,
+      "vegas_ml": "-365",
+      "implied_prob": 78.5,
+      "edge": 3.9,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
+    }
+  ]
+}
