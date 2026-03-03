@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Basketball IQ — March Madness Analytics</title>
+<title>Basketball Intelligence</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -912,16 +912,16 @@
 <header>
   <div class="logo">
     <span class="logo-dot">●</span> Basketball<span style="color:var(--accent)">IQ</span>
-    <span>March Madness Analytics Engine</span>
+    <span>Basketball Intelligence</span>
   </div>
   <nav>
-    <button class="tab-btn" data-tab="picks">Daily Picks</button>
-    <button class="tab-btn active" data-tab="generator">Generator</button>
-    <button class="tab-btn" data-tab="history">Historical</button>
+    <button class="tab-btn active" data-tab="picks">College Picks</button>
+    <button class="tab-btn" data-tab="nba">NBA Picks</button>
+    <button class="tab-btn" data-tab="parlays">Parlays</button>
     <button class="tab-btn" data-tab="performance">Performance</button>
-     <button class="tab-btn" data-tab="parlays">Parlays</button>
-     <button class="tab-btn" data-tab="bettor">AI Bettor</button>
-     <button class="tab-btn" data-tab="nba">NBA Picks</button>
+    <button class="tab-btn" data-tab="bettor">AI Bettor</button>
+    <button class="tab-btn" data-tab="history">Historical</button>
+    <button class="tab-btn" data-tab="generator">🏀 Madness</button>
   </nav>
 </header>
 
@@ -933,9 +933,185 @@
 <div class="tab-panel active" id="tab-generator">
 
   <div class="section-header">
-    <div class="section-title">Bracket Generator</div>
-    <div class="section-sub">Upload KenPom CSV + bracket matchups → 200 optimized brackets</div>
+    <div class="section-title">🏀 Madness</div>
+    <div class="section-sub">Team Lookup · Bracket Tools · Upset Finder · Analytics</div>
   </div>
+
+  <!-- ── TEAM LOOKUP ─────────────────────────────────────── -->
+  <div class="card" style="margin-bottom:1.5rem">
+    <div class="card-title" style="font-size:1rem;margin-bottom:0.75rem">🔍 Team Lookup</div>
+    <div style="display:flex;gap:0.75rem;margin-bottom:1rem;flex-wrap:wrap">
+      <input type="text" id="team-lookup-input" placeholder="Search any team (e.g. Duke, Kansas, UConn...)"
+        style="flex:1;min-width:200px;background:var(--bg);border:1px solid var(--border);color:var(--fg);padding:0.6rem 0.9rem;border-radius:6px;font-size:0.9rem;font-family:inherit"
+        oninput="teamLookupSuggest(this.value)"
+        onkeydown="if(event.key==='Enter')teamLookupSearch(document.getElementById('team-lookup-input').value)">
+      <button onclick="teamLookupSearch(document.getElementById('team-lookup-input').value)"
+        style="background:var(--accent);color:#000;border:none;padding:0.6rem 1.2rem;border-radius:6px;font-weight:700;cursor:pointer;font-family:inherit">
+        Search
+      </button>
+    </div>
+    <div id="team-lookup-suggestions" style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.75rem"></div>
+    <div id="team-lookup-result" style="display:none"></div>
+    <div id="team-lookup-loading" style="display:none;color:var(--muted);font-size:0.85rem;padding:1rem 0">
+      ⏳ Fetching live data from Barttorvik...
+    </div>
+    <div id="team-lookup-error" style="display:none;color:var(--chaos);font-size:0.85rem;padding:0.5rem 0"></div>
+  </div>
+
+  <script>
+  // Popular teams for quick suggestions
+  const POPULAR_TEAMS = [
+    'Duke','Kansas','Kentucky','North Carolina','Gonzaga','Houston','Auburn',
+    'Florida','Alabama','Tennessee','Purdue','Michigan St','Arizona','UCLA',
+    'Connecticut','Villanova','Duke','Iowa St','Texas Tech','Marquette',
+    'Creighton','St Johns','Oregon','Missouri','Memphis','Texas A&M'
+  ];
+
+  function teamLookupSuggest(val) {
+    const box = document.getElementById('team-lookup-suggestions');
+    if (!val || val.length < 2) {
+      // Show popular teams
+      box.innerHTML = POPULAR_TEAMS.slice(0,8).map(t =>
+        `<span onclick="teamLookupSearch('${t}')" style="cursor:pointer;background:var(--card);border:1px solid var(--border);padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;color:var(--muted)">${t}</span>`
+      ).join('');
+      return;
+    }
+    const matches = POPULAR_TEAMS.filter(t => t.toLowerCase().includes(val.toLowerCase())).slice(0,6);
+    box.innerHTML = matches.map(t =>
+      `<span onclick="teamLookupSearch('${t}')" style="cursor:pointer;background:var(--accent);color:#000;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.75rem;font-weight:600">${t}</span>`
+    ).join('');
+  }
+
+  async function teamLookupSearch(teamName) {
+    if (!teamName || teamName.length < 2) return;
+    document.getElementById('team-lookup-input').value = teamName;
+    document.getElementById('team-lookup-result').style.display = 'none';
+    document.getElementById('team-lookup-error').style.display = 'none';
+    document.getElementById('team-lookup-loading').style.display = 'block';
+
+    try {
+      // Fetch from Barttorvik
+      const url = `https://barttorvik.com/getteam.php?team=${encodeURIComponent(teamName)}&json=1`;
+      const res = await fetch(url);
+      const data = await res.json();
+      document.getElementById('team-lookup-loading').style.display = 'none';
+      renderTeamLookup(data, teamName);
+    } catch(e) {
+      // Fallback: use our picks data to find team
+      document.getElementById('team-lookup-loading').style.display = 'none';
+      teamLookupFromPicks(teamName);
+    }
+  }
+
+  function teamLookupFromPicks(teamName) {
+    const pick = (window._picksData||[]).find(p =>
+      p.team && p.team.toLowerCase().includes(teamName.toLowerCase())
+    );
+    if (pick) {
+      renderTeamLookupFromPick(pick);
+    } else {
+      const err = document.getElementById('team-lookup-error');
+      err.textContent = `Could not find data for "${teamName}". Try a different spelling.`;
+      err.style.display = 'block';
+    }
+  }
+
+  function renderTeamLookup(data, teamName) {
+    const el = document.getElementById('team-lookup-result');
+
+    // Extract stats from Barttorvik response
+    const adjoe = parseFloat(data.adjoe || data.adj_oe || 0).toFixed(1);
+    const adjde = parseFloat(data.adjde || data.adj_de || 0).toFixed(1);
+    const barthag = parseFloat(data.barthag || 0);
+    const wins = data.wins || data.rec?.split('-')[0] || '?';
+    const losses = data.losses || data.rec?.split('-')[1] || '?';
+    const rank = data.rk || data.rank || '?';
+    const tempo = parseFloat(data.adjtempo || data.tempo || 0).toFixed(1);
+    const wab = parseFloat(data.wab || 0).toFixed(1);
+
+    // Win probability vs average team
+    const winProb = barthag > 0 ? Math.round(barthag * 100) : null;
+
+    // Verdict
+    let verdict = '', verdictColor = '';
+    if (rank !== '?' && parseInt(rank) <= 25 && adjde < 95) {
+      verdict = '🔒 ELITE'; verdictColor = 'var(--accent)';
+    } else if (rank !== '?' && parseInt(rank) <= 50) {
+      verdict = '✅ TOURNAMENT CALIBER'; verdictColor = '#4ade80';
+    } else if (rank !== '?' && parseInt(rank) <= 100) {
+      verdict = '🟡 BUBBLE'; verdictColor = '#fbbf24';
+    } else {
+      verdict = '❌ LONG SHOT'; verdictColor = 'var(--chaos)';
+    }
+
+    el.innerHTML = `
+      <div style="border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-top:0.5rem">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem">
+          <div>
+            <div style="font-size:1.2rem;font-weight:800;color:var(--fg)">${teamName}</div>
+            <div style="color:var(--muted);font-size:0.8rem">${wins}-${losses} · Barttorvik Rank #${rank}</div>
+          </div>
+          <div style="font-size:0.85rem;font-weight:700;color:${verdictColor};background:${verdictColor}22;padding:0.35rem 0.75rem;border-radius:20px;border:1px solid ${verdictColor}44">
+            ${verdict}
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:0.75rem;margin-bottom:1rem">
+          <div style="background:var(--bg);border-radius:6px;padding:0.6rem;text-align:center">
+            <div style="font-size:1.3rem;font-weight:800;color:var(--accent)">${adjoe}</div>
+            <div style="font-size:0.65rem;color:var(--muted);text-transform:uppercase">Adj. Offense</div>
+          </div>
+          <div style="background:var(--bg);border-radius:6px;padding:0.6rem;text-align:center">
+            <div style="font-size:1.3rem;font-weight:800;color:var(--chaos)">${adjde}</div>
+            <div style="font-size:0.65rem;color:var(--muted);text-transform:uppercase">Adj. Defense</div>
+          </div>
+          <div style="background:var(--bg);border-radius:6px;padding:0.6rem;text-align:center">
+            <div style="font-size:1.3rem;font-weight:800;color:#a78bfa">${winProb !== null ? winProb+'%' : '—'}</div>
+            <div style="font-size:0.65rem;color:var(--muted);text-transform:uppercase">Win Prob</div>
+          </div>
+          <div style="background:var(--bg);border-radius:6px;padding:0.6rem;text-align:center">
+            <div style="font-size:1.3rem;font-weight:800;color:var(--fg)">${tempo}</div>
+            <div style="font-size:0.65rem;color:var(--muted);text-transform:uppercase">Tempo</div>
+          </div>
+        </div>
+        ${wab !== '0.0' ? `<div style="font-size:0.75rem;color:var(--muted)">Wins Above Bubble: <strong style="color:${parseFloat(wab)>0?'var(--accent)':'var(--chaos)'}">${wab > 0 ? '+' : ''}${wab}</strong></div>` : ''}
+        <div style="font-size:0.7rem;color:var(--muted);margin-top:0.5rem">Live data via Barttorvik · Updated daily</div>
+      </div>`;
+    el.style.display = 'block';
+  }
+
+  function renderTeamLookupFromPick(pick) {
+    const el = document.getElementById('team-lookup-result');
+    const winProb = Math.round(pick.model_probability * 100);
+    const edge = pick.edge_pp ? pick.edge_pp.toFixed(1) : '—';
+    el.innerHTML = `
+      <div style="border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-top:0.5rem">
+        <div style="font-size:1.1rem;font-weight:800;color:var(--fg);margin-bottom:0.5rem">${pick.team}</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem">
+          <div style="background:var(--bg);border-radius:6px;padding:0.6rem;text-align:center">
+            <div style="font-size:1.3rem;font-weight:800;color:var(--accent)">${winProb}%</div>
+            <div style="font-size:0.65rem;color:var(--muted)">MODEL WIN PROB</div>
+          </div>
+          <div style="background:var(--bg);border-radius:6px;padding:0.6rem;text-align:center">
+            <div style="font-size:1.3rem;font-weight:800;color:#fbbf24">+${edge}pp</div>
+            <div style="font-size:0.65rem;color:var(--muted)">EDGE VS MARKET</div>
+          </div>
+          <div style="background:var(--bg);border-radius:6px;padding:0.6rem;text-align:center">
+            <div style="font-size:1.3rem;font-weight:800;color:#a78bfa">${pick.recommendation||'—'}</div>
+            <div style="font-size:0.65rem;color:var(--muted)">SIGNAL</div>
+          </div>
+        </div>
+        <div style="font-size:0.7rem;color:var(--muted);margin-top:0.75rem">From today's Basketball IQ picks</div>
+      </div>`;
+    el.style.display = 'block';
+  }
+
+  // Show popular teams on load
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => teamLookupSuggest(''), 500);
+  });
+  </script>
+
+
 
   <!-- Upload Row -->
   <div class="grid-2" style="margin-bottom:1rem">
