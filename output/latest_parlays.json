@@ -1,0 +1,580 @@
+{
+  "date": "03/03",
+  "eligible_legs": [
+    {
+      "pick": "Texas A&M Aggies",
+      "matchup": "Kentucky Wildcats @ Texas A&M Aggies",
+      "model_prob": 0.706,
+      "model_prob_pct": 70.6,
+      "vegas_ml": "-132",
+      "decimal_odds": 1.7575757575757576,
+      "edge_pp": 13.7,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Alabama A&M Bulldogs",
+      "matchup": "Grambling St Tigers @ Alabama A&M Bulldogs",
+      "model_prob": 0.6859999999999999,
+      "model_prob_pct": 68.6,
+      "vegas_ml": "-124",
+      "decimal_odds": 1.8064516129032258,
+      "edge_pp": 13.1,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "North Carolina Tar Heels",
+      "matchup": "Clemson Tigers @ North Carolina Tar Heels",
+      "model_prob": 0.767,
+      "model_prob_pct": 76.7,
+      "vegas_ml": "-175",
+      "decimal_odds": 1.5714285714285714,
+      "edge_pp": 12.9,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Cincinnati Bearcats",
+      "matchup": "BYU Cougars @ Cincinnati Bearcats",
+      "model_prob": 0.687,
+      "model_prob_pct": 68.7,
+      "vegas_ml": "-129",
+      "decimal_odds": 1.7751937984496124,
+      "edge_pp": 12.4,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Green Bay Phoenix",
+      "matchup": "Fort Wayne Mastodons @ Green Bay Phoenix",
+      "model_prob": 0.85,
+      "model_prob_pct": 85.0,
+      "vegas_ml": "-275",
+      "decimal_odds": 1.3636363636363638,
+      "edge_pp": 11.7,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Western Michigan Broncos",
+      "matchup": "Ball State Cardinals @ Western Michigan Broncos",
+      "model_prob": 0.741,
+      "model_prob_pct": 74.1,
+      "vegas_ml": "-171",
+      "decimal_odds": 1.5847953216374269,
+      "edge_pp": 11.0,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Fresno St Bulldogs",
+      "matchup": "San Jos\u00e9 St Spartans @ Fresno St Bulldogs",
+      "model_prob": 0.862,
+      "model_prob_pct": 86.2,
+      "vegas_ml": "-320",
+      "decimal_odds": 1.3125,
+      "edge_pp": 10.1,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Buffalo Bulls",
+      "matchup": "Eastern Michigan Eagles @ Buffalo Bulls",
+      "model_prob": 0.737,
+      "model_prob_pct": 73.7,
+      "vegas_ml": "-177",
+      "decimal_odds": 1.5649717514124295,
+      "edge_pp": 9.8,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Texas Tech Red Raiders",
+      "matchup": "TCU Horned Frogs @ Texas Tech Red Raiders",
+      "model_prob": 0.941,
+      "model_prob_pct": 94.1,
+      "vegas_ml": "-545",
+      "decimal_odds": 1.18348623853211,
+      "edge_pp": 9.6,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Oklahoma Sooners",
+      "matchup": "Missouri Tigers @ Oklahoma Sooners",
+      "model_prob": 0.6679999999999999,
+      "model_prob_pct": 66.8,
+      "vegas_ml": "-141",
+      "decimal_odds": 1.7092198581560285,
+      "edge_pp": 8.2,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Miami (OH) RedHawks",
+      "matchup": "Toledo Rockets @ Miami (OH) RedHawks",
+      "model_prob": 0.8690000000000001,
+      "model_prob_pct": 86.9,
+      "vegas_ml": "-420",
+      "decimal_odds": 1.2380952380952381,
+      "edge_pp": 6.1,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Alcorn St Braves",
+      "matchup": "Miss Valley St Delta Devils @ Alcorn St Braves",
+      "model_prob": 0.9009999999999999,
+      "model_prob_pct": 90.1,
+      "vegas_ml": "-530",
+      "decimal_odds": 1.1886792452830188,
+      "edge_pp": 5.9,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Auburn Tigers",
+      "matchup": "LSU Tigers @ Auburn Tigers",
+      "model_prob": 0.8440000000000001,
+      "model_prob_pct": 84.4,
+      "vegas_ml": "-413",
+      "decimal_odds": 1.242130750605327,
+      "edge_pp": 3.9,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "UCF Knights",
+      "matchup": "Oklahoma St Cowboys @ UCF Knights",
+      "model_prob": 0.8540000000000001,
+      "model_prob_pct": 85.4,
+      "vegas_ml": "-446",
+      "decimal_odds": 1.2242152466367713,
+      "edge_pp": 3.7,
+      "sport": "NCAAB",
+      "bet_type": "game",
+      "confidence_tier": ""
+    },
+    {
+      "pick": "Bobby Portis OVER 10.5 POINTS",
+      "matchup": "Boston Celtics @ Milwaukee Bucks",
+      "model_prob": 0.7829999999999999,
+      "model_prob_pct": 78.3,
+      "vegas_ml": -105.0,
+      "decimal_odds": 1.9523809523809523,
+      "edge_pp": 4.96,
+      "sport": "NBA",
+      "bet_type": "prop",
+      "confidence_tier": "NBA-PROP"
+    },
+    {
+      "pick": "Dorian Finney-Smith OVER 5.5 POINTS",
+      "matchup": "Houston Rockets @ Washington Wizards",
+      "model_prob": 0.77,
+      "model_prob_pct": 77.0,
+      "vegas_ml": -115.0,
+      "decimal_odds": 1.8695652173913042,
+      "edge_pp": 4.37,
+      "sport": "NBA",
+      "bet_type": "prop",
+      "confidence_tier": "NBA-PROP"
+    },
+    {
+      "pick": "Christian Braun OVER 12.8 POINTS",
+      "matchup": "Denver Nuggets @ Utah Jazz",
+      "model_prob": 0.767,
+      "model_prob_pct": 76.7,
+      "vegas_ml": -114.7,
+      "decimal_odds": 1.8718395815170008,
+      "edge_pp": 4.21,
+      "sport": "NBA",
+      "bet_type": "prop",
+      "confidence_tier": "NBA-PROP"
+    },
+    {
+      "pick": "Myles Turner OVER 11.5 POINTS",
+      "matchup": "Boston Celtics @ Milwaukee Bucks",
+      "model_prob": 0.7340000000000001,
+      "model_prob_pct": 73.4,
+      "vegas_ml": -106.3,
+      "decimal_odds": 1.9407337723424272,
+      "edge_pp": 3.57,
+      "sport": "NBA",
+      "bet_type": "prop",
+      "confidence_tier": "NBA-PROP"
+    },
+    {
+      "pick": "Brook Lopez OVER 9.2 POINTS",
+      "matchup": "Los Angeles Clippers @ Golden State Warriors",
+      "model_prob": 0.752,
+      "model_prob_pct": 75.2,
+      "vegas_ml": -116.3,
+      "decimal_odds": 1.8598452278589854,
+      "edge_pp": 4.95,
+      "sport": "NBA",
+      "bet_type": "prop",
+      "confidence_tier": "NBA-PROP"
+    }
+  ],
+  "two_leg": [
+    {
+      "legs": [
+        {
+          "pick": "Bobby Portis OVER 10.5 POINTS",
+          "matchup": "Boston Celtics @ Milwaukee Bucks",
+          "model_prob": 0.7829999999999999,
+          "model_prob_pct": 78.3,
+          "vegas_ml": -105.0,
+          "decimal_odds": 1.9523809523809523,
+          "edge_pp": 4.96,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        },
+        {
+          "pick": "Dorian Finney-Smith OVER 5.5 POINTS",
+          "matchup": "Houston Rockets @ Washington Wizards",
+          "model_prob": 0.77,
+          "model_prob_pct": 77.0,
+          "vegas_ml": -115.0,
+          "decimal_odds": 1.8695652173913042,
+          "edge_pp": 4.37,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        }
+      ],
+      "num_legs": 2,
+      "combined_win_prob": 60.3,
+      "combined_decimal_odds": 3.65,
+      "combined_american_odds": "+265",
+      "ev_pct": 120.1,
+      "kelly_full_pct": 45.31,
+      "kelly_fractional_pct": 11.33,
+      "recommended_stake_pct": 1.0,
+      "recommended_stake_dollars": 10.0,
+      "risk_label": "Conservative"
+    },
+    {
+      "legs": [
+        {
+          "pick": "Bobby Portis OVER 10.5 POINTS",
+          "matchup": "Boston Celtics @ Milwaukee Bucks",
+          "model_prob": 0.7829999999999999,
+          "model_prob_pct": 78.3,
+          "vegas_ml": -105.0,
+          "decimal_odds": 1.9523809523809523,
+          "edge_pp": 4.96,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        },
+        {
+          "pick": "Christian Braun OVER 12.8 POINTS",
+          "matchup": "Denver Nuggets @ Utah Jazz",
+          "model_prob": 0.767,
+          "model_prob_pct": 76.7,
+          "vegas_ml": -114.7,
+          "decimal_odds": 1.8718395815170008,
+          "edge_pp": 4.21,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        }
+      ],
+      "num_legs": 2,
+      "combined_win_prob": 60.1,
+      "combined_decimal_odds": 3.65,
+      "combined_american_odds": "+265",
+      "ev_pct": 119.5,
+      "kelly_full_pct": 45.01,
+      "kelly_fractional_pct": 11.25,
+      "recommended_stake_pct": 1.0,
+      "recommended_stake_dollars": 10.0,
+      "risk_label": "Conservative"
+    },
+    {
+      "legs": [
+        {
+          "pick": "Bobby Portis OVER 10.5 POINTS",
+          "matchup": "Boston Celtics @ Milwaukee Bucks",
+          "model_prob": 0.7829999999999999,
+          "model_prob_pct": 78.3,
+          "vegas_ml": -105.0,
+          "decimal_odds": 1.9523809523809523,
+          "edge_pp": 4.96,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        },
+        {
+          "pick": "Myles Turner OVER 11.5 POINTS",
+          "matchup": "Boston Celtics @ Milwaukee Bucks",
+          "model_prob": 0.7340000000000001,
+          "model_prob_pct": 73.4,
+          "vegas_ml": -106.3,
+          "decimal_odds": 1.9407337723424272,
+          "edge_pp": 3.57,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        }
+      ],
+      "num_legs": 2,
+      "combined_win_prob": 57.5,
+      "combined_decimal_odds": 3.79,
+      "combined_american_odds": "+278",
+      "ev_pct": 117.8,
+      "kelly_full_pct": 42.22,
+      "kelly_fractional_pct": 10.56,
+      "recommended_stake_pct": 0.5,
+      "recommended_stake_dollars": 5.0,
+      "risk_label": "Moderate"
+    },
+    {
+      "legs": [
+        {
+          "pick": "Bobby Portis OVER 10.5 POINTS",
+          "matchup": "Boston Celtics @ Milwaukee Bucks",
+          "model_prob": 0.7829999999999999,
+          "model_prob_pct": 78.3,
+          "vegas_ml": -105.0,
+          "decimal_odds": 1.9523809523809523,
+          "edge_pp": 4.96,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        },
+        {
+          "pick": "Brook Lopez OVER 9.2 POINTS",
+          "matchup": "Los Angeles Clippers @ Golden State Warriors",
+          "model_prob": 0.752,
+          "model_prob_pct": 75.2,
+          "vegas_ml": -116.3,
+          "decimal_odds": 1.8598452278589854,
+          "edge_pp": 4.95,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        }
+      ],
+      "num_legs": 2,
+      "combined_win_prob": 58.9,
+      "combined_decimal_odds": 3.63,
+      "combined_american_odds": "+263",
+      "ev_pct": 113.8,
+      "kelly_full_pct": 43.25,
+      "kelly_fractional_pct": 10.81,
+      "recommended_stake_pct": 0.5,
+      "recommended_stake_dollars": 5.0,
+      "risk_label": "Moderate"
+    },
+    {
+      "legs": [
+        {
+          "pick": "Dorian Finney-Smith OVER 5.5 POINTS",
+          "matchup": "Houston Rockets @ Washington Wizards",
+          "model_prob": 0.77,
+          "model_prob_pct": 77.0,
+          "vegas_ml": -115.0,
+          "decimal_odds": 1.8695652173913042,
+          "edge_pp": 4.37,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        },
+        {
+          "pick": "Christian Braun OVER 12.8 POINTS",
+          "matchup": "Denver Nuggets @ Utah Jazz",
+          "model_prob": 0.767,
+          "model_prob_pct": 76.7,
+          "vegas_ml": -114.7,
+          "decimal_odds": 1.8718395815170008,
+          "edge_pp": 4.21,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        }
+      ],
+      "num_legs": 2,
+      "combined_win_prob": 59.1,
+      "combined_decimal_odds": 3.5,
+      "combined_american_odds": "+249",
+      "ev_pct": 106.7,
+      "kelly_full_pct": 42.68,
+      "kelly_fractional_pct": 10.67,
+      "recommended_stake_pct": 0.5,
+      "recommended_stake_dollars": 5.0,
+      "risk_label": "Moderate"
+    }
+  ],
+  "three_leg": [
+    {
+      "legs": [
+        {
+          "pick": "Bobby Portis OVER 10.5 POINTS",
+          "matchup": "Boston Celtics @ Milwaukee Bucks",
+          "model_prob": 0.7829999999999999,
+          "model_prob_pct": 78.3,
+          "vegas_ml": -105.0,
+          "decimal_odds": 1.9523809523809523,
+          "edge_pp": 4.96,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        },
+        {
+          "pick": "Dorian Finney-Smith OVER 5.5 POINTS",
+          "matchup": "Houston Rockets @ Washington Wizards",
+          "model_prob": 0.77,
+          "model_prob_pct": 77.0,
+          "vegas_ml": -115.0,
+          "decimal_odds": 1.8695652173913042,
+          "edge_pp": 4.37,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        },
+        {
+          "pick": "Christian Braun OVER 12.8 POINTS",
+          "matchup": "Denver Nuggets @ Utah Jazz",
+          "model_prob": 0.767,
+          "model_prob_pct": 76.7,
+          "vegas_ml": -114.7,
+          "decimal_odds": 1.8718395815170008,
+          "edge_pp": 4.21,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        }
+      ],
+      "num_legs": 3,
+      "combined_win_prob": 46.2,
+      "combined_decimal_odds": 6.83,
+      "combined_american_odds": "+583",
+      "ev_pct": 216.0,
+      "kelly_full_pct": 37.03,
+      "kelly_fractional_pct": 9.26,
+      "recommended_stake_pct": 0.5,
+      "recommended_stake_dollars": 5.0,
+      "risk_label": "Moderate"
+    },
+    {
+      "legs": [
+        {
+          "pick": "Bobby Portis OVER 10.5 POINTS",
+          "matchup": "Boston Celtics @ Milwaukee Bucks",
+          "model_prob": 0.7829999999999999,
+          "model_prob_pct": 78.3,
+          "vegas_ml": -105.0,
+          "decimal_odds": 1.9523809523809523,
+          "edge_pp": 4.96,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        },
+        {
+          "pick": "Dorian Finney-Smith OVER 5.5 POINTS",
+          "matchup": "Houston Rockets @ Washington Wizards",
+          "model_prob": 0.77,
+          "model_prob_pct": 77.0,
+          "vegas_ml": -115.0,
+          "decimal_odds": 1.8695652173913042,
+          "edge_pp": 4.37,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        },
+        {
+          "pick": "Myles Turner OVER 11.5 POINTS",
+          "matchup": "Boston Celtics @ Milwaukee Bucks",
+          "model_prob": 0.7340000000000001,
+          "model_prob_pct": 73.4,
+          "vegas_ml": -106.3,
+          "decimal_odds": 1.9407337723424272,
+          "edge_pp": 3.57,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        }
+      ],
+      "num_legs": 3,
+      "combined_win_prob": 44.3,
+      "combined_decimal_odds": 7.08,
+      "combined_american_odds": "+608",
+      "ev_pct": 213.5,
+      "kelly_full_pct": 35.09,
+      "kelly_fractional_pct": 8.77,
+      "recommended_stake_pct": 0.5,
+      "recommended_stake_dollars": 5.0,
+      "risk_label": "Moderate"
+    },
+    {
+      "legs": [
+        {
+          "pick": "Bobby Portis OVER 10.5 POINTS",
+          "matchup": "Boston Celtics @ Milwaukee Bucks",
+          "model_prob": 0.7829999999999999,
+          "model_prob_pct": 78.3,
+          "vegas_ml": -105.0,
+          "decimal_odds": 1.9523809523809523,
+          "edge_pp": 4.96,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        },
+        {
+          "pick": "Christian Braun OVER 12.8 POINTS",
+          "matchup": "Denver Nuggets @ Utah Jazz",
+          "model_prob": 0.767,
+          "model_prob_pct": 76.7,
+          "vegas_ml": -114.7,
+          "decimal_odds": 1.8718395815170008,
+          "edge_pp": 4.21,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        },
+        {
+          "pick": "Myles Turner OVER 11.5 POINTS",
+          "matchup": "Boston Celtics @ Milwaukee Bucks",
+          "model_prob": 0.7340000000000001,
+          "model_prob_pct": 73.4,
+          "vegas_ml": -106.3,
+          "decimal_odds": 1.9407337723424272,
+          "edge_pp": 3.57,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        }
+      ],
+      "num_legs": 3,
+      "combined_win_prob": 44.1,
+      "combined_decimal_odds": 7.09,
+      "combined_american_odds": "+609",
+      "ev_pct": 212.6,
+      "kelly_full_pct": 34.9,
+      "kelly_fractional_pct": 8.73,
+      "recommended_stake_pct": 0.5,
+      "recommended_stake_dollars": 5.0,
+      "risk_label": "Moderate"
+    }
+  ],
+  "total_eligible_legs": 19,
+  "total_two_leg_considered": 171,
+  "total_three_leg_considered": 969
+}
