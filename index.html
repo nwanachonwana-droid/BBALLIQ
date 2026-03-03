@@ -991,13 +991,34 @@
 
     try {
       // Fetch from Barttorvik
-      // Use a CORS proxy to fetch Barttorvik data
-      const bartUrl = `https://barttorvik.com/getteam.php?team=${encodeURIComponent(teamName)}&json=1`;
-      const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(bartUrl)}`;
-      const res = await fetch(proxyUrl);
-      const data = await res.json();
+      // Load full Barttorvik season file and search client-side
+      if (!window._bartData) {
+        const res = await fetch('https://barttorvik.com/2026_team_results.json');
+        window._bartData = await res.json();
+      }
       document.getElementById('team-lookup-loading').style.display = 'none';
-      renderTeamLookup(data, teamName);
+      // Find team by name (fuzzy)
+      const needle = teamName.toLowerCase().trim();
+      const match = window._bartData.find(t => {
+        const name = (t[0] || t.team || '').toLowerCase();
+        return name === needle || name.includes(needle) || needle.includes(name.split(' ')[0]);
+      });
+      if (!match) throw new Error('Team not found in dataset');
+      // Barttorvik columns: [team, conf, g, rec, adjoe, adjoe_rk, adjde, adjde_rk, barthag, barthag_rk, wab, wab_rk, adjtempo, adjtempo_rk, ...]
+      const data = {
+        team:     match[0],
+        conf:     match[1],
+        rec:      match[3],
+        adjoe:    match[4],
+        adjoe_rk: match[5],
+        adjde:    match[6],
+        adjde_rk: match[7],
+        barthag:  match[8],
+        rk:       match[9],
+        wab:      match[10],
+        adjtempo: match[12],
+      };
+      renderTeamLookup(data, data.team);
     } catch(e) {
       // Fallback: use our picks data to find team
       document.getElementById('team-lookup-loading').style.display = 'none';
