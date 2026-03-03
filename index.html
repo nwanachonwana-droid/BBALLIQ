@@ -1000,7 +1000,7 @@
       // Find team by name (fuzzy)
       const needle = teamName.toLowerCase().trim();
       const match = window._bartData.find(t => {
-        const name = (t[0] || t.team || '').toLowerCase();
+        const name = (t[1] || '').toLowerCase();
         return name === needle || name.includes(needle) || needle.includes(name.split(' ')[0]);
       });
       if (!match) throw new Error('Team not found in dataset');
