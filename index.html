@@ -993,7 +993,7 @@
       // Fetch from Barttorvik
       // Load full Barttorvik season file and search client-side
       if (!window._bartData) {
-        const res = await fetch('https://barttorvik.com/2026_team_results.json');
+        const res = await fetch('bart_teams.json?t=' + Math.floor(Date.now()/86400000));
         window._bartData = await res.json();
       }
       document.getElementById('team-lookup-loading').style.display = 'none';
