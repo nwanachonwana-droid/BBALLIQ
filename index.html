@@ -1519,7 +1519,9 @@ function switchPerfSport(sport, btn) {
   document.getElementById('perf-ncaab').style.display    = sport === 'ncaab'    ? '' : 'none';
   document.getElementById('perf-nba').style.display      = sport === 'nba'      ? '' : 'none';
   document.getElementById('perf-combined').style.display = sport === 'combined' ? '' : 'none';
-  if (sport === 'combined') renderCombined();
+  if (sport === "combined") renderCombined();
+  if (sport === "nba" && perfDataNBA) renderNBAProps(perfDataNBA);
+  if (sport === "nba-games" && perfDataNBAGames) renderNBAGames(perfDataNBAGames);
 }
 
 async function loadPerformance() {
