@@ -1,43 +1,43 @@
 {
-  "updated": "2026-03-02",
+  "updated": "2026-03-03",
   "overall": {
-    "wins": 72,
-    "losses": 47,
-    "total": 119,
+    "wins": 75,
+    "losses": 49,
+    "total": 124,
     "hit_rate": 60.5
   },
   "by_confidence": {
     "High (70-80%)": {
-      "wins": 22,
-      "total": 45,
-      "hit_rate": 48.9
+      "wins": 23,
+      "total": 46,
+      "hit_rate": 50.0
     },
     "LOCK (80%+)": {
-      "wins": 41,
-      "total": 57,
-      "hit_rate": 71.9
+      "wins": 42,
+      "total": 59,
+      "hit_rate": 71.2
     },
     "Medium (60-70%)": {
-      "wins": 9,
-      "total": 17,
-      "hit_rate": 52.9
+      "wins": 10,
+      "total": 19,
+      "hit_rate": 52.6
     }
   },
   "by_recommendation": {
     "STRONG BET": {
-      "wins": 53,
-      "total": 88,
-      "hit_rate": 60.2
+      "wins": 54,
+      "total": 90,
+      "hit_rate": 60.0
     },
     "VALUE BET": {
-      "wins": 8,
-      "total": 16,
+      "wins": 9,
+      "total": 18,
       "hit_rate": 50.0
     },
     "LEAN BET": {
-      "wins": 11,
-      "total": 15,
-      "hit_rate": 73.3
+      "wins": 12,
+      "total": 16,
+      "hit_rate": 75.0
     }
   },
   "by_edge": {
@@ -48,91 +48,21 @@
     },
     "10-15pp": {
       "wins": 25,
-      "total": 41,
-      "hit_rate": 61.0
+      "total": 42,
+      "hit_rate": 59.5
     },
     "5-10pp": {
-      "wins": 30,
-      "total": 50,
-      "hit_rate": 60.0
+      "wins": 32,
+      "total": 53,
+      "hit_rate": 60.4
     },
     "<5pp": {
-      "wins": 11,
-      "total": 15,
-      "hit_rate": 73.3
+      "wins": 12,
+      "total": 16,
+      "hit_rate": 75.0
     }
   },
   "recent": [
-    {
-      "date": "02/28",
-      "matchup": "Youngstown St Penguins @ Green Bay Phoenix",
-      "pick": "Green Bay Phoenix",
-      "confidence": "High (70-80%)",
-      "model_prob": 70.7,
-      "vegas_ml": -125,
-      "implied_prob": 55.7,
-      "edge": 15.0,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "WIN",
-      "score": "Phoenix 85 - Penguins 63",
-      "edge_band": "15pp+"
-    },
-    {
-      "date": "02/28",
-      "matchup": "Jacksonville Dolphins @ North Florida Ospreys",
-      "pick": "North Florida Ospreys",
-      "confidence": "Medium (60-70%)",
-      "model_prob": 64.9,
-      "vegas_ml": 100,
-      "implied_prob": 50.0,
-      "edge": 14.9,
-      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence",
-      "result": "LOSS",
-      "score": "Ospreys 61 - Dolphins 85",
-      "edge_band": "10-15pp"
-    },
-    {
-      "date": "02/28",
-      "matchup": "Tennessee Tech Golden Eagles @ SE Missouri St Redhawks",
-      "pick": "SE Missouri St Redhawks",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 92.0,
-      "vegas_ml": -347,
-      "implied_prob": 77.7,
-      "edge": 14.3,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "WIN",
-      "score": "Redhawks 89 - Eagles 73",
-      "edge_band": "10-15pp"
-    },
-    {
-      "date": "02/28",
-      "matchup": "Harvard Crimson @ Pennsylvania Quakers",
-      "pick": "Pennsylvania Quakers",
-      "confidence": "High (70-80%)",
-      "model_prob": 70.7,
-      "vegas_ml": -130,
-      "implied_prob": 56.5,
-      "edge": 14.2,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "WIN",
-      "score": "Quakers 80 - Green 71",
-      "edge_band": "10-15pp"
-    },
-    {
-      "date": "02/28",
-      "matchup": "Alabama St Hornets @ Alabama A&M Bulldogs",
-      "pick": "Alabama A&M Bulldogs",
-      "confidence": "High (70-80%)",
-      "model_prob": 72.0,
-      "vegas_ml": -137,
-      "implied_prob": 57.8,
-      "edge": 14.1,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "LOSS",
-      "score": "Bulldogs 88 - Hornets 89",
-      "edge_band": "10-15pp"
-    },
     {
       "date": "02/28",
       "matchup": "Radford Highlanders @ Longwood Lancers",
@@ -671,7 +601,7 @@
       "pick": "UNC Wilmington Seahawks",
       "confidence": "LOCK (80%+)",
       "model_prob": 81.2,
-      "vegas_ml": "-197",
+      "vegas_ml": -197,
       "implied_prob": 66.4,
       "edge": 14.8,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
@@ -685,7 +615,7 @@
       "pick": "Fairfield Stags",
       "confidence": "High (70-80%)",
       "model_prob": 79.8,
-      "vegas_ml": "-202",
+      "vegas_ml": -202,
       "implied_prob": 67.0,
       "edge": 12.9,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
@@ -699,7 +629,7 @@
       "pick": "Marquette Golden Eagles",
       "confidence": "High (70-80%)",
       "model_prob": 76.8,
-      "vegas_ml": "-197",
+      "vegas_ml": -197,
       "implied_prob": 66.4,
       "edge": 10.5,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
@@ -713,7 +643,7 @@
       "pick": "Maryland Terrapins",
       "confidence": "High (70-80%)",
       "model_prob": 77.9,
-      "vegas_ml": "-230",
+      "vegas_ml": -230,
       "implied_prob": 69.7,
       "edge": 8.2,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
@@ -727,7 +657,7 @@
       "pick": "Florida Atlantic Owls",
       "confidence": "LOCK (80%+)",
       "model_prob": 83.8,
-      "vegas_ml": "-343",
+      "vegas_ml": -343,
       "implied_prob": 77.4,
       "edge": 6.4,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
@@ -741,7 +671,7 @@
       "pick": "Temple Owls",
       "confidence": "LOCK (80%+)",
       "model_prob": 82.9,
-      "vegas_ml": "-333",
+      "vegas_ml": -333,
       "implied_prob": 76.9,
       "edge": 6.0,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
@@ -755,13 +685,83 @@
       "pick": "UAB Blazers",
       "confidence": "High (70-80%)",
       "model_prob": 76.8,
-      "vegas_ml": "-246",
+      "vegas_ml": -246,
       "implied_prob": 71.2,
       "edge": 5.6,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
       "result": "LOSS",
       "score": "Blazers 58 - Green 62",
       "edge_band": "5-10pp"
+    },
+    {
+      "date": "03/02",
+      "matchup": "SE Louisiana Lions @ New Orleans Privateers",
+      "pick": "New Orleans Privateers",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 87.2,
+      "vegas_ml": "-337",
+      "implied_prob": 77.1,
+      "edge": 10.0,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "LOSS",
+      "score": "Privateers 78 - Lions 82",
+      "edge_band": "10-15pp"
+    },
+    {
+      "date": "03/02",
+      "matchup": "IUPUI Jaguars @ Cleveland St Vikings",
+      "pick": "Cleveland St Vikings",
+      "confidence": "Medium (60-70%)",
+      "model_prob": 65.1,
+      "vegas_ml": "-126",
+      "implied_prob": 55.8,
+      "edge": 9.4,
+      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence",
+      "result": "WIN",
+      "score": "Vikings 101 - Jaguars 93",
+      "edge_band": "5-10pp"
+    },
+    {
+      "date": "03/02",
+      "matchup": "Weber State Wildcats @ Portland St Vikings",
+      "pick": "Portland St Vikings",
+      "confidence": "High (70-80%)",
+      "model_prob": 75.3,
+      "vegas_ml": "-216",
+      "implied_prob": 68.4,
+      "edge": 6.8,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "WIN",
+      "score": "Vikings 101 - Jaguars 93",
+      "edge_band": "5-10pp"
+    },
+    {
+      "date": "03/02",
+      "matchup": "South Carolina St Bulldogs @ Delaware St Hornets",
+      "pick": "Delaware St Hornets",
+      "confidence": "Medium (60-70%)",
+      "model_prob": 63.1,
+      "vegas_ml": "-136",
+      "implied_prob": 57.8,
+      "edge": 5.3,
+      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence",
+      "result": "LOSS",
+      "score": "Hornets 59 - Bulldogs 61",
+      "edge_band": "5-10pp"
+    },
+    {
+      "date": "03/02",
+      "matchup": "Iowa State Cyclones @ Arizona Wildcats",
+      "pick": "Arizona Wildcats",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 83.0,
+      "vegas_ml": "-371",
+      "implied_prob": 78.8,
+      "edge": 4.2,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement",
+      "result": "WIN",
+      "score": "Wildcats 73 - Cyclones 57",
+      "edge_band": "<5pp"
     }
   ]
 }
