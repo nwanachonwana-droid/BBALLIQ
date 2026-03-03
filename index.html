@@ -991,8 +991,10 @@
 
     try {
       // Fetch from Barttorvik
-      const url = `https://barttorvik.com/getteam.php?team=${encodeURIComponent(teamName)}&json=1`;
-      const res = await fetch(url);
+      // Use a CORS proxy to fetch Barttorvik data
+      const bartUrl = `https://barttorvik.com/getteam.php?team=${encodeURIComponent(teamName)}&json=1`;
+      const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(bartUrl)}`;
+      const res = await fetch(proxyUrl);
       const data = await res.json();
       document.getElementById('team-lookup-loading').style.display = 'none';
       renderTeamLookup(data, teamName);
