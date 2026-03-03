@@ -1006,17 +1006,17 @@
       if (!match) throw new Error('Team not found in dataset');
       // Barttorvik columns: [team, conf, g, rec, adjoe, adjoe_rk, adjde, adjde_rk, barthag, barthag_rk, wab, wab_rk, adjtempo, adjtempo_rk, ...]
       const data = {
-        team:     match[0],
-        conf:     match[1],
+        rk:       match[0],
+        team:     match[1],
+        conf:     match[2],
         rec:      match[3],
         adjoe:    match[4],
         adjoe_rk: match[5],
         adjde:    match[6],
         adjde_rk: match[7],
         barthag:  match[8],
-        rk:       match[9],
         wab:      match[10],
-        adjtempo: match[12],
+        adjtempo: match[32] || 67,
       };
       renderTeamLookup(data, data.team);
     } catch(e) {
