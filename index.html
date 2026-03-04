@@ -937,139 +937,7 @@
     <div class="section-sub">Team Lookup · Bracket Tools · Upset Finder · Analytics</div>
   </div>
 
- 
-  <!-- ── CONFERENCE MATCHUP BUILDER ─────────────────────────────────────── -->
-  <div class="card" style="margin-bottom:1.5rem">
-    <div class="card-title" style="font-size:1rem;margin-bottom:1rem">⚔️ Conference Matchup Builder</div>
-    <div style="margin-bottom:1rem">
-      <select id="conf-select" onchange="loadConference()" style="background:var(--bg);color:var(--fg);border:1px solid var(--border);border-radius:8px;padding:0.6rem 1rem;font-size:0.9rem;width:100%;cursor:pointer">
-        <option value="">— Select a Conference —</option>
-        <option value="ACC">ACC</option><option value="BE">Big East</option>
-        <option value="B10">Big Ten</option><option value="B12">Big 12</option>
-        <option value="SEC">SEC</option><option value="MWC">Mountain West</option>
-        <option value="Amer">American</option><option value="A10">Atlantic 10</option>
-        <option value="MVC">Missouri Valley</option><option value="WCC">WCC</option>
-        <option value="CUSA">C-USA</option><option value="MAC">MAC</option>
-        <option value="SBC">Sun Belt</option><option value="Horz">Horizon</option>
-        <option value="CAA">CAA</option><option value="BSky">Big Sky</option>
-        <option value="BSth">Big South</option><option value="SC">Southern</option>
-        <option value="SWAC">SWAC</option><option value="MEAC">MEAC</option>
-        <option value="NEC">NEC</option><option value="Pat">Patriot</option>
-        <option value="AE">America East</option><option value="Ivy">Ivy</option>
-        <option value="Sum">Summit</option><option value="WAC">WAC</option>
-      </select>
-    </div>
-    <div id="conf-loading" style="display:none;color:var(--muted);font-size:0.85rem;padding:0.5rem 0">Loading...</div>
-    <div id="conf-teams" style="display:none;margin-bottom:1.5rem">
-      <div style="font-size:0.7rem;color:var(--muted);margin-bottom:0.75rem">Click two teams to compare head-to-head</div>
-      <div style="display:flex;gap:0.5rem;padding:0.2rem 0.75rem;margin-bottom:4px">
-        <div style="width:32px"></div>
-        <div style="flex:1;font-size:0.62rem;color:var(--muted);letter-spacing:0.08em">TEAM</div>
-        <div style="width:44px;text-align:right;font-size:0.62rem;color:var(--muted)">AdjO</div>
-        <div style="width:44px;text-align:right;font-size:0.62rem;color:var(--muted)">AdjD</div>
-        <div style="width:50px;text-align:right;font-size:0.62rem;color:var(--muted)">NET</div>
-        <div style="width:50px;text-align:right;font-size:0.62rem;color:var(--muted)">WAB</div>
-      </div>
-      <div id="conf-teams-list"></div>
-    </div>
-    <div id="matchup-result" style="display:none"></div>
-  </div>
-
-  <script>
-  let _confSel = [], _confData = [];
-  async function loadConference() {
-    const conf = document.getElementById('conf-select').value;
-    if (!conf) return;
-    document.getElementById('conf-loading').style.display = 'block';
-    document.getElementById('conf-teams').style.display = 'none';
-    document.getElementById('matchup-result').style.display = 'none';
-    _confSel = [];
-    try {
-      if (!window._bartData) {
-        const r = await fetch('bart_teams.json?t=' + Math.floor(Date.now()/86400000));
-        window._bartData = await r.json();
-      }
-      _confData = window._bartData.filter(t => t[2] === conf).sort((a,b) => a[0]-b[0]);
-      document.getElementById('conf-loading').style.display = 'none';
-      renderConfTeams();
-    } catch(e) {
-      document.getElementById('conf-loading').textContent = 'Error loading data.';
-    }
-  }
-  function renderConfTeams() {
-    const list = document.getElementById('conf-teams-list');
-    list.innerHTML = '';
-    _confData.forEach((t, i) => {
-      const net = (t[4] - t[6]).toFixed(1);
-      const wab = parseFloat(t[10]).toFixed(1);
-      const row = document.createElement('div');
-      row.id = 'cr-' + i;
-      row.onclick = () => pickTeam(i);
-      row.style.cssText = 'display:flex;align-items:center;gap:0.5rem;padding:0.45rem 0.75rem;border-radius:8px;cursor:pointer;margin-bottom:3px;background:var(--bg);border:1px solid transparent;transition:all 0.12s';
-      row.innerHTML = `
-        <div style="width:32px;text-align:center;font-size:0.7rem;color:var(--muted);font-weight:700">#${t[0]}</div>
-        <div style="flex:1;font-weight:700;font-size:0.85rem">${t[1]}</div>
-        <div style="width:38px;text-align:right;font-size:0.72rem;color:var(--muted)">${t[3]}</div>
-        <div style="width:44px;text-align:right;font-size:0.8rem;color:#4ade80">${parseFloat(t[4]).toFixed(1)}</div>
-        <div style="width:44px;text-align:right;font-size:0.8rem;color:#f87171">${parseFloat(t[6]).toFixed(1)}</div>
-        <div style="width:50px;text-align:right;font-size:0.8rem;font-weight:700;color:${net>0?'#4ade80':'#f87171'}">${net>0?'+':''}${net}</div>
-        <div style="width:50px;text-align:right;font-size:0.72rem;color:var(--muted)">${wab>0?'+':''}${wab}</div>`;
-      list.appendChild(row);
-    });
-    document.getElementById('conf-teams').style.display = 'block';
-  }
-  function pickTeam(i) {
-    if (_confSel.includes(i)) { _confSel = _confSel.filter(x=>x!==i); }
-    else if (_confSel.length < 2) { _confSel.push(i); }
-    else { _confSel = [_confSel[1], i]; }
-    _confData.forEach((_,idx) => {
-      const row = document.getElementById('cr-'+idx);
-      if (!row) return;
-      const s = _confSel.includes(idx);
-      row.style.background = s ? 'rgba(234,179,8,0.15)' : 'var(--bg)';
-      row.style.borderColor = s ? 'var(--accent)' : 'transparent';
-    });
-    if (_confSel.length === 2) buildMatchup();
-    else document.getElementById('matchup-result').style.display = 'none';
-  }
-  function buildMatchup() {
-    const a = _confData[_confSel[0]], b = _confData[_confSel[1]];
-    const wA = (a[8]*(1-b[8])) / (a[8]*(1-b[8]) + b[8]*(1-a[8]));
-    const pA = (wA*100).toFixed(0), pB = 100 - pA;
-    const nA = (a[4]-a[6]).toFixed(1), nB = (b[4]-b[6]).toFixed(1);
-    const fav = wA>=0.5 ? a[1] : b[1];
-    function sr(lbl,va,vb,hi){
-      let ca='var(--fg)',cb='var(--fg)';
-      if(hi!==null){const na=parseFloat(va),nb=parseFloat(vb);if(!isNaN(na)&&!isNaN(nb)&&na!==nb){const aw=hi?na>nb:na<nb;ca=aw?'#4ade80':'#f87171';cb=aw?'#f87171':'#4ade80';}}
-      return `<div style="text-align:right;font-size:0.95rem;font-weight:700;color:${ca}">${va}</div><div style="text-align:center;font-size:0.62rem;color:var(--muted);padding:0 4px">${lbl}</div><div style="font-size:0.95rem;font-weight:700;color:${cb}">${vb}</div>`;
-    }
-    document.getElementById('matchup-result').style.display = 'block';
-    document.getElementById('matchup-result').innerHTML = `
-      <div style="border:1px solid var(--accent);border-radius:12px;padding:1.25rem;background:rgba(234,179,8,0.04)">
-        <div style="text-align:center;font-size:0.65rem;color:var(--muted);letter-spacing:0.12em;margin-bottom:1rem">HEAD-TO-HEAD · BARTTORVIK LOG5</div>
-        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem">
-          <div style="font-size:0.82rem;font-weight:800;width:120px;text-align:right;line-height:1.3">${a[1]}</div>
-          <div style="flex:1;height:28px;border-radius:14px;overflow:hidden;display:flex;border:1px solid var(--border)">
-            <div style="width:${pA}%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:800;color:#000;min-width:28px">${pA}%</div>
-            <div style="flex:1;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:800">${pB}%</div>
-          </div>
-          <div style="font-size:0.82rem;font-weight:800;width:120px;line-height:1.3">${b[1]}</div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 72px 1fr;gap:0.35rem 0.5rem;align-items:center">
-          ${sr('AdjO',parseFloat(a[4]).toFixed(1),parseFloat(b[4]).toFixed(1),true)}
-          ${sr('AdjD',parseFloat(a[6]).toFixed(1),parseFloat(b[6]).toFixed(1),false)}
-          ${sr('Net Rtg',(nA>0?'+':'')+nA,(nB>0?'+':'')+nB,true)}
-          ${sr('T-Rank','#'+a[0],'#'+b[0],false)}
-          ${sr('Record',a[3],b[3],null)}
-          ${sr('WAB',(a[10]>0?'+':'')+parseFloat(a[10]).toFixed(1),(b[10]>0?'+':'')+parseFloat(b[10]).toFixed(1),true)}
-        </div>
-        <div style="text-align:center;margin-top:1rem;padding-top:0.75rem;border-top:1px solid var(--border);font-size:0.85rem">
-          <span style="color:var(--accent);font-weight:800">${fav}</span><span style="color:var(--muted)"> projected to advance</span>
-        </div>
-      </div>`;
-  }
-  </script>
- <!-- ── TEAM LOOKUP ─────────────────────────────────────── -->
+  <!-- ── TEAM LOOKUP ─────────────────────────────────────── -->
   <div class="card" style="margin-bottom:1.5rem">
     <div class="card-title" style="font-size:1rem;margin-bottom:0.75rem">🔍 Team Lookup</div>
     <div style="display:flex;gap:0.75rem;margin-bottom:1rem;flex-wrap:wrap">
@@ -1270,6 +1138,138 @@
 
 
   <!-- Upload Row -->
+  <!-- ── CONFERENCE MATCHUP BUILDER ─────────────────────────────────────── -->
+  <div class="card" style="margin-bottom:1.5rem">
+    <div class="card-title" style="font-size:1rem;margin-bottom:1rem">⚔️ Conference Matchup Builder</div>
+    <div style="margin-bottom:1rem">
+      <select id="conf-select" onchange="loadConference()" style="background:var(--bg);color:var(--fg);border:1px solid var(--border);border-radius:8px;padding:0.6rem 1rem;font-size:0.9rem;width:100%;cursor:pointer">
+        <option value="">— Select a Conference —</option>
+        <option value="ACC">ACC</option><option value="BE">Big East</option>
+        <option value="B10">Big Ten</option><option value="B12">Big 12</option>
+        <option value="SEC">SEC</option><option value="MWC">Mountain West</option>
+        <option value="Amer">American</option><option value="A10">Atlantic 10</option>
+        <option value="MVC">Missouri Valley</option><option value="WCC">WCC</option>
+        <option value="CUSA">C-USA</option><option value="MAC">MAC</option>
+        <option value="SBC">Sun Belt</option><option value="Horz">Horizon</option>
+        <option value="CAA">CAA</option><option value="BSky">Big Sky</option>
+        <option value="BSth">Big South</option><option value="SC">Southern</option>
+        <option value="SWAC">SWAC</option><option value="MEAC">MEAC</option>
+        <option value="NEC">NEC</option><option value="Pat">Patriot</option>
+        <option value="AE">America East</option><option value="Ivy">Ivy</option>
+        <option value="Sum">Summit</option><option value="WAC">WAC</option>
+      </select>
+    </div>
+    <div id="conf-loading" style="display:none;color:var(--muted);font-size:0.85rem;padding:0.5rem 0">Loading...</div>
+    <div id="conf-teams" style="display:none;margin-bottom:1.5rem">
+      <div style="font-size:0.7rem;color:var(--muted);margin-bottom:0.75rem">Click two teams to compare head-to-head</div>
+      <div style="display:flex;gap:0.5rem;padding:0.2rem 0.75rem;margin-bottom:4px">
+        <div style="width:32px"></div>
+        <div style="flex:1;font-size:0.62rem;color:var(--muted);letter-spacing:0.08em">TEAM</div>
+        <div style="width:44px;text-align:right;font-size:0.62rem;color:var(--muted)">AdjO</div>
+        <div style="width:44px;text-align:right;font-size:0.62rem;color:var(--muted)">AdjD</div>
+        <div style="width:50px;text-align:right;font-size:0.62rem;color:var(--muted)">NET</div>
+        <div style="width:50px;text-align:right;font-size:0.62rem;color:var(--muted)">WAB</div>
+      </div>
+      <div id="conf-teams-list"></div>
+    </div>
+    <div id="matchup-result" style="display:none"></div>
+  </div>
+
+  <script>
+  let _confSel = [], _confData = [];
+  async function loadConference() {
+    const conf = document.getElementById('conf-select').value;
+    if (!conf) return;
+    document.getElementById('conf-loading').style.display = 'block';
+    document.getElementById('conf-teams').style.display = 'none';
+    document.getElementById('matchup-result').style.display = 'none';
+    _confSel = [];
+    try {
+      if (!window._bartData) {
+        const r = await fetch('bart_teams.json?t=' + Math.floor(Date.now()/86400000));
+        window._bartData = await r.json();
+      }
+      _confData = window._bartData.filter(t => t[2] === conf).sort((a,b) => a[0]-b[0]);
+      document.getElementById('conf-loading').style.display = 'none';
+      renderConfTeams();
+    } catch(e) {
+      document.getElementById('conf-loading').textContent = 'Error loading data.';
+    }
+  }
+  function renderConfTeams() {
+    const list = document.getElementById('conf-teams-list');
+    list.innerHTML = '';
+    _confData.forEach((t, i) => {
+      const net = (t[4] - t[6]).toFixed(1);
+      const wab = parseFloat(t[10]).toFixed(1);
+      const row = document.createElement('div');
+      row.id = 'cr-' + i;
+      row.onclick = () => pickTeam(i);
+      row.style.cssText = 'display:flex;align-items:center;gap:0.5rem;padding:0.45rem 0.75rem;border-radius:8px;cursor:pointer;margin-bottom:3px;background:var(--bg);border:1px solid transparent;transition:all 0.12s';
+      row.innerHTML = `
+        <div style="width:32px;text-align:center;font-size:0.7rem;color:var(--muted);font-weight:700">#${t[0]}</div>
+        <div style="flex:1;font-weight:700;font-size:0.85rem">${t[1]}</div>
+        <div style="width:38px;text-align:right;font-size:0.72rem;color:var(--muted)">${t[3]}</div>
+        <div style="width:44px;text-align:right;font-size:0.8rem;color:#4ade80">${parseFloat(t[4]).toFixed(1)}</div>
+        <div style="width:44px;text-align:right;font-size:0.8rem;color:#f87171">${parseFloat(t[6]).toFixed(1)}</div>
+        <div style="width:50px;text-align:right;font-size:0.8rem;font-weight:700;color:${net>0?'#4ade80':'#f87171'}">${net>0?'+':''}${net}</div>
+        <div style="width:50px;text-align:right;font-size:0.72rem;color:var(--muted)">${wab>0?'+':''}${wab}</div>`;
+      list.appendChild(row);
+    });
+    document.getElementById('conf-teams').style.display = 'block';
+  }
+  function pickTeam(i) {
+    if (_confSel.includes(i)) { _confSel = _confSel.filter(x=>x!==i); }
+    else if (_confSel.length < 2) { _confSel.push(i); }
+    else { _confSel = [_confSel[1], i]; }
+    _confData.forEach((_,idx) => {
+      const row = document.getElementById('cr-'+idx);
+      if (!row) return;
+      const s = _confSel.includes(idx);
+      row.style.background = s ? 'rgba(234,179,8,0.15)' : 'var(--bg)';
+      row.style.borderColor = s ? 'var(--accent)' : 'transparent';
+    });
+    if (_confSel.length === 2) buildMatchup();
+    else document.getElementById('matchup-result').style.display = 'none';
+  }
+  function buildMatchup() {
+    const a = _confData[_confSel[0]], b = _confData[_confSel[1]];
+    const wA = (a[8]*(1-b[8])) / (a[8]*(1-b[8]) + b[8]*(1-a[8]));
+    const pA = (wA*100).toFixed(0), pB = 100 - pA;
+    const nA = (a[4]-a[6]).toFixed(1), nB = (b[4]-b[6]).toFixed(1);
+    const fav = wA>=0.5 ? a[1] : b[1];
+    function sr(lbl,va,vb,hi){
+      let ca='var(--fg)',cb='var(--fg)';
+      if(hi!==null){const na=parseFloat(va),nb=parseFloat(vb);if(!isNaN(na)&&!isNaN(nb)&&na!==nb){const aw=hi?na>nb:na<nb;ca=aw?'#4ade80':'#f87171';cb=aw?'#f87171':'#4ade80';}}
+      return `<div style="text-align:right;font-size:0.95rem;font-weight:700;color:${ca}">${va}</div><div style="text-align:center;font-size:0.62rem;color:var(--muted);padding:0 4px">${lbl}</div><div style="font-size:0.95rem;font-weight:700;color:${cb}">${vb}</div>`;
+    }
+    document.getElementById('matchup-result').style.display = 'block';
+    document.getElementById('matchup-result').innerHTML = `
+      <div style="border:1px solid var(--accent);border-radius:12px;padding:1.25rem;background:rgba(234,179,8,0.04)">
+        <div style="text-align:center;font-size:0.65rem;color:var(--muted);letter-spacing:0.12em;margin-bottom:1rem">HEAD-TO-HEAD · BARTTORVIK LOG5</div>
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem">
+          <div style="font-size:0.82rem;font-weight:800;width:120px;text-align:right;line-height:1.3">${a[1]}</div>
+          <div style="flex:1;height:28px;border-radius:14px;overflow:hidden;display:flex;border:1px solid var(--border)">
+            <div style="width:${pA}%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:800;color:#000;min-width:28px">${pA}%</div>
+            <div style="flex:1;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:800">${pB}%</div>
+          </div>
+          <div style="font-size:0.82rem;font-weight:800;width:120px;line-height:1.3">${b[1]}</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 72px 1fr;gap:0.35rem 0.5rem;align-items:center">
+          ${sr('AdjO',parseFloat(a[4]).toFixed(1),parseFloat(b[4]).toFixed(1),true)}
+          ${sr('AdjD',parseFloat(a[6]).toFixed(1),parseFloat(b[6]).toFixed(1),false)}
+          ${sr('Net Rtg',(nA>0?'+':'')+nA,(nB>0?'+':'')+nB,true)}
+          ${sr('T-Rank','#'+a[0],'#'+b[0],false)}
+          ${sr('Record',a[3],b[3],null)}
+          ${sr('WAB',(a[10]>0?'+':'')+parseFloat(a[10]).toFixed(1),(b[10]>0?'+':'')+parseFloat(b[10]).toFixed(1),true)}
+        </div>
+        <div style="text-align:center;margin-top:1rem;padding-top:0.75rem;border-top:1px solid var(--border);font-size:0.85rem">
+          <span style="color:var(--accent);font-weight:800">${fav}</span><span style="color:var(--muted)"> projected to advance</span>
+        </div>
+      </div>`;
+  }
+  </script>
+
   <div class="grid-2" style="margin-bottom:1rem">
     <div class="card">
       <div class="card-title">① KenPom / BartTorvik Ratings (CSV)</div>
