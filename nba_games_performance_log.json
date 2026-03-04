@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "date": "03/03",
+    "pick": "New York Knicks",
+    "matchup": "New York Knicks @ Toronto Raptors",
+    "model_prob": 65.4,
+    "edge_pp": 8.41,
+    "odds": -146.7,
+    "stake": 1.81,
+    "to_win": 1.23,
+    "result": "WIN",
+    "pnl": 1.23
+  }
+]

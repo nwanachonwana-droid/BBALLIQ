@@ -46,5 +46,53 @@
     "to_win": 1.83,
     "result": "LOSS",
     "pnl": -2.0
+  },
+  {
+    "date": "03/03",
+    "player": "Pelle Larsson",
+    "stat": "POINTS",
+    "line": 12.5,
+    "direction": "UNDER",
+    "pick": "Pelle Larsson UNDER 12.5 POINTS",
+    "projection": 7.16,
+    "edge_pp": 5.34,
+    "model_prob": 81.0,
+    "odds": -109.5,
+    "stake": 1.81,
+    "to_win": 1.65,
+    "result": "WIN",
+    "pnl": 1.65
+  },
+  {
+    "date": "03/03",
+    "player": "Collin Gillespie",
+    "stat": "POINTS",
+    "line": 14.5,
+    "direction": "UNDER",
+    "pick": "Collin Gillespie UNDER 14.5 POINTS",
+    "projection": 9.17,
+    "edge_pp": 5.33,
+    "model_prob": 78.3,
+    "odds": -110.3,
+    "stake": 1.81,
+    "to_win": 1.64,
+    "result": "LOSS",
+    "pnl": -1.81
+  },
+  {
+    "date": "03/03",
+    "player": "Tyler Herro",
+    "stat": "POINTS",
+    "line": 21.5,
+    "direction": "OVER",
+    "pick": "Tyler Herro OVER 21.5 POINTS",
+    "projection": 26.79,
+    "edge_pp": 5.29,
+    "model_prob": 83.6,
+    "odds": -111.0,
+    "stake": 1.81,
+    "to_win": 1.63,
+    "result": "WIN",
+    "pnl": 1.63
   }
 ]
