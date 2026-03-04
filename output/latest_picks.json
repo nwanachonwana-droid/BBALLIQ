@@ -15,24 +15,13 @@
     },
     {
       "date": "03/04",
-      "matchup": "Saint Joseph's Hawks @ Davidson Wildcats",
-      "pick": "Davidson Wildcats",
-      "confidence": "High (70-80%)",
-      "model_prob": 74.0,
-      "vegas_ml": "-177",
-      "implied_prob": 64.0,
-      "edge": 10.0,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
-    },
-    {
-      "date": "03/04",
       "matchup": "Jacksonville Dolphins @ Bellarmine Knights",
       "pick": "Bellarmine Knights",
       "confidence": "Medium (60-70%)",
       "model_prob": 65.8,
-      "vegas_ml": "-129",
-      "implied_prob": 56.5,
-      "edge": 9.4,
+      "vegas_ml": "-128",
+      "implied_prob": 56.1,
+      "edge": 9.7,
       "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence"
     },
     {
@@ -48,6 +37,17 @@
     },
     {
       "date": "03/04",
+      "matchup": "Saint Joseph's Hawks @ Davidson Wildcats",
+      "pick": "Davidson Wildcats",
+      "confidence": "High (70-80%)",
+      "model_prob": 74.0,
+      "vegas_ml": "-184",
+      "implied_prob": 64.8,
+      "edge": 9.1,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/04",
       "matchup": "St. Bonaventure Bonnies @ GW Revolutionaries",
       "pick": "GW Revolutionaries",
       "confidence": "LOCK (80%+)",
@@ -59,23 +59,23 @@
     },
     {
       "date": "03/04",
+      "matchup": "Youngstown St Penguins @ Robert Morris Colonials",
+      "pick": "Robert Morris Colonials",
+      "confidence": "High (70-80%)",
+      "model_prob": 77.0,
+      "vegas_ml": "-229",
+      "implied_prob": 69.6,
+      "edge": 7.4,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/04",
       "matchup": "Stonehill Skyhawks @ Le Moyne Dolphins",
       "pick": "Le Moyne Dolphins",
       "confidence": "LOCK (80%+)",
       "model_prob": 82.2,
       "vegas_ml": "-302",
       "implied_prob": 75.2,
-      "edge": 7.0,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
-    },
-    {
-      "date": "03/04",
-      "matchup": "Youngstown St Penguins @ Robert Morris Colonials",
-      "pick": "Robert Morris Colonials",
-      "confidence": "High (70-80%)",
-      "model_prob": 77.0,
-      "vegas_ml": "-233",
-      "implied_prob": 70.0,
       "edge": 7.0,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
