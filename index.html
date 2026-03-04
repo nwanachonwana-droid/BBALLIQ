@@ -1010,13 +1010,14 @@
         team:     match[1],
         conf:     match[2],
         rec:      match[3],
-        adjoe:    match[4],
+        adjoe:    parseFloat(match[4]).toFixed(1),
         adjoe_rk: match[5],
-        adjde:    match[6],
+        adjde:    parseFloat(match[6]).toFixed(1),
         adjde_rk: match[7],
         barthag:  match[8],
-        wab:      match[10],
-        adjtempo: match[32] || 67,
+        netrtg:   parseFloat(match[4] - match[6]).toFixed(1),
+        wab:      parseFloat(match[10]).toFixed(1),
+        adjtempo: parseFloat(match[23]).toFixed(1),
       };
       renderTeamLookup(data, data.team);
     } catch(e) {
@@ -1111,8 +1112,8 @@
         <div style="font-size:1.1rem;font-weight:800;color:var(--fg);margin-bottom:0.5rem">${pick.team}</div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem">
           <div style="background:var(--bg);border-radius:6px;padding:0.6rem;text-align:center">
-            <div style="font-size:1.3rem;font-weight:800;color:var(--accent)">${winProb}%</div>
-            <div style="font-size:0.65rem;color:var(--muted)">MODEL WIN PROB</div>
+            <div style="font-size:1.3rem;font-weight:800;color:var(--accent)">${(data.adjoe - data.adjde).toFixed(1)}</div>
+            <div style="font-size:0.65rem;color:var(--muted)">NET RATING</div>
           </div>
           <div style="background:var(--bg);border-radius:6px;padding:0.6rem;text-align:center">
             <div style="font-size:1.3rem;font-weight:800;color:#fbbf24">+${edge}pp</div>
