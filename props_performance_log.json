@@ -106,7 +106,7 @@
     "odds": -111,
     "note": "",
     "direction": "over",
-    "edge_pp": 0
+    "edge_pp": 5.0
   },
   {
     "date": "2026-03-04",
@@ -119,7 +119,7 @@
     "odds": -108,
     "note": "",
     "direction": "over",
-    "edge_pp": 0
+    "edge_pp": 4.8
   },
   {
     "date": "2026-03-04",
@@ -132,7 +132,7 @@
     "odds": -110,
     "note": "",
     "direction": "under",
-    "edge_pp": 0
+    "edge_pp": 4.0
   },
   {
     "date": "2026-03-04",
@@ -145,7 +145,7 @@
     "odds": -111,
     "note": "",
     "direction": "over",
-    "edge_pp": 0
+    "edge_pp": 5.0
   },
   {
     "date": "2026-03-04",
@@ -158,7 +158,7 @@
     "odds": -110,
     "note": "",
     "direction": "over",
-    "edge_pp": 0
+    "edge_pp": 4.2
   },
   {
     "date": "2026-03-04",
@@ -171,7 +171,7 @@
     "odds": -110,
     "note": "",
     "direction": "under",
-    "edge_pp": 0
+    "edge_pp": 4.3
   },
   {
     "date": "2026-03-04",
@@ -184,7 +184,7 @@
     "odds": -110,
     "note": "minutes_asterisk - went OVER, we had UNDER",
     "direction": "under",
-    "edge_pp": 0
+    "edge_pp": 3.6
   },
   {
     "date": "2026-03-04",
@@ -197,7 +197,7 @@
     "odds": -110,
     "note": "",
     "direction": "over",
-    "edge_pp": 0
+    "edge_pp": 4.4
   },
   {
     "date": "2026-03-04",
@@ -210,6 +210,6 @@
     "odds": -111,
     "note": "",
     "direction": "under",
-    "edge_pp": 0
+    "edge_pp": 4.4
   }
 ]
