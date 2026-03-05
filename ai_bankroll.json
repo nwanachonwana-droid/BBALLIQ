@@ -1,68 +1,12 @@
 {
   "starting_bankroll": 100.0,
-  "current_bankroll": 91.36,
+  "current_bankroll": 90.44,
   "starting_date": "03/01/2026",
-  "last_updated": "03/05/2026",
+  "last_updated": "2026-03-05",
   "total_bets": 31,
   "wins": 16,
-  "losses": 15,
+  "losses": 16,
   "pending_bets": [
-    {
-      "date": "03/04",
-      "type": "parlay",
-      "pick": "Giannis Antetokounmpo OVER 4.5 ASSISTS + Pascal Siakam UNDER 20.8 POINTS + Bobby Portis OVER 10.8 POINTS",
-      "legs": [
-        {
-          "pick": "Giannis Antetokounmpo OVER 4.5 ASSISTS",
-          "matchup": "Atlanta Hawks @ Milwaukee Bucks",
-          "model_prob": 0.8390000000000001,
-          "model_prob_pct": 83.9,
-          "vegas_ml": -111.7,
-          "decimal_odds": 1.8952551477170994,
-          "edge_pp": 4.97,
-          "sport": "NBA",
-          "bet_type": "prop",
-          "confidence_tier": "NBA-PROP"
-        },
-        {
-          "pick": "Pascal Siakam UNDER 20.8 POINTS",
-          "matchup": "Indiana Pacers @ Los Angeles Clippers",
-          "model_prob": 0.7879999999999999,
-          "model_prob_pct": 78.8,
-          "vegas_ml": -110.7,
-          "decimal_odds": 1.9033423667570009,
-          "edge_pp": 4.39,
-          "sport": "NBA",
-          "bet_type": "prop",
-          "confidence_tier": "NBA-PROP"
-        },
-        {
-          "pick": "Bobby Portis OVER 10.8 POINTS",
-          "matchup": "Atlanta Hawks @ Milwaukee Bucks",
-          "model_prob": 0.7829999999999999,
-          "model_prob_pct": 78.3,
-          "vegas_ml": -111.7,
-          "decimal_odds": 1.8952551477170994,
-          "edge_pp": 4.95,
-          "sport": "NBA",
-          "bet_type": "prop",
-          "confidence_tier": "NBA-PROP"
-        }
-      ],
-      "num_legs": 3,
-      "matchup": "3-leg parlay",
-      "ml": "+583",
-      "model_prob": 51.8,
-      "edge_pp": 253.9,
-      "ev_pct": 253.9,
-      "combo_odds": 6.84,
-      "stake": 0.92,
-      "to_win": 5.37,
-      "dec_odds": 6.84,
-      "status": "pending",
-      "result": null,
-      "pnl": null
-    },
     {
       "date": "03/05",
       "type": "single",
@@ -918,6 +862,62 @@
       "status": "settled",
       "result": "LOSS",
       "pnl": -1.84
+    },
+    {
+      "date": "03/04",
+      "type": "parlay",
+      "pick": "Giannis Antetokounmpo OVER 4.5 ASSISTS + Pascal Siakam UNDER 20.8 POINTS + Bobby Portis OVER 10.8 POINTS",
+      "legs": [
+        {
+          "pick": "Giannis Antetokounmpo OVER 4.5 ASSISTS",
+          "matchup": "Atlanta Hawks @ Milwaukee Bucks",
+          "model_prob": 0.8390000000000001,
+          "model_prob_pct": 83.9,
+          "vegas_ml": -111.7,
+          "decimal_odds": 1.8952551477170994,
+          "edge_pp": 4.97,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        },
+        {
+          "pick": "Pascal Siakam UNDER 20.8 POINTS",
+          "matchup": "Indiana Pacers @ Los Angeles Clippers",
+          "model_prob": 0.7879999999999999,
+          "model_prob_pct": 78.8,
+          "vegas_ml": -110.7,
+          "decimal_odds": 1.9033423667570009,
+          "edge_pp": 4.39,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        },
+        {
+          "pick": "Bobby Portis OVER 10.8 POINTS",
+          "matchup": "Atlanta Hawks @ Milwaukee Bucks",
+          "model_prob": 0.7829999999999999,
+          "model_prob_pct": 78.3,
+          "vegas_ml": -111.7,
+          "decimal_odds": 1.8952551477170994,
+          "edge_pp": 4.95,
+          "sport": "NBA",
+          "bet_type": "prop",
+          "confidence_tier": "NBA-PROP"
+        }
+      ],
+      "num_legs": 3,
+      "matchup": "3-leg parlay",
+      "ml": "+583",
+      "model_prob": 51.8,
+      "edge_pp": 253.9,
+      "ev_pct": 253.9,
+      "combo_odds": 6.84,
+      "stake": 0.92,
+      "to_win": 5.37,
+      "dec_odds": 6.84,
+      "status": "settled",
+      "result": "L",
+      "pnl": -0.92
     }
   ],
   "daily_snapshots": [
