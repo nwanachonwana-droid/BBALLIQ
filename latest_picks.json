@@ -1,5 +1,193 @@
 {
   "updated": "2026-03-05",
   "date": "03/05",
-  "picks": []
+  "picks": [
+    {
+      "date": "03/05",
+      "matchup": "San Diego Toreros @ Loyola Marymount Lions",
+      "pick": "Loyola Marymount Lions",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 83.5,
+      "vegas_ml": "-246",
+      "implied_prob": 71.2,
+      "edge": 12.4,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/05",
+      "matchup": "Loyola (MD) Greyhounds @ Colgate Raiders",
+      "pick": "Colgate Raiders",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 86.6,
+      "vegas_ml": "-320",
+      "implied_prob": 76.2,
+      "edge": 10.4,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/05",
+      "matchup": "Georgia Southern Eagles @ Arkansas St Red Wolves",
+      "pick": "Arkansas St Red Wolves",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 87.7,
+      "vegas_ml": "-346",
+      "implied_prob": 77.6,
+      "edge": 10.1,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/05",
+      "matchup": "Tulane Green Wave @ Temple Owls",
+      "pick": "Temple Owls",
+      "confidence": "High (70-80%)",
+      "model_prob": 77.0,
+      "vegas_ml": "-205",
+      "implied_prob": 67.2,
+      "edge": 9.8,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/05",
+      "matchup": "Coppin St Eagles @ Morgan St Bears",
+      "pick": "Morgan St Bears",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 84.1,
+      "vegas_ml": "-294",
+      "implied_prob": 74.6,
+      "edge": 9.4,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/05",
+      "matchup": "Grambling St Tigers @ Alabama St Hornets",
+      "pick": "Alabama St Hornets",
+      "confidence": "High (70-80%)",
+      "model_prob": 72.1,
+      "vegas_ml": "-168",
+      "implied_prob": 62.7,
+      "edge": 9.4,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/05",
+      "matchup": "UT-Arlington Mavericks @ Tarleton State Texans",
+      "pick": "Tarleton State Texans",
+      "confidence": "Medium (60-70%)",
+      "model_prob": 67.5,
+      "vegas_ml": "-143",
+      "implied_prob": 58.9,
+      "edge": 8.6,
+      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence"
+    },
+    {
+      "date": "03/05",
+      "matchup": "Louisiana Tech Bulldogs @ Liberty Flames",
+      "pick": "Liberty Flames",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 90.7,
+      "vegas_ml": "-478",
+      "implied_prob": 82.7,
+      "edge": 8.0,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/05",
+      "matchup": "Holy Cross Crusaders @ Lehigh Mountain Hawks",
+      "pick": "Lehigh Mountain Hawks",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 83.6,
+      "vegas_ml": "-312",
+      "implied_prob": 75.8,
+      "edge": 7.8,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/05",
+      "matchup": "Southern Jaguars @ Alabama A&M Bulldogs",
+      "pick": "Alabama A&M Bulldogs",
+      "confidence": "Medium (60-70%)",
+      "model_prob": 62.1,
+      "vegas_ml": "-122",
+      "implied_prob": 55.0,
+      "edge": 7.1,
+      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence"
+    },
+    {
+      "date": "03/05",
+      "matchup": "Cal Poly Mustangs @ UC Irvine Anteaters",
+      "pick": "UC Irvine Anteaters",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 88.8,
+      "vegas_ml": "-475",
+      "implied_prob": 82.6,
+      "edge": 6.1,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/05",
+      "matchup": "Delaware St Hornets @ Maryland-Eastern Shore Hawks",
+      "pick": "Maryland-Eastern Shore Hawks",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 81.6,
+      "vegas_ml": "-310",
+      "implied_prob": 75.6,
+      "edge": 6.0,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/05",
+      "matchup": "Eastern Illinois Panthers @ Tenn-Martin Skyhawks",
+      "pick": "Tenn-Martin Skyhawks",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 87.7,
+      "vegas_ml": "-448",
+      "implied_prob": 81.8,
+      "edge": 5.9,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/05",
+      "matchup": "Abilene Christian Wildcats @ Cal Baptist Lancers",
+      "pick": "Cal Baptist Lancers",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 89.8,
+      "vegas_ml": "-536",
+      "implied_prob": 84.3,
+      "edge": 5.5,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/05",
+      "matchup": "Miss Valley St Delta Devils @ Jackson St Tigers",
+      "pick": "Jackson St Tigers",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 91.1,
+      "vegas_ml": "-608",
+      "implied_prob": 85.9,
+      "edge": 5.3,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/05",
+      "matchup": "Oral Roberts Golden Eagles @ North Dakota St Bison",
+      "pick": "North Dakota St Bison",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 94.0,
+      "vegas_ml": "-793",
+      "implied_prob": 88.8,
+      "edge": 5.2,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/05",
+      "matchup": "UC Riverside Highlanders @ Hawai'i Rainbow Warriors",
+      "pick": "Hawai'i Rainbow Warriors",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 91.3,
+      "vegas_ml": "-716",
+      "implied_prob": 87.8,
+      "edge": 3.6,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
+    }
+  ]
 }
