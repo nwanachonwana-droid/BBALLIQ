@@ -386,5 +386,61 @@
     "result": "LOSS",
     "pnl": -1.84,
     "edge_pp": 0
+  },
+  {
+    "date": "2026-03-06",
+    "player": "Dorian Finney-Smith",
+    "stat": "points",
+    "line": 4.5,
+    "direction": "over",
+    "pick": "OVER",
+    "projection": 10.3,
+    "edge_pp": 5.79,
+    "model_prob": 83.6,
+    "odds": -110.0,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-06",
+    "player": "Daniel Gafford",
+    "stat": "points",
+    "line": 8.5,
+    "direction": "over",
+    "pick": "OVER",
+    "projection": 12.3,
+    "edge_pp": 3.84,
+    "model_prob": 77.5,
+    "odds": 103.7,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-06",
+    "player": "Brook Lopez",
+    "stat": "points",
+    "line": 9.5,
+    "direction": "over",
+    "pick": "OVER",
+    "projection": 14.4,
+    "edge_pp": 4.87,
+    "model_prob": 74.8,
+    "odds": -106.3,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-06",
+    "player": "LaMelo Ball",
+    "stat": "points",
+    "line": 19.2,
+    "direction": "over",
+    "pick": "OVER",
+    "projection": 23.0,
+    "edge_pp": 3.76,
+    "model_prob": 76.2,
+    "odds": -114.7,
+    "result": "PENDING",
+    "pnl": 0
   }
 ]
