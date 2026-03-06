@@ -905,6 +905,648 @@
   .perf-sport-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
   .perf-sport-panel { }
 
+  <style id="madness-styles">
+/* ── MADNESS TAB LAYOUT ── */
+#tab-madness { display:none }
+#tab-madness.active { display:block }
+
+.madness-header {
+  display:flex; align-items:flex-end; justify-content:space-between;
+  margin-bottom:2rem; flex-wrap:wrap; gap:1rem;
+}
+.madness-title { font-family:'Syne',sans-serif; font-size:1.5rem; font-weight:800; }
+.madness-subtitle { font-size:0.75rem; color:var(--muted); margin-top:0.25rem; }
+.madness-badge {
+  background: linear-gradient(135deg,#f97316,#ef4444);
+  color:#fff; font-size:0.65rem; font-weight:700; letter-spacing:.08em;
+  padding:0.25rem 0.6rem; border-radius:99px; text-transform:uppercase;
+}
+
+/* ── MADNESS SUB-TABS ── */
+.madness-tabs {
+  display:flex; gap:0; border-bottom:1px solid var(--border);
+  margin-bottom:1.75rem;
+}
+.mtab-btn {
+  background:none; border:none; color:var(--muted);
+  font-size:0.72rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+  padding:0.65rem 1.1rem; cursor:pointer; position:relative;
+  transition: color .2s;
+}
+.mtab-btn:hover { color:var(--text); }
+.mtab-btn.active { color:var(--accent); }
+.mtab-btn.active::after {
+  content:''; position:absolute; bottom:-1px; left:0; right:0;
+  height:2px; background:var(--accent); border-radius:2px 2px 0 0;
+}
+.mpanel { display:none; }
+.mpanel.active { display:block; }
+
+/* ── STEP FLOW ── */
+.step-flow { display:flex; flex-direction:column; gap:1.25rem; }
+.step-card {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:10px; padding:1.25rem 1.5rem;
+  display:grid; grid-template-columns:2.5rem 1fr; gap:1rem; align-items:start;
+}
+.step-num {
+  width:2.5rem; height:2.5rem; border-radius:50%;
+  background:var(--bg); border:1.5px solid var(--border2);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Syne',sans-serif; font-size:0.8rem; font-weight:800;
+  color:var(--accent); flex-shrink:0;
+}
+.step-card.complete .step-num { background:var(--accent); color:#fff; border-color:var(--accent); }
+.step-label { font-size:0.65rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:0.25rem; }
+.step-title { font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; margin-bottom:0.5rem; }
+.step-body { font-size:0.78rem; color:var(--muted); line-height:1.6; }
+
+/* ── FORM ELEMENTS ── */
+.field-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-top:0.75rem; }
+.field-grid-3 { grid-template-columns:1fr 1fr 1fr; }
+.field { display:flex; flex-direction:column; gap:0.35rem; }
+.field label { font-size:0.65rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); }
+.field input, .field select, .field textarea {
+  background:var(--bg); border:1px solid var(--border2);
+  color:var(--text); border-radius:6px; padding:0.5rem 0.75rem;
+  font-size:0.8rem; font-family:inherit;
+  transition: border-color .2s;
+}
+.field input:focus, .field select:focus {
+  outline:none; border-color:var(--accent);
+}
+.field select option { background:var(--bg); }
+
+/* ── CONSENSUS TABLE ── */
+.consensus-table { width:100%; border-collapse:collapse; margin-top:0.75rem; }
+.consensus-table th {
+  font-size:0.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--muted); text-align:left; padding:0.4rem 0.5rem;
+  border-bottom:1px solid var(--border);
+}
+.consensus-table td { padding:0.45rem 0.5rem; font-size:0.78rem; border-bottom:1px solid var(--border); }
+.consensus-table tr:last-child td { border-bottom:none; }
+.consensus-table tr:hover td { background:rgba(255,255,255,.02); }
+.pct-bar-wrap { display:flex; align-items:center; gap:0.5rem; }
+.pct-bar-track { flex:1; height:4px; background:var(--border); border-radius:2px; }
+.pct-bar-fill { height:4px; background:var(--accent); border-radius:2px; transition:width .4s; }
+.pct-val { font-size:0.7rem; color:var(--muted); width:3rem; text-align:right; }
+.remove-row-btn {
+  background:none; border:none; color:var(--muted); cursor:pointer;
+  font-size:0.8rem; padding:0.1rem 0.3rem; border-radius:3px;
+  transition:color .2s;
+}
+.remove-row-btn:hover { color:#ef4444; }
+.add-team-btn {
+  margin-top:0.75rem; font-size:0.72rem; color:var(--accent);
+  background:none; border:1px dashed var(--border2); border-radius:6px;
+  padding:0.4rem 0.75rem; cursor:pointer; width:100%;
+  transition: border-color .2s, background .2s;
+}
+.add-team-btn:hover { border-color:var(--accent); background:rgba(249,115,22,.06); }
+
+/* ── OVERRIDES ── */
+.override-list { display:flex; flex-direction:column; gap:0.4rem; margin-top:0.75rem; }
+.override-row { display:grid; grid-template-columns:1fr 1fr auto; gap:0.5rem; align-items:center; }
+
+/* ── GENERATE BUTTON ── */
+.gen-btn-wrap { margin-top:1.5rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
+.btn-generate {
+  background:linear-gradient(135deg,#f97316,#ef4444);
+  color:#fff; border:none; border-radius:8px;
+  font-family:'Syne',sans-serif; font-weight:800; font-size:0.85rem;
+  letter-spacing:.04em; padding:0.75rem 2rem; cursor:pointer;
+  transition: opacity .2s, transform .1s;
+  display:flex; align-items:center; gap:0.5rem;
+}
+.btn-generate:hover { opacity:.9; }
+.btn-generate:active { transform:scale(.98); }
+.btn-generate:disabled { opacity:.4; cursor:not-allowed; }
+.gen-cost-note { font-size:0.72rem; color:var(--muted); }
+
+/* ── PROGRESS ── */
+.gen-progress {
+  margin-top:1rem; display:none;
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:8px; padding:1rem 1.25rem;
+}
+.gen-progress.visible { display:block; }
+.progress-bar-track { height:6px; background:var(--border); border-radius:3px; margin:0.5rem 0; }
+.progress-bar-fill {
+  height:6px; background:linear-gradient(90deg,#f97316,#ef4444);
+  border-radius:3px; width:0%; transition:width .3s;
+}
+.progress-log { font-size:0.72rem; color:var(--muted); margin-top:0.5rem; }
+
+/* ── TRIPLET CARDS ── */
+.triplet-grid { display:flex; flex-direction:column; gap:1rem; margin-top:1rem; }
+.triplet-card {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:10px; overflow:hidden;
+}
+.triplet-card-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0.75rem 1.25rem; border-bottom:1px solid var(--border);
+  background:rgba(249,115,22,.04);
+}
+.triplet-num { font-family:'Syne',sans-serif; font-weight:800; font-size:0.9rem; }
+.triplet-cost { font-size:0.72rem; color:var(--muted); }
+.triplet-brackets { display:grid; grid-template-columns:1fr 1fr 1fr; }
+.bracket-slot {
+  padding:0.9rem 1.1rem; border-right:1px solid var(--border);
+  position:relative;
+}
+.bracket-slot:last-child { border-right:none; }
+.slot-role {
+  font-size:0.6rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  margin-bottom:0.35rem;
+}
+.slot-role.primary { color:#22c55e; }
+.slot-role.divergent { color:#3b82f6; }
+.slot-role.contrarian { color:#f59e0b; }
+.slot-champion { font-family:'Syne',sans-serif; font-weight:700; font-size:0.85rem; margin-bottom:0.25rem; }
+.slot-ff { font-size:0.68rem; color:var(--muted); line-height:1.5; }
+.slot-strategy { font-size:0.62rem; color:var(--muted); margin-top:0.35rem; }
+.slot-upsets { font-size:0.62rem; color:var(--muted); }
+
+/* ── SUBMISSION GUIDE ── */
+.guide-actions { display:flex; gap:0.75rem; margin-bottom:1.25rem; flex-wrap:wrap; }
+.btn-export {
+  background:var(--surface); border:1px solid var(--border2);
+  color:var(--text); border-radius:6px; padding:0.5rem 1rem;
+  font-size:0.75rem; font-weight:600; cursor:pointer;
+  display:flex; align-items:center; gap:0.4rem;
+  transition: border-color .2s, background .2s;
+}
+.btn-export:hover { border-color:var(--accent); background:rgba(249,115,22,.06); }
+.guide-output {
+  background:var(--bg); border:1px solid var(--border);
+  border-radius:8px; padding:1.25rem;
+  font-family:'Courier New',monospace; font-size:0.72rem;
+  line-height:1.8; color:var(--text); white-space:pre-wrap;
+  max-height:480px; overflow-y:auto;
+}
+.guide-empty {
+  text-align:center; padding:3rem 1rem; color:var(--muted);
+}
+.guide-empty .big-icon { font-size:2.5rem; margin-bottom:0.75rem; }
+.guide-empty h3 { font-family:'Syne',sans-serif; font-size:1rem; color:var(--text); margin-bottom:0.5rem; }
+.guide-empty p { font-size:0.75rem; line-height:1.6; max-width:360px; margin:0 auto; }
+
+/* ── CHAMPION DIST CHART ── */
+.champ-dist { margin-top:1.5rem; }
+.champ-dist-title { font-size:0.65rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:0.75rem; }
+.champ-row { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.4rem; }
+.champ-name { font-size:0.78rem; width:130px; flex-shrink:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.champ-bar-track { flex:1; height:8px; background:var(--border); border-radius:4px; }
+.champ-bar-fill { height:8px; background:linear-gradient(90deg,#f97316,#ef4444); border-radius:4px; }
+.champ-cnt { font-size:0.7rem; color:var(--muted); width:4rem; text-align:right; }
+
+/* ── STATUS PILL ── */
+.status-pill {
+  display:inline-flex; align-items:center; gap:0.3rem;
+  font-size:0.65rem; font-weight:700; letter-spacing:.06em;
+  padding:0.2rem 0.6rem; border-radius:99px;
+}
+.status-pill.ready { background:rgba(34,197,94,.12); color:#22c55e; }
+.status-pill.pending { background:rgba(249,115,22,.12); color:#f97316; }
+.status-pill.empty { background:rgba(255,255,255,.06); color:var(--muted); }
+
+@media(max-width:700px) {
+  .triplet-brackets { grid-template-columns:1fr; }
+  .bracket-slot { border-right:none; border-bottom:1px solid var(--border); }
+  .bracket-slot:last-child { border-bottom:none; }
+  .field-grid { grid-template-columns:1fr; }
+  .field-grid-3 { grid-template-columns:1fr; }
+}
+
+/* ── MADNESS TAB LAYOUT ── */
+#tab-madness { display:none }
+#tab-madness.active { display:block }
+
+.madness-header {
+  display:flex; align-items:flex-end; justify-content:space-between;
+  margin-bottom:2rem; flex-wrap:wrap; gap:1rem;
+}
+.madness-title { font-family:'Syne',sans-serif; font-size:1.5rem; font-weight:800; }
+.madness-subtitle { font-size:0.75rem; color:var(--muted); margin-top:0.25rem; }
+.madness-badge {
+  background: linear-gradient(135deg,#f97316,#ef4444);
+  color:#fff; font-size:0.65rem; font-weight:700; letter-spacing:.08em;
+  padding:0.25rem 0.6rem; border-radius:99px; text-transform:uppercase;
+}
+
+/* ── MADNESS SUB-TABS ── */
+.madness-tabs {
+  display:flex; gap:0; border-bottom:1px solid var(--border);
+  margin-bottom:1.75rem;
+}
+.mtab-btn {
+  background:none; border:none; color:var(--muted);
+  font-size:0.72rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+  padding:0.65rem 1.1rem; cursor:pointer; position:relative;
+  transition: color .2s;
+}
+.mtab-btn:hover { color:var(--text); }
+.mtab-btn.active { color:var(--accent); }
+.mtab-btn.active::after {
+  content:''; position:absolute; bottom:-1px; left:0; right:0;
+  height:2px; background:var(--accent); border-radius:2px 2px 0 0;
+}
+.mpanel { display:none; }
+.mpanel.active { display:block; }
+
+/* ── STEP FLOW ── */
+.step-flow { display:flex; flex-direction:column; gap:1.25rem; }
+.step-card {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:10px; padding:1.25rem 1.5rem;
+  display:grid; grid-template-columns:2.5rem 1fr; gap:1rem; align-items:start;
+}
+.step-num {
+  width:2.5rem; height:2.5rem; border-radius:50%;
+  background:var(--bg); border:1.5px solid var(--border2);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Syne',sans-serif; font-size:0.8rem; font-weight:800;
+  color:var(--accent); flex-shrink:0;
+}
+.step-card.complete .step-num { background:var(--accent); color:#fff; border-color:var(--accent); }
+.step-label { font-size:0.65rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:0.25rem; }
+.step-title { font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; margin-bottom:0.5rem; }
+.step-body { font-size:0.78rem; color:var(--muted); line-height:1.6; }
+
+/* ── FORM ELEMENTS ── */
+.field-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-top:0.75rem; }
+.field-grid-3 { grid-template-columns:1fr 1fr 1fr; }
+.field { display:flex; flex-direction:column; gap:0.35rem; }
+.field label { font-size:0.65rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); }
+.field input, .field select, .field textarea {
+  background:var(--bg); border:1px solid var(--border2);
+  color:var(--text); border-radius:6px; padding:0.5rem 0.75rem;
+  font-size:0.8rem; font-family:inherit;
+  transition: border-color .2s;
+}
+.field input:focus, .field select:focus {
+  outline:none; border-color:var(--accent);
+}
+.field select option { background:var(--bg); }
+
+/* ── CONSENSUS TABLE ── */
+.consensus-table { width:100%; border-collapse:collapse; margin-top:0.75rem; }
+.consensus-table th {
+  font-size:0.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--muted); text-align:left; padding:0.4rem 0.5rem;
+  border-bottom:1px solid var(--border);
+}
+.consensus-table td { padding:0.45rem 0.5rem; font-size:0.78rem; border-bottom:1px solid var(--border); }
+.consensus-table tr:last-child td { border-bottom:none; }
+.consensus-table tr:hover td { background:rgba(255,255,255,.02); }
+.pct-bar-wrap { display:flex; align-items:center; gap:0.5rem; }
+.pct-bar-track { flex:1; height:4px; background:var(--border); border-radius:2px; }
+.pct-bar-fill { height:4px; background:var(--accent); border-radius:2px; transition:width .4s; }
+.pct-val { font-size:0.7rem; color:var(--muted); width:3rem; text-align:right; }
+.remove-row-btn {
+  background:none; border:none; color:var(--muted); cursor:pointer;
+  font-size:0.8rem; padding:0.1rem 0.3rem; border-radius:3px;
+  transition:color .2s;
+}
+.remove-row-btn:hover { color:#ef4444; }
+.add-team-btn {
+  margin-top:0.75rem; font-size:0.72rem; color:var(--accent);
+  background:none; border:1px dashed var(--border2); border-radius:6px;
+  padding:0.4rem 0.75rem; cursor:pointer; width:100%;
+  transition: border-color .2s, background .2s;
+}
+.add-team-btn:hover { border-color:var(--accent); background:rgba(249,115,22,.06); }
+
+/* ── OVERRIDES ── */
+.override-list { display:flex; flex-direction:column; gap:0.4rem; margin-top:0.75rem; }
+.override-row { display:grid; grid-template-columns:1fr 1fr auto; gap:0.5rem; align-items:center; }
+
+/* ── GENERATE BUTTON ── */
+.gen-btn-wrap { margin-top:1.5rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
+.btn-generate {
+  background:linear-gradient(135deg,#f97316,#ef4444);
+  color:#fff; border:none; border-radius:8px;
+  font-family:'Syne',sans-serif; font-weight:800; font-size:0.85rem;
+  letter-spacing:.04em; padding:0.75rem 2rem; cursor:pointer;
+  transition: opacity .2s, transform .1s;
+  display:flex; align-items:center; gap:0.5rem;
+}
+.btn-generate:hover { opacity:.9; }
+.btn-generate:active { transform:scale(.98); }
+.btn-generate:disabled { opacity:.4; cursor:not-allowed; }
+.gen-cost-note { font-size:0.72rem; color:var(--muted); }
+
+/* ── PROGRESS ── */
+.gen-progress {
+  margin-top:1rem; display:none;
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:8px; padding:1rem 1.25rem;
+}
+.gen-progress.visible { display:block; }
+.progress-bar-track { height:6px; background:var(--border); border-radius:3px; margin:0.5rem 0; }
+.progress-bar-fill {
+  height:6px; background:linear-gradient(90deg,#f97316,#ef4444);
+  border-radius:3px; width:0%; transition:width .3s;
+}
+.progress-log { font-size:0.72rem; color:var(--muted); margin-top:0.5rem; }
+
+/* ── TRIPLET CARDS ── */
+.triplet-grid { display:flex; flex-direction:column; gap:1rem; margin-top:1rem; }
+.triplet-card {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:10px; overflow:hidden;
+}
+.triplet-card-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0.75rem 1.25rem; border-bottom:1px solid var(--border);
+  background:rgba(249,115,22,.04);
+}
+.triplet-num { font-family:'Syne',sans-serif; font-weight:800; font-size:0.9rem; }
+.triplet-cost { font-size:0.72rem; color:var(--muted); }
+.triplet-brackets { display:grid; grid-template-columns:1fr 1fr 1fr; }
+.bracket-slot {
+  padding:0.9rem 1.1rem; border-right:1px solid var(--border);
+  position:relative;
+}
+.bracket-slot:last-child { border-right:none; }
+.slot-role {
+  font-size:0.6rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  margin-bottom:0.35rem;
+}
+.slot-role.primary { color:#22c55e; }
+.slot-role.divergent { color:#3b82f6; }
+.slot-role.contrarian { color:#f59e0b; }
+.slot-champion { font-family:'Syne',sans-serif; font-weight:700; font-size:0.85rem; margin-bottom:0.25rem; }
+.slot-ff { font-size:0.68rem; color:var(--muted); line-height:1.5; }
+.slot-strategy { font-size:0.62rem; color:var(--muted); margin-top:0.35rem; }
+.slot-upsets { font-size:0.62rem; color:var(--muted); }
+
+/* ── SUBMISSION GUIDE ── */
+.guide-actions { display:flex; gap:0.75rem; margin-bottom:1.25rem; flex-wrap:wrap; }
+.btn-export {
+  background:var(--surface); border:1px solid var(--border2);
+  color:var(--text); border-radius:6px; padding:0.5rem 1rem;
+  font-size:0.75rem; font-weight:600; cursor:pointer;
+  display:flex; align-items:center; gap:0.4rem;
+  transition: border-color .2s, background .2s;
+}
+.btn-export:hover { border-color:var(--accent); background:rgba(249,115,22,.06); }
+.guide-output {
+  background:var(--bg); border:1px solid var(--border);
+  border-radius:8px; padding:1.25rem;
+  font-family:'Courier New',monospace; font-size:0.72rem;
+  line-height:1.8; color:var(--text); white-space:pre-wrap;
+  max-height:480px; overflow-y:auto;
+}
+.guide-empty {
+  text-align:center; padding:3rem 1rem; color:var(--muted);
+}
+.guide-empty .big-icon { font-size:2.5rem; margin-bottom:0.75rem; }
+.guide-empty h3 { font-family:'Syne',sans-serif; font-size:1rem; color:var(--text); margin-bottom:0.5rem; }
+.guide-empty p { font-size:0.75rem; line-height:1.6; max-width:360px; margin:0 auto; }
+
+/* ── CHAMPION DIST CHART ── */
+.champ-dist { margin-top:1.5rem; }
+.champ-dist-title { font-size:0.65rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:0.75rem; }
+.champ-row { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.4rem; }
+.champ-name { font-size:0.78rem; width:130px; flex-shrink:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.champ-bar-track { flex:1; height:8px; background:var(--border); border-radius:4px; }
+.champ-bar-fill { height:8px; background:linear-gradient(90deg,#f97316,#ef4444); border-radius:4px; }
+.champ-cnt { font-size:0.7rem; color:var(--muted); width:4rem; text-align:right; }
+
+/* ── STATUS PILL ── */
+.status-pill {
+  display:inline-flex; align-items:center; gap:0.3rem;
+  font-size:0.65rem; font-weight:700; letter-spacing:.06em;
+  padding:0.2rem 0.6rem; border-radius:99px;
+}
+.status-pill.ready { background:rgba(34,197,94,.12); color:#22c55e; }
+.status-pill.pending { background:rgba(249,115,22,.12); color:#f97316; }
+.status-pill.empty { background:rgba(255,255,255,.06); color:var(--muted); }
+
+@media(max-width:700px) {
+  .triplet-brackets { grid-template-columns:1fr; }
+  .bracket-slot { border-right:none; border-bottom:1px solid var(--border); }
+  .bracket-slot:last-child { border-bottom:none; }
+  .field-grid { grid-template-columns:1fr; }
+  .field-grid-3 { grid-template-columns:1fr; }
+}
+
+/* ── MADNESS TAB LAYOUT ── */
+#tab-madness { display:none }
+#tab-madness.active { display:block }
+
+.madness-header {
+  display:flex; align-items:flex-end; justify-content:space-between;
+  margin-bottom:2rem; flex-wrap:wrap; gap:1rem;
+}
+.madness-title { font-family:'Syne',sans-serif; font-size:1.5rem; font-weight:800; }
+.madness-subtitle { font-size:0.75rem; color:var(--muted); margin-top:0.25rem; }
+.madness-badge {
+  background: linear-gradient(135deg,#f97316,#ef4444);
+  color:#fff; font-size:0.65rem; font-weight:700; letter-spacing:.08em;
+  padding:0.25rem 0.6rem; border-radius:99px; text-transform:uppercase;
+}
+
+/* ── MADNESS SUB-TABS ── */
+.madness-tabs {
+  display:flex; gap:0; border-bottom:1px solid var(--border);
+  margin-bottom:1.75rem;
+}
+.mtab-btn {
+  background:none; border:none; color:var(--muted);
+  font-size:0.72rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+  padding:0.65rem 1.1rem; cursor:pointer; position:relative;
+  transition: color .2s;
+}
+.mtab-btn:hover { color:var(--text); }
+.mtab-btn.active { color:var(--accent); }
+.mtab-btn.active::after {
+  content:''; position:absolute; bottom:-1px; left:0; right:0;
+  height:2px; background:var(--accent); border-radius:2px 2px 0 0;
+}
+.mpanel { display:none; }
+.mpanel.active { display:block; }
+
+/* ── STEP FLOW ── */
+.step-flow { display:flex; flex-direction:column; gap:1.25rem; }
+.step-card {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:10px; padding:1.25rem 1.5rem;
+  display:grid; grid-template-columns:2.5rem 1fr; gap:1rem; align-items:start;
+}
+.step-num {
+  width:2.5rem; height:2.5rem; border-radius:50%;
+  background:var(--bg); border:1.5px solid var(--border2);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Syne',sans-serif; font-size:0.8rem; font-weight:800;
+  color:var(--accent); flex-shrink:0;
+}
+.step-card.complete .step-num { background:var(--accent); color:#fff; border-color:var(--accent); }
+.step-label { font-size:0.65rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:0.25rem; }
+.step-title { font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; margin-bottom:0.5rem; }
+.step-body { font-size:0.78rem; color:var(--muted); line-height:1.6; }
+
+/* ── FORM ELEMENTS ── */
+.field-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-top:0.75rem; }
+.field-grid-3 { grid-template-columns:1fr 1fr 1fr; }
+.field { display:flex; flex-direction:column; gap:0.35rem; }
+.field label { font-size:0.65rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); }
+.field input, .field select, .field textarea {
+  background:var(--bg); border:1px solid var(--border2);
+  color:var(--text); border-radius:6px; padding:0.5rem 0.75rem;
+  font-size:0.8rem; font-family:inherit;
+  transition: border-color .2s;
+}
+.field input:focus, .field select:focus {
+  outline:none; border-color:var(--accent);
+}
+.field select option { background:var(--bg); }
+
+/* ── CONSENSUS TABLE ── */
+.consensus-table { width:100%; border-collapse:collapse; margin-top:0.75rem; }
+.consensus-table th {
+  font-size:0.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--muted); text-align:left; padding:0.4rem 0.5rem;
+  border-bottom:1px solid var(--border);
+}
+.consensus-table td { padding:0.45rem 0.5rem; font-size:0.78rem; border-bottom:1px solid var(--border); }
+.consensus-table tr:last-child td { border-bottom:none; }
+.consensus-table tr:hover td { background:rgba(255,255,255,.02); }
+.pct-bar-wrap { display:flex; align-items:center; gap:0.5rem; }
+.pct-bar-track { flex:1; height:4px; background:var(--border); border-radius:2px; }
+.pct-bar-fill { height:4px; background:var(--accent); border-radius:2px; transition:width .4s; }
+.pct-val { font-size:0.7rem; color:var(--muted); width:3rem; text-align:right; }
+.remove-row-btn {
+  background:none; border:none; color:var(--muted); cursor:pointer;
+  font-size:0.8rem; padding:0.1rem 0.3rem; border-radius:3px;
+  transition:color .2s;
+}
+.remove-row-btn:hover { color:#ef4444; }
+.add-team-btn {
+  margin-top:0.75rem; font-size:0.72rem; color:var(--accent);
+  background:none; border:1px dashed var(--border2); border-radius:6px;
+  padding:0.4rem 0.75rem; cursor:pointer; width:100%;
+  transition: border-color .2s, background .2s;
+}
+.add-team-btn:hover { border-color:var(--accent); background:rgba(249,115,22,.06); }
+
+/* ── OVERRIDES ── */
+.override-list { display:flex; flex-direction:column; gap:0.4rem; margin-top:0.75rem; }
+.override-row { display:grid; grid-template-columns:1fr 1fr auto; gap:0.5rem; align-items:center; }
+
+/* ── GENERATE BUTTON ── */
+.gen-btn-wrap { margin-top:1.5rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
+.btn-generate {
+  background:linear-gradient(135deg,#f97316,#ef4444);
+  color:#fff; border:none; border-radius:8px;
+  font-family:'Syne',sans-serif; font-weight:800; font-size:0.85rem;
+  letter-spacing:.04em; padding:0.75rem 2rem; cursor:pointer;
+  transition: opacity .2s, transform .1s;
+  display:flex; align-items:center; gap:0.5rem;
+}
+.btn-generate:hover { opacity:.9; }
+.btn-generate:active { transform:scale(.98); }
+.btn-generate:disabled { opacity:.4; cursor:not-allowed; }
+.gen-cost-note { font-size:0.72rem; color:var(--muted); }
+
+/* ── PROGRESS ── */
+.gen-progress {
+  margin-top:1rem; display:none;
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:8px; padding:1rem 1.25rem;
+}
+.gen-progress.visible { display:block; }
+.progress-bar-track { height:6px; background:var(--border); border-radius:3px; margin:0.5rem 0; }
+.progress-bar-fill {
+  height:6px; background:linear-gradient(90deg,#f97316,#ef4444);
+  border-radius:3px; width:0%; transition:width .3s;
+}
+.progress-log { font-size:0.72rem; color:var(--muted); margin-top:0.5rem; }
+
+/* ── TRIPLET CARDS ── */
+.triplet-grid { display:flex; flex-direction:column; gap:1rem; margin-top:1rem; }
+.triplet-card {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:10px; overflow:hidden;
+}
+.triplet-card-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0.75rem 1.25rem; border-bottom:1px solid var(--border);
+  background:rgba(249,115,22,.04);
+}
+.triplet-num { font-family:'Syne',sans-serif; font-weight:800; font-size:0.9rem; }
+.triplet-cost { font-size:0.72rem; color:var(--muted); }
+.triplet-brackets { display:grid; grid-template-columns:1fr 1fr 1fr; }
+.bracket-slot {
+  padding:0.9rem 1.1rem; border-right:1px solid var(--border);
+  position:relative;
+}
+.bracket-slot:last-child { border-right:none; }
+.slot-role {
+  font-size:0.6rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  margin-bottom:0.35rem;
+}
+.slot-role.primary { color:#22c55e; }
+.slot-role.divergent { color:#3b82f6; }
+.slot-role.contrarian { color:#f59e0b; }
+.slot-champion { font-family:'Syne',sans-serif; font-weight:700; font-size:0.85rem; margin-bottom:0.25rem; }
+.slot-ff { font-size:0.68rem; color:var(--muted); line-height:1.5; }
+.slot-strategy { font-size:0.62rem; color:var(--muted); margin-top:0.35rem; }
+.slot-upsets { font-size:0.62rem; color:var(--muted); }
+
+/* ── SUBMISSION GUIDE ── */
+.guide-actions { display:flex; gap:0.75rem; margin-bottom:1.25rem; flex-wrap:wrap; }
+.btn-export {
+  background:var(--surface); border:1px solid var(--border2);
+  color:var(--text); border-radius:6px; padding:0.5rem 1rem;
+  font-size:0.75rem; font-weight:600; cursor:pointer;
+  display:flex; align-items:center; gap:0.4rem;
+  transition: border-color .2s, background .2s;
+}
+.btn-export:hover { border-color:var(--accent); background:rgba(249,115,22,.06); }
+.guide-output {
+  background:var(--bg); border:1px solid var(--border);
+  border-radius:8px; padding:1.25rem;
+  font-family:'Courier New',monospace; font-size:0.72rem;
+  line-height:1.8; color:var(--text); white-space:pre-wrap;
+  max-height:480px; overflow-y:auto;
+}
+.guide-empty {
+  text-align:center; padding:3rem 1rem; color:var(--muted);
+}
+.guide-empty .big-icon { font-size:2.5rem; margin-bottom:0.75rem; }
+.guide-empty h3 { font-family:'Syne',sans-serif; font-size:1rem; color:var(--text); margin-bottom:0.5rem; }
+.guide-empty p { font-size:0.75rem; line-height:1.6; max-width:360px; margin:0 auto; }
+
+/* ── CHAMPION DIST CHART ── */
+.champ-dist { margin-top:1.5rem; }
+.champ-dist-title { font-size:0.65rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:0.75rem; }
+.champ-row { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.4rem; }
+.champ-name { font-size:0.78rem; width:130px; flex-shrink:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.champ-bar-track { flex:1; height:8px; background:var(--border); border-radius:4px; }
+.champ-bar-fill { height:8px; background:linear-gradient(90deg,#f97316,#ef4444); border-radius:4px; }
+.champ-cnt { font-size:0.7rem; color:var(--muted); width:4rem; text-align:right; }
+
+/* ── STATUS PILL ── */
+.status-pill {
+  display:inline-flex; align-items:center; gap:0.3rem;
+  font-size:0.65rem; font-weight:700; letter-spacing:.06em;
+  padding:0.2rem 0.6rem; border-radius:99px;
+}
+.status-pill.ready { background:rgba(34,197,94,.12); color:#22c55e; }
+.status-pill.pending { background:rgba(249,115,22,.12); color:#f97316; }
+.status-pill.empty { background:rgba(255,255,255,.06); color:var(--muted); }
+
+@media(max-width:700px) {
+  .triplet-brackets { grid-template-columns:1fr; }
+  .bracket-slot { border-right:none; border-bottom:1px solid var(--border); }
+  .bracket-slot:last-child { border-bottom:none; }
+  .field-grid { grid-template-columns:1fr; }
+  .field-grid-3 { grid-template-columns:1fr; }
+}
 </style>
 </head>
 <body>
@@ -919,6 +1561,7 @@
     <button class="tab-btn" data-tab="nba">NBA Picks</button>
     <button class="tab-btn" data-tab="parlays">Parlays</button>
     <button class="tab-btn" data-tab="performance">Performance</button>
+    <button class="tab-btn" data-tab="madness">Madness</button>
     <button class="tab-btn" data-tab="bettor">AI Bettor</button>
     <button class="tab-btn" data-tab="history">Historical</button>
     <button class="tab-btn" data-tab="generator">🏀 Madness</button>
@@ -1832,7 +2475,314 @@
     <div id="nba-all-games"><div class="nba-empty">Loading...</div></div>
   </div>
 </div>
+<div class="tab-panel" id="tab-madness">
 
+  <div class="madness-header">
+    <div>
+      <div class="madness-title">🏀 March Madness Engine</div>
+      <div class="madness-subtitle">Bracket generator · Triplet packager · Pool submission guide</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:0.75rem">
+      <span id="madness-status-pill" class="status-pill empty">No data</span>
+      <span class="madness-badge">Selection Sunday</span>
+    </div>
+  </div>
+
+  <!-- Sub-tabs -->
+  <div class="madness-tabs">
+    <button class="mtab-btn active" onclick="switchMTab('setup')">1 · Setup</button>
+    <button class="mtab-btn" onclick="switchMTab('triplets')">2 · Triplets</button>
+    <button class="mtab-btn" onclick="switchMTab('guide')">3 · Submission Guide</button>
+    <button class="mtab-btn" onclick="switchMTab('lookup')">4 · Team Lookup</button>
+  </div>
+
+  <!-- ======================================== -->
+  <div class="mpanel active" id="mpanel-setup">
+    <div class="step-flow">
+
+      <!-- STEP 1: Pool config -->
+      <div class="step-card" id="step1-card">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-label">Pool Configuration</div>
+          <div class="step-title">Configure your target pool</div>
+          <div class="step-body">Enter details about the pool you're entering. This drives the EV calculation and triplet strategy.</div>
+          <div class="field-grid" style="margin-top:1rem">
+            <div class="field">
+              <label>Pool Name</label>
+              <input type="text" id="pool-name" value="The $66K Pool (runyourpool.com)" />
+            </div>
+            <div class="field">
+              <label>Estimated Field Size</label>
+              <input type="number" id="pool-field" value="1800" />
+            </div>
+            <div class="field">
+              <label>Entry Fee — Single ($)</label>
+              <input type="number" id="pool-fee-single" value="55" />
+            </div>
+            <div class="field">
+              <label>Entry Fee — Triplet ($)</label>
+              <input type="number" id="pool-fee-triplet" value="110" />
+            </div>
+            <div class="field">
+              <label>Number of Triplets to Enter</label>
+              <input type="number" id="pool-n-triplets" value="6" min="1" max="20" />
+            </div>
+            <div class="field">
+              <label>Prize Structure</label>
+              <select id="pool-prize">
+                <option value="top10-heavy">Top 10, 45% to 1st (your pool)</option>
+                <option value="top5-heavy">Top 5, 50% to 1st</option>
+                <option value="top3">Top 3, winner take most</option>
+                <option value="tiered">Tiered 1-20</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2: Consensus data -->
+      <div class="step-card" id="step2-card">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-label">Consensus Data</div>
+          <div class="step-title">Enter ESPN/Yahoo public pick percentages</div>
+          <div class="step-body">After the bracket drops on Selection Sunday, go to ESPN Tournament Challenge and enter the % of brackets picking each team as champion. This drives anti-consensus weighting.</div>
+
+          <table class="consensus-table" id="consensus-table">
+            <thead>
+              <tr>
+                <th>Team Name</th>
+                <th>Seed</th>
+                <th>Public Champion %</th>
+                <th>Model AdjEM</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="consensus-tbody">
+              <!-- Rows populated by JS -->
+            </tbody>
+          </table>
+          <button class="add-team-btn" onclick="addConsensusRow()">+ Add Team</button>
+          <div style="margin-top:0.75rem;font-size:0.7rem;color:var(--muted)">
+            Percentages don't need to sum to 100 — they're relative weights. Add the top 8-10 likely champions.
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: High-confidence overrides -->
+      <div class="step-card" id="step3-card">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-label">Optional</div>
+          <div class="step-title">High-confidence game overrides</div>
+          <div class="step-body">Lock specific first/second round games where your model has very high conviction. These picks will appear in all brackets regardless of strategy. Use sparingly — max 3-5 games.</div>
+
+          <div class="override-list" id="override-list">
+            <!-- Rows added by JS -->
+          </div>
+          <button class="add-team-btn" onclick="addOverrideRow()" style="margin-top:0.75rem">+ Add Override</button>
+          <div style="margin-top:0.75rem;font-size:0.7rem;color:var(--muted)">
+            Game ID format: <code style="background:var(--bg);padding:0.1rem 0.3rem;border-radius:3px;font-size:0.65rem">South_R1_2</code> = South region, Round 1, matchup index 2
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4: Portfolio mix -->
+      <div class="step-card" id="step4-card">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-label">Free Bracket Portfolio</div>
+          <div class="step-title">Set your full 200-bracket allocation</div>
+          <div class="step-body">For ESPN, Yahoo, CBS and sportsbook free contests. Recommended: 80 chalk / 80 value / 40 chaos.</div>
+          <div class="field-grid field-grid-3" style="margin-top:1rem">
+            <div class="field">
+              <label>Chalk Brackets</label>
+              <input type="number" id="n-chalk" value="80" min="0" max="150" />
+            </div>
+            <div class="field">
+              <label>Value Brackets</label>
+              <input type="number" id="n-value" value="80" min="0" max="150" />
+            </div>
+            <div class="field">
+              <label>Chaos Brackets</label>
+              <input type="number" id="n-chaos" value="40" min="0" max="100" />
+            </div>
+          </div>
+          <div id="portfolio-total" style="margin-top:0.6rem;font-size:0.75rem;color:var(--muted)">
+            Total: 200 brackets
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /step-flow -->
+
+    <!-- GENERATE -->
+    <div class="gen-btn-wrap">
+      <button class="btn-generate" id="btn-generate-main" onclick="runGenerator()">
+        <span>⚡</span> Generate Brackets
+      </button>
+      <div class="gen-cost-note" id="gen-cost-note">
+        6 triplets · $660 · ~200 free brackets
+      </div>
+    </div>
+
+    <div class="gen-progress" id="gen-progress">
+      <div style="font-size:0.78rem;font-weight:600" id="gen-progress-label">Initializing...</div>
+      <div class="progress-bar-track"><div class="progress-bar-fill" id="gen-progress-bar"></div></div>
+      <div class="progress-log" id="gen-progress-log"></div>
+    </div>
+
+  </div><!-- /mpanel-setup -->
+
+
+  <!-- ======================================== -->
+  <div class="mpanel" id="mpanel-triplets">
+    <div id="triplets-empty" class="guide-empty">
+      <div class="big-icon">🗂</div>
+      <h3>No triplets generated yet</h3>
+      <p>Complete Setup and click Generate Brackets to see your packaged triplets here.</p>
+    </div>
+    <div id="triplets-content" style="display:none">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:0.75rem">
+        <div>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem" id="triplets-summary-line"></div>
+          <div style="font-size:0.72rem;color:var(--muted);margin-top:0.2rem" id="triplets-summary-sub"></div>
+        </div>
+        <button class="btn-export" onclick="switchMTab('guide')">View Submission Guide →</button>
+      </div>
+      <div class="triplet-grid" id="triplet-grid"></div>
+      <div class="champ-dist" id="champ-dist" style="display:none">
+        <div class="champ-dist-title">Champion Distribution Across All Triplets</div>
+        <div id="champ-dist-bars"></div>
+      </div>
+    </div>
+  </div><!-- /mpanel-triplets -->
+
+
+  <!-- ======================================== -->
+  <div class="mpanel" id="mpanel-guide">
+    <div id="guide-empty" class="guide-empty">
+      <div class="big-icon">📋</div>
+      <h3>Submission guide will appear here</h3>
+      <p>Generate brackets first, then come back here for your step-by-step runyourpool.com entry guide.</p>
+    </div>
+    <div id="guide-content" style="display:none">
+      <div class="guide-actions">
+        <button class="btn-export" onclick="copyGuide()">📋 Copy to Clipboard</button>
+        <button class="btn-export" onclick="downloadGuide()">⬇ Download .txt</button>
+        <button class="btn-export" onclick="printGuide()">🖨 Print</button>
+      </div>
+      <div class="guide-output" id="guide-output"></div>
+    </div>
+  </div><!-- /mpanel-guide -->
+
+
+  <!-- ======================================== -->
+  <div class="mpanel" id="mpanel-lookup">
+    <div style="max-width:680px">
+
+      <div style="margin-bottom:1.5rem">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:0.35rem">Team Lookup</div>
+        <div style="font-size:0.75rem;color:var(--muted);line-height:1.6">
+          Search any team's current Barttorvik efficiency ratings. 
+          Use the <strong style="color:var(--text)">→ Add to Consensus</strong> button to pipe 
+          a team's AdjEM directly into the Setup tab consensus table.
+        </div>
+      </div>
+
+      <!-- Search bar -->
+      <div style="display:flex;gap:0.6rem;margin-bottom:1.25rem">
+        <div style="flex:1;position:relative">
+          <input id="lookup-input" type="text" placeholder="Search team name (e.g. Duke, Houston, Auburn…)"
+            style="width:100%;background:var(--bg);border:1px solid var(--border2);color:var(--text);
+                   border-radius:8px;padding:0.6rem 0.75rem 0.6rem 2.25rem;font-size:0.82rem;font-family:inherit;
+                   box-sizing:border-box;transition:border-color .2s"
+            oninput="lookupSearch(this.value)"
+            onkeydown="if(event.key==='Enter')lookupSearch(this.value,true)"
+          />
+          <span style="position:absolute;left:0.75rem;top:50%;transform:translateY(-50%);font-size:0.85rem;pointer-events:none">🔍</span>
+        </div>
+        <button onclick="lookupSearch(document.getElementById('lookup-input').value,true)"
+          style="background:linear-gradient(135deg,#f97316,#ef4444);color:#fff;border:none;border-radius:8px;
+                 padding:0.6rem 1.1rem;font-size:0.78rem;font-weight:700;cursor:pointer;white-space:nowrap">
+          Search
+        </button>
+      </div>
+
+      <!-- Autocomplete suggestions -->
+      <div id="lookup-suggestions" style="display:none;background:var(--surface);border:1px solid var(--border);
+           border-radius:8px;margin-bottom:1rem;overflow:hidden;max-height:220px;overflow-y:auto"></div>
+
+      <!-- Result card -->
+      <div id="lookup-result" style="display:none">
+        <div class="step-card" style="grid-template-columns:1fr;padding:1.25rem 1.5rem">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;margin-bottom:1rem">
+            <div>
+              <div id="lr-team" style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem"></div>
+              <div id="lr-conf" style="font-size:0.72rem;color:var(--muted);margin-top:0.2rem"></div>
+            </div>
+            <button onclick="addLookupToConsensus()"
+              style="background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);color:var(--accent);
+                     border-radius:6px;padding:0.4rem 0.85rem;font-size:0.72rem;font-weight:700;cursor:pointer;
+                     transition:background .2s"
+              onmouseover="this.style.background='rgba(249,115,22,.18)'"
+              onmouseout="this.style.background='rgba(249,115,22,.1)'">
+              → Add to Consensus Table
+            </button>
+          </div>
+
+          <!-- Stats grid -->
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;margin-bottom:1rem" id="lr-stats-grid"></div>
+
+          <!-- Efficiency bar -->
+          <div style="margin-top:0.25rem">
+            <div style="font-size:0.62rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+                        color:var(--muted);margin-bottom:0.5rem">Efficiency Profile</div>
+            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.4rem">
+              <div style="font-size:0.72rem;width:60px">Offense</div>
+              <div style="flex:1;height:8px;background:var(--border);border-radius:4px">
+                <div id="lr-o-bar" style="height:8px;background:#22c55e;border-radius:4px;transition:width .5s"></div>
+              </div>
+              <div id="lr-o-val" style="font-size:0.72rem;color:var(--muted);width:40px;text-align:right"></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem">
+              <div style="font-size:0.72rem;width:60px">Defense</div>
+              <div style="flex:1;height:8px;background:var(--border);border-radius:4px">
+                <div id="lr-d-bar" style="height:8px;background:#ef4444;border-radius:4px;transition:width .5s"></div>
+              </div>
+              <div id="lr-d-val" style="font-size:0.72rem;color:var(--muted);width:40px;text-align:right"></div>
+            </div>
+          </div>
+
+          <!-- Win prob quick calc -->
+          <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border)">
+            <div style="font-size:0.62rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+                        color:var(--muted);margin-bottom:0.6rem">Quick Win Probability vs. Opponent</div>
+            <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap">
+              <input id="lr-opp-input" type="text" placeholder="Opponent AdjEM (e.g. 22.5)"
+                style="background:var(--bg);border:1px solid var(--border2);color:var(--text);
+                       border-radius:6px;padding:0.4rem 0.65rem;font-size:0.75rem;font-family:inherit;width:160px"
+                oninput="calcQuickWinProb()" />
+              <div id="lr-prob-result" style="font-size:0.82rem;color:var(--accent);font-weight:700"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty / error state -->
+      <div id="lookup-empty" style="text-align:center;padding:2.5rem 1rem;color:var(--muted)">
+        <div style="font-size:2rem;margin-bottom:0.5rem">📊</div>
+        <div style="font-size:0.8rem">Enter a team name to load their Barttorvik ratings.</div>
+        <div style="font-size:0.72rem;margin-top:0.4rem">
+          Data loads from <code style="background:var(--bg);padding:0.1rem 0.3rem;border-radius:3px;font-size:0.65rem">bart_teams.json</code> in your BBALLIQ folder.
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /mpanel-lookup -->
+
+</div><!-- /tab-madness -->
 </main>
 
 
@@ -3498,6 +4448,789 @@ document.querySelector('[data-tab="nba"]').addEventListener('click', () => {
   if (!document.getElementById('nba-game-picks').dataset.loaded) {
     document.getElementById('nba-game-picks').dataset.loaded = '1';
     loadNBAData();
+  }
+});
+
+// ═══════════════════════════════════════════════════════
+// BASKETBALL IQ — MADNESS TAB LOGIC
+// Implements bracket_generator_v2.py entirely in JS
+// ═══════════════════════════════════════════════════════
+
+// ── STATE ──
+const MG = {
+  teams: [],
+  triplets: [],
+  portfolio: [],
+  guideText: '',
+  generated: false,
+};
+
+// ── DEFAULT CONSENSUS DATA (pre-filled, user edits after Selection Sunday) ──
+const DEFAULT_CONSENSUS = [
+  { name:'Duke',       seed:1, public_pct:35, adj_em:28.5 },
+  { name:'Florida',    seed:1, public_pct:18, adj_em:27.8 },
+  { name:'Houston',    seed:1, public_pct:15, adj_em:26.9 },
+  { name:'Auburn',     seed:1, public_pct:10, adj_em:25.1 },
+  { name:'Tennessee',  seed:2, public_pct: 8, adj_em:24.3 },
+  { name:"St. John's", seed:2, public_pct: 5, adj_em:23.8 },
+  { name:'Texas Tech', seed:3, public_pct: 4, adj_em:21.4 },
+  { name:'Michigan St',seed:2, public_pct: 3, adj_em:22.9 },
+];
+
+// ── SUB-TAB SWITCH ──
+function switchMTab(tab) {
+  document.querySelectorAll('.mtab-btn').forEach((b,i) => {
+    const tabs = ['setup','triplets','guide','lookup'];
+    b.classList.toggle('active', tabs[i]===tab);
+  });
+  document.querySelectorAll('.mpanel').forEach(p => p.classList.remove('active'));
+  document.getElementById('mpanel-'+tab).classList.add('active');
+}
+
+// ── CONSENSUS TABLE ──
+function buildConsensusTable() {
+  const tbody = document.getElementById('consensus-tbody');
+  tbody.innerHTML = '';
+  DEFAULT_CONSENSUS.forEach((t,i) => addConsensusRow(t));
+}
+
+function addConsensusRow(data={}) {
+  const tbody = document.getElementById('consensus-tbody');
+  const i = tbody.children.length;
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td><input type="text" value="${data.name||''}" placeholder="Team name"
+      style="background:var(--bg);border:1px solid var(--border2);color:var(--text);border-radius:4px;padding:0.3rem 0.5rem;font-size:0.75rem;width:140px"
+      onchange="updatePublicPctBar(this)"/></td>
+    <td><input type="number" value="${data.seed||1}" min="1" max="16"
+      style="background:var(--bg);border:1px solid var(--border2);color:var(--text);border-radius:4px;padding:0.3rem 0.4rem;font-size:0.75rem;width:45px"/></td>
+    <td>
+      <div class="pct-bar-wrap">
+        <div class="pct-bar-track"><div class="pct-bar-fill" style="width:${data.public_pct||0}%"></div></div>
+        <input type="number" value="${data.public_pct||0}" min="0" max="100" step="0.5"
+          style="background:var(--bg);border:1px solid var(--border2);color:var(--text);border-radius:4px;padding:0.25rem 0.4rem;font-size:0.72rem;width:52px"
+          oninput="syncPctBar(this)"/>
+        <span style="font-size:0.68rem;color:var(--muted)">%</span>
+      </div>
+    </td>
+    <td><input type="number" value="${data.adj_em||0}" step="0.1"
+      style="background:var(--bg);border:1px solid var(--border2);color:var(--text);border-radius:4px;padding:0.3rem 0.4rem;font-size:0.75rem;width:65px"/></td>
+    <td><button class="remove-row-btn" onclick="this.closest('tr').remove()">✕</button></td>
+  `;
+  tbody.appendChild(tr);
+}
+
+function syncPctBar(input) {
+  const bar = input.closest('.pct-bar-wrap').querySelector('.pct-bar-fill');
+  bar.style.width = Math.min(100, input.value) + '%';
+}
+
+// ── OVERRIDES ──
+function addOverrideRow() {
+  const list = document.getElementById('override-list');
+  const row = document.createElement('div');
+  row.className = 'override-row';
+  row.innerHTML = `
+    <input type="text" placeholder="Game ID (e.g. South_R1_2)"
+      style="background:var(--bg);border:1px solid var(--border2);color:var(--text);border-radius:6px;padding:0.45rem 0.65rem;font-size:0.75rem"/>
+    <input type="text" placeholder="Locked winner (team name)"
+      style="background:var(--bg);border:1px solid var(--border2);color:var(--text);border-radius:6px;padding:0.45rem 0.65rem;font-size:0.75rem"/>
+    <button class="remove-row-btn" onclick="this.closest('.override-row').remove()">✕</button>
+  `;
+  list.appendChild(row);
+}
+
+// ── PORTFOLIO TOTAL COUNTER ──
+function updatePortfolioTotal() {
+  const c = +document.getElementById('n-chalk').value||0;
+  const v = +document.getElementById('n-value').value||0;
+  const ch = +document.getElementById('n-chaos').value||0;
+  document.getElementById('portfolio-total').textContent = `Total: ${c+v+ch} brackets`;
+}
+['n-chalk','n-value','n-chaos'].forEach(id => {
+  const el = document.getElementById(id);
+  if(el) el.addEventListener('input', updatePortfolioTotal);
+});
+
+function updateCostNote() {
+  const n = +document.getElementById('pool-n-triplets').value||0;
+  const fee = +document.getElementById('pool-fee-triplet').value||110;
+  const c = +document.getElementById('n-chalk').value||80;
+  const v = +document.getElementById('n-value').value||80;
+  const ch = +document.getElementById('n-chaos').value||40;
+  document.getElementById('gen-cost-note').textContent =
+    `${n} triplets · $${(n*fee).toLocaleString()} · ~${c+v+ch} free brackets`;
+}
+['pool-n-triplets','pool-fee-triplet','n-chalk','n-value','n-chaos'].forEach(id => {
+  const el = document.getElementById(id);
+  if(el) el.addEventListener('input', updateCostNote);
+});
+
+// ── CORE MATH (mirrors bracket_generator_v2.py) ──
+function winProb(adjEmA, adjEmB) {
+  // KenPom log5 formula
+  const diff = adjEmB - adjEmA;
+  return 1 / (1 + Math.pow(10, diff / 15));
+}
+
+function predictGame(adjEmA, adjEmB, strategy, gameId, overrides) {
+  if (overrides && overrides[gameId]) return overrides[gameId] === 'A' ? 0 : 1;
+  const pA = winProb(adjEmA, adjEmB);
+  if (strategy === 'chalk') return pA >= 0.5 ? 0 : 1;
+  if (strategy === 'value') {
+    const udProb = pA >= 0.5 ? 1-pA : pA;
+    if (udProb >= 0.38) return Math.random() < (udProb + 0.04) ? (pA<0.5?0:1) : (pA>=0.5?0:1);
+    return pA >= 0.5 ? 0 : 1;
+  }
+  // chaos
+  return Math.random() < pA ? 0 : 1;
+}
+
+function getConsensusData() {
+  const rows = document.querySelectorAll('#consensus-tbody tr');
+  const teams = [];
+  rows.forEach(row => {
+    const inputs = row.querySelectorAll('input');
+    const name = inputs[0].value.trim();
+    const seed = +inputs[1].value;
+    const pct = +inputs[2].value / 100;
+    const adjEm = +inputs[3].value;
+    if (name) teams.push({ name, seed, public_pct: pct, adj_em: adjEm });
+  });
+  return teams;
+}
+
+function getOverrides() {
+  const overrides = {};
+  document.querySelectorAll('.override-row').forEach(row => {
+    const inputs = row.querySelectorAll('input');
+    const gameId = inputs[0].value.trim();
+    const winner = inputs[1].value.trim();
+    if (gameId && winner) overrides[gameId] = winner;
+  });
+  return overrides;
+}
+
+// Contrarian champion sampling
+function sampleChampions(teams, nBrackets) {
+  if (!teams.length) return Array(nBrackets).fill(null);
+  
+  // Contrarian weight = adjEM softmax / public_pct
+  const softmaxWeights = teams.map(t => Math.exp(t.adj_em / 10));
+  const totalSM = softmaxWeights.reduce((a,b)=>a+b,0);
+  const modelProbs = softmaxWeights.map(w => w/totalSM);
+  
+  const contrWeights = teams.map((t,i) => {
+    const pub = t.public_pct || 0.02;
+    return modelProbs[i] / pub;
+  });
+  const totalC = contrWeights.reduce((a,b)=>a+b,0);
+  const normWeights = contrWeights.map(w => w/totalC);
+  
+  // Sample
+  const result = [];
+  for (let i=0; i<nBrackets; i++) {
+    let r = Math.random(), cumul = 0;
+    for (let j=0; j<teams.length; j++) {
+      cumul += normWeights[j];
+      if (r <= cumul) { result.push(teams[j].name); break; }
+    }
+    if (result.length < i+1) result.push(teams[teams.length-1].name);
+  }
+  return result;
+}
+
+// Simulate a single bracket (simplified — uses consensus teams for probabilities)
+function simulateBracket(strategy, forcedChampion, consensusTeams) {
+  const seeds = [1,2,3,4,5,6,7,8];
+  const upsets = { chalk:0, value:0, chaos:0 };
+  let upsetCount = 0;
+  
+  // Simulate 6 rounds worth of games using AdjEM pairs
+  const picks = [];
+  let roundTeams = consensusTeams.slice().sort((a,b)=>a.seed-b.seed);
+  
+  // If not enough teams for full bracket, pad with synthetic teams
+  while (roundTeams.length < 8) {
+    roundTeams.push({ name:`Seed${roundTeams.length+1}`, seed:roundTeams.length+1, adj_em:0, public_pct:0.01 });
+  }
+  
+  let current = roundTeams.slice(0,8);
+  for (let round=0; round<3; round++) {
+    const next = [];
+    for (let i=0; i<current.length; i+=2) {
+      const a = current[i], b = current[i+1]||current[i];
+      const winnerIdx = predictGame(a.adj_em, b.adj_em, strategy, `R${round}_${i}`, null);
+      const winner = winnerIdx===0 ? a : b;
+      const loser  = winnerIdx===0 ? b : a;
+      if (winner.seed > loser.seed) upsetCount++;
+      next.push(winner);
+      picks.push({ game:`R${round}_${i}`, winner:winner.name });
+    }
+    current = next;
+  }
+  
+  const finalFour = current.map(t=>t.name);
+  
+  // Determine champion
+  let champion = forcedChampion || (current[0]?.name || '');
+  
+  // If forced champion not in our simulated FF, keep it anyway (realistic — it came from another region)
+  if (!forcedChampion && current.length) {
+    // Run championship from remaining
+    if (current.length >= 2) {
+      const sfA = predictGame(current[0].adj_em, current[1].adj_em, strategy, 'SF1', null);
+      champion = sfA===0 ? current[0].name : current[1].name;
+    }
+  }
+  
+  const confidence = picks.length ? 0.5 + (Math.random()*0.15) : 0.65;
+  
+  return { finalFour, champion, upsetCount, confidence, picks };
+}
+
+function makeBracket(name, strategy, champion, consensusTeams) {
+  const sim = simulateBracket(strategy, champion, consensusTeams);
+  return {
+    name,
+    strategy,
+    champion: sim.champion,
+    final_four: sim.finalFour,
+    upset_count: sim.upsetCount,
+    confidence: sim.confidence,
+    picks: sim.picks,
+  };
+}
+
+function similarity(b1, b2) {
+  const ff1 = new Set(b1.final_four), ff2 = new Set(b2.final_four);
+  const intersection = [...ff1].filter(t=>ff2.has(t)).length;
+  const ffSim = intersection / 4;
+  const champSim = b1.champion===b2.champion ? 1 : 0;
+  return 0.6*ffSim + 0.4*champSim;
+}
+
+function enforceUnique(brackets, threshold=0.85) {
+  const unique = [];
+  for (const b of brackets) {
+    let isUnique = true;
+    for (const ex of unique) {
+      if (similarity(b, ex) > threshold) { isUnique=false; break; }
+    }
+    if (isUnique) { unique.push(b); }
+    else {
+      // Regenerate as chaos
+      const varied = makeBracket(b.name+'_v','chaos',null,MG.teams);
+      unique.push(varied);
+    }
+  }
+  return unique;
+}
+
+function packageTriplets(chalk, value, chaos) {
+  const n = Math.min(chalk.length, value.length, chaos.length);
+  const usedChampions = new Set();
+  const triplets = [];
+  
+  for (let i=0; i<n; i++) {
+    const primary    = { ...chalk[i], triplet_role:'primary',    triplet_id:i+1 };
+    const divergent  = { ...value[i], triplet_role:'divergent',  triplet_id:i+1 };
+    const contrarian = { ...chaos[i], triplet_role:'contrarian', triplet_id:i+1 };
+    
+    // Enforce unique champions within triplet
+    const localUsed = new Set();
+    [primary, divergent, contrarian].forEach(b => {
+      if (localUsed.has(b.champion)) {
+        // Find an unused final four team
+        const alt = b.final_four.find(t => !localUsed.has(t));
+        if (alt) b.champion = alt;
+      }
+      localUsed.add(b.champion);
+    });
+    
+    triplets.push([primary, divergent, contrarian]);
+  }
+  return triplets;
+}
+
+// ── MAIN GENERATOR ──
+async function runGenerator() {
+  const btn = document.getElementById('btn-generate-main');
+  btn.disabled = true;
+  
+  const progress = document.getElementById('gen-progress');
+  const bar = document.getElementById('gen-progress-bar');
+  const label = document.getElementById('gen-progress-label');
+  const log = document.getElementById('gen-progress-log');
+  progress.classList.add('visible');
+  
+  const updateProg = (pct, msg, logMsg='') => {
+    bar.style.width = pct+'%';
+    label.textContent = msg;
+    if (logMsg) log.textContent = logMsg;
+  };
+
+  await new Promise(r=>setTimeout(r,50));
+  
+  try {
+    // Read config
+    const consensusTeams = getConsensusData();
+    const overrides = getOverrides();
+    const nTriplets = +document.getElementById('pool-n-triplets').value||6;
+    const nChalk = +document.getElementById('n-chalk').value||80;
+    const nValue = +document.getElementById('n-value').value||80;
+    const nChaos = +document.getElementById('n-chaos').value||40;
+    const poolName = document.getElementById('pool-name').value;
+    const feeTriplet = +document.getElementById('pool-fee-triplet').value||110;
+    
+    MG.teams = consensusTeams;
+    
+    updateProg(10, 'Building consensus model...', `Loaded ${consensusTeams.length} teams`);
+    await new Promise(r=>setTimeout(r,120));
+    
+    // Sample champions for all bracket types
+    const chalkChamps = sampleChampions(consensusTeams, nTriplets);
+    const valueChamps = sampleChampions(consensusTeams, nTriplets);
+    const chaosChamps = sampleChampions(consensusTeams, nTriplets);
+    
+    updateProg(25, `Generating ${nTriplets} chalk brackets...`, 'Applying anti-consensus weighting');
+    await new Promise(r=>setTimeout(r,80));
+    
+    const chalkBrackets = chalkChamps.map((ch,i) => makeBracket(`Chalk_${i+1}`, 'chalk', ch, consensusTeams));
+    
+    updateProg(45, `Generating ${nTriplets} value brackets...`, 'Value strategy: upset threshold ≥38%');
+    await new Promise(r=>setTimeout(r,80));
+    
+    const valueBrackets = valueChamps.map((ch,i) => makeBracket(`Value_${i+1}`, 'value', ch, consensusTeams));
+    
+    updateProg(60, `Generating ${nTriplets} chaos brackets...`, 'Chaos strategy: probability sampling');
+    await new Promise(r=>setTimeout(r,80));
+    
+    const chaosBrackets = chaosChamps.map((ch,i) => makeBracket(`Chaos_${i+1}`, 'chaos', ch, consensusTeams));
+    
+    updateProg(72, 'Packaging triplets...', 'Enforcing unique champions within each bundle');
+    await new Promise(r=>setTimeout(r,80));
+    
+    MG.triplets = packageTriplets(chalkBrackets, valueBrackets, chaosBrackets);
+    
+    updateProg(82, 'Generating full free portfolio...', `Creating ${nChalk+nValue+nChaos} free brackets`);
+    await new Promise(r=>setTimeout(r,120));
+    
+    const allChalkChamps = sampleChampions(consensusTeams, nChalk);
+    const allValueChamps = sampleChampions(consensusTeams, nValue);
+    const allChaosChamps = sampleChampions(consensusTeams, nChaos);
+    
+    let portfolio = [
+      ...allChalkChamps.map((ch,i) => makeBracket(`FreeChalk_${i+1}`, 'chalk', ch, consensusTeams)),
+      ...allValueChamps.map((ch,i) => makeBracket(`FreeValue_${i+1}`, 'value', ch, consensusTeams)),
+      ...allChaosChamps.map((ch,i) => makeBracket(`FreeChaos_${i+1}`, 'chaos', ch, consensusTeams)),
+    ];
+    
+    updateProg(90, 'Enforcing uniqueness...', `Similarity threshold: <85%`);
+    await new Promise(r=>setTimeout(r,80));
+    
+    MG.portfolio = enforceUnique(portfolio);
+    
+    updateProg(95, 'Building submission guide...', '');
+    await new Promise(r=>setTimeout(r,60));
+    
+    // Build guide text
+    MG.guideText = buildGuideText(poolName, feeTriplet, MG.triplets);
+    
+    updateProg(100, '✅ Complete!', `Generated ${MG.triplets.length} triplets · ${MG.portfolio.length} free brackets`);
+    MG.generated = true;
+    
+    // Mark step cards complete
+    document.querySelectorAll('.step-card').forEach(c => c.classList.add('complete'));
+    
+    // Update status pill
+    const pill = document.getElementById('madness-status-pill');
+    pill.className = 'status-pill ready';
+    pill.textContent = `${MG.triplets.length} triplets ready`;
+    
+    // Render panels
+    renderTriplets();
+    renderGuide();
+    
+    await new Promise(r=>setTimeout(r,800));
+    progress.classList.remove('visible');
+    switchMTab('triplets');
+    
+  } catch(e) {
+    updateProg(0, '❌ Error: '+e.message, '');
+    console.error(e);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+// ── RENDER TRIPLETS PANEL ──
+function renderTriplets() {
+  const empty = document.getElementById('triplets-empty');
+  const content = document.getElementById('triplets-content');
+  const grid = document.getElementById('triplet-grid');
+  
+  if (!MG.triplets.length) { empty.style.display=''; content.style.display='none'; return; }
+  empty.style.display='none'; content.style.display='';
+  
+  const fee = +document.getElementById('pool-fee-triplet').value||110;
+  const total = MG.triplets.length * fee;
+  document.getElementById('triplets-summary-line').textContent =
+    `${MG.triplets.length} Triplets · $${total.toLocaleString()} investment`;
+  document.getElementById('triplets-summary-sub').textContent =
+    `${MG.triplets.length*3} paid brackets · ${MG.portfolio.length} free brackets`;
+  
+  grid.innerHTML = MG.triplets.map((triplet, ti) => `
+    <div class="triplet-card">
+      <div class="triplet-card-header">
+        <div class="triplet-num">Triplet #${ti+1}</div>
+        <div class="triplet-cost">$${fee} bundle</div>
+      </div>
+      <div class="triplet-brackets">
+        ${triplet.map(b => `
+          <div class="bracket-slot">
+            <div class="slot-role ${b.triplet_role}">${b.triplet_role.toUpperCase()}</div>
+            <div class="slot-champion">${b.champion}</div>
+            <div class="slot-ff">${b.final_four.map(t=>`<span>${t}</span>`).join('<br>')}</div>
+            <div class="slot-strategy">${b.strategy} · ${b.upset_count} upset${b.upset_count!==1?'s':''}</div>
+            <div class="slot-upsets">Conf: ${(b.confidence*100).toFixed(0)}%</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+  
+  // Champion distribution
+  const champCounts = {};
+  MG.triplets.flat().forEach(b => { champCounts[b.champion]=(champCounts[b.champion]||0)+1; });
+  const total_b = MG.triplets.length*3;
+  const sorted = Object.entries(champCounts).sort((a,b)=>b[1]-a[1]);
+  const maxCount = sorted[0]?.[1]||1;
+  
+  document.getElementById('champ-dist-bars').innerHTML = sorted.map(([name,cnt]) => `
+    <div class="champ-row">
+      <div class="champ-name">${name}</div>
+      <div class="champ-bar-track">
+        <div class="champ-bar-fill" style="width:${(cnt/maxCount*100).toFixed(0)}%"></div>
+      </div>
+      <div class="champ-cnt">${cnt} bracket${cnt!==1?'s':''} (${(cnt/total_b*100).toFixed(0)}%)</div>
+    </div>
+  `).join('');
+  document.getElementById('champ-dist').style.display='';
+}
+
+// ── BUILD GUIDE TEXT ──
+function buildGuideText(poolName, fee, triplets) {
+  const line = '='.repeat(60);
+  const dash = '-'.repeat(44);
+  const lines = [
+    line,
+    `BASKETBALL IQ — SUBMISSION GUIDE`,
+    `Pool: ${poolName}`,
+    `Generated: ${new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}`,
+    line,
+    '',
+    `INVESTMENT SUMMARY`,
+    dash,
+    `  Triplets:        ${triplets.length}`,
+    `  Cost per triplet: $${fee}`,
+    `  Total investment: $${(triplets.length*fee).toLocaleString()}`,
+    `  Free brackets:   ${MG.portfolio.length}`,
+    '',
+  ];
+  
+  triplets.forEach((triplet, ti) => {
+    lines.push(`${line}`);
+    lines.push(`TRIPLET #${ti+1}   ($${fee} bundle — enter all 3 together)`);
+    lines.push(dash);
+    triplet.forEach(b => {
+      lines.push(`  [${b.triplet_role.toUpperCase().padEnd(11)}]`);
+      lines.push(`     Champion:    ${b.champion}`);
+      lines.push(`     Final Four:  ${b.final_four.join(' | ')}`);
+      lines.push(`     Strategy:    ${b.strategy}  |  Upsets: ${b.upset_count}  |  Confidence: ${(b.confidence*100).toFixed(0)}%`);
+      lines.push('');
+    });
+  });
+  
+  lines.push(line);
+  lines.push('CHAMPION DISTRIBUTION');
+  lines.push(dash);
+  const champCounts = {};
+  triplets.flat().forEach(b => { champCounts[b.champion]=(champCounts[b.champion]||0)+1; });
+  Object.entries(champCounts).sort((a,b)=>b[1]-a[1]).forEach(([name,cnt]) => {
+    const pct = (cnt/(triplets.length*3)*100).toFixed(0);
+    lines.push(`  ${name.padEnd(26)} ${cnt} bracket${cnt>1?'s':' '}  (${pct}%)`);
+  });
+  
+  lines.push('');
+  lines.push(line);
+  lines.push('ENTRY INSTRUCTIONS — RUNYOURPOOL.COM');
+  lines.push(dash);
+  lines.push('  1. Go to runyourpool.com and sign into your pool');
+  lines.push('  2. Click "Add Entries" and select the triplet bundle ($110)');
+  lines.push('  3. Enter Triplet #1 — fill in champions and picks per the guide above');
+  lines.push('  4. Repeat for each additional triplet');
+  lines.push('  5. Verify all champions are unique within each triplet before submitting');
+  lines.push('  6. Screenshot your submission confirmation for each entry');
+  lines.push('');
+  lines.push('NOTES');
+  lines.push(dash);
+  lines.push('  — PRIMARY brackets: highest model confidence, chalk champion picks');
+  lines.push('  — DIVERGENT brackets: value strategy, alternate champion path');
+  lines.push('  — CONTRARIAN brackets: chaos strategy, anti-consensus champion');
+  lines.push('  — Champion distribution is weighted anti-consensus vs. ESPN public picks');
+  lines.push('');
+  lines.push(line);
+  lines.push('Generated by Basketball IQ · getbasketballiq.com');
+  lines.push(line);
+  
+  return lines.join("\n");
+}
+
+function renderGuide() {
+  const empty = document.getElementById('guide-empty');
+  const content = document.getElementById('guide-content');
+  const output = document.getElementById('guide-output');
+  if (!MG.guideText) { empty.style.display=''; content.style.display='none'; return; }
+  empty.style.display='none'; content.style.display='';
+  output.textContent = MG.guideText;
+}
+
+function copyGuide() {
+  navigator.clipboard.writeText(MG.guideText).then(()=>{
+    const btn = event.target;
+    btn.textContent='✅ Copied!';
+    setTimeout(()=>btn.textContent='📋 Copy to Clipboard',2000);
+  });
+}
+
+function downloadGuide() {
+  const blob = new Blob([MG.guideText],{type:'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'basketball_iq_submission_guide.txt';
+  a.click();
+}
+
+function printGuide() { window.print(); }
+
+// ═══════════════════════════════════════════════════════
+// TEAM LOOKUP — Panel 4
+// Reads from bart_teams.json (local file, no CORS issues)
+// Barttorvik column note: team name is in the "conf" field
+// due to a 1-column offset in the raw CSV
+// ═══════════════════════════════════════════════════════
+
+let BART_DATA = null;   // cached after first load
+let LR_CURRENT = null;  // currently displayed team
+
+async function loadBartTeams() {
+  if (BART_DATA) return BART_DATA;
+  try {
+    const resp = await fetch('bart_teams.json');
+    if (!resp.ok) throw new Error('bart_teams.json not found');
+    const raw = await resp.json();
+    // Normalise: data may be array or object
+    BART_DATA = Array.isArray(raw) ? raw : Object.values(raw);
+    return BART_DATA;
+  } catch(e) {
+    console.warn('Bart teams load failed:', e.message);
+    BART_DATA = [];
+    return [];
+  }
+}
+
+function normName(s) {
+  return (s||''). toLowerCase()
+    .replace(/[^a-z0-9 ]/g,' ')
+    .replace(/\s+/g,' ').trim();
+}
+
+function teamScore(team, query) {
+  const tname = normName(team.team || team.name || team.conf || '');
+  const q = normName(query);
+  if (tname === q) return 1.0;
+  if (tname.startsWith(q)) return 0.9;
+  if (tname.includes(q)) return 0.7;
+  // word overlap
+  const twords = tname.split(' '), qwords = q.split(' ');
+  const overlap = qwords.filter(w => w.length > 2 && twords.some(t => t.includes(w))).length;
+  return overlap / Math.max(qwords.length, 1) * 0.5;
+}
+
+async function lookupSearch(query, immediate=false) {
+  const sugg = document.getElementById('lookup-suggestions');
+  if (!query || query.length < 2) { sugg.style.display='none'; return; }
+
+  const data = await loadBartTeams();
+  if (!data.length) {
+    document.getElementById('lookup-empty').innerHTML =
+      '<div style="font-size:1.5rem;margin-bottom:.5rem">⚠️</div>' +
+      '<div style="font-size:.8rem;color:#ef4444">bart_teams.json not found in your BBALLIQ folder.<br>' +
+      'Run <code style="font-size:.65rem;background:var(--bg);padding:.1rem .3rem;border-radius:3px">python3 fetch_barttorvik.py --save-json</code> to generate it.</div>';
+    document.getElementById('lookup-empty').style.display='';
+    return;
+  }
+
+  const scored = data
+    .map(t => ({ t, score: teamScore(t, query) }))
+    .filter(x => x.score > 0.1)
+    .sort((a,b) => b.score - a.score)
+    .slice(0, 8);
+
+  if (immediate && scored.length) {
+    sugg.style.display='none';
+    showLookupResult(scored[0].t);
+    return;
+  }
+
+  if (!scored.length) { sugg.style.display='none'; return; }
+
+  sugg.style.display='';
+  sugg.innerHTML = scored.map((x,i) => {
+    const t = x.t;
+    const name = t.team || t.name || t.conf || 'Unknown';
+    const em = parseFloat(t.adj_em)||(parseFloat(t.adj_o)-parseFloat(t.adj_d));
+    const emStr = isNaN(em) ? '—' : (em>0?'+'+em.toFixed(1):em.toFixed(1));
+    return `<div onclick="selectSuggestion(${i})" data-idx="${i}"
+      style="padding:.55rem 1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+             border-bottom:1px solid var(--border);transition:background .15s"
+      onmouseover="this.style.background='rgba(249,115,22,.06)'"
+      onmouseout="this.style.background=''">
+      <span style="font-size:.8rem">${name}</span>
+      <span style="font-size:.7rem;color:var(--muted)">AdjEM ${emStr}</span>
+    </div>`;
+  }).join('');
+
+  // Store for selection
+  sugg._scored = scored;
+}
+
+function selectSuggestion(i) {
+  const sugg = document.getElementById('lookup-suggestions');
+  const team = sugg._scored[i].t;
+  document.getElementById('lookup-input').value = team.team||team.name||team.conf||'Unknown';
+  sugg.style.display='none';
+  showLookupResult(team);
+}
+
+function showLookupResult(t) {
+  LR_CURRENT = t;
+  document.getElementById('lookup-empty').style.display='none';
+  document.getElementById('lookup-result').style.display='';
+
+  const name  = t.team || t.name || t.conf || 'Unknown';
+  const conf  = t.conf2 || t.conference || t.conf || '';
+  const adjO  = parseFloat(t.adj_o);
+  const adjD  = parseFloat(t.adj_d);
+  const adjEM = !isNaN(adjO)&&!isNaN(adjD) ? adjO-adjD : parseFloat(t.adj_em)||0;
+  const barthag= parseFloat(t.barthag)||0;
+  const tempo = parseFloat(t.adj_t||t.tempo)||0;
+  const rec   = t.rec || t.record || '';
+
+  document.getElementById('lr-team').textContent = name;
+  document.getElementById('lr-conf').textContent = [conf, rec].filter(Boolean).join(' · ');
+
+  // Stats grid
+  const stats = [
+    { label:'AdjEM', value: adjEM>0?'+'+adjEM.toFixed(1):adjEM.toFixed(1), color: adjEM>15?'#22c55e':adjEM>5?'#f59e0b':'#ef4444' },
+    { label:'AdjO',  value: isNaN(adjO)?'—':adjO.toFixed(1),  color:'var(--text)' },
+    { label:'AdjD',  value: isNaN(adjD)?'—':adjD.toFixed(1),  color:'var(--text)' },
+    { label:'Barthag',value: barthag?barthag.toFixed(3):'—',  color:'var(--text)' },
+  ];
+  document.getElementById('lr-stats-grid').innerHTML = stats.map(s => `
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.7rem .85rem;text-align:center">
+      <div style="font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem">${s.label}</div>
+      <div style="font-size:1rem;font-weight:700;color:${s.color}">${s.value}</div>
+    </div>
+  `).join('');
+
+  // Efficiency bars (normalise: AdjO ~95-130, AdjD ~85-115)
+  const oPct = Math.min(100, Math.max(0, (adjO-95)/(130-95)*100));
+  const dPct = Math.min(100, Math.max(0, (115-adjD)/(115-85)*100)); // inverted: lower D = better
+  document.getElementById('lr-o-bar').style.width = oPct+'%';
+  document.getElementById('lr-d-bar').style.width = dPct+'%';
+  document.getElementById('lr-o-val').textContent = isNaN(adjO)?'—':adjO.toFixed(1);
+  document.getElementById('lr-d-val').textContent = isNaN(adjD)?'—':adjD.toFixed(1);
+
+  // Clear quick calc
+  document.getElementById('lr-opp-input').value='';
+  document.getElementById('lr-prob-result').textContent='';
+}
+
+function calcQuickWinProb() {
+  if (!LR_CURRENT) return;
+  const oppEM = parseFloat(document.getElementById('lr-opp-input').value);
+  if (isNaN(oppEM)) { document.getElementById('lr-prob-result').textContent=''; return; }
+
+  const adjO = parseFloat(LR_CURRENT.adj_o);
+  const adjD = parseFloat(LR_CURRENT.adj_d);
+  const myEM = (!isNaN(adjO)&&!isNaN(adjD)) ? adjO-adjD : parseFloat(LR_CURRENT.adj_em)||0;
+
+  // Log5 formula (neutral site — no home court adjustment for tournament)
+  const diff = myEM - oppEM;
+  const p = 1 / (1 + Math.pow(10, -diff/15));
+  const pct = (p*100).toFixed(1);
+  const col = p>0.65?'#22c55e':p>0.5?'var(--accent)':'#ef4444';
+  document.getElementById('lr-prob-result').innerHTML =
+    `<span style="color:${col}">${pct}% win probability</span>` +
+    ` <span style="font-size:.68rem;color:var(--muted)">(neutral site)</span>`;
+}
+
+function addLookupToConsensus() {
+  if (!LR_CURRENT) return;
+  const name  = LR_CURRENT.team || LR_CURRENT.name || LR_CURRENT.conf || 'Unknown';
+  const adjO  = parseFloat(LR_CURRENT.adj_o);
+  const adjD  = parseFloat(LR_CURRENT.adj_d);
+  const adjEM = (!isNaN(adjO)&&!isNaN(adjD)) ? +(adjO-adjD).toFixed(1) : parseFloat(LR_CURRENT.adj_em)||0;
+
+  // Add row to consensus table with this team's data
+  addConsensusRow({ name, seed:1, public_pct:0, adj_em: adjEM });
+
+  // Switch to Setup tab to show it
+  switchMTab('setup');
+
+  // Scroll consensus table into view
+  const tbody = document.getElementById('consensus-tbody');
+  if (tbody) {
+    const lastRow = tbody.lastElementChild;
+    if (lastRow) lastRow.scrollIntoView({ behavior:'smooth', block:'center' });
+    // Flash highlight
+    lastRow.style.background = 'rgba(249,115,22,.12)';
+    setTimeout(()=>{ lastRow.style.background=''; }, 1500);
+  }
+
+  // Show confirm
+  const btn = event.target;
+  const orig = btn.textContent;
+  btn.textContent = '✅ Added!';
+  setTimeout(()=>{ btn.textContent=orig; }, 2000);
+}
+
+// Close suggestions when clicking outside
+document.addEventListener('click', e => {
+  const sugg = document.getElementById('lookup-suggestions');
+  if (sugg && !sugg.contains(e.target) && e.target.id!=='lookup-input') {
+    sugg.style.display='none';
+  }
+});
+
+// Pre-load bart data when Madness tab is first opened
+document.querySelector('[data-tab="madness"]')?.addEventListener('click', () => {
+  loadBartTeams(); // warm cache silently
+});
+
+// ── INIT ──
+function initMadnessTab() {
+  buildConsensusTable();
+  updatePortfolioTotal();
+  updateCostNote();
+}
+
+// Load when Madness tab is clicked
+document.querySelector('[data-tab="madness"]')?.addEventListener('click', () => {
+  if (!document.getElementById('consensus-tbody').children.length) {
+    initMadnessTab();
   }
 });
 
