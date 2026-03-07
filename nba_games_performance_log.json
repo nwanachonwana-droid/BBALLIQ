@@ -10,5 +10,17 @@
     "to_win": 1.23,
     "result": "WIN",
     "pnl": 1.23
+  },
+  {
+    "date": "03/06",
+    "pick": "Houston Rockets",
+    "matchup": "Portland Trail Blazers @ Houston Rockets",
+    "model_prob": 76.2,
+    "edge_pp": 9.23,
+    "odds": -231.7,
+    "stake": 1.87,
+    "to_win": 0.81,
+    "result": "LOSS",
+    "pnl": -1.87
   }
 ]
