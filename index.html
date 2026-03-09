@@ -4338,7 +4338,7 @@ async function loadNBAData() {
 
 async function loadNBAGamePicks() {
   try {
-    const r = await fetch('output/nba_picks_today.json');
+    const r = await fetch('output/nba_picks_today.json?t=' + Date.now());
     if (!r.ok) throw new Error();
     const data = await r.json();
     document.getElementById('nba-date-sub').textContent =

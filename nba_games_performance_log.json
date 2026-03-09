@@ -22,5 +22,17 @@
     "to_win": 0.81,
     "result": "LOSS",
     "pnl": -1.87
+  },
+  {
+    "date": "03/07",
+    "pick": "Milwaukee Bucks",
+    "matchup": "Utah Jazz @ Milwaukee Bucks",
+    "model_prob": 86.1,
+    "edge_pp": 7.93,
+    "odds": -440.0,
+    "stake": 1.85,
+    "to_win": 0.42,
+    "result": "WIN",
+    "pnl": 0.42
   }
 ]
