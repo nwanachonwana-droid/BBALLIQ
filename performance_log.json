@@ -762,6 +762,83 @@
       "result": "WIN",
       "score": "Owls 80 - Roadrunners 71",
       "edge_band": "<5pp"
+    },
+    {
+      "date": "2026-03-09",
+      "pick": "Alabama St Hornets",
+      "matchup": "Alcorn St Braves @ Alabama St Hornets",
+      "edge": 11.6,
+      "model_prob": 86.4,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-09",
+      "pick": "Cincinnati Bearcats",
+      "matchup": "Utah Utes @ Cincinnati Bearcats",
+      "edge": 11.1,
+      "model_prob": 92.2,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-09",
+      "pick": "Troy Trojans",
+      "matchup": "Georgia Southern Eagles @ Troy Trojans",
+      "edge": 10.9,
+      "model_prob": 84.1,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-09",
+      "pick": "Robert Morris Colonials",
+      "matchup": "Detroit Mercy Titans @ Robert Morris Colonials",
+      "edge": 10.1,
+      "model_prob": 79.1,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-09",
+      "pick": "Saint Mary's Gaels",
+      "matchup": "Santa Clara Broncos @ Saint Mary's Gaels",
+      "edge": 7.3,
+      "model_prob": 74.3,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-09",
+      "pick": "BYU Cougars",
+      "matchup": "Kansas St Wildcats @ BYU Cougars",
+      "edge": 5.9,
+      "model_prob": 91.2,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-09",
+      "pick": "Grambling St Tigers",
+      "matchup": "Miss Valley St Delta Devils @ Grambling St Tigers",
+      "edge": 3.4,
+      "model_prob": 95.0,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
     }
   ]
 }
