@@ -213,7 +213,7 @@
     "edge_pp": 4.4
   },
   {
-    "date": "03/05",
+    "date": "2026-03-05",
     "player": "Jalen Duren",
     "stat": "POINTS",
     "line": 17.5,
@@ -229,7 +229,7 @@
     "pnl": 1.63
   },
   {
-    "date": "03/05",
+    "date": "2026-03-05",
     "player": "De'Aaron Fox",
     "stat": "POINTS",
     "line": 16.5,
@@ -388,7 +388,7 @@
     "edge_pp": 0
   },
   {
-    "date": "03/06",
+    "date": "2026-03-06",
     "player": "Dorian Finney-Smith",
     "stat": "POINTS",
     "line": 4.5,
@@ -404,7 +404,7 @@
     "pnl": 1.7
   },
   {
-    "date": "03/06",
+    "date": "2026-03-06",
     "player": "Brook Lopez",
     "stat": "POINTS",
     "line": 9.5,
@@ -420,7 +420,7 @@
     "pnl": 1.76
   },
   {
-    "date": "03/06",
+    "date": "2026-03-06",
     "player": "LaMelo Ball",
     "stat": "POINTS",
     "line": 19.2,
@@ -436,7 +436,7 @@
     "pnl": 1.63
   },
   {
-    "date": "03/07",
+    "date": "2026-03-07",
     "player": "Zaccharie Risacher",
     "stat": "POINTS",
     "line": 8.5,
@@ -452,7 +452,7 @@
     "pnl": -1.85
   },
   {
-    "date": "03/07",
+    "date": "2026-03-07",
     "player": "Kyle Kuzma",
     "stat": "POINTS",
     "line": 10.2,
@@ -468,7 +468,7 @@
     "pnl": 1.65
   },
   {
-    "date": "03/07",
+    "date": "2026-03-07",
     "player": "Keyonte George",
     "stat": "POINTS",
     "line": 23.5,
@@ -484,7 +484,7 @@
     "pnl": 1.59
   },
   {
-    "date": "03/08",
+    "date": "2026-03-08",
     "player": "Deni Avdija",
     "stat": "POINTS",
     "line": 20.8,
@@ -501,34 +501,6 @@
   },
   {
     "date": "2026-03-09",
-    "player": "Bruce Brown",
-    "stat": "points",
-    "line": 7.5,
-    "direction": "over",
-    "pick": "OVER",
-    "projection": 12.2,
-    "edge_pp": 4.7,
-    "model_prob": 77.9,
-    "odds": -110.7,
-    "result": "PENDING",
-    "pnl": 0
-  },
-  {
-    "date": "2026-03-09",
-    "player": "Brook Lopez",
-    "stat": "points",
-    "line": 9.2,
-    "direction": "over",
-    "pick": "OVER",
-    "projection": 14.3,
-    "edge_pp": 5.12,
-    "model_prob": 75.9,
-    "odds": -110.3,
-    "result": "PENDING",
-    "pnl": 0
-  },
-  {
-    "date": "2026-03-09",
     "player": "James Harden",
     "stat": "points",
     "line": 20.5,
@@ -537,7 +509,149 @@
     "projection": 25.6,
     "edge_pp": 5.14,
     "model_prob": 75.1,
-    "odds": -110.0,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-09",
+    "player": "Adem Bona",
+    "stat": "points",
+    "line": 7.5,
+    "direction": "over",
+    "pick": "OVER",
+    "projection": 14.6,
+    "edge_pp": 7.09,
+    "model_prob": 86.3,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-09",
+    "player": "Jaylon Tyson",
+    "stat": "points",
+    "line": 12.5,
+    "direction": "under",
+    "pick": "UNDER",
+    "projection": 8.0,
+    "edge_pp": 4.48,
+    "model_prob": 69.2,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-09",
+    "player": "Jaylen Wells",
+    "stat": "points",
+    "line": 16.5,
+    "direction": "under",
+    "pick": "UNDER",
+    "projection": 8.6,
+    "edge_pp": 7.88,
+    "model_prob": 97.5,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-09",
+    "player": "Olivier-Maxence Prosper",
+    "stat": "points",
+    "line": 15.2,
+    "direction": "under",
+    "pick": "UNDER",
+    "projection": 4.2,
+    "edge_pp": 10.95,
+    "model_prob": 98.7,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-09",
+    "player": "Noah Clowney",
+    "stat": "points",
+    "line": 14.8,
+    "direction": "under",
+    "pick": "UNDER",
+    "projection": 8.7,
+    "edge_pp": 6.14,
+    "model_prob": 86.7,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-09",
+    "player": "G.G. Jackson",
+    "stat": "points",
+    "line": 18.8,
+    "direction": "under",
+    "pick": "UNDER",
+    "projection": 5.7,
+    "edge_pp": 13.06,
+    "model_prob": 100.0,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-09",
+    "player": "G.G. Jackson",
+    "stat": "rebounds",
+    "line": 7.5,
+    "direction": "under",
+    "pick": "UNDER",
+    "projection": 3.0,
+    "edge_pp": 4.47,
+    "model_prob": 99.8,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-09",
+    "player": "Aaron Gordon",
+    "stat": "points",
+    "line": 12.8,
+    "direction": "over",
+    "pick": "OVER",
+    "projection": 18.2,
+    "edge_pp": 5.43,
+    "model_prob": 72.1,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-09",
+    "player": "Bruce Brown",
+    "stat": "points",
+    "line": 7.5,
+    "direction": "over",
+    "pick": "OVER",
+    "projection": 12.2,
+    "edge_pp": 4.7,
+    "model_prob": 77.9,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-09",
+    "player": "Christian Braun",
+    "stat": "points",
+    "line": 11.2,
+    "direction": "over",
+    "pick": "OVER",
+    "projection": 17.2,
+    "edge_pp": 5.98,
+    "model_prob": 85.0,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-09",
+    "player": "Gui Santos",
+    "stat": "points",
+    "line": 15.5,
+    "direction": "under",
+    "pick": "UNDER",
+    "projection": 2.9,
+    "edge_pp": 12.64,
+    "model_prob": 99.9,
     "result": "PENDING",
     "pnl": 0
   },
@@ -551,7 +665,19 @@
     "projection": 18.5,
     "edge_pp": 4.71,
     "model_prob": 74.7,
-    "odds": -118.0,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-09",
+    "player": "Pat Spencer",
+    "stat": "points",
+    "line": 9.5,
+    "direction": "under",
+    "pick": "UNDER",
+    "projection": 3.9,
+    "edge_pp": 5.58,
+    "model_prob": 96.4,
     "result": "PENDING",
     "pnl": 0
   },
@@ -565,7 +691,32 @@
     "projection": 19.6,
     "edge_pp": 4.07,
     "model_prob": 73.2,
-    "odds": -114.0,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-09",
+    "player": "Brook Lopez",
+    "stat": "points",
+    "line": 9.2,
+    "direction": "over",
+    "pick": "OVER",
+    "projection": 14.3,
+    "edge_pp": 5.12,
+    "model_prob": 75.9,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-09",
+    "player": "Karl-Anthony Towns",
+    "stat": "points",
+    "line": 18.8,
+    "direction": "over",
+    "pick": "OVER",
+    "projection": 25.4,
+    "edge_pp": 6.61,
+    "model_prob": 80.2,
     "result": "PENDING",
     "pnl": 0
   },
@@ -579,7 +730,6 @@
     "projection": 12.9,
     "edge_pp": 4.41,
     "model_prob": 72.4,
-    "odds": -117.3,
     "result": "PENDING",
     "pnl": 0
   }
