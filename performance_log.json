@@ -763,5 +763,44 @@
       "score": "Owls 80 - Roadrunners 71",
       "edge_band": "<5pp"
     }
-  ]
+  ],
+  "nba": {
+    "wins": 2,
+    "losses": 3,
+    "total": 5,
+    "hit_rate": 40.0
+  },
+  "nba_games": {
+    "wins": 2,
+    "losses": 3,
+    "total": 5,
+    "hit_rate": 40.0,
+    "results": [
+      {
+        "date": "03/03",
+        "pick": "New York Knicks",
+        "result": "WIN"
+      },
+      {
+        "date": "03/06",
+        "pick": "Houston Rockets",
+        "result": "LOSS"
+      },
+      {
+        "date": "03/07",
+        "pick": "Milwaukee Bucks",
+        "result": "WIN"
+      },
+      {
+        "date": "03/09",
+        "pick": "Golden State Warriors",
+        "result": "LOSS"
+      },
+      {
+        "date": "03/09",
+        "pick": "Memphis Grizzlies",
+        "result": "LOSS"
+      }
+    ]
+  }
 }
