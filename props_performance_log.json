@@ -509,8 +509,8 @@
     "projection": 25.6,
     "edge_pp": 5.14,
     "model_prob": 75.1,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   },
   {
     "date": "2026-03-09",
@@ -626,8 +626,8 @@
     "projection": 12.2,
     "edge_pp": 4.7,
     "model_prob": 77.9,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "LOSS",
+    "pnl": -1.84
   },
   {
     "date": "2026-03-09",
@@ -665,8 +665,8 @@
     "projection": 18.5,
     "edge_pp": 4.71,
     "model_prob": 74.7,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   },
   {
     "date": "2026-03-09",
@@ -691,8 +691,8 @@
     "projection": 19.6,
     "edge_pp": 4.07,
     "model_prob": 73.2,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   },
   {
     "date": "2026-03-09",
@@ -704,8 +704,8 @@
     "projection": 14.3,
     "edge_pp": 5.12,
     "model_prob": 75.9,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   },
   {
     "date": "2026-03-09",
@@ -730,7 +730,7 @@
     "projection": 12.9,
     "edge_pp": 4.41,
     "model_prob": 72.4,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   }
 ]
