@@ -1,10 +1,10 @@
 {
   "updated": "2026-03-09",
   "overall": {
-    "wins": 129,
-    "losses": 76,
-    "total": 205,
-    "hit_rate": 62.9
+    "wins": 130,
+    "losses": 79,
+    "total": 209,
+    "hit_rate": 62.2
   },
   "by_confidence": {
     "High (70-80%)": {
@@ -13,9 +13,9 @@
       "hit_rate": 50.8
     },
     "LOCK (80%+)": {
-      "wins": 81,
-      "total": 113,
-      "hit_rate": 71.7
+      "wins": 82,
+      "total": 117,
+      "hit_rate": 70.1
     },
     "Medium (60-70%)": {
       "wins": 17,
@@ -25,9 +25,9 @@
   },
   "by_recommendation": {
     "STRONG BET": {
-      "wins": 91,
-      "total": 147,
-      "hit_rate": 61.9
+      "wins": 92,
+      "total": 151,
+      "hit_rate": 60.9
     },
     "VALUE BET": {
       "wins": 16,
