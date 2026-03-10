@@ -4,13 +4,57 @@
   "picks": [
     {
       "date": "03/10",
+      "matchup": "Montana Grizzlies @ Portland St Vikings",
+      "pick": "Portland St Vikings",
+      "confidence": "High (70-80%)",
+      "model_prob": 74.5,
+      "vegas_ml": "-156",
+      "implied_prob": 61.0,
+      "edge": 13.5,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/10",
+      "matchup": "UMass Lowell River Hawks @ UMBC Retrievers",
+      "pick": "UMBC Retrievers",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 90.1,
+      "vegas_ml": "-330",
+      "implied_prob": 76.7,
+      "edge": 13.4,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/10",
+      "matchup": "Xavier Musketeers @ Marquette Golden Eagles",
+      "pick": "Marquette Golden Eagles",
+      "confidence": "High (70-80%)",
+      "model_prob": 77.4,
+      "vegas_ml": "-184",
+      "implied_prob": 64.8,
+      "edge": 12.6,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/10",
+      "matchup": "USC Trojans @ Washington Huskies",
+      "pick": "Washington Huskies",
+      "confidence": "High (70-80%)",
+      "model_prob": 78.2,
+      "vegas_ml": "-200",
+      "implied_prob": 66.7,
+      "edge": 11.6,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/10",
       "matchup": "LSU Tigers @ Kentucky Wildcats",
       "pick": "Kentucky Wildcats",
       "confidence": "LOCK (80%+)",
       "model_prob": 86.0,
-      "vegas_ml": "-260",
-      "implied_prob": 72.2,
-      "edge": 13.8,
+      "vegas_ml": "-292",
+      "implied_prob": 74.5,
+      "edge": 11.5,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
@@ -19,21 +63,10 @@
       "pick": "DePaul Blue Demons",
       "confidence": "Medium (60-70%)",
       "model_prob": 64.7,
-      "vegas_ml": "-110",
-      "implied_prob": 52.4,
-      "edge": 12.3,
+      "vegas_ml": "-117",
+      "implied_prob": 54.0,
+      "edge": 10.7,
       "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence"
-    },
-    {
-      "date": "03/10",
-      "matchup": "UMass Lowell River Hawks @ UMBC Retrievers",
-      "pick": "UMBC Retrievers",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 90.1,
-      "vegas_ml": "-360",
-      "implied_prob": 78.3,
-      "edge": 11.8,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
       "date": "03/10",
@@ -41,10 +74,21 @@
       "pick": "Prairie View Panthers",
       "confidence": "LOCK (80%+)",
       "model_prob": 83.9,
-      "vegas_ml": "-278",
-      "implied_prob": 73.6,
-      "edge": 10.4,
+      "vegas_ml": "-283",
+      "implied_prob": 73.9,
+      "edge": 10.0,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/10",
+      "matchup": "Wyoming Cowboys @ UNLV Rebels",
+      "pick": "UNLV Rebels",
+      "confidence": "Medium (60-70%)",
+      "model_prob": 67.9,
+      "vegas_ml": "-146",
+      "implied_prob": 59.4,
+      "edge": 8.5,
+      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence"
     },
     {
       "date": "03/10",
@@ -52,9 +96,9 @@
       "pick": "Gonzaga Bulldogs",
       "confidence": "LOCK (80%+)",
       "model_prob": 81.5,
-      "vegas_ml": "-266",
-      "implied_prob": 72.7,
-      "edge": 8.8,
+      "vegas_ml": "-316",
+      "implied_prob": 76.0,
+      "edge": 5.5,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
@@ -63,21 +107,10 @@
       "pick": "BYU Cougars",
       "confidence": "LOCK (80%+)",
       "model_prob": 91.2,
-      "vegas_ml": "-576",
-      "implied_prob": 85.2,
-      "edge": 5.9,
+      "vegas_ml": "-603",
+      "implied_prob": 85.8,
+      "edge": 5.4,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
-    },
-    {
-      "date": "03/10",
-      "matchup": "Utah Utes @ Cincinnati Bearcats",
-      "pick": "Cincinnati Bearcats",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 92.3,
-      "vegas_ml": "-700",
-      "implied_prob": 87.5,
-      "edge": 4.8,
-      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
     }
   ]
 }
