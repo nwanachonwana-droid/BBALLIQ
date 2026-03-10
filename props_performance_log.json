@@ -522,8 +522,8 @@
     "projection": 14.6,
     "edge_pp": 7.09,
     "model_prob": 86.3,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   },
   {
     "date": "2026-03-09",
@@ -535,8 +535,8 @@
     "projection": 8.0,
     "edge_pp": 4.48,
     "model_prob": 69.2,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   },
   {
     "date": "2026-03-09",
@@ -548,8 +548,8 @@
     "projection": 8.6,
     "edge_pp": 7.88,
     "model_prob": 97.5,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "LOSS",
+    "pnl": -1.84
   },
   {
     "date": "2026-03-09",
@@ -561,8 +561,8 @@
     "projection": 4.2,
     "edge_pp": 10.95,
     "model_prob": 98.7,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   },
   {
     "date": "2026-03-09",
@@ -574,8 +574,8 @@
     "projection": 8.7,
     "edge_pp": 6.14,
     "model_prob": 86.7,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   },
   {
     "date": "2026-03-09",
@@ -587,8 +587,8 @@
     "projection": 5.7,
     "edge_pp": 13.06,
     "model_prob": 100.0,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   },
   {
     "date": "2026-03-09",
@@ -600,8 +600,8 @@
     "projection": 3.0,
     "edge_pp": 4.47,
     "model_prob": 99.8,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   },
   {
     "date": "2026-03-09",
@@ -613,8 +613,8 @@
     "projection": 18.2,
     "edge_pp": 5.43,
     "model_prob": 72.1,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   },
   {
     "date": "2026-03-09",
@@ -639,8 +639,8 @@
     "projection": 17.2,
     "edge_pp": 5.98,
     "model_prob": 85.0,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "LOSS",
+    "pnl": -1.84
   },
   {
     "date": "2026-03-09",
@@ -652,8 +652,8 @@
     "projection": 2.9,
     "edge_pp": 12.64,
     "model_prob": 99.9,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   },
   {
     "date": "2026-03-09",
@@ -678,8 +678,8 @@
     "projection": 3.9,
     "edge_pp": 5.58,
     "model_prob": 96.4,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   },
   {
     "date": "2026-03-09",
@@ -717,8 +717,8 @@
     "projection": 25.4,
     "edge_pp": 6.61,
     "model_prob": 80.2,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   },
   {
     "date": "2026-03-09",
