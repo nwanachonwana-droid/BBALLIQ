@@ -844,5 +844,170 @@
     "odds": 102.0,
     "result": "PENDING",
     "pnl": 0
+  },
+  {
+    "date": "2026-03-10",
+    "player": "Jake LaRavia",
+    "stat": "points",
+    "line": 5.5,
+    "direction": "over",
+    "pick": "OVER",
+    "edge_pp": 0,
+    "result": "WIN",
+    "pnl": 1.67
+  },
+  {
+    "date": "2026-03-10",
+    "player": "Jayson Tatum",
+    "stat": "points",
+    "line": 19.2,
+    "direction": "over",
+    "pick": "OVER",
+    "edge_pp": 0,
+    "result": "WIN",
+    "pnl": 1.67
+  },
+  {
+    "date": "2026-03-10",
+    "player": "Adem Bona",
+    "stat": "points",
+    "line": 8.5,
+    "direction": "over",
+    "pick": "OVER",
+    "edge_pp": 0,
+    "result": "LOSS",
+    "pnl": -1.84
+  },
+  {
+    "date": "2026-03-10",
+    "player": "Keldon Johnson",
+    "stat": "points",
+    "line": 10.5,
+    "direction": "over",
+    "pick": "OVER",
+    "edge_pp": 0,
+    "result": "LOSS",
+    "pnl": -1.84
+  },
+  {
+    "date": "2026-03-10",
+    "player": "Ryan Rollins",
+    "stat": "points",
+    "line": 15.5,
+    "direction": "under",
+    "pick": "UNDER",
+    "edge_pp": 0,
+    "result": "WIN",
+    "pnl": 1.67
+  },
+  {
+    "date": "2026-03-10",
+    "player": "Davion Mitchell",
+    "stat": "points",
+    "line": 8.5,
+    "direction": "over",
+    "pick": "OVER",
+    "edge_pp": 0,
+    "result": "WIN",
+    "pnl": 1.67
+  },
+  {
+    "date": "2026-03-10",
+    "player": "Daniel Gafford",
+    "stat": "points",
+    "line": 8.5,
+    "direction": "over",
+    "pick": "OVER",
+    "edge_pp": 0,
+    "result": "WIN",
+    "pnl": 1.67
+  },
+  {
+    "date": "2026-03-10",
+    "player": "De Aaron Fox",
+    "stat": "points",
+    "line": 16.5,
+    "direction": "over",
+    "pick": "OVER",
+    "edge_pp": 0,
+    "result": "WIN",
+    "pnl": 1.67
+  },
+  {
+    "date": "2026-03-10",
+    "player": "LeBron James",
+    "stat": "points",
+    "line": 18.8,
+    "direction": "over",
+    "pick": "OVER",
+    "edge_pp": 0,
+    "result": "LOSS",
+    "pnl": -1.84
+  },
+  {
+    "date": "2026-03-10",
+    "player": "Deandre Ayton",
+    "stat": "rebounds",
+    "line": 6.5,
+    "direction": "over",
+    "pick": "OVER",
+    "edge_pp": 0,
+    "result": "WIN",
+    "pnl": 1.67
+  },
+  {
+    "date": "2026-03-10",
+    "player": "Grayson Allen",
+    "stat": "points",
+    "line": 16.5,
+    "direction": "under",
+    "pick": "UNDER",
+    "edge_pp": 0,
+    "result": "WIN",
+    "pnl": 1.67
+  },
+  {
+    "date": "2026-03-10",
+    "player": "Matas Buzelis",
+    "stat": "points",
+    "line": 17.5,
+    "direction": "under",
+    "pick": "UNDER",
+    "edge_pp": 0,
+    "result": "LOSS",
+    "pnl": -1.84
+  },
+  {
+    "date": "2026-03-10",
+    "player": "Cade Cunningham",
+    "stat": "points",
+    "line": 25.2,
+    "direction": "over",
+    "pick": "OVER",
+    "edge_pp": 0,
+    "result": "LOSS",
+    "pnl": -1.84
+  },
+  {
+    "date": "2026-03-10",
+    "player": "DeMar DeRozan",
+    "stat": "points",
+    "line": 16.5,
+    "direction": "over",
+    "pick": "OVER",
+    "edge_pp": 0,
+    "result": "LOSS",
+    "pnl": -1.84
+  },
+  {
+    "date": "2026-03-10",
+    "player": "Malik Monk",
+    "stat": "points",
+    "line": 15.2,
+    "direction": "under",
+    "pick": "UNDER",
+    "edge_pp": 0,
+    "result": "WIN",
+    "pnl": 1.67
   }
 ]
