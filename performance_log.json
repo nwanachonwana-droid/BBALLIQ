@@ -1,21 +1,21 @@
 {
-  "updated": "2026-03-10",
+  "updated": "2026-03-11",
   "overall": {
-    "wins": 131,
-    "losses": 79,
-    "total": 210,
-    "hit_rate": 62.4
+    "wins": 135,
+    "losses": 80,
+    "total": 215,
+    "hit_rate": 62.8
   },
   "by_confidence": {
     "High (70-80%)": {
       "wins": 31,
-      "total": 63,
-      "hit_rate": 49.2
+      "total": 64,
+      "hit_rate": 48.4
     },
     "LOCK (80%+)": {
-      "wins": 83,
-      "total": 116,
-      "hit_rate": 71.6
+      "wins": 87,
+      "total": 120,
+      "hit_rate": 72.5
     },
     "Medium (60-70%)": {
       "wins": 17,
@@ -25,9 +25,9 @@
   },
   "by_recommendation": {
     "STRONG BET": {
-      "wins": 92,
-      "total": 151,
-      "hit_rate": 60.9
+      "wins": 96,
+      "total": 156,
+      "hit_rate": 61.5
     },
     "VALUE BET": {
       "wins": 16,
@@ -47,14 +47,14 @@
       "hit_rate": 46.2
     },
     "10-15pp": {
-      "wins": 43,
-      "total": 74,
-      "hit_rate": 58.1
+      "wins": 45,
+      "total": 77,
+      "hit_rate": 58.4
     },
     "5-10pp": {
-      "wins": 60,
-      "total": 94,
-      "hit_rate": 63.8
+      "wins": 62,
+      "total": 96,
+      "hit_rate": 64.6
     },
     "<5pp": {
       "wins": 22,
@@ -63,76 +63,6 @@
     }
   },
   "recent": [
-    {
-      "date": "03/05",
-      "matchup": "Delaware St Hornets @ Maryland-Eastern Shore Hawks",
-      "pick": "Maryland-Eastern Shore Hawks",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 81.6,
-      "vegas_ml": -310,
-      "implied_prob": 75.6,
-      "edge": 6.0,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "LOSS",
-      "score": "Hawks 56 - Hornets 57",
-      "edge_band": "5-10pp"
-    },
-    {
-      "date": "03/05",
-      "matchup": "Eastern Illinois Panthers @ Tenn-Martin Skyhawks",
-      "pick": "Tenn-Martin Skyhawks",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 87.7,
-      "vegas_ml": -448,
-      "implied_prob": 81.8,
-      "edge": 5.9,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "WIN",
-      "score": "Skyhawks 66 - Panthers 63",
-      "edge_band": "5-10pp"
-    },
-    {
-      "date": "03/05",
-      "matchup": "Abilene Christian Wildcats @ Cal Baptist Lancers",
-      "pick": "Cal Baptist Lancers",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 89.8,
-      "vegas_ml": -536,
-      "implied_prob": 84.3,
-      "edge": 5.5,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "WIN",
-      "score": "Lancers 87 - Wildcats 48",
-      "edge_band": "5-10pp"
-    },
-    {
-      "date": "03/05",
-      "matchup": "Miss Valley St Delta Devils @ Jackson St Tigers",
-      "pick": "Jackson St Tigers",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 91.1,
-      "vegas_ml": -608,
-      "implied_prob": 85.9,
-      "edge": 5.3,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "WIN",
-      "score": "Tigers 85 - Devils 77",
-      "edge_band": "5-10pp"
-    },
-    {
-      "date": "03/05",
-      "matchup": "Oral Roberts Golden Eagles @ North Dakota St Bison",
-      "pick": "North Dakota St Bison",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 94.0,
-      "vegas_ml": -793,
-      "implied_prob": 88.8,
-      "edge": 5.2,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "WIN",
-      "score": "Bison 76 - Eagles 65",
-      "edge_band": "5-10pp"
-    },
     {
       "date": "03/05",
       "matchup": "UC Riverside Highlanders @ Hawai'i Rainbow Warriors",
@@ -699,7 +629,7 @@
       "pick": "Alabama St Hornets",
       "confidence": "LOCK (80%+)",
       "model_prob": 86.4,
-      "vegas_ml": "-296",
+      "vegas_ml": -296,
       "implied_prob": 74.8,
       "edge": 11.6,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
@@ -713,7 +643,7 @@
       "pick": "Troy Trojans",
       "confidence": "LOCK (80%+)",
       "model_prob": 84.1,
-      "vegas_ml": "-273",
+      "vegas_ml": -273,
       "implied_prob": 73.2,
       "edge": 10.9,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
@@ -727,7 +657,7 @@
       "pick": "Robert Morris Colonials",
       "confidence": "High (70-80%)",
       "model_prob": 79.1,
-      "vegas_ml": "-222",
+      "vegas_ml": -222,
       "implied_prob": 69.0,
       "edge": 10.1,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
@@ -741,7 +671,7 @@
       "pick": "Saint Mary's Gaels",
       "confidence": "High (70-80%)",
       "model_prob": 74.3,
-      "vegas_ml": "-203",
+      "vegas_ml": -203,
       "implied_prob": 67.1,
       "edge": 7.3,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
@@ -755,7 +685,7 @@
       "pick": "Grambling St Tigers",
       "confidence": "LOCK (80%+)",
       "model_prob": 95.0,
-      "vegas_ml": "-1100",
+      "vegas_ml": -1100,
       "implied_prob": 91.7,
       "edge": 3.4,
       "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement",
@@ -764,54 +694,146 @@
       "edge_band": "<5pp"
     },
     {
-      "date": "2026-03-10",
-      "pick": "Portland St Vikings",
+      "date": "03/10",
       "matchup": "Montana Grizzlies @ Portland St Vikings",
-      "edge": 13.5,
+      "pick": "Portland St Vikings",
+      "confidence": "High (70-80%)",
       "model_prob": 74.5,
+      "vegas_ml": "-156",
+      "implied_prob": 61.0,
+      "edge": 13.5,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "PENDING",
-      "score": "",
-      "pnl": 0
+      "result": "LOSS",
+      "score": "Vikings 72 - Grizzlies 75",
+      "edge_band": "10-15pp"
     },
     {
-      "date": "2026-03-10",
-      "pick": "UMBC Retrievers",
+      "date": "03/10",
       "matchup": "UMass Lowell River Hawks @ UMBC Retrievers",
-      "edge": 13.4,
+      "pick": "UMBC Retrievers",
+      "confidence": "LOCK (80%+)",
       "model_prob": 90.1,
+      "vegas_ml": "-330",
+      "implied_prob": 76.7,
+      "edge": 13.4,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "WIN",
+      "score": "Retrievers 91 - Hawks 69",
+      "edge_band": "10-15pp"
+    },
+    {
+      "date": "03/10",
+      "matchup": "Alcorn St Braves @ Prairie View Panthers",
+      "pick": "Prairie View Panthers",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 83.9,
+      "vegas_ml": "-283",
+      "implied_prob": 73.9,
+      "edge": 10.0,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "WIN",
+      "score": "Panthers 65 - Braves 56",
+      "edge_band": "10-15pp"
+    },
+    {
+      "date": "03/10",
+      "matchup": "Santa Clara Broncos @ Gonzaga Bulldogs",
+      "pick": "Gonzaga Bulldogs",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 81.5,
+      "vegas_ml": "-316",
+      "implied_prob": 76.0,
+      "edge": 5.5,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "WIN",
+      "score": "Bulldogs 65 - Beavers 56",
+      "edge_band": "5-10pp"
+    },
+    {
+      "date": "03/10",
+      "matchup": "Kansas St Wildcats @ BYU Cougars",
+      "pick": "BYU Cougars",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 91.2,
+      "vegas_ml": "-603",
+      "implied_prob": 85.8,
+      "edge": 5.4,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "WIN",
+      "score": "Cougars 105 - Wildcats 91",
+      "edge_band": "5-10pp"
+    },
+    {
+      "date": "2026-03-11",
+      "pick": "TCU Horned Frogs",
+      "matchup": "Oklahoma St Cowboys @ TCU Horned Frogs",
+      "edge": 13.8,
+      "model_prob": 80.3,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
       "result": "PENDING",
       "score": "",
       "pnl": 0
     },
     {
-      "date": "2026-03-10",
+      "date": "2026-03-11",
+      "pick": "Miami (OH) RedHawks",
+      "matchup": "Massachusetts Minutemen @ Miami (OH) RedHawks",
+      "edge": 13.6,
+      "model_prob": 89.0,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-11",
+      "pick": "Oklahoma Sooners",
+      "matchup": "South Carolina Gamecocks @ Oklahoma Sooners",
+      "edge": 13.6,
+      "model_prob": 89.1,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-11",
+      "pick": "Auburn Tigers",
+      "matchup": "Mississippi St Bulldogs @ Auburn Tigers",
+      "edge": 12.9,
+      "model_prob": 89.2,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-11",
+      "pick": "NC State Wolfpack",
+      "matchup": "Pittsburgh Panthers @ NC State Wolfpack",
+      "edge": 12.9,
+      "model_prob": 91.1,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-11",
       "pick": "Marquette Golden Eagles",
       "matchup": "Xavier Musketeers @ Marquette Golden Eagles",
-      "edge": 12.6,
-      "model_prob": 77.4,
+      "edge": 11.5,
+      "model_prob": 77.5,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
       "result": "PENDING",
       "score": "",
       "pnl": 0
     },
     {
-      "date": "2026-03-10",
-      "pick": "Washington Huskies",
-      "matchup": "USC Trojans @ Washington Huskies",
-      "edge": 11.6,
-      "model_prob": 78.2,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "PENDING",
-      "score": "",
-      "pnl": 0
-    },
-    {
-      "date": "2026-03-10",
+      "date": "2026-03-11",
       "pick": "Kentucky Wildcats",
       "matchup": "LSU Tigers @ Kentucky Wildcats",
-      "edge": 11.5,
+      "edge": 10.5,
       "model_prob": 86.0,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
       "result": "PENDING",
@@ -819,21 +841,21 @@
       "pnl": 0
     },
     {
-      "date": "2026-03-10",
+      "date": "2026-03-11",
       "pick": "DePaul Blue Demons",
       "matchup": "Georgetown Hoyas @ DePaul Blue Demons",
-      "edge": 10.7,
-      "model_prob": 64.7,
+      "edge": 10.0,
+      "model_prob": 64.6,
       "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence",
       "result": "PENDING",
       "score": "",
       "pnl": 0
     },
     {
-      "date": "2026-03-10",
-      "pick": "Prairie View Panthers",
-      "matchup": "Alcorn St Braves @ Prairie View Panthers",
-      "edge": 10.0,
+      "date": "2026-03-11",
+      "pick": "Colorado St Rams",
+      "matchup": "Fresno St Bulldogs @ Colorado St Rams",
+      "edge": 9.5,
       "model_prob": 83.9,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
       "result": "PENDING",
@@ -841,34 +863,56 @@
       "pnl": 0
     },
     {
-      "date": "2026-03-10",
+      "date": "2026-03-11",
+      "pick": "Washington Huskies",
+      "matchup": "USC Trojans @ Washington Huskies",
+      "edge": 8.7,
+      "model_prob": 78.1,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-11",
+      "pick": "Iowa Hawkeyes",
+      "matchup": "Maryland Terrapins @ Iowa Hawkeyes",
+      "edge": 6.3,
+      "model_prob": 94.2,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-11",
+      "pick": "Iowa State Cyclones",
+      "matchup": "Arizona St Sun Devils @ Iowa State Cyclones",
+      "edge": 6.2,
+      "model_prob": 92.2,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-11",
+      "pick": "Akron Zips",
+      "matchup": "Buffalo Bulls @ Akron Zips",
+      "edge": 5.4,
+      "model_prob": 94.4,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-11",
       "pick": "UNLV Rebels",
       "matchup": "Wyoming Cowboys @ UNLV Rebels",
-      "edge": 8.5,
+      "edge": 4.7,
       "model_prob": 67.9,
-      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence",
-      "result": "PENDING",
-      "score": "",
-      "pnl": 0
-    },
-    {
-      "date": "2026-03-10",
-      "pick": "Gonzaga Bulldogs",
-      "matchup": "Santa Clara Broncos @ Gonzaga Bulldogs",
-      "edge": 5.5,
-      "model_prob": 81.5,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "PENDING",
-      "score": "",
-      "pnl": 0
-    },
-    {
-      "date": "2026-03-10",
-      "pick": "BYU Cougars",
-      "matchup": "Kansas St Wildcats @ BYU Cougars",
-      "edge": 5.4,
-      "model_prob": 91.2,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement",
       "result": "PENDING",
       "score": "",
       "pnl": 0
