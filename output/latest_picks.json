@@ -15,17 +15,6 @@
     },
     {
       "date": "03/12",
-      "matchup": "Massachusetts Minutemen @ Miami (OH) RedHawks",
-      "pick": "Miami (OH) RedHawks",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 88.9,
-      "vegas_ml": "-313",
-      "implied_prob": 75.8,
-      "edge": 13.1,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
-    },
-    {
-      "date": "03/12",
       "matchup": "Florida Atlantic Owls @ North Texas Mean Green",
       "pick": "North Texas Mean Green",
       "confidence": "Medium (60-70%)",
@@ -34,6 +23,17 @@
       "implied_prob": 51.6,
       "edge": 12.9,
       "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence"
+    },
+    {
+      "date": "03/12",
+      "matchup": "Massachusetts Minutemen @ Miami (OH) RedHawks",
+      "pick": "Miami (OH) RedHawks",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 88.9,
+      "vegas_ml": "-331",
+      "implied_prob": 76.8,
+      "edge": 12.1,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
       "date": "03/12",
