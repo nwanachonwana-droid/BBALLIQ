@@ -4,14 +4,36 @@
   "picks": [
     {
       "date": "03/12",
-      "matchup": "Colorado St Rams @ San Diego St Aztecs",
-      "pick": "San Diego St Aztecs",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 84.8,
-      "vegas_ml": "-247",
-      "implied_prob": 71.2,
+      "matchup": "Nevada Wolf Pack @ Grand Canyon Antelopes",
+      "pick": "Grand Canyon Antelopes",
+      "confidence": "High (70-80%)",
+      "model_prob": 77.7,
+      "vegas_ml": "-178",
+      "implied_prob": 64.1,
       "edge": 13.6,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/12",
+      "matchup": "Massachusetts Minutemen @ Miami (OH) RedHawks",
+      "pick": "Miami (OH) RedHawks",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 88.9,
+      "vegas_ml": "-313",
+      "implied_prob": 75.8,
+      "edge": 13.1,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/12",
+      "matchup": "Florida Atlantic Owls @ North Texas Mean Green",
+      "pick": "North Texas Mean Green",
+      "confidence": "Medium (60-70%)",
+      "model_prob": 64.5,
+      "vegas_ml": "-106",
+      "implied_prob": 51.6,
+      "edge": 12.9,
+      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence"
     },
     {
       "date": "03/12",
@@ -22,17 +44,6 @@
       "vegas_ml": "-328",
       "implied_prob": 76.7,
       "edge": 12.0,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
-    },
-    {
-      "date": "03/12",
-      "matchup": "Georgetown Hoyas @ Villanova Wildcats",
-      "pick": "Villanova Wildcats",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 88.2,
-      "vegas_ml": "-322",
-      "implied_prob": 76.3,
-      "edge": 11.8,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
@@ -48,13 +59,13 @@
     },
     {
       "date": "03/12",
-      "matchup": "Massachusetts Minutemen @ Miami (OH) RedHawks",
-      "pick": "Miami (OH) RedHawks",
+      "matchup": "Georgetown Hoyas @ Villanova Wildcats",
+      "pick": "Villanova Wildcats",
       "confidence": "LOCK (80%+)",
-      "model_prob": 88.9,
-      "vegas_ml": "-346",
-      "implied_prob": 77.6,
-      "edge": 11.3,
+      "model_prob": 88.2,
+      "vegas_ml": "-328",
+      "implied_prob": 76.7,
+      "edge": 11.5,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
@@ -63,9 +74,9 @@
       "pick": "Virginia Cavaliers",
       "confidence": "LOCK (80%+)",
       "model_prob": 83.0,
-      "vegas_ml": "-263",
-      "implied_prob": 72.5,
-      "edge": 10.5,
+      "vegas_ml": "-294",
+      "implied_prob": 74.6,
+      "edge": 8.3,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
@@ -74,20 +85,9 @@
       "pick": "Houston Cougars",
       "confidence": "LOCK (80%+)",
       "model_prob": 90.9,
-      "vegas_ml": "-457",
-      "implied_prob": 82.1,
-      "edge": 8.8,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
-    },
-    {
-      "date": "03/12",
-      "matchup": "South Carolina St Bulldogs @ Norfolk St Spartans",
-      "pick": "Norfolk St Spartans",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 84.0,
-      "vegas_ml": "-306",
-      "implied_prob": 75.4,
-      "edge": 8.6,
+      "vegas_ml": "-545",
+      "implied_prob": 84.5,
+      "edge": 6.4,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
@@ -96,9 +96,9 @@
       "pick": "UCLA Bruins",
       "confidence": "LOCK (80%+)",
       "model_prob": 94.3,
-      "vegas_ml": "-785",
-      "implied_prob": 88.7,
-      "edge": 5.6,
+      "vegas_ml": "-806",
+      "implied_prob": 89.0,
+      "edge": 5.3,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
@@ -107,10 +107,21 @@
       "pick": "Purdue Boilermakers",
       "confidence": "LOCK (80%+)",
       "model_prob": 94.6,
-      "vegas_ml": "-833",
-      "implied_prob": 89.3,
-      "edge": 5.3,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+      "vegas_ml": "-933",
+      "implied_prob": 90.3,
+      "edge": 4.3,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
+    },
+    {
+      "date": "03/12",
+      "matchup": "South Carolina St Bulldogs @ Norfolk St Spartans",
+      "pick": "Norfolk St Spartans",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 84.0,
+      "vegas_ml": "-406",
+      "implied_prob": 80.3,
+      "edge": 3.8,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
     }
   ]
 }
