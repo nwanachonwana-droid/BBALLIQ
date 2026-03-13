@@ -772,7 +772,7 @@
     "edge_pp": 3.66,
     "model_prob": 69.6,
     "odds": -114.5,
-    "result": "PENDING",
+    "result": "PUSH",
     "pnl": 0
   },
   {
@@ -842,7 +842,7 @@
     "edge_pp": 5.75,
     "model_prob": 83.5,
     "odds": 102.0,
-    "result": "PENDING",
+    "result": "PUSH",
     "pnl": 0
   },
   {
@@ -1021,8 +1021,8 @@
     "edge_pp": 4.94,
     "model_prob": 87.6,
     "odds": -111.7,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "LOSS",
+    "pnl": -1.84
   },
   {
     "date": "2026-03-12",
@@ -1035,8 +1035,8 @@
     "edge_pp": 5.4,
     "model_prob": 77.6,
     "odds": -111.7,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   },
   {
     "date": "2026-03-12",
@@ -1049,8 +1049,8 @@
     "edge_pp": 4.83,
     "model_prob": 73.7,
     "odds": -113.7,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "LOSS",
+    "pnl": -1.84
   },
   {
     "date": "2026-03-12",
@@ -1063,8 +1063,8 @@
     "edge_pp": 9.31,
     "model_prob": 68.8,
     "odds": -116.0,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "LOSS",
+    "pnl": -1.84
   },
   {
     "date": "2026-03-12",
@@ -1077,8 +1077,8 @@
     "edge_pp": 4.94,
     "model_prob": 71.6,
     "odds": -113.3,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   },
   {
     "date": "2026-03-12",
@@ -1091,8 +1091,8 @@
     "edge_pp": 3.59,
     "model_prob": 74.7,
     "odds": -110.7,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   },
   {
     "date": "2026-03-12",
@@ -1105,8 +1105,8 @@
     "edge_pp": 4.4,
     "model_prob": 77.4,
     "odds": -109.0,
-    "result": "PENDING",
-    "pnl": 0
+    "result": "WIN",
+    "pnl": 1.67
   },
   {
     "date": "2026-03-12",
@@ -1119,6 +1119,230 @@
     "edge_pp": 3.76,
     "model_prob": 68.5,
     "odds": -118.7,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "03/10",
+    "player": "Keldon Johnson",
+    "stat": "POINTS",
+    "line": 11.0,
+    "direction": "OVER",
+    "pick": "Keldon Johnson OVER 11.0 POINTS",
+    "projection": 16.32,
+    "edge_pp": 5.32,
+    "model_prob": 77.3,
+    "odds": -107.0,
+    "stake": 2.12,
+    "to_win": 1.98,
+    "result": "LOSS",
+    "pnl": -2.12
+  },
+  {
+    "date": "03/10",
+    "player": "De'Aaron Fox",
+    "stat": "POINTS",
+    "line": 16.5,
+    "direction": "OVER",
+    "pick": "De'Aaron Fox OVER 16.5 POINTS",
+    "projection": 21.4,
+    "edge_pp": 4.9,
+    "model_prob": 78.1,
+    "odds": -110.0,
+    "stake": 2.12,
+    "to_win": 1.93,
+    "result": "WIN",
+    "pnl": 1.93
+  },
+  {
+    "date": "03/11",
+    "player": "Jakob Poeltl",
+    "stat": "POINTS",
+    "line": 11.5,
+    "direction": "OVER",
+    "pick": "Jakob Poeltl OVER 11.5 POINTS",
+    "projection": 16.95,
+    "edge_pp": 5.45,
+    "model_prob": 87.5,
+    "odds": -104.5,
+    "stake": 2.17,
+    "to_win": 2.08,
+    "result": "LOSS",
+    "pnl": -2.17
+  },
+  {
+    "date": "03/11",
+    "player": "DeMar DeRozan",
+    "stat": "POINTS",
+    "line": 15.5,
+    "direction": "OVER",
+    "pick": "DeMar DeRozan OVER 15.5 POINTS",
+    "projection": 20.75,
+    "edge_pp": 5.25,
+    "model_prob": 75.1,
+    "odds": -111.5,
+    "stake": 2.17,
+    "to_win": 1.95,
+    "result": "WIN",
+    "pnl": 1.95
+  },
+  {
+    "date": "03/12",
+    "player": "Cade Cunningham",
+    "stat": "POINTS",
+    "line": 24.5,
+    "direction": "OVER",
+    "pick": "Cade Cunningham OVER 24.5 POINTS",
+    "projection": 29.95,
+    "edge_pp": 5.45,
+    "model_prob": 75.3,
+    "odds": -105.5,
+    "stake": 2.24,
+    "to_win": 2.12,
+    "result": "LOSS",
+    "pnl": -2.24
+  },
+  {
+    "date": "03/12",
+    "player": "Ajay Mitchell",
+    "stat": "POINTS",
+    "line": 13.0,
+    "direction": "UNDER",
+    "pick": "Ajay Mitchell UNDER 13.0 POINTS",
+    "projection": 8.13,
+    "edge_pp": 4.87,
+    "model_prob": 85.7,
+    "odds": -115.5,
+    "stake": 2.24,
+    "to_win": 1.94,
+    "result": "LOSS",
+    "pnl": -2.24
+  },
+  {
+    "date": "03/12",
+    "player": "Jayson Tatum",
+    "stat": "POINTS",
+    "line": 19.0,
+    "direction": "OVER",
+    "pick": "Jayson Tatum OVER 19.0 POINTS",
+    "projection": 23.77,
+    "edge_pp": 4.77,
+    "model_prob": 81.8,
+    "odds": -113.5,
+    "stake": 2.24,
+    "to_win": 1.97,
+    "result": "LOSS",
+    "pnl": -2.24
+  },
+  {
+    "date": "2026-03-13",
+    "player": "Daniel Gafford",
+    "stat": "points",
+    "line": 9.5,
+    "direction": "over",
+    "pick": "OVER",
+    "projection": 13.4,
+    "edge_pp": 3.9,
+    "model_prob": 78.4,
+    "odds": -103.0,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-13",
+    "player": "Cade Cunningham",
+    "stat": "points",
+    "line": 24.0,
+    "direction": "under",
+    "pick": "UNDER",
+    "projection": 20.0,
+    "edge_pp": 4.04,
+    "model_prob": 71.3,
+    "odds": -122.5,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-13",
+    "player": "Pascal Siakam",
+    "stat": "points",
+    "line": 21.5,
+    "direction": "over",
+    "pick": "OVER",
+    "projection": 26.0,
+    "edge_pp": 4.46,
+    "model_prob": 84.8,
+    "odds": -112.5,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-13",
+    "player": "Jalen Brunson",
+    "stat": "points",
+    "line": 26.5,
+    "direction": "under",
+    "pick": "UNDER",
+    "projection": 22.8,
+    "edge_pp": 3.75,
+    "model_prob": 74.0,
+    "odds": -125.0,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-13",
+    "player": "Dejounte Murray",
+    "stat": "points",
+    "line": 16.0,
+    "direction": "over",
+    "pick": "OVER",
+    "projection": 20.5,
+    "edge_pp": 4.48,
+    "model_prob": 85.5,
+    "odds": -117.0,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-13",
+    "player": "Tari Eason",
+    "stat": "points",
+    "line": 11.5,
+    "direction": "under",
+    "pick": "UNDER",
+    "projection": 7.9,
+    "edge_pp": 3.63,
+    "model_prob": 88.8,
+    "odds": null,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-13",
+    "player": "Trey Murphy III",
+    "stat": "points",
+    "line": 20.5,
+    "direction": "over",
+    "pick": "OVER",
+    "projection": 24.3,
+    "edge_pp": 3.77,
+    "model_prob": 69.6,
+    "odds": -113.5,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-13",
+    "player": "Kawhi Leonard",
+    "stat": "points",
+    "line": 29.5,
+    "direction": "over",
+    "pick": "OVER",
+    "projection": 33.6,
+    "edge_pp": 4.15,
+    "model_prob": 73.7,
+    "odds": -115.5,
     "result": "PENDING",
     "pnl": 0
   }

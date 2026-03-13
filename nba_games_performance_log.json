@@ -34,5 +34,17 @@
     "to_win": 0.42,
     "result": "WIN",
     "pnl": 0.42
+  },
+  {
+    "date": "03/11",
+    "pick": "Cleveland Cavaliers",
+    "matchup": "Cleveland Cavaliers @ Orlando Magic",
+    "model_prob": 69.0,
+    "edge_pp": 9.73,
+    "odds": -161.3,
+    "stake": 2.17,
+    "to_win": 1.35,
+    "result": "LOSS",
+    "pnl": -2.17
   }
 ]
