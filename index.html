@@ -5648,14 +5648,276 @@ document.querySelector('[data-tab="madness"]')?.addEventListener('click', () => 
     return 'Toss-up';
   }
 
+  // ESPN full name -> bart exact name (from bart_teams.json)
+  const TEAM_NAME_MAP = {
+    // A
+    'abilene christian wildcats': 'Abilene Christian',
+    'air force falcons': 'Air Force',
+    'akron zips': 'Akron',
+    'alabama crimson tide': 'Alabama',
+    'alabama am bulldogs': 'Alabama A&M',
+    'alabama st. hornets': 'Alabama St.',
+    'albany great danes': 'Albany',
+    'alcorn st. braves': 'Alcorn St.',
+    'appalachian st. mountaineers': 'Appalachian St.',
+    'arizona wildcats': 'Arizona',
+    'arizona st. sun devils': 'Arizona St.',
+    'arkansas razorbacks': 'Arkansas',
+    'arkansas pine bluff golden lions': 'Arkansas Pine Bluff',
+    'arkansas st. red wolves': 'Arkansas St.',
+    'army black knights': 'Army',
+    'auburn tigers': 'Auburn',
+    // B
+    'byu cougars': 'BYU',
+    'ball st. cardinals': 'Ball St.',
+    'baylor bears': 'Baylor',
+    'belmont bruins': 'Belmont',
+    'boise st. broncos': 'Boise St.',
+    'boston college eagles': 'Boston College',
+    'boston university terriers': 'Boston University',
+    'bowling green falcons': 'Bowling Green',
+    'bradley braves': 'Bradley',
+    'brown bears': 'Brown',
+    'buffalo bulls': 'Buffalo',
+    'butler bulldogs': 'Butler',
+    // C
+    'cal baptist lancers': 'Cal Baptist',
+    'california baptist lancers': 'Cal Baptist',
+    'ca baptist lancers': 'Cal Baptist',
+    'cal poly mustangs': 'Cal Poly',
+    'california golden bears': 'California',
+    'campbell fighting camels': 'Campbell',
+    'central arkansas bears': 'Central Arkansas',
+    'central connecticut blue devils': 'Central Connecticut',
+    'central michigan chippewas': 'Central Michigan',
+    'charleston southern buccaneers': 'Charleston Southern',
+    'charlotte 49ers': 'Charlotte',
+    'chattanooga mocs': 'Chattanooga',
+    'chicago st. cougars': 'Chicago St.',
+    'cincinnati bearcats': 'Cincinnati',
+    'clemson tigers': 'Clemson',
+    'cleveland st. vikings': 'Cleveland St.',
+    'coastal carolina chanticleers': 'Coastal Carolina',
+    'colgate raiders': 'Colgate',
+    'colorado buffaloes': 'Colorado',
+    'colorado st. rams': 'Colorado St.',
+    'columbia lions': 'Columbia',
+    'connecticut huskies': 'Connecticut',
+    'uconn huskies': 'Connecticut',
+    'cornell big red': 'Cornell',
+    'creighton bluejays': 'Creighton',
+    // D
+    'dartmouth big green': 'Dartmouth',
+    'davidson wildcats': 'Davidson',
+    'dayton flyers': 'Dayton',
+    'depaul blue demons': 'DePaul',
+    'delaware fightin blue hens': 'Delaware',
+    'denver pioneers': 'Denver',
+    'detroit mercy titans': 'Detroit Mercy',
+    'drake bulldogs': 'Drake',
+    'drexel dragons': 'Drexel',
+    'duke blue devils': 'Duke',
+    'duquesne dukes': 'Duquesne',
+    // E
+    'east carolina pirates': 'East Carolina',
+    'east tennessee st. buccaneers': 'East Tennessee St.',
+    'eastern illinois panthers': 'Eastern Illinois',
+    'eastern kentucky colonels': 'Eastern Kentucky',
+    'eastern michigan eagles': 'Eastern Michigan',
+    'eastern washington eagles': 'Eastern Washington',
+    'elon phoenix': 'Elon',
+    // F
+    'fairfield stags': 'Fairfield',
+    'fairleigh dickinson knights': 'Fairleigh Dickinson',
+    'florida gators': 'Florida',
+    'florida am rattlers': 'Florida A&M',
+    'florida a&m rattlers': 'Florida A&M',
+    'florida atlantic owls': 'Florida Atlantic',
+    'florida gulf coast eagles': 'Florida Gulf Coast',
+    'florida st. seminoles': 'Florida St.',
+    'fordham rams': 'Fordham',
+    'fresno st. bulldogs': 'Fresno St.',
+    'furman paladins': 'Furman',
+    // G
+    'george mason patriots': 'George Mason',
+    'george washington colonials': 'George Washington',
+    'georgetown hoyas': 'Georgetown',
+    'georgia bulldogs': 'Georgia',
+    'georgia southern eagles': 'Georgia Southern',
+    'gonzaga bulldogs': 'Gonzaga',
+    // H
+    'harvard crimson': 'Harvard',
+    'hawaii rainbow warriors': 'Hawaii',
+    "hawai'i rainbow warriors": 'Hawaii',
+    'houston cougars': 'Houston',
+    'howard bison': 'Howard',
+    // I
+    'illinois fighting illini': 'Illinois',
+    'indiana hoosiers': 'Indiana',
+    'iowa hawkeyes': 'Iowa',
+    'iowa st. cyclones': 'Iowa St.',
+    // J K
+    'kansas jayhawks': 'Kansas',
+    'kansas st. wildcats': 'Kansas St.',
+    'kennesaw st. owls': 'Kennesaw St.',
+    'kennesaw state owls': 'Kennesaw St.',
+    // L
+    'louisiana tech bulldogs': 'Louisiana Tech',
+    'louisville cardinals': 'Louisville',
+    'lsu tigers': 'LSU',
+    // M
+    'marquette golden eagles': 'Marquette',
+    'maryland terrapins': 'Maryland',
+    'memphis tigers': 'Memphis',
+    'miami fl hurricanes': 'Miami FL',
+    'miami hurricanes': 'Miami FL',
+    'michigan wolverines': 'Michigan',
+    'michigan st. spartans': 'Michigan St.',
+    'michigan state spartans': 'Michigan St.',
+    'minnesota golden gophers': 'Minnesota',
+    'mississippi st. bulldogs': 'Mississippi St.',
+    'missouri tigers': 'Missouri',
+    'mount st. marys mountaineers': "Mount St. Mary's",
+    "mount st. mary's mountaineers": "Mount St. Mary's",
+    // N
+    'nc central eagles': 'NC Central',
+    'north carolina central eagles': 'NC Central',
+    'nc state wolfpack': 'NC State',
+    'north carolina tar heels': 'North Carolina',
+    'notre dame fighting irish': 'Notre Dame',
+    'nevada wolf pack': 'Nevada',
+    'new mexico lobos': 'New Mexico',
+    'niagara purple eagles': 'Niagara',
+    // O
+    'ohio bobcats': 'Ohio',
+    'ohio st. buckeyes': 'Ohio St.',
+    'ohio state buckeyes': 'Ohio St.',
+    'ole miss rebels': 'Ole Miss',
+    'oral roberts golden eagles': 'Oral Roberts',
+    'oregon ducks': 'Oregon',
+    'oregon st. beavers': 'Oregon St.',
+    // P
+    'penn quakers': 'Penn',
+    'penn st. nittany lions': 'Penn St.',
+    'penn state nittany lions': 'Penn St.',
+    'pittsburgh panthers': 'Pittsburgh',
+    'prairie view am panthers': 'Prairie View A&M',
+    'prairie view a&m panthers': 'Prairie View A&M',
+    'purdue boilermakers': 'Purdue',
+    'purdue fort wayne mastodons': 'Purdue Fort Wayne',
+    // R
+    'rhode island rams': 'Rhode Island',
+    'rice owls': 'Rice',
+    'rutgers scarlet knights': 'Rutgers',
+    // S
+    "saint joseph's hawks": "Saint Joseph's",
+    'saint josephs hawks': "Saint Joseph's",
+    'saint louis billikens': 'Saint Louis',
+    'san diego st. aztecs': 'San Diego St.',
+    'san diego state aztecs': 'San Diego St.',
+    'san diego toreros': 'San Diego',
+    'seattle redhawks': 'Seattle',
+    'seton hall pirates': 'Seton Hall',
+    'siena saints': 'Siena',
+    'south alabama jaguars': 'South Alabama',
+    'south florida bulls': 'South Florida',
+    'southern jaguars': 'Southern',
+    'southern illinois salukis': 'Southern Illinois',
+    'southern miss golden eagles': 'Southern Miss',
+    'southern utah thunderbirds': 'Southern Utah',
+    "st. john's red storm": "St. John's",
+    'st. johns red storm': "St. John's",
+    'stanford cardinal': 'Stanford',
+    'stetson hatters': 'Stetson',
+    'stony brook seawolves': 'Stony Brook',
+    'syracuse orange': 'Syracuse',
+    // T
+    'temple owls': 'Temple',
+    'tennessee volunteers': 'Tennessee',
+    'texas longhorns': 'Texas',
+    'texas am aggies': 'Texas A&M',
+    'texas a&m aggies': 'Texas A&M',
+    'texas southern tigers': 'Texas Southern',
+    'texas st. bobcats': 'Texas St.',
+    'texas tech red raiders': 'Texas Tech',
+    'toledo rockets': 'Toledo',
+    'tulane green wave': 'Tulane',
+    'tulsa golden hurricane': 'Tulsa',
+    // U
+    'uc irvine anteaters': 'UC Irvine',
+    'uc san diego tritons': 'UC San Diego',
+    'ucla bruins': 'UCLA',
+    'umbc retrievers': 'UMBC',
+    'utah utes': 'Utah',
+    'utah st. aggies': 'Utah St.',
+    'utah state aggies': 'Utah St.',
+    'utah valley wolverines': 'Utah Valley',
+    // V
+    'vcu rams': 'VCU',
+    'vanderbilt commodores': 'Vanderbilt',
+    'vermont catamounts': 'Vermont',
+    'villanova wildcats': 'Villanova',
+    'virginia cavaliers': 'Virginia',
+    'virginia tech hokies': 'Virginia Tech',
+    // W
+    'wake forest demon deacons': 'Wake Forest',
+    'washington huskies': 'Washington',
+    'west virginia mountaineers': 'West Virginia',
+    'western michigan broncos': 'Western Michigan',
+    'wichita st. shockers': 'Wichita St.',
+    'wichita state shockers': 'Wichita St.',
+    'wisconsin badgers': 'Wisconsin',
+    'wright st. raiders': 'Wright St.',
+    // X Y
+    'xavier musketeers': 'Xavier',
+    'yale bulldogs': 'Yale',
+  };
+
   function findTeam(q) {
     if (!q) return null;
-    const ql = q.trim().toLowerCase();
+    const ql = q.trim().toLowerCase().replace(/[^a-z0-9\s&']/g, '');
+
+    // 0. Override map — ESPN full names to bart short names
+    // Normalize: remove punctuation except &, ', . for map lookup
+    const qlNorm = ql.replace(/[^a-z0-9\s&]/g, '').replace(/\s+/g, ' ').trim();
+    if (TEAM_NAME_MAP[ql]) {
+      const mapped = TEAM_NAME_MAP[ql];
+      if (bartMap[mapped]) return bartMap[mapped];
+    }
+    if (TEAM_NAME_MAP[qlNorm]) {
+      const mapped = TEAM_NAME_MAP[qlNorm];
+      if (bartMap[mapped]) return bartMap[mapped];
+    }
+
+    // 1. Exact match
     if (bartMap[q]) return bartMap[q];
     const exact = teamNames.find(t => t.toLowerCase() === ql);
     if (exact) return bartMap[exact];
-    const partial = teamNames.find(t => t.toLowerCase().includes(ql) || ql.includes(t.toLowerCase().split(' ')[0]));
-    if (partial) return bartMap[partial];
+
+    // 2. Bart name fully contained in query ("Toledo" inside "Toledo Rockets")
+    // Sort by length descending so longer matches win over shorter ones
+    const sortedNames = [...teamNames].sort((a,b) => b.length - a.length);
+    const contained = sortedNames.find(t => ql.includes(t.toLowerCase()));
+    if (contained) return bartMap[contained];
+
+    // 3. Query contained in bart name
+    const queryInBart = teamNames.find(t => t.toLowerCase().includes(ql));
+    if (queryInBart) return bartMap[queryInBart];
+
+    // 4. Word overlap — score each team, require at least 2 matching words or 1 long word (>4 chars)
+    const qWords = ql.split(/\s+/).filter(w => w.length > 2);
+    let bestScore = 0, bestTeam = null;
+    teamNames.forEach(t => {
+      const tWords = t.toLowerCase().split(/\s+/);
+      let score = 0;
+      qWords.forEach(w => {
+        if (tWords.some(tw => tw === w)) score += 2;         // exact word match scores 2
+        else if (tWords.some(tw => tw.includes(w) && w.length > 3)) score += 1; // partial only if word is long
+      });
+      if (score > bestScore) { bestScore = score; bestTeam = t; }
+    });
+    if (bestScore >= 2 && bestTeam) return bartMap[bestTeam];
+
     return { name: q, adjem: 0, adjo: null, adjd: null, adjt: null, sos_rank: null, conf: '—', record: '—' };
   }
 
