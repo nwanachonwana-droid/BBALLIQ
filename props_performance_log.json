@@ -1119,7 +1119,7 @@
     "edge_pp": 3.76,
     "model_prob": 68.5,
     "odds": -118.7,
-    "result": "PENDING",
+    "result": "PUSH",
     "pnl": 0
   },
   {
@@ -1259,7 +1259,7 @@
     "edge_pp": 4.04,
     "model_prob": 71.3,
     "odds": -122.5,
-    "result": "PENDING",
+    "result": "WIN",
     "pnl": 0
   },
   {
@@ -1287,7 +1287,7 @@
     "edge_pp": 3.75,
     "model_prob": 74.0,
     "odds": -125.0,
-    "result": "PENDING",
+    "result": "LOSS",
     "pnl": 0
   },
   {
@@ -1301,7 +1301,7 @@
     "edge_pp": 4.48,
     "model_prob": 85.5,
     "odds": -117.0,
-    "result": "PENDING",
+    "result": "WIN",
     "pnl": 0
   },
   {
@@ -1315,7 +1315,7 @@
     "edge_pp": 3.63,
     "model_prob": 88.8,
     "odds": null,
-    "result": "PENDING",
+    "result": "WIN",
     "pnl": 0
   },
   {
@@ -1329,7 +1329,7 @@
     "edge_pp": 3.77,
     "model_prob": 69.6,
     "odds": -113.5,
-    "result": "PENDING",
+    "result": "LOSS",
     "pnl": 0
   },
   {
@@ -1343,6 +1343,48 @@
     "edge_pp": 4.15,
     "model_prob": 73.7,
     "odds": -115.5,
+    "result": "LOSS",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-14",
+    "player": "Kyle Kuzma",
+    "stat": "points",
+    "line": 10.2,
+    "direction": "over",
+    "pick": "OVER",
+    "projection": 15.1,
+    "edge_pp": 4.86,
+    "model_prob": 73.0,
+    "odds": -119.0,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-14",
+    "player": "Kon Knueppel",
+    "stat": "points",
+    "line": 17.8,
+    "direction": "over",
+    "pick": "OVER",
+    "projection": 21.6,
+    "edge_pp": 3.83,
+    "model_prob": 72.9,
+    "odds": -114.0,
+    "result": "PENDING",
+    "pnl": 0
+  },
+  {
+    "date": "2026-03-14",
+    "player": "Bam Adebayo",
+    "stat": "points",
+    "line": 22.2,
+    "direction": "over",
+    "pick": "OVER",
+    "projection": 30.9,
+    "edge_pp": 8.65,
+    "model_prob": 67.8,
+    "odds": -116.3,
     "result": "PENDING",
     "pnl": 0
   }
