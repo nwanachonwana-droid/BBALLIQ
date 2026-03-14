@@ -5534,8 +5534,7 @@ document.querySelector('[data-tab="madness"]')?.addEventListener('click', () => 
 // BUILD TAB — Matchup Analyzer
 // ═══════════════════════════════════════════════════════════════
 (function() {
-  const INTERCEPT = 0.5614;
-  const COEFF     = 0.1103;
+  const COEFF = 0.1103;  // per AdjEM point, neutral site (no intercept)
 
   // bart_teams.json is an array of arrays. Indices:
   // [0]=rank [1]=name [2]=conf [3]=record [4]=AdjO [6]=AdjD
@@ -5631,7 +5630,8 @@ document.querySelector('[data-tab="madness"]')?.addEventListener('click', () => 
   }
 
   function winProb(em1, em2) {
-    return 1 / (1 + Math.exp(-(INTERCEPT + COEFF * (em1 - em2))));
+    // Neutral site — no home court intercept
+    return 1 / (1 + Math.exp(-(COEFF * (em1 - em2))));
   }
 
   function mlToImplied(ml) {
