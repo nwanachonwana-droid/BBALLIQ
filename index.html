@@ -1547,7 +1547,160 @@
   .field-grid { grid-template-columns:1fr; }
   .field-grid-3 { grid-template-columns:1fr; }
 }
-</style>
+
+  /* ── BUILD TAB ─────────────────────────────────────────── */
+  .build-label {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .build-input-row {
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    gap: 1rem; align-items: end; margin-bottom: 0.85rem;
+  }
+  .build-odds-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; margin-bottom: 1rem;
+  }
+  .build-input-group label {
+    display: block; font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.35rem;
+  }
+  .build-input-group input {
+    width: 100%; padding: 0.6rem 0.8rem; box-sizing: border-box;
+    border: 1px solid var(--border); border-radius: 6px;
+    background: var(--card); color: var(--text);
+    font-family: 'DM Mono', monospace; font-size: 0.85rem;
+    outline: none; transition: border-color 0.15s;
+  }
+  .build-input-group input:focus { border-color: var(--accent); }
+  .build-vs {
+    font-size: 0.7rem; color: var(--muted); font-weight: 700;
+    padding-bottom: 0.6rem; text-align: center;
+  }
+  .build-ac-list {
+    position: absolute; top: calc(100% + 3px); left: 0; right: 0;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 6px; max-height: 180px; overflow-y: auto;
+    z-index: 200; display: none; box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+  .build-ac-list.open { display: block; }
+  .build-ac-item {
+    padding: 0.5rem 0.8rem; cursor: pointer; font-size: 0.8rem;
+    color: var(--text); border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .build-ac-item:last-child { border-bottom: none; }
+  .build-ac-item:hover { background: var(--bg); }
+  .build-ac-em { color: var(--muted); font-size: 0.72rem; }
+  .build-game-chip {
+    display: inline-flex; align-items: center;
+    padding: 0.4rem 0.85rem; border: 1px solid var(--border);
+    border-radius: 5px; background: var(--card); color: var(--text);
+    font-family: 'DM Mono', monospace; font-size: 0.76rem;
+    cursor: pointer; transition: border-color 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  .build-game-chip:hover { border-color: var(--accent); color: var(--accent); }
+  .build-game-chip.active { border-color: var(--accent); color: var(--accent); }
+  .build-analyze-btn {
+    width: 100%; padding: 0.8rem; background: var(--accent);
+    color: #fff; border: none; border-radius: 6px;
+    font-family: 'DM Mono', monospace; font-size: 0.85rem;
+    font-weight: 700; cursor: pointer; margin-bottom: 1.5rem;
+    transition: opacity 0.15s;
+  }
+  .build-analyze-btn:hover { opacity: 0.88; }
+  .build-analyze-btn:disabled { opacity: 0.4; cursor: default; }
+  /* Result card */
+  .build-result-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: 1.25rem; background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px 8px 0 0; margin-top: 0.5rem;
+  }
+  .build-result-team {
+    font-family: 'Syne', sans-serif; font-size: 1.2rem;
+    font-weight: 800; color: var(--text); line-height: 1.1;
+  }
+  .build-result-sub {
+    font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem;
+  }
+  .build-result-sub.right { text-align: right; }
+  .build-result-vs {
+    width: 2.2rem; height: 2.2rem; border: 1px solid var(--border);
+    border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-size: 0.6rem; color: var(--muted);
+    font-weight: 700; flex-shrink: 0; margin-top: 0.2rem;
+  }
+  .build-prob-section {
+    padding: 1.1rem 1.25rem; background: var(--card);
+    border-left: 1px solid var(--border); border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .build-prob-labels { display: flex; justify-content: space-between; margin-bottom: 0.45rem; }
+  .build-prob-main { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 800; color: var(--text); }
+  .build-prob-right { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+  .build-bar-track { height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; margin-bottom: 0.5rem; }
+  .build-bar-fill { height: 100%; background: var(--accent); border-radius: 3px; transition: width 0.5s ease; }
+  .build-prob-meta { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); }
+  .build-mvv { font-weight: 700; }
+  .build-mvv.pos { color: var(--accent); }
+  .build-mvv.neg { color: #ef4444; }
+  .build-vegas-implied {
+    display: flex; justify-content: space-between;
+    font-size: 0.75rem; color: var(--muted); margin-top: 0.4rem;
+  }
+  .build-stats-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-left: 1px solid var(--border); border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border); gap: 1px; background: var(--border);
+  }
+  .build-stats-panel { background: var(--card); padding: 1rem 1.25rem; }
+  .build-stats-label {
+    font-size: 0.58rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 0.7rem;
+  }
+  .build-stat-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.3rem 0; border-bottom: 1px solid var(--border);
+    font-size: 0.8rem; color: var(--muted);
+  }
+  .build-stat-row:last-child { border-bottom: none; }
+  .build-stat-val { font-weight: 700; color: var(--text); margin-left: 0.5rem; }
+  .build-stat-val.better { color: var(--accent); }
+  .build-narrative-section {
+    padding: 1rem 1.25rem; background: var(--card);
+    border-left: 1px solid var(--border); border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .build-factors-section {
+    padding: 1rem 1.25rem; background: var(--card);
+    border: 1px solid var(--border); border-top: none;
+    border-radius: 0 0 8px 8px;
+  }
+  .build-factor-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.55rem 0; border-bottom: 1px solid var(--border);
+    font-size: 0.8rem; gap: 1rem;
+  }
+  .build-factor-row:last-child { border-bottom: none; }
+  .build-factor-left { display: flex; align-items: center; gap: 0.5rem; color: var(--muted); flex: 1; }
+  .build-factor-icon {
+    width: 1.3rem; height: 1.3rem; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.62rem; flex-shrink: 0; color: var(--muted);
+  }
+  .build-factor-icon.warn { background: rgba(249,115,22,0.15); color: var(--accent); }
+  .build-factor-icon.good { background: rgba(34,197,94,0.15); color: #22c55e; }
+  .build-factor-val { font-weight: 700; color: var(--text); white-space: nowrap; font-size: 0.8rem; }
+  @media(max-width:600px) {
+    .build-input-row { grid-template-columns: 1fr; }
+    .build-vs { display: none; }
+    .build-odds-row { grid-template-columns: 1fr; }
+    .build-stats-grid { grid-template-columns: 1fr; }
+  }
+
+  </style>
 </head>
 <body>
 
@@ -1564,6 +1717,7 @@
     <button class="tab-btn" data-tab="madness">Madness</button>
     <button class="tab-btn" data-tab="bettor">AI Bettor</button>
     <button class="tab-btn" data-tab="history">Historical</button>
+    <button class="tab-btn" data-tab="build">Build</button>
   </nav>
 </header>
 
@@ -2474,6 +2628,148 @@
     <div id="nba-all-games"><div class="nba-empty">Loading...</div></div>
   </div>
 </div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB — BUILD (Matchup Analyzer)
+════════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-build">
+  <div class="section-header">
+    <div>
+      <div class="section-title">Build</div>
+      <div class="section-sub">Analyze any matchup · Model win probability vs Vegas · March Madness bracket IQ</div>
+    </div>
+  </div>
+
+  <!-- Today's Games -->
+  <div style="margin-bottom:1.5rem">
+    <div class="build-label">Today's Games — Select a Matchup</div>
+    <div id="build-games-row" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.6rem">
+      <span style="color:var(--muted);font-size:0.78rem">Loading games…</span>
+    </div>
+  </div>
+
+  <!-- Inputs -->
+  <div class="build-input-row">
+    <div class="build-input-group">
+      <label>Team 1</label>
+      <div style="position:relative">
+        <input type="text" id="build-t1" placeholder="e.g. Duke Blue Devils" autocomplete="off">
+        <div class="build-ac-list" id="build-ac1"></div>
+      </div>
+    </div>
+    <div class="build-vs">vs</div>
+    <div class="build-input-group">
+      <label>Team 2</label>
+      <div style="position:relative">
+        <input type="text" id="build-t2" placeholder="e.g. Auburn Tigers" autocomplete="off">
+        <div class="build-ac-list" id="build-ac2"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vegas odds (optional) -->
+  <div class="build-odds-row">
+    <div class="build-input-group">
+      <label>Team 1 Moneyline <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+      <input type="text" id="build-ml1" placeholder="-150">
+    </div>
+    <div class="build-input-group">
+      <label>Team 2 Moneyline <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+      <input type="text" id="build-ml2" placeholder="+130">
+    </div>
+  </div>
+
+  <button class="build-analyze-btn" id="build-analyze-btn" onclick="runBuildAnalysis()">Analyze Matchup</button>
+
+  <!-- Empty state -->
+  <div id="build-empty" style="text-align:center;padding:2.5rem;color:var(--muted);font-size:0.82rem">
+    Select a game above or type two teams to generate a model analysis.
+  </div>
+
+  <!-- Result -->
+  <div id="build-result" style="display:none">
+
+    <!-- Header -->
+    <div class="build-result-header">
+      <div>
+        <div class="build-result-team" id="br-t1-name">—</div>
+        <div class="build-result-sub" id="br-t1-sub">—</div>
+      </div>
+      <div class="build-result-vs">vs</div>
+      <div style="text-align:right">
+        <div class="build-result-team" id="br-t2-name">—</div>
+        <div class="build-result-sub right" id="br-t2-sub">—</div>
+      </div>
+    </div>
+
+    <!-- Prob bar -->
+    <div class="build-prob-section">
+      <div class="build-prob-labels">
+        <span class="build-prob-main" id="br-prob-left">—</span>
+        <span class="build-prob-right" id="br-prob-right">—</span>
+      </div>
+      <div class="build-bar-track">
+        <div class="build-bar-fill" id="br-bar" style="width:50%"></div>
+      </div>
+      <div class="build-prob-meta">
+        <span id="br-conf-label">—</span>
+        <span class="build-mvv" id="br-mvv"></span>
+      </div>
+      <div class="build-vegas-implied" id="br-vegas-row" style="display:none">
+        <span>Vegas implied (<span id="br-vegas-team">—</span>)</span>
+        <span id="br-vegas-pct">—</span>
+      </div>
+    </div>
+
+    <!-- Stats grid -->
+    <div class="build-stats-grid">
+      <div class="build-stats-panel">
+        <div class="build-stats-label">Efficiency</div>
+        <div class="build-stat-row">
+          <span>AdjO</span>
+          <span><span id="br-t1-adjo" class="build-stat-val">—</span> <span id="br-t2-adjo" class="build-stat-val">—</span></span>
+        </div>
+        <div class="build-stat-row">
+          <span>AdjD</span>
+          <span><span id="br-t1-adjd" class="build-stat-val">—</span> <span id="br-t2-adjd" class="build-stat-val">—</span></span>
+        </div>
+        <div class="build-stat-row">
+          <span>Net</span>
+          <span><span id="br-t1-net" class="build-stat-val">—</span> <span id="br-t2-net" class="build-stat-val">—</span></span>
+        </div>
+      </div>
+      <div class="build-stats-panel">
+        <div class="build-stats-label">Context</div>
+        <div class="build-stat-row">
+          <span>SOS rank</span>
+          <span><span id="br-t1-sos" class="build-stat-val">—</span> <span id="br-t2-sos" class="build-stat-val">—</span></span>
+        </div>
+        <div class="build-stat-row">
+          <span>Pace</span>
+          <span><span id="br-t1-pace" class="build-stat-val">—</span> <span id="br-t2-pace" class="build-stat-val">—</span></span>
+        </div>
+        <div class="build-stat-row">
+          <span>Record</span>
+          <span><span id="br-t1-rec" class="build-stat-val">—</span> <span id="br-t2-rec" class="build-stat-val">—</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Narrative -->
+    <div class="build-narrative-section">
+      <div class="build-label" style="margin-bottom:0.6rem">Model Narrative</div>
+      <div id="br-narrative" style="font-size:0.84rem;line-height:1.7;color:var(--muted)">—</div>
+    </div>
+
+    <!-- Factors -->
+    <div class="build-factors-section">
+      <div class="build-label" style="margin-bottom:0.6rem">Tournament Factors</div>
+      <div id="br-factors"></div>
+    </div>
+
+  </div><!-- /build-result -->
+</div><!-- /tab-build -->
+
 <div class="tab-panel" id="tab-madness">
 
   <div class="madness-header">
@@ -5232,6 +5528,308 @@ document.querySelector('[data-tab="madness"]')?.addEventListener('click', () => 
     initMadnessTab();
   }
 });
+
+
+// ═══════════════════════════════════════════════════════════════
+// BUILD TAB — Matchup Analyzer
+// ═══════════════════════════════════════════════════════════════
+(function() {
+  const INTERCEPT = 0.5614;
+  const COEFF     = 0.1103;
+
+  let bartCache = {};
+  let teamNames = [];
+
+  // Load bart_teams.json (already cached by other tabs if loaded)
+  async function ensureBart() {
+    if (teamNames.length > 0) return;
+    try {
+      const r = await fetch('bart_teams.json?t=' + Math.floor(Date.now()/86400000));
+      if (!r.ok) return;
+      bartCache = await r.json();
+      teamNames = Object.keys(bartCache).sort();
+    } catch(e) {}
+  }
+
+  // Load today's games from today_games.json (generated by morning_routine.sh)
+  async function loadBuildGames() {
+    const row = document.getElementById('build-games-row');
+    try {
+      const r = await fetch('today_games.json?t=' + Math.floor(Date.now()/86400000));
+      if (!r.ok) throw new Error('no file');
+      const games = await r.json();
+      row.innerHTML = '';
+      if (!games.length) { row.innerHTML = '<span style="color:var(--muted);font-size:0.78rem">No games today.</span>'; return; }
+      games.forEach(g => {
+        const chip = document.createElement('div');
+        chip.className = 'build-game-chip';
+        chip.textContent = g.t1_short + ' vs ' + g.t2_short;
+        chip.dataset.t1 = g.t1;
+        chip.dataset.t2 = g.t2;
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('.build-game-chip').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          document.getElementById('build-t1').value = g.t1;
+          document.getElementById('build-t2').value = g.t2;
+          runBuildAnalysis();
+        });
+        row.appendChild(chip);
+      });
+    } catch(e) {
+      row.innerHTML = '<span style="color:var(--muted);font-size:0.78rem">Run fetch_today_games.py to populate games.</span>';
+    }
+  }
+
+  // Autocomplete
+  function setupAC(inputId, listId) {
+    const input = document.getElementById(inputId);
+    const list  = document.getElementById(listId);
+    input.addEventListener('input', () => {
+      const q = input.value.trim().toLowerCase();
+      list.innerHTML = '';
+      if (q.length < 2 || !teamNames.length) { list.classList.remove('open'); return; }
+      const hits = teamNames.filter(t => t.toLowerCase().includes(q)).slice(0, 8);
+      if (!hits.length) { list.classList.remove('open'); return; }
+      hits.forEach(name => {
+        const item = document.createElement('div');
+        item.className = 'build-ac-item';
+        const d = bartCache[name];
+        const em = d ? (d.adjem ?? d.adjEM ?? '') : '';
+        const emStr = em !== '' ? (parseFloat(em) >= 0 ? '+' : '') + parseFloat(em).toFixed(1) : '';
+        item.innerHTML = '<span>' + name + '</span>' + (emStr ? '<span class="build-ac-em">' + emStr + '</span>' : '');
+        item.addEventListener('click', () => {
+          input.value = name; list.classList.remove('open'); list.innerHTML = '';
+        });
+        list.appendChild(item);
+      });
+      list.classList.add('open');
+    });
+    document.addEventListener('click', e => {
+      if (!input.contains(e.target) && !list.contains(e.target)) list.classList.remove('open');
+    });
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') runBuildAnalysis(); });
+  }
+
+  function winProb(em1, em2) {
+    return 1 / (1 + Math.exp(-(INTERCEPT + COEFF * (em1 - em2))));
+  }
+
+  function mlToImplied(ml) {
+    const v = parseFloat(ml);
+    if (isNaN(v)) return null;
+    return v > 0 ? 100 / (v + 100) : Math.abs(v) / (Math.abs(v) + 100);
+  }
+
+  function confLabel(p) {
+    const c = Math.max(p, 1 - p);
+    if (c >= 0.75) return 'Strong lean';
+    if (c >= 0.65) return 'Lean';
+    if (c >= 0.55) return 'Slight lean';
+    return 'Toss-up';
+  }
+
+  function findTeam(q) {
+    if (!q) return null;
+    const ql = q.trim().toLowerCase();
+    if (bartCache[q]) return { name: q, ...bartCache[q] };
+    const exact = teamNames.find(t => t.toLowerCase() === ql);
+    if (exact) return { name: exact, ...bartCache[exact] };
+    const partial = teamNames.find(t => t.toLowerCase().includes(ql) || ql.includes(t.toLowerCase().split(' ')[0]));
+    if (partial) return { name: partial, ...bartCache[partial] };
+    return { name: q };
+  }
+
+  function highlight(id1, id2, v1, v2, lowerBetter = false) {
+    [id1, id2].forEach(id => document.getElementById(id).classList.remove('better'));
+    if (v1 == null || v2 == null || v1 === v2) return;
+    const b1 = lowerBetter ? v1 < v2 : v1 > v2;
+    document.getElementById(b1 ? id1 : id2).classList.add('better');
+  }
+
+  function narrative(t1, t2, p1, conf, delta) {
+    const em1 = parseFloat(t1.adjem ?? t1.adjEM ?? 0);
+    const em2 = parseFloat(t2.adjem ?? t2.adjEM ?? 0);
+    const winner = p1 >= 0.5 ? t1 : t2;
+    const loser  = p1 >= 0.5 ? t2 : t1;
+    const winP   = Math.max(p1, 1 - p1);
+    let txt = winner.name + ' is the more efficient team on both ends (AdjEM ' +
+      (em1 >= 0 ? '+' : '') + em1.toFixed(1) + ' vs ' + (em2 >= 0 ? '+' : '') + em2.toFixed(1) +
+      ') and the model gives them a ' + (winP * 100).toFixed(1) + '% win probability';
+    if (delta !== null) {
+      txt += ' — ' + Math.abs(delta).toFixed(1) + 'pp ' + (delta > 0 ? 'above' : 'below') + ' what Vegas implies.';
+    } else { txt += '.'; }
+    const sos1 = t1.sos_rank ?? t1.sos ?? null;
+    const sos2 = t2.sos_rank ?? t2.sos ?? null;
+    if (sos1 && sos2 && Math.abs(sos1 - sos2) > 20) {
+      const harder = sos1 < sos2 ? t1 : t2;
+      const easier = sos1 < sos2 ? t2 : t1;
+      txt += ' ' + easier.name + '\'s numbers came against a softer schedule (SOS #' +
+        (easier.sos_rank ?? easier.sos) + ' vs #' + (harder.sos_rank ?? harder.sos) +
+        ') — the efficiency gap may be closer than it looks.';
+    }
+    const pace1 = parseFloat(t1.adjt ?? t1.tempo ?? 70);
+    const pace2 = parseFloat(t2.adjt ?? t2.tempo ?? 70);
+    if (Math.abs(pace1 - pace2) < 3) {
+      txt += ' Both teams play at similar pace — no significant style mismatch.';
+    } else {
+      const faster = pace1 > pace2 ? t1.name : t2.name;
+      txt += ' ' + faster + ' plays at a noticeably faster pace — tempo could be a factor.';
+    }
+    txt += ' In neutral-site tournament play, efficiency holds as the dominant predictor — this qualifies as a "' + conf + '" situation.';
+    return txt;
+  }
+
+  function factors(t1, t2) {
+    const em1 = parseFloat(t1.adjem ?? t1.adjEM ?? 0);
+    const em2 = parseFloat(t2.adjem ?? t2.adjEM ?? 0);
+    const pace1 = parseFloat(t1.adjt ?? t1.tempo ?? 70);
+    const pace2 = parseFloat(t2.adjt ?? t2.tempo ?? 70);
+    const sos1 = parseInt(t1.sos_rank ?? t1.sos ?? 0);
+    const sos2 = parseInt(t2.sos_rank ?? t2.sos ?? 0);
+    const rows = [
+      { icon: '', text: 'Neutral site — no home court adjustment applied', val: 'Even' }
+    ];
+    const paceDiff = Math.abs(pace1 - pace2);
+    if (paceDiff < 3) {
+      rows.push({ icon: '', text: 'Pace: similar tempo — no style mismatch', val: 'Even' });
+    } else {
+      const faster = pace1 > pace2 ? t1.name.split(' ').pop() : t2.name.split(' ').pop();
+      rows.push({ icon: 'warn', text: 'Pace mismatch: ' + (pace1 > pace2 ? t1.name : t2.name) + ' wants to push tempo', val: faster });
+    }
+    if (sos1 && sos2 && Math.abs(sos1 - sos2) > 20) {
+      const tougher = sos1 < sos2 ? t1 : t2;
+      rows.push({ icon: 'warn', text: 'Schedule strength: significant SOS gap (SOS #' + sos1 + ' vs #' + sos2 + ')', val: tougher.name.split(' ').pop() });
+    } else if (sos1 && sos2) {
+      rows.push({ icon: '', text: 'Schedule strength: comparable SOS (#' + sos1 + ' vs #' + sos2 + ')', val: 'Even' });
+    }
+    if (Math.abs(em1 - em2) > 10) {
+      const better = em1 > em2 ? t1 : t2;
+      rows.push({ icon: 'good', text: 'Large efficiency gap (' + Math.abs(em1 - em2).toFixed(1) + ' pts) — model has high conviction', val: better.name.split(' ').pop() });
+    }
+    return rows;
+  }
+
+  window.runBuildAnalysis = async function() {
+    await ensureBart();
+    const t1raw = document.getElementById('build-t1').value.trim();
+    const t2raw = document.getElementById('build-t2').value.trim();
+    if (!t1raw || !t2raw) return;
+
+    const btn = document.getElementById('build-analyze-btn');
+    btn.disabled = true; btn.textContent = 'Analyzing…';
+
+    setTimeout(() => {
+      try {
+        const t1 = findTeam(t1raw);
+        const t2 = findTeam(t2raw);
+        const em1 = parseFloat(t1.adjem ?? t1.adjEM ?? 0);
+        const em2 = parseFloat(t2.adjem ?? t2.adjEM ?? 0);
+        const p1 = winProb(em1, em2);
+        const p2 = 1 - p1;
+        const conf = confLabel(p1);
+
+        // Vegas
+        const ml1raw = document.getElementById('build-ml1').value.trim();
+        const ml2raw = document.getElementById('build-ml2').value.trim();
+        const vi1 = mlToImplied(ml1raw);
+        const vi2 = mlToImplied(ml2raw);
+        let vegasNorm1 = null, delta = null;
+        if (vi1 !== null && vi2 !== null) {
+          vegasNorm1 = vi1 / (vi1 + vi2);
+          delta = (p1 - vegasNorm1) * 100;
+        }
+
+        // Header
+        document.getElementById('br-t1-name').textContent = t1.name;
+        document.getElementById('br-t2-name').textContent = t2.name;
+        const rec1 = t1.wins != null ? t1.wins + '-' + t1.losses : '—';
+        const rec2 = t2.wins != null ? t2.wins + '-' + t2.losses : '—';
+        const conf1 = t1.conf ?? t1.conference ?? '—';
+        const conf2 = t2.conf ?? t2.conference ?? '—';
+        document.getElementById('br-t1-sub').textContent = conf1 + ' · ' + rec1 + ' · AdjEM ' + (em1 >= 0 ? '+' : '') + em1.toFixed(1);
+        document.getElementById('br-t2-sub').textContent = conf2 + ' · ' + rec2 + ' · AdjEM ' + (em2 >= 0 ? '+' : '') + em2.toFixed(1);
+        document.getElementById('br-t2-sub').classList.add('right');
+
+        // Bar — always oriented Team 1 on left
+        const t1nick = t1.name.split(' ').pop();
+        const t2nick = t2.name.split(' ').pop();
+        document.getElementById('br-prob-left').textContent  = t1nick + ' ' + (p1 * 100).toFixed(1) + '%';
+        document.getElementById('br-prob-right').textContent = (p2 * 100).toFixed(1) + '% ' + t2nick;
+        document.getElementById('br-bar').style.width = (p1 * 100) + '%';
+        document.getElementById('br-conf-label').textContent = conf;
+
+        const mvvEl = document.getElementById('br-mvv');
+        if (delta !== null) {
+          const sign = delta > 0 ? '+' : '';
+          mvvEl.textContent = 'Model vs Vegas: ' + sign + delta.toFixed(1) + 'pp';
+          mvvEl.className = 'build-mvv ' + (Math.abs(delta) < 2 ? '' : delta > 0 ? 'pos' : 'neg');
+          const vt = vegasNorm1 > 0.5 ? t1nick : t2nick;
+          const vp = Math.max(vegasNorm1, 1 - vegasNorm1);
+          document.getElementById('br-vegas-team').textContent = vt;
+          document.getElementById('br-vegas-pct').textContent  = (vp * 100).toFixed(1) + '%';
+          document.getElementById('br-vegas-row').style.display = 'flex';
+        } else {
+          mvvEl.textContent = 'Add odds above to see model vs Vegas delta';
+          mvvEl.className = 'build-mvv';
+          document.getElementById('br-vegas-row').style.display = 'none';
+        }
+
+        // Stats
+        const adjo1 = parseFloat(t1.adjo ?? t1.adjO ?? null);
+        const adjo2 = parseFloat(t2.adjo ?? t2.adjO ?? null);
+        const adjd1 = parseFloat(t1.adjd ?? t1.adjD ?? null);
+        const adjd2 = parseFloat(t2.adjd ?? t2.adjD ?? null);
+        const sos1  = parseInt(t1.sos_rank ?? t1.sos ?? null);
+        const sos2  = parseInt(t2.sos_rank ?? t2.sos ?? null);
+        const pace1 = parseFloat(t1.adjt ?? t1.tempo ?? null);
+        const pace2 = parseFloat(t2.adjt ?? t2.tempo ?? null);
+
+        document.getElementById('br-t1-adjo').textContent = isNaN(adjo1) ? '—' : adjo1.toFixed(1);
+        document.getElementById('br-t2-adjo').textContent = isNaN(adjo2) ? '—' : adjo2.toFixed(1);
+        document.getElementById('br-t1-adjd').textContent = isNaN(adjd1) ? '—' : adjd1.toFixed(1);
+        document.getElementById('br-t2-adjd').textContent = isNaN(adjd2) ? '—' : adjd2.toFixed(1);
+        document.getElementById('br-t1-net').textContent  = (em1 >= 0 ? '+' : '') + em1.toFixed(1);
+        document.getElementById('br-t2-net').textContent  = (em2 >= 0 ? '+' : '') + em2.toFixed(1);
+        document.getElementById('br-t1-sos').textContent  = isNaN(sos1)  ? '—' : '#' + sos1;
+        document.getElementById('br-t2-sos').textContent  = isNaN(sos2)  ? '—' : '#' + sos2;
+        document.getElementById('br-t1-pace').textContent = isNaN(pace1) ? '—' : pace1.toFixed(1);
+        document.getElementById('br-t2-pace').textContent = isNaN(pace2) ? '—' : pace2.toFixed(1);
+        document.getElementById('br-t1-rec').textContent  = rec1;
+        document.getElementById('br-t2-rec').textContent  = rec2;
+
+        highlight('br-t1-adjo', 'br-t2-adjo', adjo1, adjo2);
+        highlight('br-t1-adjd', 'br-t2-adjd', adjd1, adjd2, true);
+        highlight('br-t1-net',  'br-t2-net',  em1,   em2);
+        highlight('br-t1-sos',  'br-t2-sos',  sos1,  sos2, true);
+
+        // Narrative & factors
+        document.getElementById('br-narrative').textContent = narrative(t1, t2, p1, conf, delta);
+        document.getElementById('br-factors').innerHTML = factors(t1, t2).map(f => {
+          const iconHtml = '<div class="build-factor-icon ' + f.icon + '">' + (f.icon === 'warn' ? '!' : f.icon === 'good' ? '✓' : '~') + '</div>';
+          return '<div class="build-factor-row"><div class="build-factor-left">' + iconHtml + '<span>' + f.text + '</span></div><div class="build-factor-val">' + f.val + '</div></div>';
+        }).join('');
+
+        document.getElementById('build-result').style.display = 'block';
+        document.getElementById('build-empty').style.display  = 'none';
+      } catch(err) { console.error(err); }
+      btn.disabled = false; btn.textContent = 'Analyze Matchup';
+    }, 80);
+  };
+
+  // Wire up tab click — load games + bart when Build tab opens
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('[data-tab="build"]')?.addEventListener('click', () => {
+      ensureBart();
+      loadBuildGames();
+      setupAC('build-t1', 'build-ac1');
+      setupAC('build-t2', 'build-ac2');
+    });
+    // Also wire Enter on odds fields
+    ['build-ml1','build-ml2'].forEach(id => {
+      document.getElementById(id)?.addEventListener('keydown', e => { if (e.key === 'Enter') runBuildAnalysis(); });
+    });
+  });
+})();
 
 </script>
 </body>
