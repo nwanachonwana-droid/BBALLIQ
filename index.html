@@ -5759,9 +5759,14 @@ document.querySelector('[data-tab="madness"]')?.addEventListener('click', () => 
           delta = (p1 - vegasNorm1) * 100;
         }
 
-        // Header
-        document.getElementById('br-t1-name').textContent = t1.name;
-        document.getElementById('br-t2-name').textContent = t2.name;
+        // Header — accent the predicted winner
+        const t1wins = p1 >= p2;
+        const t1nameEl = document.getElementById('br-t1-name');
+        const t2nameEl = document.getElementById('br-t2-name');
+        t1nameEl.textContent = t1.name;
+        t2nameEl.textContent = t2.name;
+        t1nameEl.style.color = t1wins ? 'var(--accent)' : 'var(--text)';
+        t2nameEl.style.color = t1wins ? 'var(--text)' : 'var(--accent)';
         const rec1 = t1.record ?? '—';
         const rec2 = t2.record ?? '—';
         const conf1 = t1.conf ?? '—';
@@ -5771,22 +5776,29 @@ document.querySelector('[data-tab="madness"]')?.addEventListener('click', () => 
         document.getElementById('br-t2-sub').classList.add('right');
 
         // Bar — always oriented Team 1 on left
-        const t1nick = t1.name.split(' ').pop();
-        const t2nick = t2.name.split(' ').pop();
-        document.getElementById('br-prob-left').textContent  = t1nick + ' ' + (p1 * 100).toFixed(1) + '%';
-        document.getElementById('br-prob-right').textContent = (p2 * 100).toFixed(1) + '% ' + t2nick;
-        document.getElementById('br-bar').style.width = (p1 * 100) + '%';
+        // Always show predicted winner on left
+        const favTeam  = p1 >= p2 ? t1 : t2;
+        const dogTeam  = p1 >= p2 ? t2 : t1;
+        const favProb  = Math.max(p1, p2);
+        const dogProb  = 1 - favProb;
+        const favNick  = favTeam.name.split(' ').pop();
+        const dogNick  = dogTeam.name.split(' ').pop();
+
+        document.getElementById('br-prob-left').textContent  = favTeam.name + ' ' + (favProb * 100).toFixed(1) + '%';
+        document.getElementById('br-prob-right').textContent = (dogProb * 100).toFixed(1) + '% ' + dogTeam.name;
+        document.getElementById('br-bar').style.width = (favProb * 100) + '%';
         document.getElementById('br-conf-label').textContent = conf;
 
         const mvvEl = document.getElementById('br-mvv');
         if (delta !== null) {
-          const sign = delta > 0 ? '+' : '';
-          mvvEl.textContent = 'Model vs Vegas: ' + sign + delta.toFixed(1) + 'pp';
-          mvvEl.className = 'build-mvv ' + (Math.abs(delta) < 2 ? '' : delta > 0 ? 'pos' : 'neg');
-          const vt = vegasNorm1 > 0.5 ? t1nick : t2nick;
-          const vp = Math.max(vegasNorm1, 1 - vegasNorm1);
-          document.getElementById('br-vegas-team').textContent = vt;
-          document.getElementById('br-vegas-pct').textContent  = (vp * 100).toFixed(1) + '%';
+          // delta is from t1's perspective; convert to fav's perspective
+          const favDelta = p1 >= p2 ? delta : -delta;
+          const sign = favDelta > 0 ? '+' : '';
+          mvvEl.textContent = 'Model vs Vegas: ' + sign + favDelta.toFixed(1) + 'pp';
+          mvvEl.className = 'build-mvv ' + (Math.abs(favDelta) < 2 ? '' : favDelta > 0 ? 'pos' : 'neg');
+          const vegasFavProb = p1 >= p2 ? vegasNorm1 : 1 - vegasNorm1;
+          document.getElementById('br-vegas-team').textContent = favNick;
+          document.getElementById('br-vegas-pct').textContent  = (vegasFavProb * 100).toFixed(1) + '%';
           document.getElementById('br-vegas-row').style.display = 'flex';
         } else {
           mvvEl.textContent = 'Add odds above to see model vs Vegas delta';
