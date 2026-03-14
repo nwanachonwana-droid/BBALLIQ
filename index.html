@@ -5718,7 +5718,8 @@ document.querySelector('[data-tab="madness"]')?.addEventListener('click', () => 
     }
     if (sos1 && sos2 && Math.abs(sos1 - sos2) > 20) {
       const tougher = sos1 < sos2 ? t1 : t2;
-      rows.push({ icon: 'warn', text: 'Schedule strength: significant SOS gap (SOS #' + sos1 + ' vs #' + sos2 + ')', val: tougher.name.split(' ').pop() });
+      const easier2  = sos1 < sos2 ? t2 : t1;
+      rows.push({ icon: 'warn', text: 'Schedule strength: ' + easier2.name.split(' ').pop() + ' played weaker SOS (#' + (easier2.sos_rank) + ' vs #' + (tougher.sos_rank) + ') — gap may be overstated', val: tougher.name.split(' ').pop() + ' edge' });
     } else if (sos1 && sos2) {
       rows.push({ icon: '', text: 'Schedule strength: comparable SOS (#' + sos1 + ' vs #' + sos2 + ')', val: 'Even' });
     }
