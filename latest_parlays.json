@@ -11,7 +11,8 @@
       "edge_pp": 12.3,
       "sport": "NCAAB",
       "bet_type": "game",
-      "confidence_tier": ""
+      "confidence_tier": "",
+      "tournament": "NIT"
     },
     {
       "pick": "SMU Mustangs",
@@ -23,7 +24,8 @@
       "edge_pp": 12.2,
       "sport": "NCAAB",
       "bet_type": "game",
-      "confidence_tier": ""
+      "confidence_tier": "",
+      "tournament": "NCAA"
     },
     {
       "pick": "Yale Bulldogs",
@@ -35,7 +37,8 @@
       "edge_pp": 12.1,
       "sport": "NCAAB",
       "bet_type": "game",
-      "confidence_tier": ""
+      "confidence_tier": "",
+      "tournament": "NIT"
     },
     {
       "pick": "Utah Valley Wolverines",
@@ -47,7 +50,8 @@
       "edge_pp": 11.1,
       "sport": "NCAAB",
       "bet_type": "game",
-      "confidence_tier": ""
+      "confidence_tier": "",
+      "tournament": "NIT"
     },
     {
       "pick": "Wisconsin Badgers",
@@ -59,7 +63,8 @@
       "edge_pp": 11.1,
       "sport": "NCAAB",
       "bet_type": "game",
-      "confidence_tier": ""
+      "confidence_tier": "",
+      "tournament": "NCAA"
     },
     {
       "pick": "UC Irvine Anteaters",
@@ -71,7 +76,8 @@
       "edge_pp": 10.3,
       "sport": "NCAAB",
       "bet_type": "game",
-      "confidence_tier": ""
+      "confidence_tier": "",
+      "tournament": "NIT"
     },
     {
       "pick": "Lehigh Mountain Hawks",
@@ -83,7 +89,8 @@
       "edge_pp": 8.8,
       "sport": "NCAAB",
       "bet_type": "game",
-      "confidence_tier": ""
+      "confidence_tier": "",
+      "tournament": "NCAA"
     },
     {
       "pick": "Nevada Wolf Pack",
@@ -95,7 +102,8 @@
       "edge_pp": 7.6,
       "sport": "NCAAB",
       "bet_type": "game",
-      "confidence_tier": ""
+      "confidence_tier": "",
+      "tournament": "NIT"
     },
     {
       "pick": "Vanderbilt Commodores",
@@ -107,7 +115,8 @@
       "edge_pp": 7.3,
       "sport": "NCAAB",
       "bet_type": "game",
-      "confidence_tier": ""
+      "confidence_tier": "",
+      "tournament": "NCAA"
     },
     {
       "pick": "Colorado St Rams",
@@ -119,7 +128,8 @@
       "edge_pp": 7.2,
       "sport": "NCAAB",
       "bet_type": "game",
-      "confidence_tier": ""
+      "confidence_tier": "",
+      "tournament": "NIT"
     },
     {
       "pick": "Kentucky Wildcats",
@@ -131,7 +141,8 @@
       "edge_pp": 6.9,
       "sport": "NCAAB",
       "bet_type": "game",
-      "confidence_tier": ""
+      "confidence_tier": "",
+      "tournament": "NCAA"
     },
     {
       "pick": "St. John's Red Storm",
@@ -143,7 +154,8 @@
       "edge_pp": 6.5,
       "sport": "NCAAB",
       "bet_type": "game",
-      "confidence_tier": ""
+      "confidence_tier": "",
+      "tournament": "NCAA"
     },
     {
       "pick": "Alabama Crimson Tide",
@@ -155,7 +167,8 @@
       "edge_pp": 6.1,
       "sport": "NCAAB",
       "bet_type": "game",
-      "confidence_tier": ""
+      "confidence_tier": "",
+      "tournament": "NCAA"
     },
     {
       "pick": "Nebraska Cornhuskers",
@@ -167,7 +180,8 @@
       "edge_pp": 4.9,
       "sport": "NCAAB",
       "bet_type": "game",
-      "confidence_tier": ""
+      "confidence_tier": "",
+      "tournament": "NCAA"
     },
     {
       "pick": "Tulsa Golden Hurricane",
@@ -179,7 +193,8 @@
       "edge_pp": 3.4,
       "sport": "NCAAB",
       "bet_type": "game",
-      "confidence_tier": ""
+      "confidence_tier": "",
+      "tournament": "NIT"
     },
     {
       "pick": "George Mason Patriots",
@@ -191,7 +206,8 @@
       "edge_pp": 3.0,
       "sport": "NCAAB",
       "bet_type": "game",
-      "confidence_tier": ""
+      "confidence_tier": "",
+      "tournament": "NIT"
     },
     {
       "pick": "Jared McCain OVER 7.5 POINTS",
@@ -203,7 +219,8 @@
       "edge_pp": 3.81,
       "sport": "NBA",
       "bet_type": "prop",
-      "confidence_tier": "NBA-PROP"
+      "confidence_tier": "NBA-PROP",
+      "tournament": "NCAA"
     },
     {
       "pick": "Julius Randle UNDER 22.2 POINTS",
@@ -215,7 +232,8 @@
       "edge_pp": 4.92,
       "sport": "NBA",
       "bet_type": "prop",
-      "confidence_tier": "NBA-PROP"
+      "confidence_tier": "NBA-PROP",
+      "tournament": "NCAA"
     },
     {
       "pick": "Paolo Banchero OVER 21.5 POINTS",
@@ -227,7 +245,8 @@
       "edge_pp": 3.84,
       "sport": "NBA",
       "bet_type": "prop",
-      "confidence_tier": "NBA-PROP"
+      "confidence_tier": "NBA-PROP",
+      "tournament": "NCAA"
     }
   ],
   "two_leg": [
