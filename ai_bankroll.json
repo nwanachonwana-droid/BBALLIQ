@@ -1,11 +1,11 @@
 {
   "starting_bankroll": 100.0,
-  "current_bankroll": 108.82,
+  "current_bankroll": 107.5,
   "starting_date": "03/01/2026",
-  "last_updated": "03/16/2026",
-  "total_bets": 128,
-  "wins": 75,
-  "losses": 46,
+  "last_updated": "03/17/2026",
+  "total_bets": 130,
+  "wins": 76,
+  "losses": 47,
   "pending_bets": [
     {
       "date": "03/14",
@@ -45,38 +45,6 @@
       "stake": 2.13,
       "to_win": 1.87,
       "dec_odds": 1.877,
-      "status": "pending",
-      "result": null,
-      "pnl": null
-    },
-    {
-      "date": "03/15",
-      "type": "single",
-      "sport": "NCAAB",
-      "pick": "South Florida Bulls",
-      "matchup": "Wichita St Shockers @ South Florida Bulls",
-      "ml": -248.0,
-      "model_prob": 82.0,
-      "edge_pp": 10.7,
-      "stake": 2.21,
-      "to_win": 0.89,
-      "dec_odds": 1.403,
-      "status": "pending",
-      "result": null,
-      "pnl": null
-    },
-    {
-      "date": "03/15",
-      "type": "single",
-      "sport": "NCAAB",
-      "pick": "Michigan Wolverines",
-      "matchup": "Purdue Boilermakers @ Michigan Wolverines",
-      "ml": -275.0,
-      "model_prob": 81.4,
-      "edge_pp": 8.1,
-      "stake": 2.21,
-      "to_win": 0.8,
-      "dec_odds": 1.364,
       "status": "pending",
       "result": null,
       "pnl": null
@@ -2959,6 +2927,38 @@
       "status": "settled",
       "result": "LOSS",
       "pnl": -2.21
+    },
+    {
+      "date": "03/15",
+      "type": "single",
+      "sport": "NCAAB",
+      "pick": "South Florida Bulls",
+      "matchup": "Wichita St Shockers @ South Florida Bulls",
+      "ml": -248.0,
+      "model_prob": 82.0,
+      "edge_pp": 10.7,
+      "stake": 2.21,
+      "to_win": 0.89,
+      "dec_odds": 1.403,
+      "status": "settled",
+      "result": "WIN",
+      "pnl": 0.89
+    },
+    {
+      "date": "03/15",
+      "type": "single",
+      "sport": "NCAAB",
+      "pick": "Michigan Wolverines",
+      "matchup": "Purdue Boilermakers @ Michigan Wolverines",
+      "ml": -275.0,
+      "model_prob": 81.4,
+      "edge_pp": 8.1,
+      "stake": 2.21,
+      "to_win": 0.8,
+      "dec_odds": 1.364,
+      "status": "settled",
+      "result": "LOSS",
+      "pnl": -2.21
     }
   ],
   "daily_snapshots": [
@@ -3091,6 +3091,14 @@
       "wins": 1,
       "losses": 0,
       "note": "nba_games"
+    },
+    {
+      "date": "03/15",
+      "bankroll": 107.5,
+      "pnl": -1.32,
+      "bets": 2,
+      "wins": 1,
+      "losses": 1
     }
   ]
 }

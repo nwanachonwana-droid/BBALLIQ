@@ -1,10 +1,10 @@
 {
-  "updated": "2026-03-15",
+  "updated": "2026-03-17",
   "overall": {
-    "wins": 166,
-    "losses": 94,
-    "total": 260,
-    "hit_rate": 63.8
+    "wins": 167,
+    "losses": 96,
+    "total": 263,
+    "hit_rate": 63.5
   },
   "by_confidence": {
     "High (70-80%)": {
@@ -13,9 +13,9 @@
       "hit_rate": 45.7
     },
     "LOCK (80%+)": {
-      "wins": 114,
-      "total": 155,
-      "hit_rate": 73.5
+      "wins": 115,
+      "total": 158,
+      "hit_rate": 72.8
     },
     "Medium (60-70%)": {
       "wins": 20,
@@ -25,9 +25,9 @@
   },
   "by_recommendation": {
     "STRONG BET": {
-      "wins": 122,
-      "total": 194,
-      "hit_rate": 62.9
+      "wins": 123,
+      "total": 196,
+      "hit_rate": 62.8
     },
     "VALUE BET": {
       "wins": 18,
@@ -36,8 +36,8 @@
     },
     "LEAN BET": {
       "wins": 26,
-      "total": 34,
-      "hit_rate": 76.5
+      "total": 35,
+      "hit_rate": 74.3
     }
   },
   "by_edge": {
@@ -47,64 +47,22 @@
       "hit_rate": 46.2
     },
     "10-15pp": {
-      "wins": 59,
-      "total": 101,
-      "hit_rate": 58.4
+      "wins": 60,
+      "total": 102,
+      "hit_rate": 58.8
     },
     "5-10pp": {
       "wins": 76,
-      "total": 113,
-      "hit_rate": 67.3
+      "total": 114,
+      "hit_rate": 66.7
     },
     "<5pp": {
       "wins": 25,
-      "total": 33,
-      "hit_rate": 75.8
+      "total": 34,
+      "hit_rate": 73.5
     }
   },
   "recent": [
-    {
-      "date": "03/10",
-      "matchup": "Montana Grizzlies @ Portland St Vikings",
-      "pick": "Portland St Vikings",
-      "confidence": "High (70-80%)",
-      "model_prob": 74.5,
-      "vegas_ml": -156,
-      "implied_prob": 61.0,
-      "edge": 13.5,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "LOSS",
-      "score": "Vikings 72 - Grizzlies 75",
-      "edge_band": "10-15pp"
-    },
-    {
-      "date": "03/10",
-      "matchup": "UMass Lowell River Hawks @ UMBC Retrievers",
-      "pick": "UMBC Retrievers",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 90.1,
-      "vegas_ml": -330,
-      "implied_prob": 76.7,
-      "edge": 13.4,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "WIN",
-      "score": "Retrievers 91 - Hawks 69",
-      "edge_band": "10-15pp"
-    },
-    {
-      "date": "03/10",
-      "matchup": "Alcorn St Braves @ Prairie View Panthers",
-      "pick": "Prairie View Panthers",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 83.9,
-      "vegas_ml": -283,
-      "implied_prob": 73.9,
-      "edge": 10.0,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "WIN",
-      "score": "Panthers 65 - Braves 56",
-      "edge_band": "10-15pp"
-    },
     {
       "date": "03/10",
       "matchup": "Santa Clara Broncos @ Gonzaga Bulldogs",
@@ -657,7 +615,7 @@
       "pick": "Duke Blue Devils",
       "confidence": "LOCK (80%+)",
       "model_prob": 90.2,
-      "vegas_ml": "-323",
+      "vegas_ml": -323,
       "implied_prob": 76.4,
       "edge": 13.8,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
@@ -671,7 +629,7 @@
       "pick": "Arkansas Razorbacks",
       "confidence": "LOCK (80%+)",
       "model_prob": 92.4,
-      "vegas_ml": "-463",
+      "vegas_ml": -463,
       "implied_prob": 82.2,
       "edge": 10.2,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
@@ -685,7 +643,7 @@
       "pick": "Harvard Crimson",
       "confidence": "High (70-80%)",
       "model_prob": 71.3,
-      "vegas_ml": "-161",
+      "vegas_ml": -161,
       "implied_prob": 61.7,
       "edge": 9.6,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
@@ -699,7 +657,7 @@
       "pick": "VCU Rams",
       "confidence": "LOCK (80%+)",
       "model_prob": 84.1,
-      "vegas_ml": "-306",
+      "vegas_ml": -306,
       "implied_prob": 75.4,
       "edge": 8.7,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
@@ -713,7 +671,7 @@
       "pick": "Akron Zips",
       "confidence": "LOCK (80%+)",
       "model_prob": 87.8,
-      "vegas_ml": "-381",
+      "vegas_ml": -381,
       "implied_prob": 79.2,
       "edge": 8.5,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
@@ -727,7 +685,7 @@
       "pick": "Florida Gators",
       "confidence": "LOCK (80%+)",
       "model_prob": 86.4,
-      "vegas_ml": "-386",
+      "vegas_ml": -386,
       "implied_prob": 79.5,
       "edge": 7.0,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
@@ -741,7 +699,7 @@
       "pick": "Wichita St Shockers",
       "confidence": "Medium (60-70%)",
       "model_prob": 60.7,
-      "vegas_ml": "-116",
+      "vegas_ml": -116,
       "implied_prob": 53.9,
       "edge": 6.9,
       "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence",
@@ -755,7 +713,7 @@
       "pick": "Howard Bison",
       "confidence": "LOCK (80%+)",
       "model_prob": 96.1,
-      "vegas_ml": "-1066",
+      "vegas_ml": -1066,
       "implied_prob": 91.4,
       "edge": 4.7,
       "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement",
@@ -764,37 +722,46 @@
       "edge_band": "<5pp"
     },
     {
-      "date": "2026-03-15",
-      "pick": "South Florida Bulls",
+      "date": "03/15",
       "matchup": "Wichita St Shockers @ South Florida Bulls",
-      "edge": 10.7,
+      "pick": "South Florida Bulls",
+      "confidence": "LOCK (80%+)",
       "model_prob": 82.0,
+      "vegas_ml": "-248",
+      "implied_prob": 71.3,
+      "edge": 10.7,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "PENDING",
-      "score": "",
-      "pnl": 0
+      "result": "WIN",
+      "score": "Bulls 70 - Shockers 55",
+      "edge_band": "10-15pp"
     },
     {
-      "date": "2026-03-15",
-      "pick": "Michigan Wolverines",
+      "date": "03/15",
       "matchup": "Purdue Boilermakers @ Michigan Wolverines",
-      "edge": 8.1,
+      "pick": "Michigan Wolverines",
+      "confidence": "LOCK (80%+)",
       "model_prob": 81.4,
+      "vegas_ml": "-275",
+      "implied_prob": 73.3,
+      "edge": 8.1,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
-      "result": "PENDING",
-      "score": "",
-      "pnl": 0
+      "result": "LOSS",
+      "score": "Wolverines 72 - Boilermakers 80",
+      "edge_band": "5-10pp"
     },
     {
-      "date": "2026-03-15",
-      "pick": "Yale Bulldogs",
+      "date": "03/15",
       "matchup": "Pennsylvania Quakers @ Yale Bulldogs",
-      "edge": 3.1,
+      "pick": "Yale Bulldogs",
+      "confidence": "LOCK (80%+)",
       "model_prob": 86.2,
+      "vegas_ml": "-491",
+      "implied_prob": 83.1,
+      "edge": 3.1,
       "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement",
-      "result": "PENDING",
-      "score": "",
-      "pnl": 0
+      "result": "LOSS",
+      "score": "Bulldogs 84 - Quakers 88",
+      "edge_band": "<5pp"
     }
   ]
 }
