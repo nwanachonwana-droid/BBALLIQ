@@ -46,5 +46,17 @@
     "to_win": 1.35,
     "result": "LOSS",
     "pnl": -2.17
+  },
+  {
+    "date": "03/15",
+    "pick": "Oklahoma City Thunder",
+    "matchup": "Minnesota Timberwolves @ Oklahoma City Thunder",
+    "model_prob": 79.2,
+    "edge_pp": 5.06,
+    "odds": -338.3,
+    "stake": 2.21,
+    "to_win": 0.65,
+    "result": "WIN",
+    "pnl": 0.65
   }
 ]

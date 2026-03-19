@@ -762,6 +762,83 @@
       "result": "LOSS",
       "score": "Bulldogs 84 - Quakers 88",
       "edge_band": "<5pp"
+    },
+    {
+      "date": "2026-03-19",
+      "pick": "Wisconsin Badgers",
+      "matchup": "High Point Panthers @ Wisconsin Badgers",
+      "edge": 11.3,
+      "model_prob": 94.6,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-19",
+      "pick": "St. John's Red Storm",
+      "matchup": "Northern Iowa Panthers @ St. John's Red Storm",
+      "edge": 8.4,
+      "model_prob": 92.7,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-19",
+      "pick": "Kentucky Wildcats",
+      "matchup": "Santa Clara Broncos @ Kentucky Wildcats",
+      "edge": 7.6,
+      "model_prob": 68.8,
+      "recommendation": "\ud83d\udfe1 VALUE BET \u2014 solid edge, moderate confidence",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-19",
+      "pick": "Tennessee Volunteers",
+      "matchup": "Miami (OH) RedHawks @ Tennessee Volunteers",
+      "edge": 7.3,
+      "model_prob": 93.7,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-19",
+      "pick": "Alabama Crimson Tide",
+      "matchup": "Hofstra Pride @ Alabama Crimson Tide",
+      "edge": 6.1,
+      "model_prob": 95.1,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-19",
+      "pick": "Vanderbilt Commodores",
+      "matchup": "McNeese Cowboys @ Vanderbilt Commodores",
+      "edge": 5.7,
+      "model_prob": 94.3,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
+    },
+    {
+      "date": "2026-03-19",
+      "pick": "Nebraska Cornhuskers",
+      "matchup": "Troy Trojans @ Nebraska Cornhuskers",
+      "edge": 4.9,
+      "model_prob": 96.7,
+      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement",
+      "result": "PENDING",
+      "score": "",
+      "pnl": 0
     }
   ]
 }
