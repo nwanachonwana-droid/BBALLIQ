@@ -1,50 +1,39 @@
 {
-  "updated": "2026-03-22",
-  "date": "03/22",
+  "updated": "2026-03-23",
+  "date": "03/23",
   "picks": [
     {
-      "date": "03/22",
+      "date": "03/23",
+      "matchup": "St. John's Red Storm @ Duke Blue Devils",
+      "pick": "Duke Blue Devils",
+      "confidence": "LOCK (80%+)",
+      "model_prob": 86.8,
+      "vegas_ml": "-306",
+      "implied_prob": 75.4,
+      "edge": 11.4,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+    },
+    {
+      "date": "03/23",
       "matchup": "Illinois Fighting Illini @ Houston Cougars",
       "pick": "Houston Cougars",
       "confidence": "High (70-80%)",
-      "model_prob": 72.0,
-      "vegas_ml": "-150",
-      "implied_prob": 60.0,
-      "edge": 12.0,
+      "model_prob": 71.2,
+      "vegas_ml": "-154",
+      "implied_prob": 60.6,
+      "edge": 10.5,
       "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     },
     {
-      "date": "03/22",
-      "matchup": "Illinois St Redbirds @ Wake Forest Demon Deacons",
-      "pick": "Wake Forest Demon Deacons",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 82.8,
-      "vegas_ml": "-315",
-      "implied_prob": 75.9,
-      "edge": 6.9,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
-    },
-    {
-      "date": "03/22",
-      "matchup": "Iowa Hawkeyes @ Florida Gators",
-      "pick": "Florida Gators",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 90.3,
-      "vegas_ml": "-620",
-      "implied_prob": 86.1,
-      "edge": 4.2,
-      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
-    },
-    {
-      "date": "03/22",
-      "matchup": "Utah State Aggies @ Arizona Wildcats",
+      "date": "03/23",
+      "matchup": "Arkansas Razorbacks @ Arizona Wildcats",
       "pick": "Arizona Wildcats",
       "confidence": "LOCK (80%+)",
-      "model_prob": 92.8,
-      "vegas_ml": "-850",
-      "implied_prob": 89.5,
-      "edge": 3.3,
-      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
+      "model_prob": 88.1,
+      "vegas_ml": "-385",
+      "implied_prob": 79.4,
+      "edge": 8.7,
+      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
     }
   ]
 }
