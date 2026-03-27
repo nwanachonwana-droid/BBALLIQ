@@ -4,17 +4,6 @@
   "picks": [
     {
       "date": "03/27",
-      "matchup": "Tulsa Golden Hurricane @ New Mexico Lobos",
-      "pick": "New Mexico Lobos",
-      "confidence": "High (70-80%)",
-      "model_prob": 76.9,
-      "vegas_ml": "-176",
-      "implied_prob": 63.8,
-      "edge": 13.1,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
-    },
-    {
-      "date": "03/27",
       "matchup": "St. John's Red Storm @ Duke Blue Devils",
       "pick": "Duke Blue Devils",
       "confidence": "LOCK (80%+)",
@@ -22,40 +11,7 @@
       "vegas_ml": "-281",
       "implied_prob": 73.8,
       "edge": 13.0,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
-    },
-    {
-      "date": "03/27",
-      "matchup": "Alabama Crimson Tide @ Iowa State Cyclones",
-      "pick": "Iowa State Cyclones",
-      "confidence": "High (70-80%)",
-      "model_prob": 78.6,
-      "vegas_ml": "-205",
-      "implied_prob": 67.2,
-      "edge": 11.4,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
-    },
-    {
-      "date": "03/27",
-      "matchup": "Tennessee Volunteers @ Michigan Wolverines",
-      "pick": "Michigan Wolverines",
-      "confidence": "LOCK (80%+)",
-      "model_prob": 88.0,
-      "vegas_ml": "-335",
-      "implied_prob": 77.0,
-      "edge": 11.0,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
-    },
-    {
-      "date": "03/27",
-      "matchup": "Purdue Boilermakers @ Arizona Wildcats",
-      "pick": "Arizona Wildcats",
-      "confidence": "High (70-80%)",
-      "model_prob": 79.0,
-      "vegas_ml": "-270",
-      "implied_prob": 73.0,
-      "edge": 6.0,
-      "recommendation": "\u2705 STRONG BET \u2014 high confidence + high edge"
+      "recommendation": "✅ STRONG BET — high confidence + high edge"
     },
     {
       "date": "03/27",
@@ -66,7 +22,29 @@
       "vegas_ml": "-485",
       "implied_prob": 82.9,
       "edge": 3.6,
-      "recommendation": "\ud83d\udfe1 LEAN BET \u2014 small edge, watch line movement"
+      "recommendation": "🟡 LEAN BET — small edge, watch line movement"
+    },
+    {
+      "date": "03/27",
+      "matchup": "Michigan State Spartans @ UConn Huskies",
+      "pick": "UConn Huskies",
+      "confidence": "High (70-80%)",
+      "model_prob": 74.0,
+      "vegas_ml": "-220",
+      "implied_prob": 68.8,
+      "edge": 5.2,
+      "recommendation": "✅ STRONG BET — high confidence + high edge"
+    },
+    {
+      "date": "03/27",
+      "matchup": "Tennessee Volunteers @ Iowa State Cyclones",
+      "pick": "Iowa State Cyclones",
+      "confidence": "High (70-80%)",
+      "model_prob": 78.6,
+      "vegas_ml": "-205",
+      "implied_prob": 67.2,
+      "edge": 11.4,
+      "recommendation": "✅ STRONG BET — high confidence + high edge"
     }
   ]
 }
