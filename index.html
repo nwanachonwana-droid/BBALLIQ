@@ -4655,13 +4655,20 @@ async function loadNBAData() {
 
 async function loadNBAGamePicks() {
   try {
-    const r = await fetch('output/nba_picks_today.json?t=' + Date.now());
+    const r = await fetch('nba_picks_today.json?t=' + Date.now());
     if (!r.ok) throw new Error();
     const data = await r.json();
+
+    // Support both schema versions:
+    // old: data.all_games + data.picks
+    // step3: data.predictions (single array, picks flagged by edge_pp threshold)
+    const allGames = data.all_games || data.predictions || [];
+    const picks    = data.picks    || (data.predictions || []).filter(g => g.edge_pp >= 3 && g.edge_pp <= 10 && g.model_prob >= 60);
+
     document.getElementById('nba-date-sub').textContent =
-      `${data.date || ''} · ${data.all_games?.length ?? 0} games · model v3`;
-    renderAllGames(data.all_games || []);
-    renderGamePicks(data.picks || []);
+      `${data.date || ''} · ${allGames.length} games · model v3`;
+    renderAllGames(allGames);
+    renderGamePicks(picks);
   } catch(e) {
     document.getElementById('nba-game-picks').innerHTML =
       `<div class="nba-empty">No game picks today.<br><span style="font-size:0.7rem">Run nba_step3.py to generate</span></div>`;
