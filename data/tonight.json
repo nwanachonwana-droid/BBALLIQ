@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-20T12:18:05.916401-04:00",
+ "generated": "2026-10-20T12:21:23.702741-04:00",
  "day": "20261020",
  "source": "Covers.com",
  "counts": {
@@ -117,16 +117,34 @@
    "minutes": "locked",
    "components": {
     "pts": {
-     "market": "Points Scored",
-     "side": "under",
      "line": 29.5,
+     "side": "under",
      "projection": 26.81,
-     "ev_pct": 21.12
+     "ev_pct": 21.12,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4718
     },
-    "reb": null,
-    "ast": null
+    "reb": {
+     "line": 3.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.548
+    },
+    "ast": {
+     "line": 6.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 8,
+     "prob_over": 0.4404
+    }
    },
-   "covered": 1,
+   "covered": 3,
    "covers_pra": null,
    "market_pra": 40.5,
    "market_src": "books",
@@ -143,16 +161,34 @@
    "minutes": "moved",
    "components": {
     "pts": {
-     "market": "Points Scored",
+     "line": 24.5,
      "side": "under",
-     "line": 23.5,
      "projection": 21.4,
-     "ev_pct": 23.8
+     "ev_pct": 23.8,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4709
     },
-    "reb": null,
-    "ast": null
+    "reb": {
+     "line": 5.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.471
+    },
+    "ast": {
+     "line": 8.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4854
+    }
    },
-   "covered": 1,
+   "covered": 3,
    "covers_pra": null,
    "market_pra": 38.5,
    "market_src": "books",
@@ -168,11 +204,35 @@
    "pra_line": 37.0,
    "minutes": "locked",
    "components": {
-    "pts": null,
-    "reb": null,
-    "ast": null
+    "pts": {
+     "line": 26.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4663
+    },
+    "reb": {
+     "line": 3.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4553
+    },
+    "ast": {
+     "line": 6.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4811
+    }
    },
-   "covered": 0,
+   "covered": 3,
    "covers_pra": null,
    "market_pra": 36.5,
    "market_src": "books",
