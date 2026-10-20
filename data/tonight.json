@@ -1,12 +1,12 @@
 {
- "generated": "2026-10-20T11:22:42.840639-04:00",
+ "generated": "2026-10-20T11:49:09.081824-04:00",
  "day": "20261020",
  "source": "Covers.com",
  "counts": {
-  "writer_picks": 19,
-  "projections": 9,
+  "writer_picks": 20,
+  "projections": 17,
   "kept": 17,
-  "dropped": 2,
+  "dropped": 3,
   "shown": 8,
   "held_conflict": 1,
   "held_unbacked": 8
@@ -128,6 +128,11 @@
    },
    "covered": 1,
    "covers_pra": null,
+   "market_pra": null,
+   "market_src": null,
+   "book_prob_over": null,
+   "book_n": null,
+   "book_spread": null,
    "delta": null,
    "note": null
   },
@@ -149,6 +154,11 @@
    },
    "covered": 1,
    "covers_pra": null,
+   "market_pra": null,
+   "market_src": null,
+   "book_prob_over": null,
+   "book_n": null,
+   "book_spread": null,
    "delta": null,
    "note": null
   },
@@ -164,6 +174,11 @@
    },
    "covered": 0,
    "covers_pra": null,
+   "market_pra": null,
+   "market_src": null,
+   "book_prob_over": null,
+   "book_n": null,
+   "book_spread": null,
    "delta": null,
    "note": "writers split, no projection"
   }
@@ -175,14 +190,14 @@
    "covers": 220.34
   },
   {
-   "away": "Philadelphia",
-   "home": "New York",
-   "covers": 231.08
-  },
-  {
    "away": "Oklahoma City",
    "home": "San Antonio",
    "covers": 232.77
+  },
+  {
+   "away": "Philadelphia",
+   "home": "New York",
+   "covers": 231.08
   }
  ]
 }

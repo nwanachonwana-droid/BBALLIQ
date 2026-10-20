@@ -79,7 +79,9 @@
       <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
         <strong style="color: #96A3B4; font-weight: 600">OUR PRA</strong> is the player&rsquo;s typical points+rebounds+assists across three seasons &mdash; roughly where a book would set him, and a measure of how <a href="minutes.html">forecastable his minutes are</a>, not a prediction for tonight. <strong style="color: #96A3B4; font-weight: 600">LOCKED</strong> means his minutes have held steady across those seasons; <strong style="color: #96A3B4; font-weight: 600">MOVED</strong> means they haven&rsquo;t, and the PRA figure is correspondingly softer.
         <br><br>
-        <strong style="color: #96A3B4; font-weight: 600">PTS</strong>, <strong style="color: #96A3B4; font-weight: 600">REB</strong> and <strong style="color: #96A3B4; font-weight: 600">AST</strong> are <strong style="color: #96A3B4; font-weight: 600">Covers.com</strong> projections, each showing the line they quote and the number their model returns. <strong style="color: #96A3B4; font-weight: 600">COVERS PRA</strong> is those three added together, and <strong style="color: #96A3B4; font-weight: 600">VS OURS</strong> is that sum minus our figure. Covers never publishes a combined line, so this is the only comparison available &mdash; and it is only available when all three components are. A row missing one says so rather than showing a single stat as though it stood for the whole.
+        <strong style="color: #96A3B4; font-weight: 600">BOOK PRA</strong> is the combined points+rebounds+assists line the sportsbooks are quoting tonight, via <strong style="color: #96A3B4; font-weight: 600">The Odds API</strong>. We take the median line across books rather than the average, so one stale number can&rsquo;t drag it, and we strip the vig from each book&rsquo;s pair of prices before averaging them into <strong style="color: #96A3B4; font-weight: 600">P(OVER)</strong>. The book count beside the label says how many were quoting.
+        <br><br>
+        <strong style="color: #96A3B4; font-weight: 600">VS OURS</strong> is that market line minus our figure. It is not an edge. The market price already contains tonight&rsquo;s injuries, rest and matchup, none of which a three-season average knows about, so a gap is a question worth logging rather than a bet. <strong style="color: #96A3B4; font-weight: 600">PTS</strong>, <strong style="color: #96A3B4; font-weight: 600">REB</strong> and <strong style="color: #96A3B4; font-weight: 600">AST</strong> are <strong style="color: #96A3B4; font-weight: 600">Covers.com</strong> projections for the individual legs where they publish them, shown as the line they quote and the number their model returns. Where no book quotes a combined line, the column falls back to those three added together and is labelled <strong style="color: #96A3B4; font-weight: 600">SUMMED</strong> &mdash; a projection, not a price, and never silently mixed with one.
       </div>
     </div>
 
@@ -479,12 +481,16 @@ function praWatch(t) {
   const w = (t && t.pra_watch) || [];
   if (!w.length) { block.hidden = true; return; }
   block.hidden = false;
-  const full = w.filter(p => p.covers_pra !== null
-                          && p.covers_pra !== undefined).length;
+  const priced = w.filter(p => p.market_pra !== null
+                            && p.market_pra !== undefined).length;
+  const booked = w.filter(p => p.market_src === 'books').length;
   if (meta) {
+    let tail;
+    if (!priced) tail = 'no market line on any of them';
+    else if (booked === priced) tail = booked + ' with a book line';
+    else tail = priced + ' comparable, ' + booked + ' from the books';
     meta.textContent = w.length + ' of 10 board players on tonight'
-      + (full ? '  ·  ' + full + ' with all three components'
-              : '  ·  none fully projected');
+      + '  ·  ' + tail;
   }
   const MONO = "font-family: 'IBM Plex Mono', monospace;";
   const ARCH = "font-family: 'Archivo', sans-serif;";
@@ -504,7 +510,15 @@ function praWatch(t) {
       return cell(label, v, '#C3CDDA', 86);
     };
 
-    // Green when Covers lands under our PRA, orange when over: the
+    // Name the source in the column label itself. A traded price and a
+    // sum of somebody's projections are not the same kind of claim and
+    // must not share an unmarked column.
+    const mlabel = p.market_src === 'books'
+      ? 'BOOK PRA · ' + (p.book_n || 0) + ' BOOKS'
+      : (p.market_src === 'covers' ? 'COVERS PRA · SUMMED'
+                                   : 'MARKET PRA');
+
+    // Green when the market sits under our PRA, orange when over: the
     // direction is the whole content of the comparison.
     const d = p.delta;
     const dcol = (d === null || d === undefined) ? '#5D6B7C'
@@ -529,8 +543,12 @@ function praWatch(t) {
       <div style="display: flex; flex-wrap: wrap; gap: 14px 22px;
         align-items: flex-start">
         ${cell('OUR PRA', fmt(p.pra_line), '#FF6B2C', 70)}
-        ${cell('COVERS PRA', fmt(p.covers_pra), '#C3CDDA', 86)}
+        ${cell(mlabel, fmt(p.market_pra), '#C3CDDA', 112)}
         ${cell('VS OURS', sgn(p.delta), dcol, 70)}
+        ${p.book_prob_over != null
+            ? cell('P(OVER)', (p.book_prob_over * 100).toFixed(1) + '%',
+                   '#8B98A9', 72)
+            : ''}
         ${part('pts', 'PTS  LINE → PROJ')}
         ${part('reb', 'REB  LINE → PROJ')}
         ${part('ast', 'AST  LINE → PROJ')}

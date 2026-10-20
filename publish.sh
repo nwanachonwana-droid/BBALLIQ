@@ -17,29 +17,42 @@ cd "$(dirname "$0")"
 GEN=""
 WARN=""
 
-# --- our own run ------------------------------------------------------
-T1=$(mktemp)
-if python3 ~/Downloads/site_data2.py --json > "$T1" 2>/dev/null \
-   && python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$T1" 2>/dev/null; then
-  mv "$T1" data/status.json
-  GEN="$GEN status"
-else
-  rm -f "$T1"
-  WARN="$WARN
-  ! site_data2.py failed - keeping the published status line"
-fi
+# Generators live in ~/Downloads and keep colliding with their own
+# earlier versions, so they carry explicit suffixes. Change them here
+# and nowhere else -- an edit made in a shell gets overwritten the next
+# time a bundle is extracted, which is exactly how this broke before.
+STATUS_GEN="$HOME/Downloads/site_data2.py"
+READS_GEN="$HOME/Downloads/sharpz_screen2.py"
 
-# --- tonight's outside reads -----------------------------------------
-T2=$(mktemp)
-if python3 ~/Downloads/sharpz_screen.py --json > "$T2" 2>/dev/null \
-   && python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$T2" 2>/dev/null; then
-  mv "$T2" data/tonight.json
-  GEN="$GEN tonight"
-else
-  rm -f "$T2"
+# Run one generator into one data file. On failure the published file
+# is left alone and the REAL error is printed: the first version sent
+# stderr to /dev/null, so a missing file and a crashed parser produced
+# the same useless "failed" line and cost an hour of guessing.
+generate() {
+  local name="$1" script="$2" dest="$3"
+  if [ ! -f "$script" ]; then
+    WARN="$WARN
+  ! $name: no such file - $script"
+    return 1
+  fi
+  local out err
+  out=$(mktemp); err=$(mktemp)
+  if python3 "$script" --json > "$out" 2> "$err" \
+     && python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$out" 2>/dev/null; then
+    mv "$out" "$dest"
+    rm -f "$err"
+    GEN="$GEN $name"
+    return 0
+  fi
   WARN="$WARN
-  ! sharpz_screen.py failed - keeping yesterday's reads"
-fi
+  ! $name failed - keeping the published $dest
+    $(tail -3 "$err" | sed 's/^/    /')"
+  rm -f "$out" "$err"
+  return 1
+}
+
+generate status  "$STATUS_GEN" data/status.json
+generate tonight "$READS_GEN"  data/tonight.json
 
 [ -n "$WARN" ] && echo "$WARN"
 
