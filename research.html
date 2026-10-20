@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sharpz — research</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  body { margin: 0; background: #0A0D12; font-family: 'IBM Plex Sans', system-ui, sans-serif; }
+  a { color: #FF6B2C; }
+  a:hover { color: #FF8A52; }
+  * { box-sizing: border-box; }
+</style>
+</head>
+<body>
+
+<div style="width: 100%; background: #0A0D12; color: #ECEFF4; overflow-x: hidden">
+
+  <!-- NAV -->
+  <div style="max-width: 1180px; margin: 0 auto; padding: 24px 32px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between">
+    <a href="index.html" style="display: flex; align-items: center; gap: 11px; text-decoration: none; color: #ECEFF4">
+      <svg width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="Sharpz Basketball">
+        <circle cx="16" cy="16" r="14" fill="#FF6B2C"></circle>
+        <path d="M16 2 L16 30 M2 16 L30 16" stroke="#0A0D12" stroke-width="1.7"></path>
+        <path d="M6.2 5.4 Q15 16 6.2 26.6" fill="none" stroke="#0A0D12" stroke-width="1.7"></path>
+        <path d="M25.8 5.4 Q17 16 25.8 26.6" fill="none" stroke="#0A0D12" stroke-width="1.7"></path>
+      </svg>
+      <div style="line-height: 1">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 19px; letter-spacing: -0.4px">SHARPZ</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 3.4px; color: #FF6B2C; margin-top: 3px">BASKETBALL</div>
+      </div>
+    </a>
+    <div style="display: flex; flex-wrap: wrap; gap: 26px; align-items: center">
+      <a href="index.html" style="color: #8B98A9; text-decoration: none; font-size: 15px">The board</a>
+      <a href="Main.dc.html#join" style="background: #FF6B2C; color: #0A0D12; text-decoration: none; font-weight: 600; font-size: 15px; padding: 11px 20px; border-radius: 6px; display: inline-block; min-height: 44px; line-height: 22px">Get access</a>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div style="max-width: 1180px; margin: 0 auto; padding: 44px 32px 64px">
+    <h1 style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 52px; line-height: 1.05; letter-spacing: -1.6px; margin: 0 0 16px; max-width: 820px">
+      How the board is built
+    </h1>
+    <p style="font-size: 18px; line-height: 1.6; color: #8B98A9; max-width: 660px; margin: 0">
+      Three findings decide what makes it on, and one of them ruled a whole market out. All written up in full below.
+    </p>
+  </div>
+
+  <!-- RULE 1 -->
+  <div style="background: #0D1218; border-top: 1px solid #1A212B; border-bottom: 1px solid #1A212B">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 80px 32px">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 2.4px; color: #8B98A9; margin-bottom: 18px">01 &nbsp;/&nbsp; WHICH PROP MARKETS</div>
+      <h2 style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 38px; line-height: 1.14; letter-spacing: -1px; margin: 0 0 18px; max-width: 760px">
+        Minutes can be forecast. Hot nights can't.
+      </h2>
+      <p style="font-size: 17px; line-height: 1.65; color: #96A3B4; max-width: 700px; margin: 0 0 40px">
+        A model predicts one thing honestly about a player: how long he's on the floor. That falls out of the spread, the rotation and blowout risk. Everything past it is a guy getting hot. Combination markets win twice — stack three stats and the random parts cancel while the minutes part compounds. We scored every market on that ratio across 362 rotation players and three seasons.
+      </p>
+
+      <div style="background: #11161E; border: 1px solid #1F2733; border-radius: 10px; padding: 34px 36px 28px">
+        <table style="width: 100%; border-collapse: collapse">
+          <caption style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.6px; color: #6B7A8D; padding-bottom: 20px">SIGNAL PER UNIT OF NOISE &nbsp;·&nbsp; HIGHER IS BETTER</caption>
+          <tbody>
+            <tr>
+              <th scope="row" style="text-align: left; padding: 10px 18px 10px 0; border-top: 1px solid #1A212B; white-space: nowrap"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600; color: #FF6B2C">PRA</span><span style="font-size: 14px; color: #96A3B4; margin-left: 12px; font-weight: 400">Points + rebounds + assists</span></th>
+              <td style="padding: 10px 18px; border-top: 1px solid #1A212B; width: 46%"><div style="height: 9px; background: #1A212B; border-radius: 5px; overflow: hidden"><div style="width: 100%; height: 100%; background: #FF6B2C"></div></div></td>
+              <td style="text-align: right; padding: 10px 0; border-top: 1px solid #1A212B; font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: #FF6B2C; font-weight: 500">1.89</td>
+            </tr>
+            <tr>
+              <th scope="row" style="text-align: left; padding: 10px 18px 10px 0; border-top: 1px solid #1A212B; white-space: nowrap"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600; color: #FF6B2C">PR</span><span style="font-size: 14px; color: #96A3B4; margin-left: 12px; font-weight: 400">Points + rebounds</span></th>
+              <td style="padding: 10px 18px; border-top: 1px solid #1A212B"><div style="height: 9px; background: #1A212B; border-radius: 5px; overflow: hidden"><div style="width: 85.2%; height: 100%; background: #FF6B2C"></div></div></td>
+              <td style="text-align: right; padding: 10px 0; border-top: 1px solid #1A212B; font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: #FF6B2C; font-weight: 500">1.61</td>
+            </tr>
+            <tr>
+              <th scope="row" style="text-align: left; padding: 10px 18px 10px 0; border-top: 1px solid #1A212B; white-space: nowrap"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600; color: #D4703A">RA</span><span style="font-size: 14px; color: #96A3B4; margin-left: 12px; font-weight: 400">Rebounds + assists</span></th>
+              <td style="padding: 10px 18px; border-top: 1px solid #1A212B"><div style="height: 9px; background: #1A212B; border-radius: 5px; overflow: hidden"><div style="width: 66.1%; height: 100%; background: #B8582A"></div></div></td>
+              <td style="text-align: right; padding: 10px 0; border-top: 1px solid #1A212B; font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: #D4703A; font-weight: 500">1.25</td>
+            </tr>
+            <tr>
+              <th scope="row" style="text-align: left; padding: 10px 18px 10px 0; border-top: 1px solid #1A212B; white-space: nowrap"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600; color: #D4703A">PTS</span><span style="font-size: 14px; color: #96A3B4; margin-left: 12px; font-weight: 400">Points</span></th>
+              <td style="padding: 10px 18px; border-top: 1px solid #1A212B"><div style="height: 9px; background: #1A212B; border-radius: 5px; overflow: hidden"><div style="width: 60.8%; height: 100%; background: #B8582A"></div></div></td>
+              <td style="text-align: right; padding: 10px 0; border-top: 1px solid #1A212B; font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: #D4703A; font-weight: 500">1.15</td>
+            </tr>
+            <tr>
+              <th scope="row" style="text-align: left; padding: 10px 18px 10px 0; border-top: 1px solid #1A212B; white-space: nowrap"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600; color: #D4703A">REB</span><span style="font-size: 14px; color: #96A3B4; margin-left: 12px; font-weight: 400">Rebounds</span></th>
+              <td style="padding: 10px 18px; border-top: 1px solid #1A212B"><div style="height: 9px; background: #1A212B; border-radius: 5px; overflow: hidden"><div style="width: 43.9%; height: 100%; background: #B8582A"></div></div></td>
+              <td style="text-align: right; padding: 10px 0; border-top: 1px solid #1A212B; font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: #D4703A; font-weight: 500">0.83</td>
+            </tr>
+            <tr>
+              <th scope="row" style="text-align: left; padding: 10px 18px 10px 0; border-top: 2px solid #28323F; white-space: nowrap"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600; color: #6B7A8D">AST</span><span style="font-size: 14px; color: #6B7A8D; margin-left: 12px; font-weight: 400">Assists</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.2px; color: #586678; border: 1px solid #28323F; padding: 3px 7px; border-radius: 3px; margin-left: 12px">SKIP</span></th>
+              <td style="padding: 10px 18px; border-top: 2px solid #28323F"><div style="height: 9px; background: #1A212B; border-radius: 5px; overflow: hidden"><div style="width: 28.6%; height: 100%; background: #424E5C"></div></div></td>
+              <td style="text-align: right; padding: 10px 0; border-top: 2px solid #28323F; font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: #6B7A8D; font-weight: 500">0.54</td>
+            </tr>
+            <tr>
+              <th scope="row" style="text-align: left; padding: 10px 18px 10px 0; border-top: 1px solid #1A212B; white-space: nowrap"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600; color: #6B7A8D">FG3M</span><span style="font-size: 14px; color: #6B7A8D; margin-left: 12px; font-weight: 400">Three-pointers made</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.2px; color: #586678; border: 1px solid #28323F; padding: 3px 7px; border-radius: 3px; margin-left: 12px">SKIP</span></th>
+              <td style="padding: 10px 18px; border-top: 1px solid #1A212B"><div style="height: 9px; background: #1A212B; border-radius: 5px; overflow: hidden"><div style="width: 21.7%; height: 100%; background: #424E5C"></div></div></td>
+              <td style="text-align: right; padding: 10px 0; border-top: 1px solid #1A212B; font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: #6B7A8D; font-weight: 500">0.41</td>
+            </tr>
+            <tr>
+              <th scope="row" style="text-align: left; padding: 10px 18px 10px 0; border-top: 1px solid #1A212B; white-space: nowrap"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600; color: #6B7A8D">SB</span><span style="font-size: 14px; color: #6B7A8D; margin-left: 12px; font-weight: 400">Steals + blocks</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.2px; color: #586678; border: 1px solid #28323F; padding: 3px 7px; border-radius: 3px; margin-left: 12px">SKIP</span></th>
+              <td style="padding: 10px 18px; border-top: 1px solid #1A212B"><div style="height: 9px; background: #1A212B; border-radius: 5px; overflow: hidden"><div style="width: 16.4%; height: 100%; background: #424E5C"></div></div></td>
+              <td style="text-align: right; padding: 10px 0; border-top: 1px solid #1A212B; font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: #6B7A8D; font-weight: 500">0.31</td>
+            </tr>
+            <tr>
+              <th scope="row" style="text-align: left; padding: 10px 18px 10px 0; border-top: 1px solid #1A212B; white-space: nowrap"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600; color: #6B7A8D">TOV</span><span style="font-size: 14px; color: #6B7A8D; margin-left: 12px; font-weight: 400">Turnovers</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.2px; color: #586678; border: 1px solid #28323F; padding: 3px 7px; border-radius: 3px; margin-left: 12px">SKIP</span></th>
+              <td style="padding: 10px 18px; border-top: 1px solid #1A212B"><div style="height: 9px; background: #1A212B; border-radius: 5px; overflow: hidden"><div style="width: 15.3%; height: 100%; background: #424E5C"></div></div></td>
+              <td style="text-align: right; padding: 10px 0; border-top: 1px solid #1A212B; font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: #6B7A8D; font-weight: 500">0.29</td>
+            </tr>
+            <tr>
+              <th scope="row" style="text-align: left; padding: 10px 18px 10px 0; border-top: 1px solid #1A212B; white-space: nowrap"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600; color: #6B7A8D">BLK</span><span style="font-size: 14px; color: #6B7A8D; margin-left: 12px; font-weight: 400">Blocks</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.2px; color: #586678; border: 1px solid #28323F; padding: 3px 7px; border-radius: 3px; margin-left: 12px">SKIP</span></th>
+              <td style="padding: 10px 18px; border-top: 1px solid #1A212B"><div style="height: 9px; background: #1A212B; border-radius: 5px; overflow: hidden"><div style="width: 12.7%; height: 100%; background: #424E5C"></div></div></td>
+              <td style="text-align: right; padding: 10px 0; border-top: 1px solid #1A212B; font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: #6B7A8D; font-weight: 500">0.24</td>
+            </tr>
+            <tr>
+              <th scope="row" style="text-align: left; padding: 10px 18px 10px 0; border-top: 1px solid #1A212B; white-space: nowrap"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600; color: #6B7A8D">STL</span><span style="font-size: 14px; color: #6B7A8D; margin-left: 12px; font-weight: 400">Steals</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.2px; color: #586678; border: 1px solid #28323F; padding: 3px 7px; border-radius: 3px; margin-left: 12px">SKIP</span></th>
+              <td style="padding: 10px 18px; border-top: 1px solid #1A212B"><div style="height: 9px; background: #1A212B; border-radius: 5px; overflow: hidden"><div style="width: 11.6%; height: 100%; background: #424E5C"></div></div></td>
+              <td style="text-align: right; padding: 10px 0; border-top: 1px solid #1A212B; font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: #6B7A8D; font-weight: 500">0.22</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size: 14px; line-height: 1.7; color: #96A3B4; margin: 24px 0 0; border-top: 1px solid #1F2733; padding-top: 20px">
+          PRA is worth <strong style="color: #FF6B2C; font-weight: 600">8.6&times;</strong> a steals prop. We price the top five and leave the rest alone.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 2 -->
+  <div style="max-width: 1180px; margin: 0 auto; padding: 80px 32px">
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 2.4px; color: #8B98A9; margin-bottom: 18px">02 &nbsp;/&nbsp; WHICH COLLEGE GAMES</div>
+    <h2 style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 38px; line-height: 1.14; letter-spacing: -1px; margin: 0 0 18px; max-width: 780px">
+      Under 60% confidence, nobody knows anything.
+    </h2>
+    <p style="font-size: 17px; line-height: 1.65; color: #96A3B4; max-width: 700px; margin: 0 0 40px">
+      We split 1,544 college games by how sure the model was and checked what happened. The split was sharper than expected, and it held for the betting market too.
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-bottom: 40px">
+      <div style="background: #11161E; border: 1px solid #1F2733; border-radius: 10px; padding: 34px">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.6px; color: #6B7A8D; margin-bottom: 22px">UNDER 60% SURE</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 52px; font-weight: 500; color: #7A8798; letter-spacing: -1.8px; line-height: 1">56.8%</div>
+        <div style="height: 8px; background: #1A212B; border-radius: 4px; margin: 20px 0 16px; overflow: hidden"><div style="width: 56.8%; height: 100%; background: #4A5566"></div></div>
+        <p style="font-size: 14px; line-height: 1.7; color: #96A3B4; margin: 0">Barely better than guessing. The market did worse — <strong style="color: #C3CDDA; font-weight: 600">50.4%</strong>, a coin flip. Nothing from this half goes out.</p>
+      </div>
+      <div style="background: #11161E; border: 1px solid #5C2D12; border-radius: 10px; padding: 34px">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.6px; color: #FF6B2C; margin-bottom: 22px">60% SURE OR BETTER</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 52px; font-weight: 500; color: #FF6B2C; letter-spacing: -1.8px; line-height: 1">78.2%</div>
+        <div style="height: 8px; background: #1A212B; border-radius: 4px; margin: 20px 0 16px; overflow: hidden"><div style="width: 78.2%; height: 100%; background: #FF6B2C"></div></div>
+        <p style="font-size: 14px; line-height: 1.7; color: #96A3B4; margin: 0">A 21-point jump, same model, same season. On a typical slate that's two to four games.</p>
+      </div>
+    </div>
+
+    <div style="background: #11161E; border: 1px solid #1F2733; border-radius: 10px; padding: 34px 36px">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.6px; color: #6B7A8D; margin-bottom: 26px">AND: MARKETS MISPRICE ROAD TEAMS &nbsp;·&nbsp; TEAMS WINNING 80%+ AWAY &nbsp;·&nbsp; 44 GAMES</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 44px; align-items: flex-start">
+        <div style="flex: 1 1 400px; min-width: 0">
+          <div style="margin-bottom: 26px">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px">
+              <span style="font-size: 14px; color: #96A3B4">Market said they'd win</span>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 20px; color: #7A8798; font-weight: 500">67.6%</span>
+            </div>
+            <div style="height: 10px; background: #1A212B; border-radius: 5px; overflow: hidden"><div style="width: 67.6%; height: 100%; background: #4A5566"></div></div>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px">
+              <span style="font-size: 14px; color: #ECEFF4">They actually won</span>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 20px; color: #FF6B2C; font-weight: 500">86.4%</span>
+            </div>
+            <div style="height: 10px; background: #1A212B; border-radius: 5px; overflow: hidden"><div style="width: 86.4%; height: 100%; background: #FF6B2C"></div></div>
+          </div>
+        </div>
+        <div style="flex: 0 1 280px; min-width: 0; border-left: 1px solid #1F2733; padding-left: 36px">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 46px; font-weight: 500; color: #FF6B2C; letter-spacing: -1.6px; line-height: 1; margin-bottom: 12px">19 pts</div>
+          <p style="font-size: 14px; line-height: 1.7; color: #96A3B4; margin: 0">left on the table. Teams that travel badly get overrated the same way. From 44 games in one season, so we size these at half the measured effect and are re-measuring now.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 3 -->
+  <div style="border-top: 1px solid #1A212B">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 80px 32px">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 2.4px; color: #8B98A9; margin-bottom: 18px">03 &nbsp;/&nbsp; WHY WE DON'T OFFER EUROLEAGUE TOTALS</div>
+      <h2 style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 38px; line-height: 1.14; letter-spacing: -1px; margin: 0 0 18px; max-width: 780px">
+        The same edge is worth less on a total than on the winner.
+      </h2>
+      <p style="font-size: 17px; line-height: 1.65; color: #96A3B4; max-width: 700px; margin: 0 0 40px">
+        We measured how far EuroLeague results land from our projections, across 310 games, always forecasting games the model had not seen. Margins behaved. Totals did not.
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-bottom: 40px">
+        <div style="background: #11161E; border: 1px solid #5C2D12; border-radius: 10px; padding: 34px">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.6px; color: #FF6B2C; margin-bottom: 22px">HOW WRONG WE ARE ON MARGIN</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 52px; font-weight: 500; color: #FF6B2C; letter-spacing: -1.8px; line-height: 1">11.7 <span style="font-size: 22px; color: #96A3B4">pts</span></div>
+          <p style="font-size: 14px; line-height: 1.7; color: #96A3B4; margin: 20px 0 0">Typical miss on the winning margin. Close to what we expected before measuring, which is the boring outcome you want.</p>
+        </div>
+        <div style="background: #11161E; border: 1px solid #1F2733; border-radius: 10px; padding: 34px">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.6px; color: #6B7A8D; margin-bottom: 22px">HOW WRONG WE ARE ON THE TOTAL</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 52px; font-weight: 500; color: #7A8798; letter-spacing: -1.8px; line-height: 1">18.1 <span style="font-size: 22px; color: #96A3B4">pts</span></div>
+          <p style="font-size: 14px; line-height: 1.7; color: #96A3B4; margin: 20px 0 0">Half again as wide, and 51% worse than we had assumed going in. That's <strong style="color: #C3CDDA; font-weight: 600">10.4%</strong> of a EuroLeague total against <strong style="color: #C3CDDA; font-weight: 600">6.0%</strong> of an NBA one.</p>
+        </div>
+      </div>
+
+      <div style="background: #11161E; border: 1px solid #1F2733; border-radius: 10px; padding: 34px 36px">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.6px; color: #6B7A8D; margin-bottom: 26px">WHAT A 3-POINT EDGE IS ACTUALLY WORTH &nbsp;·&nbsp; AGAINST A 5.4&cent; COST TO TRADE</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 44px; align-items: flex-start">
+          <div style="flex: 1 1 400px; min-width: 0">
+            <div style="margin-bottom: 26px">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px">
+                <span style="font-size: 14px; color: #ECEFF4">On who wins</span>
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 20px; color: #FF6B2C; font-weight: 500">10.2&cent;</span>
+              </div>
+              <div style="height: 10px; background: #1A212B; border-radius: 5px; overflow: hidden"><div style="width: 76%; height: 100%; background: #FF6B2C"></div></div>
+            </div>
+            <div style="margin-bottom: 26px">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px">
+                <span style="font-size: 14px; color: #96A3B4">On the total</span>
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 20px; color: #7A8798; font-weight: 500">6.6&cent;</span>
+              </div>
+              <div style="height: 10px; background: #1A212B; border-radius: 5px; overflow: hidden"><div style="width: 49%; height: 100%; background: #4A5566"></div></div>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px">
+                <span style="font-size: 14px; color: #96A3B4">Cost to get in and out</span>
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 20px; color: #C2693C; font-weight: 500">5.4&cent;</span>
+              </div>
+              <div style="height: 10px; background: #1A212B; border-radius: 5px; overflow: hidden"><div style="width: 40%; height: 100%; background: #C2693C"></div></div>
+            </div>
+          </div>
+          <div style="flex: 0 1 280px; min-width: 0; border-left: 1px solid #1F2733; padding-left: 36px">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 46px; font-weight: 500; color: #FF6B2C; letter-spacing: -1.6px; line-height: 1; margin-bottom: 12px">1.2&cent;</div>
+            <p style="font-size: 14px; line-height: 1.7; color: #96A3B4; margin: 0 0 16px">is all that's left on a EuroLeague total after costs — and a 2-point edge leaves nothing at all. On the game winner the same read keeps nearly five cents.</p>
+            <p style="font-size: 14px; line-height: 1.7; color: #96A3B4; margin: 0">So in EuroLeague we work the margin — who wins, and by how much — and a total has to disagree with the market by a wide mark before it is worth touching. We had assumed totals would be the easier side. The measurement said otherwise.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT WE HAVEN'T PROVED -->
+  <div style="border-top: 1px solid #1A212B">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 80px 32px">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 2.4px; color: #8B98A9; margin-bottom: 18px">04 &nbsp;/&nbsp; WHAT WE HAVEN'T PROVED YET</div>
+      <h2 style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 38px; line-height: 1.14; letter-spacing: -1px; margin: 0 0 18px; max-width: 780px">
+        There is no track record on this site, and there won't be for a while.
+      </h2>
+      <p style="font-size: 17px; line-height: 1.65; color: #96A3B4; max-width: 700px; margin: 0 0 40px">
+        Two reasons, and neither is modesty.
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px">
+        <div style="background: #11161E; border: 1px solid #1F2733; border-radius: 10px; padding: 32px 34px">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.6px; color: #6B7A8D; margin-bottom: 20px">A WIN RATE WOULD BE NOISE</div>
+          <p style="font-size: 15px; line-height: 1.75; color: #C3CDDA; margin: 0 0 16px">
+            Telling a 53% edge from a coin flip takes on the order of <strong style="color: #ECEFF4; font-weight: 600">750 settled bets</strong>. Anything posted before then says more about luck than about method, and a good first month would be the most misleading version of it.
+          </p>
+          <p style="font-size: 15px; line-height: 1.75; color: #96A3B4; margin: 0">
+            What we track instead is the price we got against the price the market closed at. That settles in roughly <strong style="color: #ECEFF4; font-weight: 600">30 bets</strong>, because it measures whether the money agreed with us rather than whether the ball went in. When there are thirty, it goes on the site — good or bad.
+          </p>
+        </div>
+        <div style="background: #11161E; border: 1px solid #1F2733; border-radius: 10px; padding: 32px 34px">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.6px; color: #6B7A8D; margin-bottom: 20px">EARLY RATINGS ARE MOSTLY LAST YEAR</div>
+          <p style="font-size: 15px; line-height: 1.75; color: #C3CDDA; margin: 0 0 16px">
+            Six games is not enough to rate a team. Take them at face value and the best side looks better than it is and the worst looks worse, so every projected margin comes out too wide — in the direction that loses money fastest, overconfidence on the extremes.
+          </p>
+          <p style="font-size: 15px; line-height: 1.75; color: #96A3B4; margin: 0">
+            So a rating this early is part this season and part last, weighted by how much has actually been played. In EuroLeague right now that is about <strong style="color: #ECEFF4; font-weight: 600">59% this season</strong>. It reaches 80% by around Christmas and the correction fades on its own. That is why the board looks cautious in October, and why it should.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAPERS -->
+  <div style="background: #0D1218; border-top: 1px solid #1A212B; border-bottom: 1px solid #1A212B">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 80px 32px">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 2.4px; color: #8B98A9; margin-bottom: 18px">PAPERS</div>
+      <h2 style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 38px; line-height: 1.14; letter-spacing: -1px; margin: 0 0 40px">
+        Read it yourself.
+      </h2>
+
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px">
+        <a href="[LINK TO PAPER 1]" style="text-decoration: none; background: #11161E; border: 1px solid #1F2733; border-radius: 10px; padding: 30px; display: block">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; color: #FF6B2C; margin-bottom: 16px">01</div>
+          <h3 style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 17px; line-height: 1.35; margin: 0 0 14px; letter-spacing: -0.2px; color: #ECEFF4">Basketball IQ vs. Kalshi: Evaluating Prediction Market Accuracy Against Statistical Models</h3>
+          <p style="font-size: 14px; line-height: 1.6; color: #96A3B4; margin: 0 0 18px">1,544 college games, 468 scored against live market prices.</p>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6B7A8D">February 2026</div>
+        </a>
+        <a href="minutes.html" style="text-decoration: none; background: #11161E; border: 1px solid #1F2733; border-radius: 10px; padding: 30px; display: block">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; color: #FF6B2C; margin-bottom: 16px">02 &nbsp;·&nbsp; ARTICLE</div>
+          <h3 style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 17px; line-height: 1.35; margin: 0 0 14px; letter-spacing: -0.2px; color: #ECEFF4">Minutes are the only thing you can forecast</h3>
+          <p style="font-size: 14px; line-height: 1.6; color: #96A3B4; margin: 0 0 18px">Which prop markets reward a model and which are coin flips. 362 rotation players, three seasons.</p>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6B7A8D">October 2026</div>
+        </a>
+        <a href="misses.html" style="text-decoration: none; background: #11161E; border: 1px solid #1F2733; border-radius: 10px; padding: 30px; display: block">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; color: #FF6B2C; margin-bottom: 16px">03 &nbsp;·&nbsp; ARTICLE</div>
+          <h3 style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 17px; line-height: 1.35; margin: 0 0 14px; letter-spacing: -0.2px; color: #ECEFF4">Five ways we looked for an edge and didn't find one</h3>
+          <p style="font-size: 14px; line-height: 1.6; color: #96A3B4; margin: 0 0 18px">832 settled ladders, two self-inflicted false positives, and the cost that explained both.</p>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6B7A8D">October 2026</div>
+        </a>
+      </div>
+
+      <p style="font-size: 14px; color: #6B7A8D; margin: 24px 0 0">Nwanacho Nwana · Chirag Dahal · Prabigya Acharya</p>
+    </div>
+  </div>
+
+  <!-- LIMITS -->
+  <div style="max-width: 1180px; margin: 0 auto; padding: 80px 32px">
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 2.4px; color: #8B98A9; margin-bottom: 18px">LIMITS</div>
+    <h2 style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 38px; line-height: 1.14; letter-spacing: -1px; margin: 0 0 40px; max-width: 720px">
+      What this doesn't tell you.
+    </h2>
+
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 44px">
+      <div style="border-top: 1px solid #1F2733; padding-top: 22px">
+        <h3 style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 17px; margin: 0 0 10px; letter-spacing: -0.3px">A board is not a bet</h3>
+        <p style="font-size: 14px; line-height: 1.7; color: #96A3B4; margin: 0">It says whose numbers are forecastable, not that the market has them wrong.</p>
+      </div>
+      <div style="border-top: 1px solid #1F2733; padding-top: 22px">
+        <h3 style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 17px; margin: 0 0 10px; letter-spacing: -0.3px">Accuracy is not profit</h3>
+        <p style="font-size: 14px; line-height: 1.7; color: #96A3B4; margin: 0">We measured how often we pick the right team, not what it earns. 78% on heavy favorites still loses at a bad price.</p>
+      </div>
+      <div style="border-top: 1px solid #1F2733; padding-top: 22px">
+        <h3 style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 17px; margin: 0 0 10px; letter-spacing: -0.3px">Short runs tell you nothing</h3>
+        <p style="font-size: 14px; line-height: 1.7; color: #96A3B4; margin: 0">A 78% model loses four straight regularly. That's variance, not a broken model.</p>
+      </div>
+      <div style="border-top: 1px solid #1F2733; padding-top: 22px">
+        <h3 style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 17px; margin: 0 0 10px; letter-spacing: -0.3px">One season of evidence</h3>
+        <p style="font-size: 14px; line-height: 1.7; color: #96A3B4; margin: 0">Every figure here comes from 2025–26. Markets adapt and models stop working. We'll publish what happens either way.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="border-top: 1px solid #1A212B">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 36px 32px 52px">
+      <div style="display: flex; flex-wrap: wrap; gap: 26px; align-items: center; justify-content: space-between; margin-bottom: 24px">
+        <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; color: #8B98A9; letter-spacing: -0.2px">SHARPZ BASKETBALL</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px">
+          <a href="index.html" style="color: #6B7A8D; text-decoration: none; font-size: 14px">The board</a>
+          <a href="Main.dc.html#join" style="color: #6B7A8D; text-decoration: none; font-size: 14px">Contact</a>
+        </div>
+      </div>
+      <p style="font-size: 12px; line-height: 1.75; color: #586678; margin: 0; max-width: 820px">
+        Statistical forecasts for informational purposes. Not a sportsbook; we do not accept wagers. Betting involves risk of loss. 21+ and where legal. 1-800-GAMBLER.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

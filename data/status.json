@@ -1,0 +1,14 @@
+{
+ "generated": "2026-10-19T18:32:02-0400",
+ "latest": null,
+ "history": [],
+ "maturity": [
+  {"league": "E2026", "teams": 20, "median_gp": 6, "own_form_pct": 59, "prior_pct": 41}
+ ],
+ "record": {
+  "picks_logged": 0,
+  "picks_graded": 0,
+  "clv_unlocks_at": 30,
+  "win_rate_unlocks_at": 200
+ }
+}
