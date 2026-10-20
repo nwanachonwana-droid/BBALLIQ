@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-20T11:53:40.834355-04:00",
+ "generated": "2026-10-20T12:12:48.311466-04:00",
  "day": "20261020",
  "source": "Covers.com",
  "counts": {
@@ -156,7 +156,7 @@
    "covers_pra": null,
    "market_pra": 38.5,
    "market_src": "books",
-   "book_prob_over": 0.4925,
+   "book_prob_over": 0.4889,
    "book_n": 6,
    "book_spread": 4.0,
    "delta": 0.5,
@@ -176,7 +176,7 @@
    "covers_pra": null,
    "market_pra": 36.5,
    "market_src": "books",
-   "book_prob_over": 0.4845,
+   "book_prob_over": 0.4835,
    "book_n": 5,
    "book_spread": 4.0,
    "delta": -0.5,
