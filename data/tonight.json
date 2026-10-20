@@ -1,10 +1,10 @@
 {
- "generated": "2026-10-20T10:39:47.162412-04:00",
+ "generated": "2026-10-20T10:59:53.870859-04:00",
  "day": "20261020",
  "source": "Covers.com",
  "counts": {
   "writer_picks": 20,
-  "projections": 18,
+  "projections": 17,
   "kept": 17,
   "dropped": 3
  },
@@ -189,6 +189,14 @@
      "projection": 26.81,
      "ev_pct": 21.12,
      "source": "projection"
+    },
+    {
+     "market": "Points Scored",
+     "side": "under",
+     "line": 29.5,
+     "projection": 26.81,
+     "ev_pct": 21.12,
+     "source": "projection"
     }
    ]
   },
@@ -198,6 +206,14 @@
    "pra_line": 38.0,
    "minutes": "moved",
    "reads": [
+    {
+     "market": "Points Scored",
+     "side": "under",
+     "line": 23.5,
+     "projection": 21.4,
+     "ev_pct": 23.8,
+     "source": "projection"
+    },
     {
      "market": "Points Scored",
      "side": "under",
@@ -227,14 +243,14 @@
    "covers": 220.34
   },
   {
-   "away": "Philadelphia",
-   "home": "New York",
-   "covers": 231.08
-  },
-  {
    "away": "Oklahoma City",
    "home": "San Antonio",
    "covers": 232.77
+  },
+  {
+   "away": "Philadelphia",
+   "home": "New York",
+   "covers": 231.08
   }
  ]
 }
