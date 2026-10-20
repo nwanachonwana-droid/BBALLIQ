@@ -1,14 +1,82 @@
 {
- "generated": "2026-10-19T18:32:02-0400",
- "latest": null,
- "history": [],
+ "generated": "2026-10-20T10:56:32-0400",
+ "latest": {
+  "when": "20 Oct 10:17",
+  "games": 4,
+  "priced": 86,
+  "cleared": 21,
+  "taken": 3,
+  "top_gate": {
+   "gate": "tail",
+   "label": "price too close to 0 or 1",
+   "killed": 46
+  },
+  "gates": [
+   {
+    "gate": "tail",
+    "label": "price too close to 0 or 1",
+    "killed": 46
+   },
+   {
+    "gate": "relspread",
+    "label": "bid-ask too wide for the price",
+    "killed": 46
+   },
+   {
+    "gate": "ev",
+    "label": "edge too small to clear costs",
+    "killed": 40
+   },
+   {
+    "gate": "noise",
+    "label": "edge inside the noise",
+    "killed": 33
+   },
+   {
+    "gate": "spread",
+    "label": "bid-ask too wide in cents",
+    "killed": 23
+   },
+   {
+    "gate": "disagree",
+    "label": "our two sources disagreed",
+    "killed": 19
+   }
+  ]
+ },
+ "history": [
+  {
+   "day": "20261020",
+   "runs": 3,
+   "games": 4,
+   "priced": 144,
+   "cleared": 21,
+   "taken": 3,
+   "top_gate": "relspread"
+  }
+ ],
  "maturity": [
-  {"league": "E2026", "teams": 20, "median_gp": 6, "own_form_pct": 59, "prior_pct": 41}
+  {
+   "league": "E2025",
+   "teams": 20,
+   "median_gp": 38,
+   "own_form_pct": 95,
+   "prior_pct": 5
+  },
+  {
+   "league": "E2026",
+   "teams": 20,
+   "median_gp": 6,
+   "own_form_pct": 59,
+   "prior_pct": 41
+  }
  ],
  "record": {
-  "picks_logged": 0,
+  "picks_logged": 3,
   "picks_graded": 0,
   "clv_unlocks_at": 30,
-  "win_rate_unlocks_at": 200
+  "win_rate_unlocks_at": 200,
+  "clv_note": "0 of 30 graded. Closing-line value settles in about 30 picks, so it stays shut until then.",
+  "win_note": "A win rate needs roughly 200 settled picks before it separates skill from luck. Showing one sooner would be noise."
  }
 }

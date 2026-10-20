@@ -65,6 +65,39 @@
          The reasoning behind the numbers lives on the research page. -->
     <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.8px; color: #6B7A8D; margin-bottom: 22px" id="dateline"></div>
 
+    <!-- TONIGHT: other people's numbers, screened by our rules.
+         Every figure here is Covers'; the ordering and the exclusions
+         are ours. Sourced and dated in the footer of the block. -->
+    <div style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px">
+      <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #FF6B2C">TONIGHT &nbsp;·&nbsp; INDEPENDENT READS</div>
+        <div style="font-size: 13px; color: #6B7A8D" id="tickMeta"></div>
+      </div>
+      <div id="tickRows"></div>
+      <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
+        Projections, picks and EV figures above are <strong style="color: #96A3B4; font-weight: 600">Covers.com</strong>&rsquo;s, captured <span id="tickWhen">daily</span>. Not our numbers and not our recommendations. We publish them because Covers runs two independent desks &mdash; named writers and a projection model &mdash; and <a href="research.html">where those two disagree</a> is more informative than either alone.
+        <br><br>
+        Ordered by: disagreement first, then stated edge, then how far the projection sits from the line. A projection within 0.5 of the line is dropped however large its stated EV, and a player quoted on both sides by different writers is dropped entirely.
+      </div>
+    </div>
+
+    <!-- PRA WATCH: our board narrowed to tonight, with whatever an
+         outside model says about the same players. One-way on purpose:
+         Covers quotes components, never the combined PRA line, so this
+         is context rather than corroboration. -->
+    <div id="praBlock" style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px" hidden>
+      <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #FF6B2C">PRA WATCH &nbsp;·&nbsp; PLAYING TONIGHT</div>
+        <div style="font-size: 13px; color: #6B7A8D" id="praMeta"></div>
+      </div>
+      <div id="praRows"></div>
+      <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
+        Our own board, narrowed to players whose team is on tonight. The PRA figure is each player&rsquo;s typical points+rebounds+assists across three seasons &mdash; roughly where a book would set him, and a measure of how <a href="minutes.html">forecastable his minutes are</a>, not a prediction for tonight.
+        <br><br>
+        The outside read beside it is <strong style="color: #96A3B4; font-weight: 600">Covers.com</strong>&rsquo;s projection. They quote points, rebounds and assists separately and never the combined line, so it can corroborate a component and never the PRA number itself.
+      </div>
+    </div>
+
     <!-- tabs -->
     <div role="tablist" aria-label="Board view" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px" id="tabbar"></div>
 
@@ -381,21 +414,143 @@ function render() {
 // One line, from data/status.json. The board leads with names; this
 // says only whether anything is on tonight. If the fetch fails the
 // line still reads sensibly rather than going blank.
-function dateline(s) {
-  const r = s && s.latest;
+// Two things feed this line, and they arrive at different times: our
+// own priced run, which some nights produces nothing, and the outside
+// reads, which land every morning. Leading with "NO PRICES YET" while
+// seventeen screened reads sat directly below it described the half of
+// the page that was empty and ignored the half that wasn't.
+let _S = null, _T = null;
+function dateline() {
   const el = document.getElementById('dateline');
   if (!el) return;
-  el.textContent = r
-    ? (r.when + '  ·  ' + r.games + ' GAMES PRICED  ·  '
-       + (r.taken > 0 ? r.taken + ' ON THE BOARD' : 'NOTHING CLEARED TONIGHT'))
-    : 'NO PRICES YET  ·  FIRST BOARD GOES UP AFTER OPENING NIGHT';
+  const r = _S && _S.latest;
+  const n = (_T && _T.rows && _T.rows.length) || 0;
+  const SEP = '  ·  ';
+  const when = r ? r.when
+    : (_T && _T.day ? _T.day.slice(4, 6) + '/' + _T.day.slice(6, 8) : '');
+  const outside = n ? n + ' OUTSIDE READS SCREENED' : '';
+  const ours = r
+    ? (r.games + ' GAMES PRICED' + SEP
+       + (r.taken > 0 ? r.taken + ' ON THE BOARD' : 'NOTHING CLEARED'))
+    : 'OUR PRICES NOT IN YET';
+  const txt = [when, outside, ours].filter(Boolean).join(SEP);
+  el.textContent = txt || 'NOTHING IN YET TONIGHT';
 }
 
 render();
-dateline(null);
+// Tonight's independent reads. Covers' numbers, our ordering.
+// A row with no projection is shown as UNBACKED rather than hidden,
+// because an unchecked pick and a checked one should not look alike.
+const TICK_STYLE = {
+  CONFLICT:     ['#FF6B2C', '#5C2D12', '#2A1408'],
+  CORROBORATED: ['#3FB68B', '#1F4438', '#11231D'],
+  UNBACKED:     ['#8B98A9', '#28323F', '#1A212B']
+};
+
+function ticker(t) {
+  const meta = document.getElementById('tickMeta');
+  const body = document.getElementById('tickRows');
+  const when = document.getElementById('tickWhen');
+  if (!body) return;
+  if (!t || !t.rows || !t.rows.length) {
+    body.innerHTML = '<div style="padding: 20px 24px; color: #6B7A8D; '
+      + 'font-size: 14px">No reads captured yet today.</div>';
+    return;
+  }
+  if (meta) {
+    const c = t.counts || {};
+    meta.textContent = (c.writer_picks || 0) + ' picks and '
+      + (c.projections || 0) + ' projections read, '
+      + (c.dropped || 0) + ' dropped';
+  }
+  if (when && t.generated) {
+    when.textContent = new Date(t.generated)
+      .toLocaleString(undefined, { day: 'numeric', month: 'short',
+                                   hour: '2-digit', minute: '2-digit' });
+  }
+  const MONO = "font-family: 'IBM Plex Mono', monospace;";
+  const ARCH = "font-family: 'Archivo', sans-serif;";
+  // Every row that cleared the screen, not a teaser. The sort already
+  // puts the most informative first, so the tail costs a reader
+  // nothing but scroll -- whereas cutting at six hid picks that had
+  // passed exactly the same thresholds as the six that showed.
+  body.innerHTML = t.rows.map((r, i) => {
+    const st = TICK_STYLE[r.status] || TICK_STYLE.UNBACKED;
+    const pick = r.side.charAt(0) + r.line + ' ' + r.market;
+    const ev = (r.ev_pct === undefined || r.ev_pct === null)
+      ? '' : r.ev_pct.toFixed(1) + '%';
+    const proj = (r.projection === undefined || r.projection === null)
+      ? '' : 'proj ' + r.projection;
+    const top = i ? 'border-top: 1px solid #1A212B;' : '';
+    return `<div style="display: flex; flex-wrap: wrap; gap: 10px 18px;
+        align-items: baseline; padding: 13px 24px; background: #11161E; ${top}">
+      <span style="${MONO} font-size: 9px; letter-spacing: 1.4px;
+        padding: 4px 8px; border-radius: 4px; color: ${st[0]};
+        border: 1px solid ${st[1]}; background: ${st[2]}">${r.status}</span>
+      <span style="${ARCH} font-weight: 600; font-size: 16px;
+        letter-spacing: -0.2px; min-width: 150px">${r.player}</span>
+      <span style="font-size: 14px; color: #C3CDDA; min-width: 160px">${pick}</span>
+      <span style="${MONO} font-size: 13px; color: #8B98A9;
+        min-width: 80px">${proj}</span>
+      <span style="${MONO} font-size: 15px; color: ${st[0]}">${ev}</span>
+      ${r.game ? `<span style="${MONO} font-size: 11px; color: #6B7A8D">${r.game}</span>` : ''}
+      ${r.note ? `<span style="font-size: 13px; color: #96A3B4; flex: 1 1 100%">${r.note}</span>` : ''}
+    </div>`;
+  }).join('');
+}
+
+function praWatch(t) {
+  const block = document.getElementById('praBlock');
+  const body = document.getElementById('praRows');
+  const meta = document.getElementById('praMeta');
+  if (!block || !body) return;
+  const w = (t && t.pra_watch) || [];
+  if (!w.length) { block.hidden = true; return; }
+  block.hidden = false;
+  if (meta) meta.textContent = w.length + ' of 10 board players on tonight';
+  const MONO = "font-family: 'IBM Plex Mono', monospace;";
+  const ARCH = "font-family: 'Archivo', sans-serif;";
+  body.innerHTML = w.map((p, i) => {
+    const top = i ? 'border-top: 1px solid #1A212B;' : '';
+    const lock = p.minutes === 'locked';
+    const pill = lock
+      ? 'color: #FF8A52; border: 1px solid #5C2D12; background: #2A1408;'
+      : 'color: #96A3B4; border: 1px solid #28323F; background: #1A212B;';
+    const reads = (p.reads || []).map(r => r.note
+      ? `<span style="font-size: 13px; color: #8B98A9">${r.note}</span>`
+      : `<span style="font-size: 13px; color: #C3CDDA">${r.side.charAt(0)}${r.line} ${r.market}</span>
+         <span style="${MONO} font-size: 13px; color: #8B98A9">proj ${r.projection}</span>
+         <span style="${MONO} font-size: 14px; color: #3FB68B">${r.ev_pct != null ? r.ev_pct.toFixed(1) + '%' : ''}</span>`
+    ).join(' ') || '<span style="font-size: 13px; color: #6B7A8D">no outside read tonight</span>';
+    return `<div style="display: flex; flex-wrap: wrap; gap: 10px 18px;
+        align-items: baseline; padding: 14px 24px; background: #11161E; ${top}">
+      <span style="${ARCH} font-weight: 600; font-size: 16px;
+        letter-spacing: -0.2px; min-width: 190px">${p.player}</span>
+      <span style="${MONO} font-size: 12px; letter-spacing: 0.6px;
+        color: #8B98A9; min-width: 38px">${p.team}</span>
+      <span style="${MONO} font-size: 20px; font-weight: 500; color: #FF6B2C;
+        letter-spacing: -0.5px; min-width: 56px">${p.pra_line}</span>
+      <span style="${MONO} font-size: 9px; letter-spacing: 1.4px; padding: 4px 8px;
+        border-radius: 4px; text-transform: uppercase; ${pill}">${p.minutes}</span>
+      <span style="display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline;
+        flex: 1 1 320px">${reads}</span>
+    </div>`;
+  }).join('');
+}
+
+dateline();
+ticker(null);
+praWatch(null);
+// Either fetch may fail or arrive first, so each stores its half and
+// re-renders the line. Neither waits on the other: the reads show
+// whether or not we have priced anything, which is the point.
+fetch('data/tonight.json', { cache: 'no-store' })
+  .then(r => r.ok ? r.json() : Promise.reject())
+  .then(d => { _T = d; ticker(d); praWatch(d); dateline(); })
+  .catch(() => {});
 fetch('data/status.json', { cache: 'no-store' })
   .then(r => r.ok ? r.json() : Promise.reject())
-  .then(dateline)
+  .then(d => { _S = d; dateline(); })
   .catch(() => {});
 
 </script>
