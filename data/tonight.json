@@ -1,27 +1,17 @@
 {
- "generated": "2026-10-20T11:00:41.843540-04:00",
+ "generated": "2026-10-20T11:22:42.840639-04:00",
  "day": "20261020",
  "source": "Covers.com",
  "counts": {
-  "writer_picks": 20,
-  "projections": 17,
+  "writer_picks": 19,
+  "projections": 9,
   "kept": 17,
-  "dropped": 3
+  "dropped": 2,
+  "shown": 8,
+  "held_conflict": 1,
+  "held_unbacked": 8
  },
  "rows": [
-  {
-   "status": "CONFLICT",
-   "player": "Joel Embiid",
-   "side": "over",
-   "line": 7.5,
-   "market": "Total Rebounds",
-   "projection": 7.06,
-   "ev_pct": 16.06,
-   "stars": 4,
-   "difference": -0.4,
-   "game": "PHI@NY",
-   "note": "projection says under 7.5 (proj 7.06)"
-  },
   {
    "status": "CORROBORATED",
    "player": "Cade Cunningham",
@@ -117,62 +107,6 @@
    "stars": 4,
    "difference": 1.8,
    "game": "BOS@DET"
-  },
-  {
-   "status": "UNBACKED",
-   "player": "Ausar Thompson",
-   "side": "under",
-   "line": 3.5,
-   "market": "Total Assists"
-  },
-  {
-   "status": "UNBACKED",
-   "player": "De'Aaron Fox",
-   "side": "over",
-   "line": 1.5,
-   "market": "3-Pointers Made"
-  },
-  {
-   "status": "UNBACKED",
-   "player": "Derrick White",
-   "side": "over",
-   "line": 4.5,
-   "market": "Total Assists"
-  },
-  {
-   "status": "UNBACKED",
-   "player": "Jalen Duren",
-   "side": "over",
-   "line": 9.5,
-   "market": "Total Rebounds"
-  },
-  {
-   "status": "UNBACKED",
-   "player": "Karl-Anthony Towns",
-   "side": "under",
-   "line": 4.5,
-   "market": "Total Assists"
-  },
-  {
-   "status": "UNBACKED",
-   "player": "OG Anunoby",
-   "side": "under",
-   "line": 17.5,
-   "market": "Points Scored"
-  },
-  {
-   "status": "UNBACKED",
-   "player": "Shai Gilgeous-Alexander",
-   "side": "under",
-   "line": 6.5,
-   "market": "Total Assists"
-  },
-  {
-   "status": "UNBACKED",
-   "player": "Victor Wembanyama",
-   "side": "under",
-   "line": 25.5,
-   "market": "Points Scored"
   }
  ],
  "pra_watch": [
@@ -181,59 +115,57 @@
    "team": "OKC",
    "pra_line": 42.5,
    "minutes": "locked",
-   "reads": [
-    {
+   "components": {
+    "pts": {
      "market": "Points Scored",
      "side": "under",
      "line": 29.5,
      "projection": 26.81,
-     "ev_pct": 21.12,
-     "source": "projection"
+     "ev_pct": 21.12
     },
-    {
-     "market": "Points Scored",
-     "side": "under",
-     "line": 29.5,
-     "projection": 26.81,
-     "ev_pct": 21.12,
-     "source": "projection"
-    }
-   ]
+    "reb": null,
+    "ast": null
+   },
+   "covered": 1,
+   "covers_pra": null,
+   "delta": null,
+   "note": null
   },
   {
    "player": "Cade Cunningham",
    "team": "DET",
    "pra_line": 38.0,
    "minutes": "moved",
-   "reads": [
-    {
+   "components": {
+    "pts": {
      "market": "Points Scored",
      "side": "under",
      "line": 23.5,
      "projection": 21.4,
-     "ev_pct": 23.8,
-     "source": "projection"
+     "ev_pct": 23.8
     },
-    {
-     "market": "Points Scored",
-     "side": "under",
-     "line": 23.5,
-     "projection": 21.4,
-     "ev_pct": 23.8,
-     "source": "projection"
-    }
-   ]
+    "reb": null,
+    "ast": null
+   },
+   "covered": 1,
+   "covers_pra": null,
+   "delta": null,
+   "note": null
   },
   {
    "player": "Jalen Brunson",
    "team": "NYK",
    "pra_line": 37.0,
    "minutes": "locked",
-   "reads": [
-    {
-     "note": "writers split, no projection"
-    }
-   ]
+   "components": {
+    "pts": null,
+    "reb": null,
+    "ast": null
+   },
+   "covered": 0,
+   "covers_pra": null,
+   "delta": null,
+   "note": "writers split, no projection"
   }
  ],
  "game_totals": [
@@ -243,14 +175,14 @@
    "covers": 220.34
   },
   {
-   "away": "Oklahoma City",
-   "home": "San Antonio",
-   "covers": 232.77
-  },
-  {
    "away": "Philadelphia",
    "home": "New York",
    "covers": 231.08
+  },
+  {
+   "away": "Oklahoma City",
+   "home": "San Antonio",
+   "covers": 232.77
   }
  ]
 }

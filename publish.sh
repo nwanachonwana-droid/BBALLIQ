@@ -31,14 +31,14 @@ fi
 
 # --- tonight's outside reads -----------------------------------------
 T2=$(mktemp)
-if python3 ~/Downloads/sharpz_screen2.py --json > "$T2" 2>/dev/null \
+if python3 ~/Downloads/sharpz_screen.py --json > "$T2" 2>/dev/null \
    && python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$T2" 2>/dev/null; then
   mv "$T2" data/tonight.json
   GEN="$GEN tonight"
 else
   rm -f "$T2"
   WARN="$WARN
-  ! sharpz_screen2.py failed - keeping yesterday's reads"
+  ! sharpz_screen.py failed - keeping yesterday's reads"
 fi
 
 [ -n "$WARN" ] && echo "$WARN"
