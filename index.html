@@ -81,7 +81,9 @@
         <br><br>
         <strong style="color: #96A3B4; font-weight: 600">BOOK PRA</strong> is the combined points+rebounds+assists line the sportsbooks are quoting tonight, via <strong style="color: #96A3B4; font-weight: 600">The Odds API</strong>. We take the median line across books rather than the average, so one stale number can&rsquo;t drag it, and we strip the vig from each book&rsquo;s pair of prices before averaging them into <strong style="color: #96A3B4; font-weight: 600">P(OVER)</strong>. The book count beside the label says how many were quoting.
         <br><br>
-        <strong style="color: #96A3B4; font-weight: 600">VS OURS</strong> is that market line minus our figure. It is not an edge. The market price already contains tonight&rsquo;s injuries, rest and matchup, none of which a three-season average knows about, so a gap is a question worth logging rather than a bet. <strong style="color: #96A3B4; font-weight: 600">PTS</strong>, <strong style="color: #96A3B4; font-weight: 600">REB</strong> and <strong style="color: #96A3B4; font-weight: 600">AST</strong> are <strong style="color: #96A3B4; font-weight: 600">Covers.com</strong> projections for the individual legs where they publish them, shown as the line they quote and the number their model returns. Where no book quotes a combined line, the column falls back to those three added together and is labelled <strong style="color: #96A3B4; font-weight: 600">SUMMED</strong> &mdash; a projection, not a price, and never silently mixed with one.
+        <strong style="color: #96A3B4; font-weight: 600">VS OURS</strong> is that market line minus our figure. It is not an edge. The market price already contains tonight&rsquo;s injuries, rest and matchup, none of which a three-season average knows about, so a gap is a question worth logging rather than a bet. <strong style="color: #96A3B4; font-weight: 600">PTS</strong>, <strong style="color: #96A3B4; font-weight: 600">REB</strong> and <strong style="color: #96A3B4; font-weight: 600">AST</strong> break the same player into his three legs. A column headed <strong style="color: #96A3B4; font-weight: 600">LINE</strong> is the book&rsquo;s number alone; one headed <strong style="color: #96A3B4; font-weight: 600">LINE &rarr; PROJ</strong> also carries a <strong style="color: #96A3B4; font-weight: 600">Covers.com</strong> projection for that leg, which exists only for the handful of props their model chooses to flag. The heading changes rather than the two being blended, because a traded line and a model&rsquo;s output are different claims.
+        <br><br>
+        Where no book quotes a combined line, the <strong style="color: #96A3B4; font-weight: 600">PRA</strong> column falls back to the three Covers projections added together and is labelled <strong style="color: #96A3B4; font-weight: 600">SUMMED</strong>. Book lines are never added into that sum &mdash; doing so would quietly turn a market price into a model output.
       </div>
     </div>
 
@@ -502,12 +504,20 @@ function praWatch(t) {
       ? 'color: #FF8A52; border: 1px solid #5C2D12; background: #2A1408;'
       : 'color: #96A3B4; border: 1px solid #28323F; background: #1A212B;';
 
+    // A leg may carry a book line, a Covers projection, or both. The
+    // label says which, because "9.5" from a book and "9.5 -> 8.2"
+    // from a model are different claims and a reader who cannot tell
+    // them apart is worse off than one shown nothing.
     const comp = p.components || {};
-    const part = (key, label) => {
+    const part = (key, name) => {
       const c = comp[key];
-      if (!c) return cell(label, DASH, null, 86);
-      const v = `${c.side.charAt(0)}${c.line} → ${fmt(c.projection)}`;
-      return cell(label, v, '#C3CDDA', 86);
+      if (!c) return cell(name + '  LINE', DASH, null, 92);
+      const hasProj = c.projection !== null && c.projection !== undefined;
+      const label = name + (hasProj ? '  LINE → PROJ' : '  LINE');
+      const v = hasProj
+        ? `${fmt(c.line)} → ${fmt(c.projection)}`
+        : fmt(c.line);
+      return cell(label, v, '#C3CDDA', 92);
     };
 
     // Name the source in the column label itself. A traded price and a
@@ -549,9 +559,9 @@ function praWatch(t) {
             ? cell('P(OVER)', (p.book_prob_over * 100).toFixed(1) + '%',
                    '#8B98A9', 72)
             : ''}
-        ${part('pts', 'PTS  LINE → PROJ')}
-        ${part('reb', 'REB  LINE → PROJ')}
-        ${part('ast', 'AST  LINE → PROJ')}
+        ${part('pts', 'PTS')}
+        ${part('reb', 'REB')}
+        ${part('ast', 'AST')}
         ${note}
       </div>
     </div>`;
