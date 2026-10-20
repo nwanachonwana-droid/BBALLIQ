@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-20T11:49:09.081824-04:00",
+ "generated": "2026-10-20T11:53:40.834355-04:00",
  "day": "20261020",
  "source": "Covers.com",
  "counts": {
@@ -128,12 +128,12 @@
    },
    "covered": 1,
    "covers_pra": null,
-   "market_pra": null,
-   "market_src": null,
-   "book_prob_over": null,
-   "book_n": null,
-   "book_spread": null,
-   "delta": null,
+   "market_pra": 40.5,
+   "market_src": "books",
+   "book_prob_over": 0.4839,
+   "book_n": 5,
+   "book_spread": 4.0,
+   "delta": -2.0,
    "note": null
   },
   {
@@ -154,12 +154,12 @@
    },
    "covered": 1,
    "covers_pra": null,
-   "market_pra": null,
-   "market_src": null,
-   "book_prob_over": null,
-   "book_n": null,
-   "book_spread": null,
-   "delta": null,
+   "market_pra": 38.5,
+   "market_src": "books",
+   "book_prob_over": 0.4925,
+   "book_n": 6,
+   "book_spread": 4.0,
+   "delta": 0.5,
    "note": null
   },
   {
@@ -174,13 +174,13 @@
    },
    "covered": 0,
    "covers_pra": null,
-   "market_pra": null,
-   "market_src": null,
-   "book_prob_over": null,
-   "book_n": null,
-   "book_spread": null,
-   "delta": null,
-   "note": "writers split, no projection"
+   "market_pra": 36.5,
+   "market_src": "books",
+   "book_prob_over": 0.4845,
+   "book_n": 5,
+   "book_spread": 4.0,
+   "delta": -0.5,
+   "note": null
   }
  ],
  "game_totals": [
