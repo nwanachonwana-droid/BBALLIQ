@@ -105,6 +105,23 @@
       </div>
     </div>
 
+    <!-- RECORD: every published pick, graded off the official box
+         score. The count is shown from pick one; the win rate is not
+         shown until 30, because before that it is noise and putting a
+         number on the page invites reading it as a result. -->
+    <div id="recBlock" style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px" hidden>
+      <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #FF6B2C">THE RECORD</div>
+        <div style="font-size: 13px; color: #6B7A8D" id="recMeta"></div>
+      </div>
+      <div id="recRows"></div>
+      <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
+        Every pick we publish is logged with the line and price it was published at, and settled against the official NBA box score the next morning. The log is never edited after the fact &mdash; grading only adds a result to a row that already exists. Staking is flat, one unit a pick, so a good run and a lucky one cannot be made to look different.
+        <br><br>
+        We publish the win rate at 30 graded picks. Not before, and not later. Below that number a 3&ndash;0 start and an 0&ndash;3 start carry the same information, which is none, and <a href="research.html">showing either would be dishonest</a>. The count and the full archive are up from pick one: <a id="recCsv" href="data/slate_archive.csv" download>download the CSV</a>.
+      </div>
+    </div>
+
     <!-- tabs -->
     <div role="tablist" aria-label="Board view" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px" id="tabbar"></div>
 
@@ -621,15 +638,86 @@ function ticker(t) {
   }).join('');
 }
 
+// --- THE RECORD -------------------------------------------------
+// Counts from pick one, win rate only at 30. The threshold is the
+// point of the panel: a number shown early gets read as a result.
+function record(d) {
+  const block = document.getElementById('recBlock');
+  const body = document.getElementById('recRows');
+  const meta = document.getElementById('recMeta');
+  if (!block || !body) return;
+  if (!d || !d.logged) { block.hidden = true; return; }
+  block.hidden = false;
+  if (meta) {
+    meta.textContent = d.days && d.days.length
+      ? d.days.length + (d.days.length === 1 ? ' day' : ' days') + ' published'
+      : '';
+  }
+  const open = d.graded >= (d.unlocks_at || 30);
+  const cells = [
+    cell('LOGGED', String(d.logged), '#C3CDDA', 70),
+    cell('GRADED', String(d.graded), '#C3CDDA', 70),
+    cell('PENDING', String(d.pending), '#8B98A9', 70)
+  ];
+  if (open) {
+    const u = d.units || 0;
+    const ucol = u > 0 ? '#3FB68B' : (u < 0 ? '#FF6B2C' : '#8B98A9');
+    cells.push(cell('RECORD', d.record || '—', '#C3CDDA', 86));
+    cells.push(cell('UNITS', sgn(u, 2), ucol, 70));
+    if (d.roi_pct !== null && d.roi_pct !== undefined) {
+      cells.push(cell('ROI', sgn(d.roi_pct, 1) + '%', ucol, 70));
+    }
+    if (d.win_pct !== null && d.win_pct !== undefined) {
+      cells.push(cell('WIN RATE', d.win_pct.toFixed(1) + '%', '#C3CDDA', 80));
+    }
+  } else {
+    cells.push(cell('WIN RATE', 'AT ' + (d.unlocks_at || 30), '#5D6B7C', 86));
+  }
+
+  const note = open
+    ? ''
+    : `<div style="flex: 1 1 100%; font-size: 13px; color: #6B7A8D;
+         padding-top: 4px">${d.to_go} more graded before the win rate
+         goes up. Everything logged so far is in the CSV below.</div>`;
+
+  let tiers = '';
+  if (open && d.by_tier) {
+    tiers = Object.entries(d.by_tier).map(([k, v]) => {
+      const u = v.units || 0;
+      const c = u > 0 ? '#3FB68B' : (u < 0 ? '#FF6B2C' : '#8B98A9');
+      return `<div style="display: flex; flex-wrap: wrap; gap: 10px 18px;
+          align-items: baseline; padding: 11px 24px; background: #11161E;
+          border-top: 1px solid #1A212B">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+          letter-spacing: 1.3px; color: #5D6B7C; min-width: 96px;
+          text-transform: uppercase">${k}</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px;
+          color: #C3CDDA; min-width: 70px">${v.record}</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px;
+          color: ${c}">${sgn(u, 2)}u</span>
+      </div>`;
+    }).join('');
+  }
+
+  body.innerHTML = `<div style="display: flex; flex-wrap: wrap;
+      gap: 14px 22px; align-items: flex-start; padding: 16px 24px;
+      background: #11161E">${cells.join('')}${note}</div>` + tiers;
+}
+
 dateline();
 ticker(null);
 praWatch(null);
+record(null);
 // Either fetch may fail or arrive first, so each stores its half and
 // re-renders the line. Neither waits on the other: the reads show
 // whether or not we have priced anything, which is the point.
 fetch('data/tonight.json', { cache: 'no-store' })
   .then(r => r.ok ? r.json() : Promise.reject())
   .then(d => { _T = d; ticker(d); praWatch(d); dateline(); })
+  .catch(() => {});
+fetch('data/record.json', { cache: 'no-store' })
+  .then(r => r.ok ? r.json() : Promise.reject())
+  .then(record)
   .catch(() => {});
 fetch('data/status.json', { cache: 'no-store' })
   .then(r => r.ok ? r.json() : Promise.reject())

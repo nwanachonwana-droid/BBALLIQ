@@ -1,0 +1,114 @@
+{
+ "logged": 6,
+ "graded": 6,
+ "pending": 0,
+ "record": "2-4",
+ "wins": 2,
+ "losses": 4,
+ "pushes": 0,
+ "units": -1.8,
+ "roi_pct": -30.0,
+ "win_pct": 33.3,
+ "unlocks_at": 30,
+ "to_go": 24,
+ "by_tier": {
+  "core": {
+   "record": "0-3",
+   "units": -3.0
+  },
+  "speculative": {
+   "record": "2-1",
+   "units": 1.2
+  }
+ },
+ "days": [
+  "20261020"
+ ],
+ "generated": "2026-10-21T08:45:18.739104-04:00",
+ "picks": [
+  {
+   "day": "20261020",
+   "subject": "Cade Cunningham",
+   "market": "pra",
+   "side": "over",
+   "line": 38.5,
+   "odds": -106,
+   "tier": "core",
+   "logged_at": "2026-10-21T08:33:13.731620-04:00",
+   "result": "loss",
+   "actual": 34,
+   "units": -1.0,
+   "graded_at": "2026-10-21T08:45:17.644183-04:00"
+  },
+  {
+   "day": "20261020",
+   "subject": "DET",
+   "market": "ml",
+   "side": "win",
+   "line": 0.0,
+   "odds": 102,
+   "tier": "speculative",
+   "logged_at": "2026-10-21T08:33:13.731675-04:00",
+   "result": "win",
+   "actual": "W",
+   "units": 1.02,
+   "graded_at": "2026-10-21T08:45:17.644469-04:00"
+  },
+  {
+   "day": "20261020",
+   "subject": "Dylan Harper",
+   "market": "threes",
+   "side": "over",
+   "line": 1.5,
+   "odds": 110,
+   "tier": "speculative",
+   "logged_at": "2026-10-21T08:33:13.731683-04:00",
+   "result": "loss",
+   "actual": 0,
+   "units": -1.0,
+   "graded_at": "2026-10-21T08:45:17.644494-04:00"
+  },
+  {
+   "day": "20261020",
+   "subject": "Jalen Brunson",
+   "market": "points",
+   "side": "over",
+   "line": 24.5,
+   "odds": -160,
+   "tier": "core",
+   "logged_at": "2026-10-21T08:33:13.731652-04:00",
+   "result": "loss",
+   "actual": 21,
+   "units": -1.0,
+   "graded_at": "2026-10-21T08:45:17.644398-04:00"
+  },
+  {
+   "day": "20261020",
+   "subject": "Karl-Anthony Towns",
+   "market": "threes",
+   "side": "over",
+   "line": 1.5,
+   "odds": 118,
+   "tier": "speculative",
+   "logged_at": "2026-10-21T08:33:13.731665-04:00",
+   "result": "win",
+   "actual": 3,
+   "units": 1.18,
+   "graded_at": "2026-10-21T08:45:17.644448-04:00"
+  },
+  {
+   "day": "20261020",
+   "subject": "LeBron James",
+   "market": "assists",
+   "side": "over",
+   "line": 7.5,
+   "odds": -120,
+   "tier": "core",
+   "logged_at": "2026-10-21T08:40:02.221687-04:00",
+   "result": "loss",
+   "actual": 7,
+   "units": -1.0,
+   "graded_at": "2026-10-21T08:45:17.644517-04:00"
+  }
+ ]
+}

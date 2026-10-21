@@ -23,6 +23,8 @@ WARN=""
 # time a bundle is extracted, which is exactly how this broke before.
 STATUS_GEN="$HOME/Downloads/site_data2.py"
 READS_GEN="$HOME/Downloads/sharpz_screen2.py"
+SLATE_GEN="$HOME/Downloads/slate.py"
+SLATE_CSV="$HOME/kalshi_data/slate_archive.csv"
 
 # Run one generator into one data file. On failure the published file
 # is left alone and the REAL error is printed: the first version sent
@@ -53,6 +55,29 @@ generate() {
 
 generate status  "$STATUS_GEN" data/status.json
 generate tonight "$READS_GEN"  data/tonight.json
+
+# The record. `report --json` takes a subcommand, so it does not fit
+# the plain `--json` shape the other two share.
+if [ -f "$SLATE_GEN" ]; then
+  RT=$(mktemp); RE=$(mktemp)
+  if python3 "$SLATE_GEN" report --json > "$RT" 2> "$RE" \
+     && python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$RT" 2>/dev/null; then
+    mv "$RT" data/record.json
+    GEN="$GEN record"
+  else
+    WARN="$WARN
+  ! record failed - keeping the published record.json
+    $(tail -3 "$RE" | sed 's/^/    /')"
+    rm -f "$RT"
+  fi
+  rm -f "$RE"
+  # the archive is a deliverable, not a by-product: it is linked from
+  # the page, so it ships with every publish
+  [ -f "$SLATE_CSV" ] && cp "$SLATE_CSV" data/slate_archive.csv
+else
+  WARN="$WARN
+  ! record: no such file - $SLATE_GEN"
+fi
 
 [ -n "$WARN" ] && echo "$WARN"
 
