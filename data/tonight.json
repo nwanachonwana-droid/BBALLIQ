@@ -1,17 +1,29 @@
 {
- "generated": "2026-10-21T09:07:08.615010-04:00",
- "day": "20261020",
+ "generated": "2026-10-21T09:11:18.602564-04:00",
+ "day": "20261021",
  "source": "Covers.com",
  "counts": {
-  "writer_picks": 20,
-  "projections": 17,
-  "kept": 17,
-  "dropped": 3,
-  "shown": 8,
+  "writer_picks": 45,
+  "projections": 40,
+  "kept": 40,
+  "dropped": 5,
+  "shown": 26,
   "held_conflict": 1,
-  "held_unbacked": 8
+  "held_unbacked": 13
  },
  "rows": [
+  {
+   "status": "CORROBORATED",
+   "player": "Jeremiah Fears",
+   "side": "over",
+   "line": 10.5,
+   "market": "Points Scored",
+   "projection": 13.5,
+   "ev_pct": 25.02,
+   "stars": 5,
+   "difference": 3.0,
+   "game": "IND@NO"
+  },
   {
    "status": "CORROBORATED",
    "player": "Cade Cunningham",
@@ -26,6 +38,78 @@
   },
   {
    "status": "CORROBORATED",
+   "player": "Malik Monk",
+   "side": "over",
+   "line": 9.5,
+   "market": "Points Scored",
+   "projection": 11.98,
+   "ev_pct": 23.44,
+   "stars": 5,
+   "difference": 2.5,
+   "game": "SAC@LAC"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Desmond Bane",
+   "side": "over",
+   "line": 3.5,
+   "market": "Total Assists",
+   "projection": 4.06,
+   "ev_pct": 23.4,
+   "stars": 5,
+   "difference": 0.6,
+   "game": "ATL@ORL"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Mikel Brown Jr.",
+   "side": "over",
+   "line": 1.5,
+   "market": "Total Assists",
+   "projection": 4.26,
+   "ev_pct": 23.36,
+   "stars": 5,
+   "difference": 2.8,
+   "game": "CHA@BK"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Isaiah Collier",
+   "side": "over",
+   "line": 6.5,
+   "market": "Points Scored",
+   "projection": 8.16,
+   "ev_pct": 22.84,
+   "stars": 4,
+   "difference": 1.7,
+   "game": "UTA@MEM"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Ty Jerome",
+   "side": "under",
+   "line": 20.5,
+   "market": "Points Scored",
+   "projection": 17.09,
+   "ev_pct": 22.48,
+   "stars": 4,
+   "difference": -3.4,
+   "game": "UTA@MEM"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Jerami Grant",
+   "side": "over",
+   "line": 1.5,
+   "market": "3-Pointers Made",
+   "projection": 1.96,
+   "ev_pct": 22.33,
+   "stars": 4,
+   "difference": 0.5,
+   "game": "UTA@MEM"
+  },
+  {
+   "status": "CORROBORATED",
    "player": "Jalen Duren",
    "side": "under",
    "line": 17.5,
@@ -35,6 +119,30 @@
    "stars": 4,
    "difference": -2.7,
    "game": "BOS@DET"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Jakob Poeltl",
+   "side": "over",
+   "line": 9.5,
+   "market": "Points Scored",
+   "projection": 11.7,
+   "ev_pct": 22.16,
+   "stars": 4,
+   "difference": 2.2,
+   "game": "CHI@TOR"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Sandro Mamukelashvili",
+   "side": "under",
+   "line": 11.5,
+   "market": "Points Scored",
+   "projection": 9.25,
+   "ev_pct": 22.13,
+   "stars": 4,
+   "difference": -2.3,
+   "game": "GS@LAL"
   },
   {
    "status": "CORROBORATED",
@@ -62,6 +170,18 @@
   },
   {
    "status": "CORROBORATED",
+   "player": "Darius Acuff Jr.",
+   "side": "over",
+   "line": 2.5,
+   "market": "Total Rebounds",
+   "projection": 3.34,
+   "ev_pct": 21.06,
+   "stars": 4,
+   "difference": 0.8,
+   "game": "SAC@LAC"
+  },
+  {
+   "status": "CORROBORATED",
    "player": "Keldon Johnson",
    "side": "over",
    "line": 8.5,
@@ -71,6 +191,54 @@
    "stars": 4,
    "difference": 1.2,
    "game": "OKC@SA"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Ace Bailey",
+   "side": "over",
+   "line": 11.5,
+   "market": "Points Scored",
+   "projection": 13.63,
+   "ev_pct": 20.76,
+   "stars": 4,
+   "difference": 2.1,
+   "game": "UTA@MEM"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Josh Giddey",
+   "side": "under",
+   "line": 8.5,
+   "market": "Total Assists",
+   "projection": 7.44,
+   "ev_pct": 20.53,
+   "stars": 4,
+   "difference": -1.1,
+   "game": "CHI@TOR"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Quentin Grimes",
+   "side": "over",
+   "line": 10.5,
+   "market": "Points Scored",
+   "projection": 12.33,
+   "ev_pct": 20.34,
+   "stars": 4,
+   "difference": 1.8,
+   "game": "GS@LAL"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Keyonte George",
+   "side": "under",
+   "line": 20.5,
+   "market": "Points Scored",
+   "projection": 17.82,
+   "ev_pct": 20.25,
+   "stars": 4,
+   "difference": -2.7,
+   "game": "UTA@MEM"
   },
   {
    "status": "CORROBORATED",
@@ -98,6 +266,30 @@
   },
   {
    "status": "CORROBORATED",
+   "player": "Jerami Grant",
+   "side": "over",
+   "line": 11.5,
+   "market": "Points Scored",
+   "projection": 13.81,
+   "ev_pct": 20.06,
+   "stars": 4,
+   "difference": 2.3,
+   "game": "UTA@MEM"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Isaiah Collier",
+   "side": "over",
+   "line": 4.5,
+   "market": "Total Assists",
+   "projection": 5.19,
+   "ev_pct": 19.26,
+   "stars": 4,
+   "difference": 0.7,
+   "game": "UTA@MEM"
+  },
+  {
+   "status": "CORROBORATED",
    "player": "John Collins",
    "side": "over",
    "line": 11.5,
@@ -107,6 +299,30 @@
    "stars": 4,
    "difference": 1.8,
    "game": "BOS@DET"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Nikola Vucevic",
+   "side": "over",
+   "line": 5.5,
+   "market": "Total Rebounds",
+   "projection": 6.05,
+   "ev_pct": 18.61,
+   "stars": 4,
+   "difference": 0.5,
+   "game": "ATL@ORL"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "De'Andre Hunter",
+   "side": "under",
+   "line": 2.5,
+   "market": "Total Assists",
+   "projection": 1.56,
+   "ev_pct": 18.45,
+   "stars": 4,
+   "difference": -0.9,
+   "game": "SAC@LAC"
   }
  ],
  "pra_watch": [
@@ -241,6 +457,130 @@
    "book_spread": 4.0,
    "delta": -0.5,
    "note": null
+  },
+  {
+   "player": "Amen Thompson",
+   "team": "HOU",
+   "pra_line": 26.0,
+   "minutes": "locked",
+   "components": {
+    "pts": {
+     "line": 10.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4577
+    },
+    "reb": {
+     "line": 6.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4691
+    },
+    "ast": {
+     "line": 3.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4712
+    }
+   },
+   "covered": 3,
+   "covers_pra": null,
+   "market_pra": 20.5,
+   "market_src": "books",
+   "book_prob_over": 0.4926,
+   "book_n": 5,
+   "book_spread": 4.0,
+   "delta": -5.5,
+   "note": null
+  },
+  {
+   "player": "Kevin Durant",
+   "team": "HOU",
+   "pra_line": 36.5,
+   "minutes": "moved",
+   "components": {
+    "pts": null,
+    "reb": null,
+    "ast": null
+   },
+   "covered": 0,
+   "covers_pra": null,
+   "market_pra": null,
+   "market_src": null,
+   "book_prob_over": null,
+   "book_n": null,
+   "book_spread": null,
+   "delta": null,
+   "note": "no outside read tonight"
+  },
+  {
+   "player": "Alperen Sengun",
+   "team": "HOU",
+   "pra_line": 35.0,
+   "minutes": "moved",
+   "components": {
+    "pts": null,
+    "reb": null,
+    "ast": null
+   },
+   "covered": 0,
+   "covers_pra": null,
+   "market_pra": null,
+   "market_src": null,
+   "book_prob_over": null,
+   "book_n": null,
+   "book_spread": null,
+   "delta": null,
+   "note": "no outside read tonight"
+  },
+  {
+   "player": "Lauri Markkanen",
+   "team": "UTA",
+   "pra_line": 32.0,
+   "minutes": "moved",
+   "components": {
+    "pts": null,
+    "reb": null,
+    "ast": null
+   },
+   "covered": 0,
+   "covers_pra": null,
+   "market_pra": null,
+   "market_src": null,
+   "book_prob_over": null,
+   "book_n": null,
+   "book_spread": null,
+   "delta": null,
+   "note": "no outside read tonight"
+  },
+  {
+   "player": "RJ Barrett",
+   "team": "TOR",
+   "pra_line": 30.0,
+   "minutes": "moved",
+   "components": {
+    "pts": null,
+    "reb": null,
+    "ast": null
+   },
+   "covered": 0,
+   "covers_pra": null,
+   "market_pra": null,
+   "market_src": null,
+   "book_prob_over": null,
+   "book_n": null,
+   "book_spread": null,
+   "delta": null,
+   "note": "no outside read tonight"
   }
  ],
  "game_totals": [
@@ -258,6 +598,61 @@
    "away": "Philadelphia",
    "home": "New York",
    "covers": 231.08
+  },
+  {
+   "away": "Atlanta",
+   "home": "Orlando",
+   "covers": 234.91
+  },
+  {
+   "away": "Milwaukee",
+   "home": "Washington",
+   "covers": 240.55
+  },
+  {
+   "away": "Minnesota",
+   "home": "Miami",
+   "covers": 246.22
+  },
+  {
+   "away": "Chicago",
+   "home": "Toronto",
+   "covers": 235.77
+  },
+  {
+   "away": "Charlotte",
+   "home": "Brooklyn",
+   "covers": 223.37
+  },
+  {
+   "away": "Utah",
+   "home": "Memphis",
+   "covers": 243.53
+  },
+  {
+   "away": "Indiana",
+   "home": "New Orleans",
+   "covers": 238.69
+  },
+  {
+   "away": "Dallas",
+   "home": "Houston",
+   "covers": 229.42
+  },
+  {
+   "away": "Golden State",
+   "home": "L.A. Lakers",
+   "covers": 234.92
+  },
+  {
+   "away": "Phoenix",
+   "home": "Portland",
+   "covers": 233.78
+  },
+  {
+   "away": "Sacramento",
+   "home": "L.A. Clippers",
+   "covers": 229.67
   }
  ]
 }
