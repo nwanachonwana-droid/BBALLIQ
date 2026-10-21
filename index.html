@@ -65,6 +65,23 @@
          The reasoning behind the numbers lives on the research page. -->
     <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.8px; color: #6B7A8D; margin-bottom: 22px" id="dateline"></div>
 
+    <!-- TONIGHT'S PICKS: the card, first. Everything else on this
+         page is evidence about whether these are any good; the picks
+         themselves are what a reader came for. Pending only -- once a
+         pick settles it belongs in the record and the log, not here,
+         because a board that keeps yesterday's winners up is selling
+         rather than reporting. -->
+    <div id="editorBlock" style="border: 1px solid #5C2D12; border-radius: 12px; overflow: hidden; margin-bottom: 30px" hidden>
+      <div style="background: #1A0E06; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #FF6B2C">TONIGHT&rsquo;S PICKS</div>
+        <div style="font-size: 13px; color: #8B98A9" id="editorMeta"></div>
+      </div>
+      <div id="editorRows"></div>
+      <div style="background: #0D1218; border-top: 1px solid #2A1408; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
+        Every pick is logged here at the line and price shown, before tip, and settled against the official box score tomorrow morning. Nothing is added after the fact and nothing is removed when it loses &mdash; <a href="log.html">the log</a> has all of them, winners and losers, with how close each one came.
+      </div>
+    </div>
+
     <!-- RECORD: every published pick, graded off the official box
          score. The count is shown from pick one; the win rate is not
          shown until 30, because before that it is noise and putting a
@@ -682,6 +699,69 @@ function ticker(t) {
   }).join('');
 }
 
+// --- TONIGHT'S PICKS ----------------------------------------------
+// Pending picks for today only. A settled pick moves to the record
+// and the log; leaving winners on the board after they land turns a
+// results page into a sales page.
+const TIER_STYLE = {
+  core:        ['#FF8A52', '#5C2D12', '#2A1408'],
+  speculative: ['#8B98A9', '#28323F', '#1A212B']
+};
+
+function editorPicks(d) {
+  const block = document.getElementById('editorBlock');
+  const body = document.getElementById('editorRows');
+  const meta = document.getElementById('editorMeta');
+  if (!block || !body) return;
+  const today = todayStr();
+  const picks = ((d && d.picks) || []).filter(
+    p => p.day === today && !p.result);
+  if (!picks.length) { block.hidden = true; return; }
+  block.hidden = false;
+
+  const order = { core: 0, speculative: 1 };
+  picks.sort((a, b) => (order[a.tier] ?? 9) - (order[b.tier] ?? 9)
+                    || String(a.subject).localeCompare(String(b.subject)));
+  if (meta) {
+    const n = picks.filter(p => p.tier === 'core').length;
+    meta.textContent = picks.length + ' published'
+      + (n && n !== picks.length ? '  ·  ' + n + ' core' : '');
+  }
+  const MONO = "font-family: 'IBM Plex Mono', monospace;";
+  const ARCH = "font-family: 'Archivo', sans-serif;";
+
+  body.innerHTML = picks.map((p, i) => {
+    const top = i ? 'border-top: 1px solid #1A212B;' : '';
+    const st = TIER_STYLE[p.tier] || TIER_STYLE.speculative;
+    const odds = p.odds > 0 ? '+' + p.odds : String(p.odds);
+    // "over 2.5 threes" is how a 3+ bet is logged; print it the way it
+    // was sold rather than the way it is stored.
+    const call = p.market === 'ml'
+      ? 'Moneyline'
+      : (p.market === 'threes' && p.side === 'over'
+          ? (p.line + 0.5) + '+ threes'
+          : p.side.charAt(0).toUpperCase() + p.side.slice(1) + ' ' + p.line);
+    const mk = p.market === 'pa' ? 'PTS + AST'
+             : p.market === 'pr' ? 'PTS + REB'
+             : p.market === 'pra' ? 'PTS + REB + AST'
+             : p.market.toUpperCase();
+    return `<div style="display: flex; flex-wrap: wrap; gap: 10px 18px;
+        align-items: baseline; padding: 15px 24px; background: #11161E; ${top}">
+      <span style="${MONO} font-size: 9px; letter-spacing: 1.4px;
+        padding: 4px 8px; border-radius: 4px; color: ${st[0]};
+        border: 1px solid ${st[1]}; background: ${st[2]};
+        text-transform: uppercase">${p.tier || 'core'}</span>
+      <span style="${ARCH} font-weight: 600; font-size: 17px;
+        letter-spacing: -0.2px; min-width: 190px">${p.subject}</span>
+      <span style="font-size: 15px; color: #C3CDDA;
+        min-width: 130px">${call}</span>
+      <span style="${MONO} font-size: 12px; letter-spacing: 0.6px;
+        color: #6B7A8D; min-width: 130px">${mk}</span>
+      <span style="${MONO} font-size: 15px; color: #8B98A9">${odds}</span>
+    </div>`;
+  }).join('');
+}
+
 // --- THE RECORD -------------------------------------------------
 // Counts from pick one, win rate only at 30. The threshold is the
 // point of the panel: a number shown early gets read as a result.
@@ -752,6 +832,7 @@ dateline();
 ticker(null);
 praWatch(null);
 record(null);
+editorPicks(null);
 // Either fetch may fail or arrive first, so each stores its half and
 // re-renders the line. Neither waits on the other: the reads show
 // whether or not we have priced anything, which is the point.
@@ -761,7 +842,7 @@ fetch('data/tonight.json', { cache: 'no-store' })
   .catch(() => {});
 fetch('data/record.json', { cache: 'no-store' })
   .then(r => r.ok ? r.json() : Promise.reject())
-  .then(record)
+  .then(d => { record(d); editorPicks(d); })
   .catch(() => {});
 fetch('data/status.json', { cache: 'no-store' })
   .then(r => r.ok ? r.json() : Promise.reject())
