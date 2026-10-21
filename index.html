@@ -65,6 +65,23 @@
          The reasoning behind the numbers lives on the research page. -->
     <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.8px; color: #6B7A8D; margin-bottom: 22px" id="dateline"></div>
 
+    <!-- RECORD: every published pick, graded off the official box
+         score. The count is shown from pick one; the win rate is not
+         shown until 30, because before that it is noise and putting a
+         number on the page invites reading it as a result. -->
+    <div id="recBlock" style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px" hidden>
+      <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #FF6B2C">THE RECORD</div>
+        <div style="font-size: 13px; color: #6B7A8D" id="recMeta"></div>
+      </div>
+      <div id="recRows"></div>
+      <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
+        Every pick we publish is logged with the line and price it was published at, and settled against the official NBA box score the next morning. The log is never edited after the fact &mdash; grading only adds a result to a row that already exists. Staking is flat, one unit a pick, so a good run and a lucky one cannot be made to look different.
+        <br><br>
+        We publish the win rate at 30 graded picks. Not before, and not later. Below that number a 3&ndash;0 start and an 0&ndash;3 start carry the same information, which is none, and <a href="research.html">showing either would be dishonest</a>. The count and the full archive are up from pick one: <a href="log.html">see every pick in the log</a>, or <a id="recCsv" href="data/slate_archive.csv" download>download the CSV</a>.
+      </div>
+    </div>
+
     <!-- PRA WATCH leads. These are the players we hold a number on, so
          they are the reason to open the page; everyone else's picks are
          context for them, not the other way round. Covers quotes the
@@ -102,23 +119,6 @@
         Every figure here is <strong style="color: #96A3B4; font-weight: 600">Covers.com</strong>&rsquo;s, captured <span id="tickWhen">daily</span>. Not our numbers and not our recommendations. Covers runs two desks that work independently &mdash; named writers picking sides, and a projection model &mdash; and a prop shows here only when both landed on the same side of the same line.
         <br><br>
         <strong style="color: #96A3B4; font-weight: 600">LINE</strong> is the number quoted, <strong style="color: #96A3B4; font-weight: 600">PROJ</strong> what their model returns, <strong style="color: #96A3B4; font-weight: 600">EDGE</strong> the gap between them, <strong style="color: #96A3B4; font-weight: 600">EV</strong> their stated expected value. Ordered by EV. A projection sitting within 0.5 of the line is dropped however large its stated EV, and a player two writers quoted on opposite sides is dropped entirely. Picks we read but did not show are counted above and <a href="research.html">kept in the log</a>, since whether the unbacked ones land is itself worth knowing.
-      </div>
-    </div>
-
-    <!-- RECORD: every published pick, graded off the official box
-         score. The count is shown from pick one; the win rate is not
-         shown until 30, because before that it is noise and putting a
-         number on the page invites reading it as a result. -->
-    <div id="recBlock" style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px" hidden>
-      <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #FF6B2C">THE RECORD</div>
-        <div style="font-size: 13px; color: #6B7A8D" id="recMeta"></div>
-      </div>
-      <div id="recRows"></div>
-      <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
-        Every pick we publish is logged with the line and price it was published at, and settled against the official NBA box score the next morning. The log is never edited after the fact &mdash; grading only adds a result to a row that already exists. Staking is flat, one unit a pick, so a good run and a lucky one cannot be made to look different.
-        <br><br>
-        We publish the win rate at 30 graded picks. Not before, and not later. Below that number a 3&ndash;0 start and an 0&ndash;3 start carry the same information, which is none, and <a href="research.html">showing either would be dishonest</a>. The count and the full archive are up from pick one: <a id="recCsv" href="data/slate_archive.csv" download>download the CSV</a>.
       </div>
     </div>
 
@@ -448,11 +448,13 @@ function dateline() {
   const el = document.getElementById('dateline');
   if (!el) return;
   const r = _S && _S.latest;
-  const n = (_T && _T.rows && _T.rows.length) || 0;
+  const fresh = _T && !staleDay(_T);
+  const n = (fresh && _T.rows && _T.rows.length) || 0;
   const SEP = '  ·  ';
   const when = r ? r.when
-    : (_T && _T.day ? _T.day.slice(4, 6) + '/' + _T.day.slice(6, 8) : '');
-  const outside = n ? n + ' OUTSIDE READS SCREENED' : '';
+    : (fresh ? _T.day.slice(4, 6) + '/' + _T.day.slice(6, 8) : '');
+  const outside = n ? n + ' OUTSIDE READS SCREENED'
+                    : (_T && staleDay(_T) ? 'NO READS YET TODAY' : '');
   const ours = r
     ? (r.games + ' GAMES PRICED' + SEP
        + (r.taken > 0 ? r.taken + ' ON THE BOARD' : 'NOTHING CLEARED'))
@@ -488,6 +490,35 @@ function sgn(v, dp) {
   return (v > 0 ? '+' : '') + Number(v).toFixed(dp === undefined ? 2 : dp);
 }
 
+// Data from a previous day is not "tonight". The board showed
+// yesterday's players as tonight's slate because nothing compared the
+// file's date to the calendar -- the morning scrape had not run yet,
+// so the newest rows in the log were still last night's. A board that
+// silently presents stale reads as live ones is worse than an empty
+// one, so this refuses to render rows and says which day they are from.
+function todayStr() {
+  const d = new Date();
+  return d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0')
+       + String(d.getDate()).padStart(2, '0');
+}
+function staleDay(t) {
+  return (t && t.day && t.day < todayStr()) ? t.day : null;
+}
+function prettyDay(d) {
+  if (!d || d.length !== 8) return d || '';
+  const m = ['Jan','Feb','Mar','Apr','May','Jun',
+             'Jul','Aug','Sep','Oct','Nov','Dec'][+d.slice(4, 6) - 1];
+  return +d.slice(6, 8) + ' ' + m;
+}
+function staleNotice(what, day) {
+  return `<div style="padding: 20px 24px; background: #11161E;
+      font-size: 14px; line-height: 1.7; color: #8B98A9">
+    No ${what} for today yet. The most recent are from
+    <strong style="color: #C3CDDA">${prettyDay(day)}</strong> and are not
+    shown here, because last night's players are not tonight's slate.
+  </div>`;
+}
+
 // --- PRA WATCH ---------------------------------------------------
 // Leads the page: these are the players we hold a number on. The
 // three components are shown whether or not Covers quoted them, so a
@@ -497,6 +528,13 @@ function praWatch(t) {
   const body = document.getElementById('praRows');
   const meta = document.getElementById('praMeta');
   if (!block || !body) return;
+  const stale = staleDay(t);
+  if (stale) {
+    block.hidden = false;
+    if (meta) meta.textContent = '';
+    body.innerHTML = staleNotice('board players on', stale);
+    return;
+  }
   const w = (t && t.pra_watch) || [];
   if (!w.length) { block.hidden = true; return; }
   block.hidden = false;
@@ -593,6 +631,12 @@ function ticker(t) {
   const body = document.getElementById('tickRows');
   const when = document.getElementById('tickWhen');
   if (!body) return;
+  const stale = staleDay(t);
+  if (stale) {
+    if (meta) meta.textContent = '';
+    body.innerHTML = staleNotice('outside reads', stale);
+    return;
+  }
   if (!t || !t.rows || !t.rows.length) {
     body.innerHTML = '<div style="padding: 20px 24px; color: #6B7A8D; '
       + 'font-size: 14px">Nothing corroborated tonight.</div>';

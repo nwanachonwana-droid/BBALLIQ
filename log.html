@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Every pick we have published</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  body { margin: 0; background: #0A0D12; font-family: 'IBM Plex Sans', system-ui, sans-serif; }
+  a { color: #FF6B2C; }
+  a:hover { color: #FF8A52; }
+  * { box-sizing: border-box; }
+</style>
+</head>
+<body>
+
+<div style="width: 100%; background: #0A0D12; color: #ECEFF4; overflow-x: hidden">
+
+  <div style="max-width: 1180px; margin: 0 auto; padding: 24px 32px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between">
+    <a href="index.html" style="display: flex; align-items: center; gap: 11px; text-decoration: none; color: #ECEFF4">
+      <svg width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="Sharpz Basketball">
+        <circle cx="16" cy="16" r="14" fill="#FF6B2C"></circle>
+        <path d="M16 2 L16 30 M2 16 L30 16" stroke="#0A0D12" stroke-width="1.7"></path>
+        <path d="M6.2 5.4 Q15 16 6.2 26.6" fill="none" stroke="#0A0D12" stroke-width="1.7"></path>
+        <path d="M25.8 5.4 Q17 16 25.8 26.6" fill="none" stroke="#0A0D12" stroke-width="1.7"></path>
+      </svg>
+      <div style="line-height: 1">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 19px; letter-spacing: -0.4px">SHARPZ</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 3.4px; color: #FF6B2C; margin-top: 3px">BASKETBALL</div>
+      </div>
+    </a>
+    <div style="display: flex; flex-wrap: wrap; gap: 26px; align-items: center">
+      <a href="index.html" style="color: #8B98A9; text-decoration: none; font-size: 15px">The board</a>
+      <a href="log.html" style="color: #ECEFF4; text-decoration: none; font-size: 15px">The log</a>
+      <a href="research.html" style="color: #8B98A9; text-decoration: none; font-size: 15px">Research</a>
+    </div>
+  </div>
+
+  <div style="max-width: 1100px; margin: 0 auto; padding: 40px 32px 80px">
+
+    <h1 style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 46px; letter-spacing: -1.6px; margin: 0 0 14px">The log</h1>
+    <p style="font-size: 17px; line-height: 1.6; color: #96A3B4; margin: 0 0 30px; max-width: 640px">
+      Every pick we have published, with the line it was published at, the number it finished on, and how far apart those two were. Winners and losers both. Nothing is removed and nothing is edited after the fact.
+    </p>
+
+    <!-- SUMMARY -->
+    <div id="sumBlock" style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 26px">
+      <div id="sumRows"></div>
+    </div>
+
+    <!-- FILTERS -->
+    <div id="filters" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px"></div>
+
+    <!-- TABLE -->
+    <div style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden">
+      <div id="head" style="background: #0D1218; padding: 12px 20px; display: grid; grid-template-columns: 78px minmax(150px, 1.4fr) 92px 64px 64px 72px 86px; gap: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 1.3px; color: #5D6B7C"></div>
+      <div id="rows"></div>
+    </div>
+
+    <p style="font-size: 14px; line-height: 1.8; color: #6B7A8D; margin: 24px 0 0">
+      <strong style="color: #96A3B4; font-weight: 600">MARGIN</strong> is the final number minus the line, signed in the direction of the pick: positive means it cleared, negative means it missed, and a small negative is a loss that was one possession from a win. Nothing about a near miss makes it a win, but a card full of them is a different problem from a card that was never close.
+      <br><br>
+      <strong style="color: #96A3B4; font-weight: 600">UNITS</strong> are at the published American price, one unit staked flat on every pick. Settled from the official box score the morning after. <a href="data/slate_archive.csv" download>Download the whole archive as CSV</a>.
+    </p>
+
+  </div>
+</div>
+
+<script>
+const MONO = "font-family: 'IBM Plex Mono', monospace;";
+const COLS = ['DATE', 'PICK', 'MARKET', 'LINE', 'FINAL', 'MARGIN', 'RESULT'];
+const RES = {
+  win:  ['#3FB68B', '#1F4438', '#11231D'],
+  loss: ['#FF6B2C', '#5C2D12', '#2A1408'],
+  push: ['#8B98A9', '#28323F', '#1A212B']
+};
+let DATA = null, TIER = 'all';
+
+document.getElementById('head').innerHTML =
+  COLS.map(c => `<div>${c}</div>`).join('');
+
+function fmtDay(d) {
+  if (!d || d.length !== 8) return d || '';
+  const m = ['Jan','Feb','Mar','Apr','May','Jun',
+             'Jul','Aug','Sep','Oct','Nov','Dec'][+d.slice(4,6) - 1];
+  return `${+d.slice(6,8)} ${m}`;
+}
+
+// Signed in the direction of the pick, so the reader never has to work
+// out whether a negative margin on an under is good news.
+function margin(p) {
+  if (p.actual === null || p.actual === undefined) return null;
+  if (p.market === 'ml') return null;
+  const diff = Number(p.actual) - Number(p.line);
+  return p.side === 'under' ? -diff : diff;
+}
+
+function summary(d) {
+  const box = document.getElementById('sumRows');
+  const open = d.graded >= (d.unlocks_at || 30);
+  const u = d.units || 0;
+  const ucol = u > 0 ? '#3FB68B' : (u < 0 ? '#FF6B2C' : '#8B98A9');
+  const cell = (label, value, color) => `<div style="min-width: 76px">
+    <div style="${MONO} font-size: 9px; letter-spacing: 1.3px;
+      color: #5D6B7C; margin-bottom: 4px">${label}</div>
+    <div style="${MONO} font-size: 19px; color: ${color || '#C3CDDA'}">${value}</div>
+  </div>`;
+  let cells = cell('LOGGED', d.logged) + cell('GRADED', d.graded)
+            + cell('PENDING', d.pending);
+  if (open) {
+    cells += cell('RECORD', d.record || '—')
+           + cell('UNITS', (u > 0 ? '+' : '') + u.toFixed(2), ucol);
+    if (d.roi_pct != null) {
+      cells += cell('ROI', (d.roi_pct > 0 ? '+' : '')
+                           + d.roi_pct.toFixed(1) + '%', ucol);
+    }
+    if (d.win_pct != null) cells += cell('WIN RATE', d.win_pct.toFixed(1) + '%');
+  } else {
+    cells += cell('WIN RATE', 'AT ' + (d.unlocks_at || 30), '#5D6B7C');
+  }
+  const note = open ? '' : `<div style="flex: 1 1 100%; font-size: 13px;
+      color: #6B7A8D; padding-top: 6px">Every pick is listed below from
+      the first one. The win rate goes up at ${d.unlocks_at || 30} graded
+      &mdash; ${d.to_go} to go &mdash; because below that a hot start and
+      a cold one carry the same information.</div>`;
+  box.innerHTML = `<div style="display: flex; flex-wrap: wrap; gap: 16px 26px;
+    align-items: flex-start; padding: 18px 20px; background: #11161E">
+    ${cells}${note}</div>`;
+}
+
+function filters(d) {
+  const tiers = ['all', ...new Set((d.picks || []).map(p => p.tier || 'core'))];
+  document.getElementById('filters').innerHTML = tiers.map(t => {
+    const on = t === TIER;
+    return `<button data-tier="${t}" style="${MONO} font-size: 10px;
+      letter-spacing: 1.3px; text-transform: uppercase; cursor: pointer;
+      padding: 7px 13px; border-radius: 6px;
+      border: 1px solid ${on ? '#5C2D12' : '#28323F'};
+      background: ${on ? '#2A1408' : '#11161E'};
+      color: ${on ? '#FF8A52' : '#8B98A9'}">${t}</button>`;
+  }).join('');
+  document.querySelectorAll('#filters button').forEach(b => {
+    b.onclick = () => { TIER = b.dataset.tier; filters(DATA); table(DATA); };
+  });
+}
+
+function table(d) {
+  const body = document.getElementById('rows');
+  let picks = (d.picks || []).slice();
+  if (TIER !== 'all') picks = picks.filter(p => (p.tier || 'core') === TIER);
+  // newest first; ungraded picks sit at the top of their day
+  picks.sort((a, b) => b.day.localeCompare(a.day)
+                     || String(a.subject).localeCompare(String(b.subject)));
+  if (!picks.length) {
+    body.innerHTML = `<div style="padding: 22px 20px; color: #6B7A8D;
+      font-size: 14px">No picks logged yet.</div>`;
+    return;
+  }
+  body.innerHTML = picks.map((p, i) => {
+    const top = i ? 'border-top: 1px solid #1A212B;' : '';
+    const r = p.result;
+    const st = RES[r] || RES.push;
+    const m = margin(p);
+    const mcol = m === null ? '#5D6B7C'
+               : (m > 0 ? '#3FB68B' : (m < 0 ? '#FF6B2C' : '#8B98A9'));
+    const mtxt = m === null ? '—'
+               : (m > 0 ? '+' : '') + m.toFixed(1);
+    const pick = p.market === 'ml'
+      ? `${p.subject} moneyline`
+      : `${p.subject} <span style="color: #8B98A9">${p.side} ${p.line}</span>`;
+    const badge = r
+      ? `<span style="${MONO} font-size: 9px; letter-spacing: 1.3px;
+           padding: 4px 8px; border-radius: 4px; color: ${st[0]};
+           border: 1px solid ${st[1]}; background: ${st[2]};
+           text-transform: uppercase">${r}</span>`
+      : `<span style="${MONO} font-size: 9px; letter-spacing: 1.3px;
+           padding: 4px 8px; border-radius: 4px; color: #5D6B7C;
+           border: 1px solid #28323F; background: #11161E">PENDING</span>`;
+    const units = p.units === null || p.units === undefined ? ''
+      : `<span style="${MONO} font-size: 11px; color: ${st[0]};
+           margin-left: 8px">${p.units > 0 ? '+' : ''}${p.units.toFixed(2)}u</span>`;
+    return `<div style="display: grid;
+        grid-template-columns: 78px minmax(150px, 1.4fr) 92px 64px 64px 72px 86px;
+        gap: 12px; align-items: center; padding: 13px 20px;
+        background: #11161E; ${top} font-size: 14px">
+      <div style="${MONO} font-size: 12px; color: #8B98A9">${fmtDay(p.day)}</div>
+      <div>${pick}</div>
+      <div style="${MONO} font-size: 12px; color: #8B98A9;
+        text-transform: uppercase">${p.market}</div>
+      <div style="${MONO} color: #C3CDDA">${p.market === 'ml' ? '—' : p.line}</div>
+      <div style="${MONO} color: #C3CDDA">${p.actual ?? '—'}</div>
+      <div style="${MONO} color: ${mcol}">${mtxt}</div>
+      <div>${badge}${units}</div>
+    </div>`;
+  }).join('');
+}
+
+fetch('data/record.json', { cache: 'no-store' })
+  .then(r => r.ok ? r.json() : Promise.reject())
+  .then(d => { DATA = d; summary(d); filters(d); table(d); })
+  .catch(() => {
+    document.getElementById('rows').innerHTML =
+      `<div style="padding: 22px 20px; color: #6B7A8D; font-size: 14px">
+       Nothing published yet.</div>`;
+  });
+</script>
+</body>
+</html>
