@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-21T09:11:18.602564-04:00",
+ "generated": "2026-10-21T09:13:43.458830-04:00",
  "day": "20261021",
  "source": "Covers.com",
  "counts": {
@@ -459,28 +459,28 @@
    "note": null
   },
   {
-   "player": "Amen Thompson",
+   "player": "Kevin Durant",
    "team": "HOU",
-   "pra_line": 26.0,
-   "minutes": "locked",
+   "pra_line": 36.5,
+   "minutes": "moved",
    "components": {
     "pts": {
-     "line": 10.5,
+     "line": 23.5,
      "side": null,
      "projection": null,
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4577
+     "prob_over": 0.4718
     },
     "reb": {
-     "line": 6.5,
+     "line": 5.5,
      "side": null,
      "projection": null,
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4691
+     "prob_over": 0.4375
     },
     "ast": {
      "line": 3.5,
@@ -489,38 +489,18 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4712
+     "prob_over": 0.527
     }
    },
    "covered": 3,
    "covers_pra": null,
-   "market_pra": 20.5,
+   "market_pra": 33.5,
    "market_src": "books",
-   "book_prob_over": 0.4926,
+   "book_prob_over": 0.4828,
    "book_n": 5,
    "book_spread": 4.0,
-   "delta": -5.5,
+   "delta": -3.0,
    "note": null
-  },
-  {
-   "player": "Kevin Durant",
-   "team": "HOU",
-   "pra_line": 36.5,
-   "minutes": "moved",
-   "components": {
-    "pts": null,
-    "reb": null,
-    "ast": null
-   },
-   "covered": 0,
-   "covers_pra": null,
-   "market_pra": null,
-   "market_src": null,
-   "book_prob_over": null,
-   "book_n": null,
-   "book_spread": null,
-   "delta": null,
-   "note": "no outside read tonight"
   },
   {
    "player": "Alperen Sengun",
@@ -528,19 +508,43 @@
    "pra_line": 35.0,
    "minutes": "moved",
    "components": {
-    "pts": null,
-    "reb": null,
-    "ast": null
+    "pts": {
+     "line": 19.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4723
+    },
+    "reb": {
+     "line": 9.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4499
+    },
+    "ast": {
+     "line": 4.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.5362
+    }
    },
-   "covered": 0,
+   "covered": 3,
    "covers_pra": null,
-   "market_pra": null,
-   "market_src": null,
-   "book_prob_over": null,
-   "book_n": null,
-   "book_spread": null,
-   "delta": null,
-   "note": "no outside read tonight"
+   "market_pra": 33.5,
+   "market_src": "books",
+   "book_prob_over": 0.4814,
+   "book_n": 5,
+   "book_spread": 4.0,
+   "delta": -1.5,
+   "note": null
   },
   {
    "player": "Lauri Markkanen",
@@ -548,19 +552,43 @@
    "pra_line": 32.0,
    "minutes": "moved",
    "components": {
-    "pts": null,
-    "reb": null,
-    "ast": null
+    "pts": {
+     "line": 21.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4793
+    },
+    "reb": {
+     "line": 6.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 8,
+     "prob_over": 0.4783
+    },
+    "ast": {
+     "line": 2.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 6,
+     "prob_over": 0.4279
+    }
    },
-   "covered": 0,
+   "covered": 3,
    "covers_pra": null,
-   "market_pra": null,
-   "market_src": null,
-   "book_prob_over": null,
-   "book_n": null,
-   "book_spread": null,
-   "delta": null,
-   "note": "no outside read tonight"
+   "market_pra": 30.5,
+   "market_src": "books",
+   "book_prob_over": 0.4815,
+   "book_n": 5,
+   "book_spread": 4.0,
+   "delta": -1.5,
+   "note": null
   },
   {
    "player": "RJ Barrett",
@@ -568,19 +596,87 @@
    "pra_line": 30.0,
    "minutes": "moved",
    "components": {
-    "pts": null,
-    "reb": null,
-    "ast": null
+    "pts": {
+     "line": 18.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4569
+    },
+    "reb": {
+     "line": 5.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4575
+    },
+    "ast": {
+     "line": 3.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4529
+    }
    },
-   "covered": 0,
+   "covered": 3,
    "covers_pra": null,
-   "market_pra": null,
-   "market_src": null,
-   "book_prob_over": null,
-   "book_n": null,
-   "book_spread": null,
-   "delta": null,
-   "note": "no outside read tonight"
+   "market_pra": 27.5,
+   "market_src": "books",
+   "book_prob_over": 0.4782,
+   "book_n": 5,
+   "book_spread": 4.0,
+   "delta": -2.5,
+   "note": null
+  },
+  {
+   "player": "Amen Thompson",
+   "team": "HOU",
+   "pra_line": 26.0,
+   "minutes": "locked",
+   "components": {
+    "pts": {
+     "line": 17.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4805
+    },
+    "reb": {
+     "line": 7.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.494
+    },
+    "ast": {
+     "line": 4.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4883
+    }
+   },
+   "covered": 3,
+   "covers_pra": null,
+   "market_pra": 30.5,
+   "market_src": "books",
+   "book_prob_over": 0.4867,
+   "book_n": 5,
+   "book_spread": 4.0,
+   "delta": 4.5,
+   "note": null
   }
  ],
  "game_totals": [
