@@ -1,7 +1,7 @@
 {
- "logged": 6,
+ "logged": 12,
  "graded": 6,
- "pending": 0,
+ "pending": 6,
  "record": "2-4",
  "wins": 2,
  "losses": 4,
@@ -22,9 +22,10 @@
   }
  },
  "days": [
-  "20261020"
+  "20261020",
+  "20261021"
  ],
- "generated": "2026-10-21T12:17:28.453063-04:00",
+ "generated": "2026-10-21T16:01:18.199231-04:00",
  "picks": [
   {
    "day": "20261020",
@@ -109,6 +110,90 @@
    "actual": 7,
    "units": -1.0,
    "graded_at": "2026-10-21T08:45:17.644517-04:00"
+  },
+  {
+   "day": "20261021",
+   "subject": "Andrew Nembhard",
+   "market": "points",
+   "side": "under",
+   "line": 13.5,
+   "odds": -123,
+   "tier": "core",
+   "logged_at": "2026-10-21T16:01:11.468988-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261021",
+   "subject": "Jonathan Kuminga",
+   "market": "points",
+   "side": "over",
+   "line": 12.5,
+   "odds": 100,
+   "tier": "core",
+   "logged_at": "2026-10-21T16:01:11.469039-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261021",
+   "subject": "Lauri Markkanen",
+   "market": "pr",
+   "side": "over",
+   "line": 28.5,
+   "odds": -118,
+   "tier": "core",
+   "logged_at": "2026-10-21T16:01:11.469030-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261021",
+   "subject": "Sandro Mamukelashvili",
+   "market": "points",
+   "side": "under",
+   "line": 10.5,
+   "odds": 104,
+   "tier": "speculative",
+   "logged_at": "2026-10-21T16:01:11.469059-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261021",
+   "subject": "Ty Jerome",
+   "market": "pa",
+   "side": "over",
+   "line": 27.5,
+   "odds": -108,
+   "tier": "core",
+   "logged_at": "2026-10-21T16:01:11.469018-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261021",
+   "subject": "Ty Jerome",
+   "market": "threes",
+   "side": "over",
+   "line": 2.5,
+   "odds": -118,
+   "tier": "speculative",
+   "logged_at": "2026-10-21T16:01:11.469050-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
   }
  ]
 }
