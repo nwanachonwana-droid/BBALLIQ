@@ -1,15 +1,15 @@
 {
- "generated": "2026-10-21T09:41:10.840930-04:00",
+ "generated": "2026-10-21T09:54:46.963933-04:00",
  "day": "20261021",
  "source": "Covers.com",
  "counts": {
   "writer_picks": 45,
   "projections": 40,
-  "kept": 40,
+  "kept": 23,
   "dropped": 5,
-  "shown": 26,
-  "held_conflict": 1,
-  "held_unbacked": 13
+  "shown": 18,
+  "held_conflict": 0,
+  "held_unbacked": 5
  },
  "rows": [
   {
@@ -23,18 +23,6 @@
    "stars": 5,
    "difference": 3.0,
    "game": "IND@NO"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "Cade Cunningham",
-   "side": "under",
-   "line": 23.5,
-   "market": "Points Scored",
-   "projection": 21.4,
-   "ev_pct": 23.8,
-   "stars": 5,
-   "difference": -2.1,
-   "game": "BOS@DET"
   },
   {
    "status": "CORROBORATED",
@@ -110,18 +98,6 @@
   },
   {
    "status": "CORROBORATED",
-   "player": "Jalen Duren",
-   "side": "under",
-   "line": 17.5,
-   "market": "Points Scored",
-   "projection": 14.77,
-   "ev_pct": 22.32,
-   "stars": 4,
-   "difference": -2.7,
-   "game": "BOS@DET"
-  },
-  {
-   "status": "CORROBORATED",
    "player": "Jakob Poeltl",
    "side": "over",
    "line": 9.5,
@@ -146,30 +122,6 @@
   },
   {
    "status": "CORROBORATED",
-   "player": "Isaiah Hartenstein",
-   "side": "over",
-   "line": 7.5,
-   "market": "Points Scored",
-   "projection": 9.34,
-   "ev_pct": 21.23,
-   "stars": 4,
-   "difference": 1.8,
-   "game": "OKC@SA"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "Shai Gilgeous-Alexander",
-   "side": "under",
-   "line": 29.5,
-   "market": "Points Scored",
-   "projection": 26.81,
-   "ev_pct": 21.12,
-   "stars": 4,
-   "difference": -2.7,
-   "game": "OKC@SA"
-  },
-  {
-   "status": "CORROBORATED",
    "player": "Darius Acuff Jr.",
    "side": "over",
    "line": 2.5,
@@ -179,18 +131,6 @@
    "stars": 4,
    "difference": 0.8,
    "game": "SAC@LAC"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "Keldon Johnson",
-   "side": "over",
-   "line": 8.5,
-   "market": "Points Scored",
-   "projection": 9.69,
-   "ev_pct": 20.95,
-   "stars": 4,
-   "difference": 1.2,
-   "game": "OKC@SA"
   },
   {
    "status": "CORROBORATED",
@@ -242,30 +182,6 @@
   },
   {
    "status": "CORROBORATED",
-   "player": "Anfernee Simons",
-   "side": "over",
-   "line": 7.5,
-   "market": "Points Scored",
-   "projection": 9.2,
-   "ev_pct": 20.24,
-   "stars": 4,
-   "difference": 1.7,
-   "game": "PHI@NY"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "John Collins",
-   "side": "over",
-   "line": 4.5,
-   "market": "Total Rebounds",
-   "projection": 6.16,
-   "ev_pct": 20.08,
-   "stars": 4,
-   "difference": 1.7,
-   "game": "BOS@DET"
-  },
-  {
-   "status": "CORROBORATED",
    "player": "Jerami Grant",
    "side": "over",
    "line": 11.5,
@@ -287,18 +203,6 @@
    "stars": 4,
    "difference": 0.7,
    "game": "UTA@MEM"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "John Collins",
-   "side": "over",
-   "line": 11.5,
-   "market": "Points Scored",
-   "projection": 13.35,
-   "ev_pct": 18.95,
-   "stars": 4,
-   "difference": 1.8,
-   "game": "BOS@DET"
   },
   {
    "status": "CORROBORATED",
