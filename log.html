@@ -57,6 +57,22 @@
       <div id="rows"></div>
     </div>
 
+    <!-- THE COVERS STUDY -->
+    <div id="cvWrap" hidden style="margin-top: 52px">
+      <h2 style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 28px; letter-spacing: -0.8px; margin: 0 0 12px">Outside reads, graded</h2>
+      <p style="font-size: 16px; line-height: 1.65; color: #96A3B4; margin: 0 0 22px; max-width: 680px">
+        Not our picks and not bets. <strong style="color: #C3CDDA; font-weight: 600">Covers.com</strong> runs two desks that work independently &mdash; named writers picking sides, and a projection model &mdash; and we grade every pick from both, every night, whether or not we showed it. Twenty a night answers &ldquo;does agreement between two expert reads predict anything&rdquo; far sooner than our own three a night ever could.
+      </p>
+      <div style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden">
+        <div id="cvRows"></div>
+      </div>
+      <p style="font-size: 14px; line-height: 1.8; color: #6B7A8D; margin: 18px 0 0">
+        <strong style="color: #96A3B4; font-weight: 600">CORROBORATED</strong> means a writer took a side and the projection agreed. <strong style="color: #96A3B4; font-weight: 600">CONFLICT</strong> means they took opposite sides of the same number, so exactly one of them is wrong &mdash; that row is the fastest read on which surface to believe, and the only one that can settle it. <strong style="color: #96A3B4; font-weight: 600">UNBACKED</strong> is a writer pick with no projection to check it against.
+        <br><br>
+        Graded ungated: the filters decide what goes on the board, not what gets studied. A pick we declined to show still says whether the surface that made it was right, and dropping those would bias the sample toward the ones we already liked.
+      </p>
+    </div>
+
     <p style="font-size: 14px; line-height: 1.8; color: #6B7A8D; margin: 24px 0 0">
       <strong style="color: #96A3B4; font-weight: 600">MARGIN</strong> is the final number minus the line, signed in the direction of the pick: positive means it cleared, negative means it missed, and a small negative is a loss that was one possession from a win. Nothing about a near miss makes it a win, but a card full of them is a different problem from a card that was never close.
       <br><br>
@@ -194,6 +210,77 @@ function table(d) {
     </div>`;
   }).join('');
 }
+
+// The Covers study. Hit rates are shown from night one, unlike our own
+// record, because these are not our picks and nobody is being asked to
+// act on them -- but the sample warning is louder for the same reason:
+// a 75% writer night reads like a finding and is not one.
+function covers(d) {
+  const wrap = document.getElementById('cvWrap');
+  const body = document.getElementById('cvRows');
+  if (!wrap || !body) return;
+  if (!d || !d.settled) { wrap.hidden = true; return; }
+  wrap.hidden = false;
+
+  const bar = (hit) => {
+    if (hit === null || hit === undefined) return '';
+    const w = Math.max(2, Math.min(100, hit));
+    const c = hit >= 55 ? '#3FB68B' : (hit <= 45 ? '#FF6B2C' : '#8B98A9');
+    return `<div style="height: 6px; border-radius: 3px; background: #1A212B;
+        overflow: hidden; min-width: 90px; flex: 1 1 90px">
+      <div style="height: 100%; width: ${w}%; background: ${c}"></div></div>`;
+  };
+  const line = (label, t, i, dim) => {
+    const top = i ? 'border-top: 1px solid #1A212B;' : '';
+    const hit = t.hit === null || t.hit === undefined
+      ? '—' : t.hit.toFixed(1) + '%';
+    return `<div style="display: flex; flex-wrap: wrap; gap: 10px 16px;
+        align-items: center; padding: 13px 20px; background: #11161E; ${top}">
+      <span style="${MONO} font-size: 10px; letter-spacing: 1.3px;
+        color: ${dim ? '#5D6B7C' : '#C3CDDA'}; min-width: 128px;
+        text-transform: uppercase">${label}</span>
+      <span style="${MONO} font-size: 13px; color: #8B98A9;
+        min-width: 34px">${t.n}</span>
+      <span style="${MONO} font-size: 13px; color: #C3CDDA;
+        min-width: 62px">${t.w}-${t.l}${t.p ? '-' + t.p : ''}</span>
+      ${bar(t.hit)}
+      <span style="${MONO} font-size: 14px; color: #C3CDDA;
+        min-width: 58px; text-align: right">${hit}</span>
+    </div>`;
+  };
+
+  const head = (txt) => `<div style="background: #0D1218; padding: 11px 20px;
+      ${MONO} font-size: 9px; letter-spacing: 1.4px; color: #FF6B2C;
+      border-top: 1px solid #1A212B">${txt}</div>`;
+
+  let html = head('BY SURFACE').replace('border-top: 1px solid #1A212B;', '');
+  html += (d.surfaces || []).map((s, i) =>
+    line(s.name === 'writer' ? 'Writers' : 'Projection model', s, i)).join('');
+  html += head('BY AGREEMENT');
+  html += (d.statuses || []).map((s, i) => line(s.name, s, i)).join('');
+
+  if (d.conflicts && d.conflicts.writer && d.conflicts.projection) {
+    const w = d.conflicts.writer, p = d.conflicts.projection;
+    html += head('WHEN THE TWO DESKS DISAGREE');
+    html += line('Writer was right', w, 0);
+    html += line('Model was right', p, 1);
+  }
+
+  html += `<div style="padding: 13px 20px; background: #0D1218;
+      border-top: 1px solid #1A212B; font-size: 13px; color: #6B7A8D">
+    ${d.settled} graded across ${d.days ? d.days.length : 0}
+    ${d.days && d.days.length === 1 ? 'night' : 'nights'}.
+    ${d.to_go > 0 ? 'Every split above is noise until this passes '
+      + (d.unlocks_at || 100) + ' &mdash; ' + d.to_go + ' to go.'
+      : 'Past ' + (d.unlocks_at || 100) + ' graded, the splits start to mean something.'}
+  </div>`;
+  body.innerHTML = html;
+}
+
+fetch('data/covers.json', { cache: 'no-store' })
+  .then(r => r.ok ? r.json() : Promise.reject())
+  .then(covers)
+  .catch(() => {});
 
 fetch('data/record.json', { cache: 'no-store' })
   .then(r => r.ok ? r.json() : Promise.reject())
