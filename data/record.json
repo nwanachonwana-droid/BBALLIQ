@@ -1,7 +1,7 @@
 {
- "logged": 12,
+ "logged": 17,
  "graded": 12,
- "pending": 0,
+ "pending": 5,
  "record": "5-7",
  "wins": 5,
  "losses": 7,
@@ -23,9 +23,10 @@
  },
  "days": [
   "20261020",
-  "20261021"
+  "20261021",
+  "20261022"
  ],
- "generated": "2026-10-22T08:15:39.187297-04:00",
+ "generated": "2026-10-22T09:11:06.877201-04:00",
  "picks": [
   {
    "day": "20261020",
@@ -194,6 +195,76 @@
    "actual": 5,
    "units": 0.847457627118644,
    "graded_at": "2026-10-22T08:15:36.311851-04:00"
+  },
+  {
+   "day": "20261022",
+   "subject": "Anfernee Simons",
+   "market": "points",
+   "side": "over",
+   "line": 9.5,
+   "odds": 104,
+   "tier": "core",
+   "logged_at": "2026-10-22T09:11:06.042633-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261022",
+   "subject": "Jalen Williams",
+   "market": "points",
+   "side": "under",
+   "line": 18.5,
+   "odds": -108,
+   "tier": "core",
+   "logged_at": "2026-10-22T09:11:06.042624-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261022",
+   "subject": "Jared McCain",
+   "market": "points",
+   "side": "over",
+   "line": 9.5,
+   "odds": -122,
+   "tier": "speculative",
+   "logged_at": "2026-10-22T09:11:06.042668-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261022",
+   "subject": "Tyrese Maxey",
+   "market": "threes",
+   "side": "over",
+   "line": 2.5,
+   "odds": 106,
+   "tier": "core",
+   "logged_at": "2026-10-22T09:11:06.042577-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261022",
+   "subject": "Tyrese Maxey",
+   "market": "points",
+   "side": "over",
+   "line": 22.5,
+   "odds": -132,
+   "tier": "core",
+   "logged_at": "2026-10-22T09:11:06.042612-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
   }
  ]
 }
