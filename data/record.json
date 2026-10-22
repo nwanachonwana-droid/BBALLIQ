@@ -1,31 +1,31 @@
 {
  "logged": 12,
- "graded": 6,
- "pending": 6,
- "record": "2-4",
- "wins": 2,
- "losses": 4,
+ "graded": 12,
+ "pending": 0,
+ "record": "5-7",
+ "wins": 5,
+ "losses": 7,
  "pushes": 0,
- "units": -1.8,
- "roi_pct": -30.0,
- "win_pct": 33.3,
+ "units": -1.987,
+ "roi_pct": -16.56,
+ "win_pct": 41.7,
  "unlocks_at": 30,
- "to_go": 24,
+ "to_go": 18,
  "by_tier": {
   "core": {
-   "record": "0-3",
-   "units": -3.0
+   "record": "1-6",
+   "units": -5.074
   },
   "speculative": {
-   "record": "2-1",
-   "units": 1.2
+   "record": "4-1",
+   "units": 3.087
   }
  },
  "days": [
   "20261020",
   "20261021"
  ],
- "generated": "2026-10-21T16:03:17.777455-04:00",
+ "generated": "2026-10-22T08:15:39.187297-04:00",
  "picks": [
   {
    "day": "20261020",
@@ -120,10 +120,10 @@
    "odds": -123,
    "tier": "core",
    "logged_at": "2026-10-21T16:01:11.468988-04:00",
-   "result": null,
-   "actual": null,
-   "units": null,
-   "graded_at": null
+   "result": "loss",
+   "actual": 18,
+   "units": -1.0,
+   "graded_at": "2026-10-22T08:15:36.311596-04:00"
   },
   {
    "day": "20261021",
@@ -134,10 +134,10 @@
    "odds": 100,
    "tier": "core",
    "logged_at": "2026-10-21T16:01:11.469039-04:00",
-   "result": null,
-   "actual": null,
-   "units": null,
-   "graded_at": null
+   "result": "loss",
+   "actual": 12,
+   "units": -1.0,
+   "graded_at": "2026-10-22T08:15:36.311831-04:00"
   },
   {
    "day": "20261021",
@@ -148,10 +148,10 @@
    "odds": -118,
    "tier": "core",
    "logged_at": "2026-10-21T16:01:11.469030-04:00",
-   "result": null,
-   "actual": null,
-   "units": null,
-   "graded_at": null
+   "result": "loss",
+   "actual": 27,
+   "units": -1.0,
+   "graded_at": "2026-10-22T08:15:36.311812-04:00"
   },
   {
    "day": "20261021",
@@ -162,10 +162,10 @@
    "odds": 104,
    "tier": "speculative",
    "logged_at": "2026-10-21T16:01:11.469059-04:00",
-   "result": null,
-   "actual": null,
-   "units": null,
-   "graded_at": null
+   "result": "win",
+   "actual": 5,
+   "units": 1.04,
+   "graded_at": "2026-10-22T08:15:36.311868-04:00"
   },
   {
    "day": "20261021",
@@ -176,10 +176,10 @@
    "odds": -108,
    "tier": "core",
    "logged_at": "2026-10-21T16:01:11.469018-04:00",
-   "result": null,
-   "actual": null,
-   "units": null,
-   "graded_at": null
+   "result": "win",
+   "actual": 51,
+   "units": 0.9259259259259259,
+   "graded_at": "2026-10-22T08:15:36.311789-04:00"
   },
   {
    "day": "20261021",
@@ -190,10 +190,10 @@
    "odds": -118,
    "tier": "speculative",
    "logged_at": "2026-10-21T16:01:11.469050-04:00",
-   "result": null,
-   "actual": null,
-   "units": null,
-   "graded_at": null
+   "result": "win",
+   "actual": 5,
+   "units": 0.847457627118644,
+   "graded_at": "2026-10-22T08:15:36.311851-04:00"
   }
  ]
 }

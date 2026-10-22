@@ -34,3 +34,49 @@ day,surface,status,player,market,side,line,actual,result,ev_pct,projection
 20261020,projection,NO_WRITER,J. Champagnie,Total Rebounds,over,4.5,3,loss,-8.48,4.64
 20261020,projection,NO_WRITER,D. Vassell,Total Rebounds,over,3.5,3,loss,-13.08,3.62
 20261020,projection,NO_WRITER,J. McCain,3-Pointers Made,over,1.5,6,win,-14.0,1.57
+20261021,writer,CORROBORATED,Dyson Daniels,3-Pointers Made,over,0.5,0,loss,25.96,0.71
+20261021,projection,CORROBORATED,D. Daniels,3-Pointers Made,over,0.5,0,loss,25.96,0.71
+20261021,writer,CORROBORATED,Jeremiah Fears,Points Scored,over,10.5,8,loss,25.02,13.5
+20261021,projection,CORROBORATED,J. Fears,Points Scored,over,10.5,8,loss,25.02,13.5
+20261021,writer,CORROBORATED,Desmond Bane,Total Assists,over,3.5,2,loss,23.4,4.06
+20261021,projection,CORROBORATED,D. Bane,Total Assists,over,3.5,2,loss,23.4,4.06
+20261021,writer,CORROBORATED,Mikel Brown Jr.,Total Assists,over,1.5,1,loss,23.36,4.26
+20261021,projection,CORROBORATED,M. Brown Jr.,Total Assists,over,1.5,1,loss,23.36,4.26
+20261021,writer,CORROBORATED,Isaiah Collier,Points Scored,over,6.5,7,win,22.84,8.16
+20261021,projection,CORROBORATED,I. Collier,Points Scored,over,6.5,7,win,22.84,8.16
+20261021,writer,CORROBORATED,Ty Jerome,Points Scored,under,20.5,45,loss,22.48,17.09
+20261021,projection,CORROBORATED,T. Jerome,Points Scored,under,20.5,45,loss,22.48,17.09
+20261021,writer,CORROBORATED,Jerami Grant,3-Pointers Made,over,1.5,2,win,22.33,1.96
+20261021,projection,CORROBORATED,J. Grant,3-Pointers Made,over,1.5,2,win,22.33,1.96
+20261021,writer,CORROBORATED,Jakob Poeltl,Points Scored,over,9.5,3,loss,22.16,11.7
+20261021,projection,CORROBORATED,J. Poeltl,Points Scored,over,9.5,3,loss,22.16,11.7
+20261021,writer,CORROBORATED,Sandro Mamukelashvili,Points Scored,under,11.5,5,win,22.13,9.25
+20261021,projection,CORROBORATED,S. Mamukelashvili,Points Scored,under,11.5,5,win,22.13,9.25
+20261021,writer,CORROBORATED,Darius Acuff Jr.,Total Rebounds,over,2.5,6,win,21.06,3.34
+20261021,projection,CORROBORATED,D. Acuff Jr.,Total Rebounds,over,2.5,6,win,21.06,3.34
+20261021,writer,CORROBORATED,Ace Bailey,Points Scored,over,11.5,12,win,20.76,13.63
+20261021,projection,CORROBORATED,A. Bailey,Points Scored,over,11.5,12,win,20.76,13.63
+20261021,writer,CORROBORATED,Josh Giddey,Total Assists,under,8.5,6,win,20.53,7.44
+20261021,projection,CORROBORATED,J. Giddey,Total Assists,under,8.5,6,win,20.53,7.44
+20261021,writer,CORROBORATED,Quentin Grimes,Points Scored,over,10.5,10,loss,20.34,12.33
+20261021,projection,CORROBORATED,Q. Grimes,Points Scored,over,10.5,10,loss,20.34,12.33
+20261021,writer,CORROBORATED,Keyonte George,Points Scored,under,20.5,22,loss,20.25,17.82
+20261021,projection,CORROBORATED,K. George,Points Scored,under,20.5,22,loss,20.25,17.82
+20261021,writer,CORROBORATED,Jerami Grant,Points Scored,over,11.5,15,win,20.06,13.81
+20261021,projection,CORROBORATED,J. Grant,Points Scored,over,11.5,15,win,20.06,13.81
+20261021,writer,CORROBORATED,Isaiah Collier,Total Assists,over,4.5,3,loss,19.26,5.19
+20261021,projection,CORROBORATED,I. Collier,Total Assists,over,4.5,3,loss,19.26,5.19
+20261021,writer,CORROBORATED,Giannis Antetokounmpo,Total Assists,under,6.5,1,win,18.64,6.15
+20261021,projection,CORROBORATED,G. Antetokounmpo,Total Assists,under,6.5,1,win,18.64,6.15
+20261021,writer,CORROBORATED,Nikola Vucevic,Total Rebounds,over,5.5,1,loss,18.61,6.05
+20261021,projection,CORROBORATED,N. Vucevic,Total Rebounds,over,5.5,1,loss,18.61,6.05
+20261021,writer,CORROBORATED,De'Andre Hunter,Total Assists,under,2.5,1,win,18.45,1.56
+20261021,projection,CORROBORATED,D. Hunter,Total Assists,under,2.5,1,win,18.45,1.56
+20261021,writer,UNBACKED,Khaman Maluach,Total Rebounds,under,8.5,6,win,,
+20261021,writer,UNBACKED,Nickeil Alexander-Walker,Points Scored,over,18.5,31,win,,
+20261021,writer,UNBACKED,Michael Porter Jr.,Points Scored,over,22.5,6,loss,,
+20261021,writer,UNBACKED,Brandon Miller,Points Scored,over,24.5,4,loss,,
+20261021,writer,UNBACKED,Paolo Banchero,Total Rebounds,over,8.5,7,loss,,
+20261021,projection,NO_WRITER,D. Acuff Jr.,Total Assists,over,4.5,5,win,15.82,5.88
+20261021,projection,NO_WRITER,Z. Risacher,Total Rebounds,over,3.5,6,win,14.14,3.79
+20261021,projection,NO_WRITER,L. Dort,3-Pointers Made,over,1.5,2,win,13.14,1.62
