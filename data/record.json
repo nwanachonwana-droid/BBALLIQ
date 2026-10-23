@@ -1,32 +1,33 @@
 {
- "logged": 17,
- "graded": 12,
- "pending": 5,
- "record": "5-7",
- "wins": 5,
- "losses": 7,
+ "logged": 19,
+ "graded": 17,
+ "pending": 2,
+ "record": "7-10",
+ "wins": 7,
+ "losses": 10,
  "pushes": 0,
- "units": -1.987,
- "roi_pct": -16.56,
- "win_pct": 41.7,
+ "units": -3.303,
+ "roi_pct": -19.43,
+ "win_pct": 41.2,
  "unlocks_at": 30,
- "to_go": 18,
+ "to_go": 13,
  "by_tier": {
   "core": {
-   "record": "1-6",
-   "units": -5.074
+   "record": "3-8",
+   "units": -5.391
   },
   "speculative": {
-   "record": "4-1",
-   "units": 3.087
+   "record": "4-2",
+   "units": 2.087
   }
  },
  "days": [
   "20261020",
   "20261021",
-  "20261022"
+  "20261022",
+  "20261023"
  ],
- "generated": "2026-10-22T09:11:06.877201-04:00",
+ "generated": "2026-10-23T14:35:13.925495-04:00",
  "picks": [
   {
    "day": "20261020",
@@ -205,10 +206,10 @@
    "odds": 104,
    "tier": "core",
    "logged_at": "2026-10-22T09:11:06.042633-04:00",
-   "result": null,
-   "actual": null,
-   "units": null,
-   "graded_at": null
+   "result": "loss",
+   "actual": 2,
+   "units": -1.0,
+   "graded_at": "2026-10-23T14:35:12.911749-04:00"
   },
   {
    "day": "20261022",
@@ -219,10 +220,10 @@
    "odds": -108,
    "tier": "core",
    "logged_at": "2026-10-22T09:11:06.042624-04:00",
-   "result": null,
-   "actual": null,
-   "units": null,
-   "graded_at": null
+   "result": "win",
+   "actual": 3,
+   "units": 0.9259259259259259,
+   "graded_at": "2026-10-23T14:35:12.911733-04:00"
   },
   {
    "day": "20261022",
@@ -233,10 +234,10 @@
    "odds": -122,
    "tier": "speculative",
    "logged_at": "2026-10-22T09:11:06.042668-04:00",
-   "result": null,
-   "actual": null,
-   "units": null,
-   "graded_at": null
+   "result": "loss",
+   "actual": 4,
+   "units": -1.0,
+   "graded_at": "2026-10-23T14:35:12.911763-04:00"
   },
   {
    "day": "20261022",
@@ -247,10 +248,10 @@
    "odds": 106,
    "tier": "core",
    "logged_at": "2026-10-22T09:11:06.042577-04:00",
-   "result": null,
-   "actual": null,
-   "units": null,
-   "graded_at": null
+   "result": "loss",
+   "actual": 2,
+   "units": -1.0,
+   "graded_at": "2026-10-23T14:35:12.911573-04:00"
   },
   {
    "day": "20261022",
@@ -261,6 +262,34 @@
    "odds": -132,
    "tier": "core",
    "logged_at": "2026-10-22T09:11:06.042612-04:00",
+   "result": "win",
+   "actual": 32,
+   "units": 0.7575757575757576,
+   "graded_at": "2026-10-23T14:35:12.911710-04:00"
+  },
+  {
+   "day": "20261023",
+   "subject": "Keyonte George",
+   "market": "points",
+   "side": "over",
+   "line": 20.5,
+   "odds": -108,
+   "tier": "core",
+   "logged_at": "2026-10-23T14:07:03.538649-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261023",
+   "subject": "Zion Williamson",
+   "market": "points",
+   "side": "over",
+   "line": 19.5,
+   "odds": -118,
+   "tier": "core",
+   "logged_at": "2026-10-23T14:07:03.538681-04:00",
    "result": null,
    "actual": null,
    "units": null,

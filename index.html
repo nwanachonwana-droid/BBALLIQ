@@ -99,6 +99,62 @@
       </div>
     </div>
 
+    <!-- THE APPROACH: what we are actually buying, and how we will
+         know whether it works. Placed after the record and before the
+         evidence tables, because a reader who has just seen the
+         results deserves the method next rather than more numbers. -->
+    <div id="approachBlock" style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px">
+      <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #FF6B2C">THE APPROACH &nbsp;·&nbsp; WHAT WE ARE BUYING</div>
+        <div style="font-size: 13px; color: #6B7A8D">updated 23 Oct 2026</div>
+      </div>
+
+      <div style="background: #11161E; padding: 20px 24px; font-size: 14px; line-height: 1.75; color: #96A3B4">
+        <p style="margin: 0 0 14px">We stopped looking for mispriced lines. Across the first week every apparent edge we found turned out to be our own model&rsquo;s error &mdash; a rate-times-minutes projection running about 9% high on heavy-minute players and 9% low on bench players, which is larger than any disagreement it was reporting. A seven-book consensus that has been shopped all day is not wrong by twenty points. It is not usually wrong by two.</p>
+
+        <p style="margin: 0 0 14px">So the question changed. The posted line sits near the <strong style="color: #C3CDDA; font-weight: 600">median</strong> &mdash; that is what makes it a fair line. But an over is a bet on the <strong style="color: #C3CDDA; font-weight: 600">right tail</strong>, and two players with the same fair price do not have the same tail. Scoring is bounded below at zero and unbounded above. A guard with the ball in his hands against a fast, soft defence has a different shape of night available to him than a role player with the same number next to his name.</p>
+      </div>
+
+      <!-- Two real densities, same median, standardised to the same
+           spread: a symmetric one and a right-skewed one (gamma,
+           k=3). Drawn from the actual distributions rather than by
+           hand, because the whole claim is a claim about shape. -->
+      <div style="background: #0D1218; border-top: 1px solid #1A212B; border-bottom: 1px solid #1A212B; padding: 22px 24px 16px">
+        <svg viewBox="0 0 384 186" style="width: 100%; max-width: 560px; display: block; margin: 0 auto; overflow: visible" role="img" aria-labelledby="skewTitle skewDesc">
+          <title id="skewTitle">Two outcome distributions with the same median</title>
+          <desc id="skewDesc">A symmetric distribution and a right-skewed one share the same line and the same fifty percent chance of clearing it, but beyond 1.6 standard deviations the skewed one is 1.65 times as likely.</desc>
+
+          <path d="M222.2,119.0 L227.3,122.6 L232.5,125.8 L237.7,128.7 L242.8,131.4 L248.0,133.7 L253.2,135.8 L258.3,137.7 L263.5,139.4 L268.7,140.9 L273.8,142.3 L279.0,143.5 L284.2,144.5 L289.3,145.4 L294.5,146.3 L299.7,147.0 L304.8,147.6 L310.0,148.2 L315.2,148.7 L320.3,149.1 L325.5,149.5 L330.7,149.8 L335.8,150.1 L341.0,150.3 L346.2,150.6 L351.3,150.8 L356.5,150.9 L361.7,151.1 L366.8,151.2 L372.0,151.3 L372.0,152.0 L366.8,152.0 L361.7,152.0 L356.5,152.0 L351.3,152.0 L346.2,152.0 L341.0,152.0 L335.8,151.9 L330.7,151.9 L325.5,151.9 L320.3,151.8 L315.2,151.7 L310.0,151.6 L304.8,151.4 L299.7,151.2 L294.5,150.9 L289.3,150.4 L284.2,149.9 L279.0,149.2 L273.8,148.3 L268.7,147.2 L263.5,145.8 L258.3,144.0 L253.2,141.9 L248.0,139.4 L242.8,136.4 L237.7,132.9 L232.5,128.8 L227.3,124.2 L222.2,119.0 Z" fill="#FF6B2C" fill-opacity="0.26"/>
+
+          <line x1="12" y1="152" x2="378" y2="152" stroke="#2A3441" stroke-width="1"/>
+          <line x1="142" y1="12" x2="142" y2="152" stroke="#C3CDDA" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <line x1="222.2" y1="60" x2="222.2" y2="152" stroke="#3B4654" stroke-width="1" stroke-dasharray="2 3"/>
+
+          <path d="M12.0,147.9 L17.0,146.8 L22.0,145.3 L27.0,143.5 L32.0,141.4 L37.0,138.9 L42.0,135.9 L47.0,132.4 L52.0,128.4 L57.0,123.9 L62.0,118.9 L67.0,113.3 L72.0,107.3 L77.0,100.8 L82.0,94.0 L87.0,86.9 L92.0,79.7 L97.0,72.5 L102.0,65.5 L107.0,58.7 L112.0,52.5 L117.0,46.9 L122.0,42.0 L127.0,38.1 L132.0,35.2 L137.0,33.4 L142.0,32.9 L147.0,33.4 L152.0,35.2 L157.0,38.1 L162.0,42.0 L167.0,46.9 L172.0,52.5 L177.0,58.7 L182.0,65.5 L187.0,72.5 L192.0,79.7 L197.0,86.9 L202.0,94.0 L207.0,100.8 L212.0,107.3 L217.0,113.3 L222.0,118.9 L227.0,123.9 L232.0,128.4 L237.0,132.4 L242.0,135.9 L247.0,138.9 L252.0,141.4 L257.0,143.5 L262.0,145.3 L267.0,146.8 L272.0,147.9 L277.0,148.9 L282.0,149.6 L287.0,150.2 L292.0,150.7 L297.0,151.0 L302.0,151.3 L307.0,151.5 L312.0,151.6 L317.0,151.7 L322.0,151.8 L327.0,151.9 L332.0,151.9 L337.0,151.9 L342.0,152.0 L347.0,152.0 L352.0,152.0 L357.0,152.0 L362.0,152.0 L367.0,152.0 L372.0,152.0" fill="none" stroke="#5A6878" stroke-width="1.6" stroke-dasharray="5 4"/>
+
+          <path d="M12.0,152.0 L17.0,152.0 L22.0,152.0 L27.0,152.0 L32.0,152.0 L37.0,152.0 L42.0,152.0 L47.0,152.0 L52.0,152.0 L57.0,152.0 L62.0,152.0 L67.0,150.6 L72.0,139.5 L77.0,121.7 L82.0,101.4 L87.0,81.1 L92.0,62.5 L97.0,46.5 L102.0,33.6 L107.0,23.9 L112.0,17.2 L117.0,13.4 L122.0,12.0 L127.0,12.8 L132.0,15.3 L137.0,19.3 L142.0,24.4 L147.0,30.4 L152.0,36.9 L157.0,43.8 L162.0,50.9 L167.0,58.0 L172.0,65.0 L177.0,71.8 L182.0,78.5 L187.0,84.8 L192.0,90.7 L197.0,96.3 L202.0,101.6 L207.0,106.5 L212.0,111.0 L217.0,115.1 L222.0,118.9 L227.0,122.4 L232.0,125.5 L237.0,128.4 L242.0,131.0 L247.0,133.3 L252.0,135.4 L257.0,137.3 L262.0,139.0 L267.0,140.5 L272.0,141.8 L277.0,143.0 L282.0,144.1 L287.0,145.0 L292.0,145.9 L297.0,146.6 L302.0,147.3 L307.0,147.9 L312.0,148.4 L317.0,148.8 L322.0,149.2 L327.0,149.6 L332.0,149.9 L337.0,150.2 L342.0,150.4 L347.0,150.6 L352.0,150.8 L357.0,150.9 L362.0,151.1 L367.0,151.2 L372.0,151.3" fill="none" stroke="#FF6B2C" stroke-width="2.2"/>
+
+          <g font-family="'IBM Plex Mono', monospace" font-size="9" letter-spacing="0.6">
+            <text x="142" y="172" fill="#C3CDDA" text-anchor="middle">THE LINE</text>
+            <text x="142" y="183" fill="#6B7A8D" text-anchor="middle">50% either way</text>
+            <text x="300" y="172" fill="#FF8A52" text-anchor="middle">1.65&times; AS LIKELY OUT HERE</text>
+            <text x="300" y="183" fill="#6B7A8D" text-anchor="middle">this is the part we are buying</text>
+            <text x="58" y="60" fill="#5A6878">symmetric</text>
+            <text x="86" y="26" fill="#FF8A52">right&ndash;skewed</text>
+          </g>
+        </svg>
+      </div>
+
+      <div style="background: #11161E; padding: 18px 24px 20px; font-size: 14px; line-height: 1.75; color: #96A3B4">
+        <p style="margin: 0 0 14px">Both curves above cross the line at exactly the same place and both clear it exactly half the time. The difference is what happens when they do. Past about 1.6 standard deviations the skewed outcome is <strong style="color: #C3CDDA; font-weight: 600">1.65 times</strong> as likely &mdash; the same win rate, much bigger wins. That is the whole bet, and it is why we would rather take a player&rsquo;s <strong style="color: #C3CDDA; font-weight: 600">points</strong> than his combined points-rebounds-assists: a sum of three stats averages its own variance away, which is the opposite of what we want.</p>
+
+        <p style="margin: 0 0 14px">So the screen looks for soft defences that have no personnel reason to improve, then for the players carrying enough of the ball to reach the tail when the game allows it. Where a defence is soft matters as much as how much: we weight each component by how reliably it repeats season to season, which turns out to mean <strong style="color: #C3CDDA; font-weight: 600">where a team lets you shoot from persists, how well you shoot there mostly does not</strong>.</p>
+
+        <p style="margin: 0 0 6px; color: #C3CDDA"><strong style="font-weight: 600">How you will know if this is nonsense.</strong></p>
+        <p style="margin: 0">Win rate cannot tell you. It scores a one-point miss and a blowout identically, which is exactly the distinction that matters here. So alongside the record we track the <strong style="color: #C3CDDA; font-weight: 600">margin ratio</strong>: the average size of a win against the average size of a loss. If the thesis is real the wins run bigger and that number sits above one. If it comes back near one, the selection is finding fair coins and we will say so here rather than quietly keep going. We publish it at 25 graded picks, for the same reason we hold the win rate to 30 &mdash; <a href="research.html" style="color: #96A3B4; border-bottom: 1px solid #2A3441; text-decoration: none">before that it is noise</a>.</p>
+      </div>
+    </div>
+
     <!-- PRA WATCH leads. These are the players we hold a number on, so
          they are the reason to open the page; everyone else's picks are
          context for them, not the other way round. Covers quotes the
@@ -121,21 +177,22 @@
       </div>
     </div>
 
-    <!-- CORROBORATED PROPS: second, because these are other people's
-         players. Only props a writer took AND the projection model
-         agreed with. Picks carrying one surface rather than two are
-         logged and counted but not shown; mixing them in this table
-         would invite reading the checked and unchecked alike. -->
+    <!-- Covers used to sit here as a full table. It moved to its own
+         page: readers were taking the whole list as a card and losing
+         with it. It is someone else's work and belongs beside ours,
+         not inside it. One line and a link, no numbers -- a preview
+         would be the same mistake in a smaller box. -->
     <div style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px">
       <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #FF6B2C">CORROBORATED PROPS &nbsp;·&nbsp; TONIGHT</div>
-        <div style="font-size: 13px; color: #6B7A8D" id="tickMeta"></div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #6B7A8D">ELSEWHERE &nbsp;·&nbsp; NOT OURS</div>
+        <div style="font-size: 13px; color: #6B7A8D" id="coversMeta"></div>
       </div>
-      <div id="tickRows"></div>
-      <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
-        Every figure here is <strong style="color: #96A3B4; font-weight: 600">Covers.com</strong>&rsquo;s, captured <span id="tickWhen">daily</span>. Not our numbers and not our recommendations. Covers runs two desks that work independently &mdash; named writers picking sides, and a projection model &mdash; and a prop shows here only when both landed on the same side of the same line.
+      <div style="background: #11161E; padding: 18px 24px; font-size: 14px; line-height: 1.75; color: #96A3B4">
+        <strong style="color: #C3CDDA; font-weight: 600">Covers.com</strong> publishes its own props each night, from a writer desk and a projection model. We capture them, log every one, and grade them &mdash; because whether a free public list beats the closing line is worth knowing, and almost nobody checks.
         <br><br>
-        <strong style="color: #96A3B4; font-weight: 600">LINE</strong> is the number quoted, <strong style="color: #96A3B4; font-weight: 600">PROJ</strong> what their model returns, <strong style="color: #96A3B4; font-weight: 600">EDGE</strong> the gap between them, <strong style="color: #96A3B4; font-weight: 600">EV</strong> their stated expected value. Ordered by EV. A projection sitting within 0.5 of the line is dropped however large its stated EV, and a player two writers quoted on opposite sides is dropped entirely. Picks we read but did not show are counted above and <a href="research.html">kept in the log</a>, since whether the unbacked ones land is itself worth knowing.
+        They are <strong style="color: #C3CDDA; font-weight: 600">not our picks and not our recommendations</strong>, and we would not bet the list. It is reference material and a benchmark to measure ourselves against. Our own card is at the top of this page.
+        <br><br>
+        <a href="covers.html" style="color: #FF8A52; border-bottom: 1px solid #5C2D12; text-decoration: none; font-weight: 600">Tonight&rsquo;s Covers props and how the list has done &rarr;</a>
       </div>
     </div>
 
