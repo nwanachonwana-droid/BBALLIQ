@@ -79,6 +79,7 @@
       <div id="editorRows"></div>
       <div style="background: #0D1218; border-top: 1px solid #2A1408; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
         Every pick is logged here at the line and price shown, before tip, and settled against the official box score tomorrow morning. Nothing is added after the fact and nothing is removed when it loses &mdash; <a href="log.html">the log</a> has all of them, winners and losers, with how close each one came.
+        <div id="editorBoardNote"></div>
       </div>
     </div>
 
@@ -762,7 +763,10 @@ function ticker(t) {
 // results page into a sales page.
 const TIER_STYLE = {
   core:        ['#FF8A52', '#5C2D12', '#2A1408'],
-  speculative: ['#8B98A9', '#28323F', '#1A212B']
+  speculative: ['#8B98A9', '#28323F', '#1A212B'],
+  // Not a weaker pick -- a different kind of claim. Blue rather than
+  // a dimmer orange, so nobody reads it as "core but less sure".
+  board:       ['#6FA8DC', '#23384D', '#111C26']
 };
 
 function editorPicks(d) {
@@ -776,13 +780,19 @@ function editorPicks(d) {
   if (!picks.length) { block.hidden = true; return; }
   block.hidden = false;
 
-  const order = { core: 0, speculative: 1 };
+  const order = { core: 0, speculative: 1, board: 2 };
   picks.sort((a, b) => (order[a.tier] ?? 9) - (order[b.tier] ?? 9)
                     || String(a.subject).localeCompare(String(b.subject)));
   if (meta) {
+    // Board calls are picks. The tier records HOW a row was priced,
+    // not whether it counts -- an earlier version headed an all-board
+    // night "no bets tonight", which read as an empty card when it
+    // was in fact the whole output.
+    const brd = picks.filter(p => p.tier === 'board').length;
     const n = picks.filter(p => p.tier === 'core').length;
     meta.textContent = picks.length + ' published'
-      + (n && n !== picks.length ? '  ·  ' + n + ' core' : '');
+      + (n && n !== picks.length ? '  ·  ' + n + ' core' : '')
+      + (brd ? '  ·  ' + brd + ' at fair price' : '');
   }
   const MONO = "font-family: 'IBM Plex Mono', monospace;";
   const ARCH = "font-family: 'Archivo', sans-serif;";
@@ -790,7 +800,8 @@ function editorPicks(d) {
   body.innerHTML = picks.map((p, i) => {
     const top = i ? 'border-top: 1px solid #1A212B;' : '';
     const st = TIER_STYLE[p.tier] || TIER_STYLE.speculative;
-    const odds = p.odds > 0 ? '+' + p.odds : String(p.odds);
+    const odds = (p.odds > 0 ? '+' + p.odds : String(p.odds))
+      + (p.tier === 'board' ? ' fair' : '');
     // "over 2.5 threes" is how a 3+ bet is logged; print it the way it
     // was sold rather than the way it is stored.
     const call = p.market === 'ml'
@@ -817,6 +828,24 @@ function editorPicks(d) {
       <span style="${MONO} font-size: 15px; color: #8B98A9">${odds}</span>
     </div>`;
   }).join('');
+
+  // One material disclosure, not an apology: the price on a board row
+  // is the market's fair number, not one that was shopped and taken.
+  // That changes how the units column should be read and nothing else.
+  const note = document.getElementById('editorBoardNote');
+  if (note) {
+    const brd = picks.filter(p => p.tier === 'board');
+    note.innerHTML = !brd.length ? '' :
+      `<br>A <strong style="color: #6FA8DC; font-weight: 600">BOARD</strong>
+       row comes straight off the matchup screen &mdash; soft defence, enough
+       possessions, shots landing where that defence actually gets beaten
+       &mdash; chosen before any line was looked at. The price shown beside
+       ${brd === 1 ? 'it' : 'them'} is the <strong style="color: #96A3B4;
+       font-weight: 600">fair number the market implies</strong> once the vig
+       is stripped, rather than one we shopped for, so read the units column
+       as what the call was worth at a fair price. Graded against the box
+       score like everything else.`;
+  }
 }
 
 // --- THE RECORD -------------------------------------------------

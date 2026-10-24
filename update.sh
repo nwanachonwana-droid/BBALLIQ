@@ -43,6 +43,24 @@ fi
 step "grading the Covers list"
 python3 "$SLATE" covers || echo "  ! covers grade failed - continuing"
 
+# --- 1b. check the grader ----------------------------------------------
+# A grader's failure mode is not a crash, it is a plausible number: a
+# name collision settled Jalen Williams against his teammate Jaylin and
+# booked a 1.9-unit swing as a win, silently. So every result gets
+# re-derived from the box score the same morning it is written, rather
+# than waiting for someone to notice a row that looks wrong.
+#
+# Read-only here on purpose. A mismatch should stop and be looked at,
+# not be quietly rewritten by a cron job at nine in the morning.
+step "auditing the grader"
+if ! python3 "$SLATE" audit; then
+  echo
+  echo "  !! THE RECORD DISAGREES WITH THE BOX SCORE."
+  echo "  !! Read the rows above, then: python3 $SLATE audit --fix"
+  echo "  !! Publishing anyway so tonight's card goes out, but the"
+  echo "  !! record on the site is wrong until you do."
+fi
+
 # --- 2. archive --------------------------------------------------------
 # The CSVs are linked from the site, so they are deliverables and get
 # rewritten before the publish copies them across.
