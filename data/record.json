@@ -1,20 +1,20 @@
 {
- "logged": 19,
- "graded": 17,
- "pending": 2,
- "record": "7-10",
+ "logged": 23,
+ "graded": 19,
+ "pending": 4,
+ "record": "7-12",
  "wins": 7,
- "losses": 10,
+ "losses": 12,
  "pushes": 0,
- "units": -3.303,
- "roi_pct": -19.43,
- "win_pct": 41.2,
+ "units": -5.382,
+ "roi_pct": -28.32,
+ "win_pct": 36.8,
  "unlocks_at": 30,
- "to_go": 13,
+ "to_go": 11,
  "by_tier": {
   "core": {
-   "record": "3-8",
-   "units": -5.391
+   "record": "3-10",
+   "units": -7.469
   },
   "speculative": {
    "record": "4-2",
@@ -25,9 +25,10 @@
   "20261020",
   "20261021",
   "20261022",
-  "20261023"
+  "20261023",
+  "20261024"
  ],
- "generated": "2026-10-23T14:35:13.925495-04:00",
+ "generated": "2026-10-24T07:45:10.646654-04:00",
  "picks": [
   {
    "day": "20261020",
@@ -220,10 +221,17 @@
    "odds": -108,
    "tier": "core",
    "logged_at": "2026-10-22T09:11:06.042624-04:00",
-   "result": "win",
-   "actual": 3,
-   "units": 0.9259259259259259,
-   "graded_at": "2026-10-23T14:35:12.911733-04:00"
+   "result": "loss",
+   "actual": 21,
+   "units": -1.0,
+   "graded_at": "2026-10-23T14:35:12.911733-04:00",
+   "regraded": {
+    "at": "2026-10-24T06:33:29.006331-04:00",
+    "reason": "name-collision audit",
+    "was_actual": 3,
+    "was_result": "win",
+    "was_units": 0.9259259259259259
+   }
   },
   {
    "day": "20261022",
@@ -276,10 +284,10 @@
    "odds": -108,
    "tier": "core",
    "logged_at": "2026-10-23T14:07:03.538649-04:00",
-   "result": null,
-   "actual": null,
-   "units": null,
-   "graded_at": null
+   "result": "loss",
+   "actual": 19,
+   "units": -1.0,
+   "graded_at": "2026-10-24T07:06:49.680645-04:00"
   },
   {
    "day": "20261023",
@@ -290,6 +298,62 @@
    "odds": -118,
    "tier": "core",
    "logged_at": "2026-10-23T14:07:03.538681-04:00",
+   "result": "win",
+   "actual": 23,
+   "units": 0.847457627118644,
+   "graded_at": "2026-10-24T07:06:49.680793-04:00"
+  },
+  {
+   "day": "20261024",
+   "subject": "Dejounte Murray",
+   "market": "points",
+   "side": "over",
+   "line": 17.5,
+   "odds": 106,
+   "tier": "board",
+   "logged_at": "2026-10-24T07:40:58.683978-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261024",
+   "subject": "Evan Mobley",
+   "market": "points",
+   "side": "over",
+   "line": 17.5,
+   "odds": 103,
+   "tier": "board",
+   "logged_at": "2026-10-24T07:40:58.683955-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261024",
+   "subject": "Naji Marshall",
+   "market": "points",
+   "side": "under",
+   "line": 16.5,
+   "odds": -108,
+   "tier": "board",
+   "logged_at": "2026-10-24T07:40:58.683920-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261024",
+   "subject": "Trey Murphy III",
+   "market": "points",
+   "side": "over",
+   "line": 15.5,
+   "odds": -106,
+   "tier": "board",
+   "logged_at": "2026-10-24T07:40:58.683968-04:00",
    "result": null,
    "actual": null,
    "units": null,
