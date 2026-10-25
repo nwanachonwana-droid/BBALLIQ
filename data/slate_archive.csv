@@ -22,3 +22,6 @@ day,subject,market,side,line,odds,tier,result,actual,units,logged_at,graded_at
 20261024,Evan Mobley,points,over,17.5,103,board,win,20,1.03,2026-10-24T07:40:58.683955-04:00,2026-10-25T09:49:29.917796-04:00
 20261024,Naji Marshall,points,under,16.5,-108,board,win,10,0.9259259259259259,2026-10-24T07:40:58.683920-04:00,2026-10-25T09:49:29.917648-04:00
 20261024,Trey Murphy III,points,over,15.5,-106,board,win,26,0.9433962264150944,2026-10-24T07:40:58.683968-04:00,2026-10-25T09:49:29.917828-04:00
+20261025,Austin Reaves,points,over,23.5,117,board,,,,2026-10-25T09:56:50.456464-04:00,
+20261025,Luka Doncic,threes,over,3.5,-101,board,,,,2026-10-25T09:56:50.456499-04:00,
+20261025,Miles McBride,points,under,7.5,101,board,,,,2026-10-25T09:56:50.456515-04:00,

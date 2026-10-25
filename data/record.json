@@ -1,7 +1,7 @@
 {
- "logged": 23,
+ "logged": 26,
  "graded": 23,
- "pending": 0,
+ "pending": 3,
  "record": "11-12",
  "wins": 11,
  "losses": 12,
@@ -30,9 +30,10 @@
   "20261021",
   "20261022",
   "20261023",
-  "20261024"
+  "20261024",
+  "20261025"
  ],
- "generated": "2026-10-25T09:49:45.364954-04:00",
+ "generated": "2026-10-25T09:56:58.769533-04:00",
  "picks": [
   {
    "day": "20261020",
@@ -362,6 +363,48 @@
    "actual": 26,
    "units": 0.9433962264150944,
    "graded_at": "2026-10-25T09:49:29.917828-04:00"
+  },
+  {
+   "day": "20261025",
+   "subject": "Austin Reaves",
+   "market": "points",
+   "side": "over",
+   "line": 23.5,
+   "odds": 117,
+   "tier": "board",
+   "logged_at": "2026-10-25T09:56:50.456464-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261025",
+   "subject": "Luka Doncic",
+   "market": "threes",
+   "side": "over",
+   "line": 3.5,
+   "odds": -101,
+   "tier": "board",
+   "logged_at": "2026-10-25T09:56:50.456499-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261025",
+   "subject": "Miles McBride",
+   "market": "points",
+   "side": "under",
+   "line": 7.5,
+   "odds": 101,
+   "tier": "board",
+   "logged_at": "2026-10-25T09:56:50.456515-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
   }
  ]
 }
