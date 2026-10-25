@@ -1,17 +1,21 @@
 {
  "logged": 23,
- "graded": 19,
- "pending": 4,
- "record": "7-12",
- "wins": 7,
+ "graded": 23,
+ "pending": 0,
+ "record": "11-12",
+ "wins": 11,
  "losses": 12,
  "pushes": 0,
- "units": -5.382,
- "roi_pct": -28.32,
- "win_pct": 36.8,
+ "units": -1.422,
+ "roi_pct": -6.18,
+ "win_pct": 47.8,
  "unlocks_at": 30,
- "to_go": 11,
+ "to_go": 7,
  "by_tier": {
+  "board": {
+   "record": "4-0",
+   "units": 3.959
+  },
   "core": {
    "record": "3-10",
    "units": -7.469
@@ -28,7 +32,7 @@
   "20261023",
   "20261024"
  ],
- "generated": "2026-10-24T07:45:26.515966-04:00",
+ "generated": "2026-10-25T09:49:45.364954-04:00",
  "picks": [
   {
    "day": "20261020",
@@ -312,10 +316,10 @@
    "odds": 106,
    "tier": "board",
    "logged_at": "2026-10-24T07:40:58.683978-04:00",
-   "result": null,
-   "actual": null,
-   "units": null,
-   "graded_at": null
+   "result": "win",
+   "actual": 22,
+   "units": 1.06,
+   "graded_at": "2026-10-25T09:49:29.917852-04:00"
   },
   {
    "day": "20261024",
@@ -326,10 +330,10 @@
    "odds": 103,
    "tier": "board",
    "logged_at": "2026-10-24T07:40:58.683955-04:00",
-   "result": null,
-   "actual": null,
-   "units": null,
-   "graded_at": null
+   "result": "win",
+   "actual": 20,
+   "units": 1.03,
+   "graded_at": "2026-10-25T09:49:29.917796-04:00"
   },
   {
    "day": "20261024",
@@ -340,10 +344,10 @@
    "odds": -108,
    "tier": "board",
    "logged_at": "2026-10-24T07:40:58.683920-04:00",
-   "result": null,
-   "actual": null,
-   "units": null,
-   "graded_at": null
+   "result": "win",
+   "actual": 10,
+   "units": 0.9259259259259259,
+   "graded_at": "2026-10-25T09:49:29.917648-04:00"
   },
   {
    "day": "20261024",
@@ -354,10 +358,10 @@
    "odds": -106,
    "tier": "board",
    "logged_at": "2026-10-24T07:40:58.683968-04:00",
-   "result": null,
-   "actual": null,
-   "units": null,
-   "graded_at": null
+   "result": "win",
+   "actual": 26,
+   "units": 0.9433962264150944,
+   "graded_at": "2026-10-25T09:49:29.917828-04:00"
   }
  ]
 }
