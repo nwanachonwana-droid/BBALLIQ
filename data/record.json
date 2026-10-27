@@ -1,7 +1,7 @@
 {
- "logged": 29,
+ "logged": 31,
  "graded": 29,
- "pending": 0,
+ "pending": 2,
  "record": "15-14",
  "wins": 15,
  "losses": 14,
@@ -32,9 +32,10 @@
   "20261023",
   "20261024",
   "20261025",
-  "20261026"
+  "20261026",
+  "20261027"
  ],
- "generated": "2026-10-27T09:00:25.474102-04:00",
+ "generated": "2026-10-27T09:04:06.316755-04:00",
  "picks": [
   {
    "day": "20261020",
@@ -448,6 +449,34 @@
    "actual": 1,
    "units": -1.0,
    "graded_at": "2026-10-27T09:00:10.864003-04:00"
+  },
+  {
+   "day": "20261027",
+   "subject": "Day'Ron Sharpe",
+   "market": "points",
+   "side": "under",
+   "line": 9.5,
+   "odds": -103,
+   "tier": "board",
+   "logged_at": "2026-10-27T09:04:00.410765-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261027",
+   "subject": "Landry Shamet",
+   "market": "points",
+   "side": "under",
+   "line": 6.5,
+   "odds": -107,
+   "tier": "board",
+   "logged_at": "2026-10-27T09:04:00.410734-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
   }
  ]
 }

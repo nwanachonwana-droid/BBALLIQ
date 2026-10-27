@@ -28,3 +28,5 @@ day,subject,market,side,line,odds,tier,result,actual,units,logged_at,graded_at
 20261026,Nikola Jokic,points,over,26.5,111,board,loss,19,-1.0,2026-10-26T10:22:17.643774-04:00,2026-10-27T09:00:10.864155-04:00
 20261026,Tre Jones,points,under,9.5,-113,board,win,8,0.8849557522123894,2026-10-26T10:22:17.643788-04:00,2026-10-27T09:00:10.864194-04:00
 20261026,Ty Jerome,threes,over,3.5,146,board,loss,1,-1.0,2026-10-26T10:22:17.643742-04:00,2026-10-27T09:00:10.864003-04:00
+20261027,Day'Ron Sharpe,points,under,9.5,-103,board,,,,2026-10-27T09:04:00.410765-04:00,
+20261027,Landry Shamet,points,under,6.5,-107,board,,,,2026-10-27T09:04:00.410734-04:00,

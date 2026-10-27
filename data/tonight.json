@@ -1,28 +1,28 @@
 {
- "generated": "2026-10-27T09:00:25.199633-04:00",
- "day": "20261026",
+ "generated": "2026-10-27T09:04:06.123500-04:00",
+ "day": "20261027",
  "source": "Covers.com",
  "counts": {
   "writer_picks": 47,
   "projections": 76,
-  "kept": 34,
+  "kept": 24,
   "dropped": 6,
-  "shown": 23,
+  "shown": 14,
   "held_conflict": 0,
-  "held_unbacked": 11
+  "held_unbacked": 10
  },
  "rows": [
   {
    "status": "CORROBORATED",
-   "player": "Jeremiah Fears",
+   "player": "VJ Edgecombe",
    "side": "over",
    "line": 10.5,
    "market": "Points Scored",
-   "projection": 13.5,
-   "ev_pct": 25.02,
+   "projection": 13.67,
+   "ev_pct": 25.87,
    "stars": 5,
-   "difference": 3.0,
-   "game": "IND@NO"
+   "difference": 3.2,
+   "game": "CLE@PHI"
   },
   {
    "status": "CORROBORATED",
@@ -38,63 +38,15 @@
   },
   {
    "status": "CORROBORATED",
-   "player": "Desmond Bane",
+   "player": "Malik Monk",
    "side": "over",
-   "line": 3.5,
-   "market": "Total Assists",
-   "projection": 4.06,
-   "ev_pct": 23.4,
-   "stars": 5,
-   "difference": 0.6,
-   "game": "ATL@ORL"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "Mikel Brown Jr.",
-   "side": "over",
-   "line": 1.5,
-   "market": "Total Assists",
-   "projection": 4.26,
-   "ev_pct": 23.36,
-   "stars": 5,
-   "difference": 2.8,
-   "game": "CHA@BK"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "Isaiah Collier",
-   "side": "over",
-   "line": 6.5,
+   "line": 9.5,
    "market": "Points Scored",
-   "projection": 8.16,
-   "ev_pct": 22.84,
-   "stars": 4,
-   "difference": 1.7,
-   "game": "UTA@MEM"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "Ty Jerome",
-   "side": "under",
-   "line": 20.5,
-   "market": "Points Scored",
-   "projection": 17.09,
-   "ev_pct": 22.48,
-   "stars": 4,
-   "difference": -3.4,
-   "game": "UTA@MEM"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "Jerami Grant",
-   "side": "over",
-   "line": 1.5,
-   "market": "3-Pointers Made",
-   "projection": 1.96,
-   "ev_pct": 22.33,
-   "stars": 4,
-   "difference": 0.5,
-   "game": "UTA@MEM"
+   "projection": 11.98,
+   "ev_pct": 23.44,
+   "stars": 5,
+   "difference": 2.5,
+   "game": "SAC@LAC"
   },
   {
    "status": "CORROBORATED",
@@ -107,18 +59,6 @@
    "stars": 4,
    "difference": -2.7,
    "game": "BOS@DET"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "Jakob Poeltl",
-   "side": "over",
-   "line": 9.5,
-   "market": "Points Scored",
-   "projection": 11.7,
-   "ev_pct": 22.16,
-   "stars": 4,
-   "difference": 2.2,
-   "game": "CHI@TOR"
   },
   {
    "status": "CORROBORATED",
@@ -158,6 +98,18 @@
   },
   {
    "status": "CORROBORATED",
+   "player": "Darius Acuff Jr.",
+   "side": "over",
+   "line": 2.5,
+   "market": "Total Rebounds",
+   "projection": 3.34,
+   "ev_pct": 21.06,
+   "stars": 4,
+   "difference": 0.8,
+   "game": "SAC@LAC"
+  },
+  {
+   "status": "CORROBORATED",
    "player": "Keldon Johnson",
    "side": "over",
    "line": 8.5,
@@ -167,30 +119,6 @@
    "stars": 4,
    "difference": 1.2,
    "game": "OKC@SA"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "Ace Bailey",
-   "side": "over",
-   "line": 11.5,
-   "market": "Points Scored",
-   "projection": 13.63,
-   "ev_pct": 20.76,
-   "stars": 4,
-   "difference": 2.1,
-   "game": "UTA@MEM"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "Josh Giddey",
-   "side": "under",
-   "line": 8.5,
-   "market": "Total Assists",
-   "projection": 7.44,
-   "ev_pct": 20.53,
-   "stars": 4,
-   "difference": -1.1,
-   "game": "CHI@TOR"
   },
   {
    "status": "CORROBORATED",
@@ -206,15 +134,15 @@
   },
   {
    "status": "CORROBORATED",
-   "player": "Keyonte George",
-   "side": "under",
-   "line": 20.5,
+   "player": "Anfernee Simons",
+   "side": "over",
+   "line": 7.5,
    "market": "Points Scored",
-   "projection": 17.82,
-   "ev_pct": 20.25,
+   "projection": 9.2,
+   "ev_pct": 20.24,
    "stars": 4,
-   "difference": -2.7,
-   "game": "UTA@MEM"
+   "difference": 1.7,
+   "game": "PHI@NY"
   },
   {
    "status": "CORROBORATED",
@@ -230,30 +158,6 @@
   },
   {
    "status": "CORROBORATED",
-   "player": "Jerami Grant",
-   "side": "over",
-   "line": 11.5,
-   "market": "Points Scored",
-   "projection": 13.81,
-   "ev_pct": 20.06,
-   "stars": 4,
-   "difference": 2.3,
-   "game": "UTA@MEM"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "Isaiah Collier",
-   "side": "over",
-   "line": 4.5,
-   "market": "Total Assists",
-   "projection": 5.19,
-   "ev_pct": 19.26,
-   "stars": 4,
-   "difference": 0.7,
-   "game": "UTA@MEM"
-  },
-  {
-   "status": "CORROBORATED",
    "player": "John Collins",
    "side": "over",
    "line": 11.5,
@@ -266,132 +170,32 @@
   },
   {
    "status": "CORROBORATED",
-   "player": "Nikola Vucevic",
-   "side": "over",
-   "line": 5.5,
-   "market": "Total Rebounds",
-   "projection": 6.05,
-   "ev_pct": 18.61,
-   "stars": 4,
-   "difference": 0.5,
-   "game": "ATL@ORL"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "DeMar DeRozan",
-   "side": "over",
+   "player": "De'Andre Hunter",
+   "side": "under",
    "line": 2.5,
    "market": "Total Assists",
-   "projection": 3.02,
-   "ev_pct": 15.13,
+   "projection": 1.56,
+   "ev_pct": 18.45,
    "stars": 4,
-   "difference": 0.5,
-   "game": "DEN@OKC"
+   "difference": -0.9,
+   "game": "SAC@LAC"
   }
  ],
  "pra_watch": [
   {
-   "player": "Nikola Jokic",
-   "team": "DEN",
-   "pra_line": 50.0,
-   "minutes": "locked",
-   "components": {
-    "pts": {
-     "line": 26.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 7,
-     "prob_over": 0.4744
-    },
-    "reb": {
-     "line": 12.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 8,
-     "prob_over": 0.4915
-    },
-    "ast": {
-     "line": 9.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 8,
-     "prob_over": 0.4888
-    }
-   },
-   "covered": 3,
-   "covers_pra": null,
-   "market_pra": 49.5,
-   "market_src": "books",
-   "book_prob_over": 0.4917,
-   "book_n": 5,
-   "book_spread": 4.0,
-   "delta": -0.5,
-   "note": null
-  },
-  {
-   "player": "Shai Gilgeous-Alexander",
-   "team": "OKC",
-   "pra_line": 42.5,
-   "minutes": "locked",
-   "components": {
-    "pts": {
-     "line": 31.5,
-     "side": "under",
-     "projection": 26.81,
-     "ev_pct": 21.12,
-     "src": "books",
-     "n_books": 6,
-     "prob_over": 0.4572
-    },
-    "reb": {
-     "line": 3.5,
-     "side": "over",
-     "projection": 3.83,
-     "ev_pct": -6.14,
-     "src": "books",
-     "n_books": 7,
-     "prob_over": 0.535
-    },
-    "ast": {
-     "line": 6.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 7,
-     "prob_over": 0.4783
-    }
-   },
-   "covered": 3,
-   "covers_pra": null,
-   "market_pra": 41.5,
-   "market_src": "books",
-   "book_prob_over": 0.4798,
-   "book_n": 5,
-   "book_spread": 4.0,
-   "delta": -1.0,
-   "note": null
-  },
-  {
-   "player": "Kevin Durant",
-   "team": "HOU",
-   "pra_line": 36.5,
+   "player": "Cade Cunningham",
+   "team": "DET",
+   "pra_line": 38.0,
    "minutes": "moved",
    "components": {
     "pts": {
      "line": 23.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
+     "side": "under",
+     "projection": 21.4,
+     "ev_pct": 23.8,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4707
+     "prob_over": 0.4772
     },
     "reb": {
      "line": 5.5,
@@ -400,202 +204,70 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.451
+     "prob_over": 0.471
     },
     "ast": {
-     "line": 3.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 7,
-     "prob_over": 0.5034
-    }
-   },
-   "covered": 3,
-   "covers_pra": null,
-   "market_pra": 32.5,
-   "market_src": "books",
-   "book_prob_over": 0.4881,
-   "book_n": 5,
-   "book_spread": 4.0,
-   "delta": -4.0,
-   "note": null
-  },
-  {
-   "player": "Donovan Mitchell",
-   "team": "CLE",
-   "pra_line": 35.5,
-   "minutes": "locked",
-   "components": {
-    "pts": {
-     "line": 10.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 7,
-     "prob_over": 0.4884
-    },
-    "reb": {
-     "line": 4.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 7,
-     "prob_over": 0.4366
-    },
-    "ast": {
-     "line": 6.5,
-     "side": "over",
-     "projection": 5.25,
-     "ev_pct": 4.57,
-     "src": "books",
-     "n_books": 7,
-     "prob_over": 0.4456
-    }
-   },
-   "covered": 3,
-   "covers_pra": null,
-   "market_pra": 18.5,
-   "market_src": "books",
-   "book_prob_over": 0.4727,
-   "book_n": 5,
-   "book_spread": 4.0,
-   "delta": -17.0,
-   "note": null
-  },
-  {
-   "player": "Alperen Sengun",
-   "team": "HOU",
-   "pra_line": 35.0,
-   "minutes": "moved",
-   "components": {
-    "pts": {
-     "line": 20.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 7,
-     "prob_over": 0.4649
-    },
-    "reb": {
      "line": 9.5,
      "side": null,
      "projection": null,
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4471
-    },
-    "ast": {
-     "line": 4.5,
+     "prob_over": 0.4591
+    }
+   },
+   "covered": 3,
+   "covers_pra": null,
+   "market_pra": 38.5,
+   "market_src": "books",
+   "book_prob_over": 0.4947,
+   "book_n": 5,
+   "book_spread": 4.0,
+   "delta": 0.5,
+   "note": null
+  },
+  {
+   "player": "Jalen Brunson",
+   "team": "NYK",
+   "pra_line": 37.0,
+   "minutes": "locked",
+   "components": {
+    "pts": {
+     "line": 25.5,
      "side": null,
      "projection": null,
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.5135
-    }
-   },
-   "covered": 3,
-   "covers_pra": null,
-   "market_pra": 32.5,
-   "market_src": "books",
-   "book_prob_over": 0.4837,
-   "book_n": 5,
-   "book_spread": 4.0,
-   "delta": -2.5,
-   "note": null
-  },
-  {
-   "player": "Lauri Markkanen",
-   "team": "UTA",
-   "pra_line": 32.0,
-   "minutes": "moved",
-   "components": {
-    "pts": {
-     "line": 22.5,
+     "prob_over": 0.4689
+    },
+    "reb": {
+     "line": 3.5,
      "side": null,
      "projection": null,
      "ev_pct": null,
      "src": "books",
-     "n_books": 6,
-     "prob_over": 0.4699
+     "n_books": 7,
+     "prob_over": 0.4553
     },
-    "reb": {
+    "ast": {
      "line": 6.5,
      "side": null,
      "projection": null,
      "ev_pct": null,
      "src": "books",
-     "n_books": 7,
-     "prob_over": 0.4849
-    },
-    "ast": {
-     "line": 2.0,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 5,
-     "prob_over": 0.4854
+     "n_books": 8,
+     "prob_over": 0.4318
     }
    },
    "covered": 3,
    "covers_pra": null,
-   "market_pra": 31.5,
+   "market_pra": 34.5,
    "market_src": "books",
-   "book_prob_over": 0.4855,
+   "book_prob_over": 0.4866,
    "book_n": 5,
    "book_spread": 4.0,
-   "delta": -0.5,
-   "note": null
-  },
-  {
-   "player": "Amen Thompson",
-   "team": "HOU",
-   "pra_line": 26.0,
-   "minutes": "locked",
-   "components": {
-    "pts": {
-     "line": 17.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 7,
-     "prob_over": 0.4704
-    },
-    "reb": {
-     "line": 7.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 7,
-     "prob_over": 0.4935
-    },
-    "ast": {
-     "line": 4.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 7,
-     "prob_over": 0.4323
-    }
-   },
-   "covered": 3,
-   "covers_pra": null,
-   "market_pra": 27.5,
-   "market_src": "books",
-   "book_prob_over": 0.4855,
-   "book_n": 5,
-   "book_spread": 4.0,
-   "delta": 1.5,
+   "delta": -2.5,
    "note": null
   }
  ],
