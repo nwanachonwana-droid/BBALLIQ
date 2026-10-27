@@ -1,20 +1,20 @@
 {
  "logged": 29,
- "graded": 26,
- "pending": 3,
- "record": "14-12",
- "wins": 14,
- "losses": 12,
+ "graded": 29,
+ "pending": 0,
+ "record": "15-14",
+ "wins": 15,
+ "losses": 14,
  "pushes": 0,
- "units": 1.748,
- "roi_pct": 6.72,
- "win_pct": 53.8,
+ "units": 0.633,
+ "roi_pct": 2.18,
+ "win_pct": 51.7,
  "unlocks_at": 30,
- "to_go": 4,
+ "to_go": 1,
  "by_tier": {
   "board": {
-   "record": "7-0",
-   "units": 7.129
+   "record": "8-2",
+   "units": 6.014
   },
   "core": {
    "record": "3-10",
@@ -34,7 +34,7 @@
   "20261025",
   "20261026"
  ],
- "generated": "2026-10-26T10:22:25.252666-04:00",
+ "generated": "2026-10-27T09:00:25.474102-04:00",
  "picks": [
   {
    "day": "20261020",
@@ -416,10 +416,10 @@
    "odds": 111,
    "tier": "board",
    "logged_at": "2026-10-26T10:22:17.643774-04:00",
-   "result": null,
-   "actual": null,
-   "units": null,
-   "graded_at": null
+   "result": "loss",
+   "actual": 19,
+   "units": -1.0,
+   "graded_at": "2026-10-27T09:00:10.864155-04:00"
   },
   {
    "day": "20261026",
@@ -430,10 +430,10 @@
    "odds": -113,
    "tier": "board",
    "logged_at": "2026-10-26T10:22:17.643788-04:00",
-   "result": null,
-   "actual": null,
-   "units": null,
-   "graded_at": null
+   "result": "win",
+   "actual": 8,
+   "units": 0.8849557522123894,
+   "graded_at": "2026-10-27T09:00:10.864194-04:00"
   },
   {
    "day": "20261026",
@@ -444,10 +444,10 @@
    "odds": 146,
    "tier": "board",
    "logged_at": "2026-10-26T10:22:17.643742-04:00",
-   "result": null,
-   "actual": null,
-   "units": null,
-   "graded_at": null
+   "result": "loss",
+   "actual": 1,
+   "units": -1.0,
+   "graded_at": "2026-10-27T09:00:10.864003-04:00"
   }
  ]
 }
