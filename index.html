@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- SITE BUILD v21 -- bump this and the install.sh site check together -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sharpz Basketball — the board</title>
@@ -65,29 +66,14 @@
          The reasoning behind the numbers lives on the research page. -->
     <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.8px; color: #6B7A8D; margin-bottom: 22px" id="dateline"></div>
 
-    <!-- TONIGHT'S PICKS: the card, first. Everything else on this
-         page is evidence about whether these are any good; the picks
-         themselves are what a reader came for. Pending only -- once a
-         pick settles it belongs in the record and the log, not here,
-         because a board that keeps yesterday's winners up is selling
-         rather than reporting. -->
-    <div id="editorBlock" style="border: 1px solid #5C2D12; border-radius: 12px; overflow: hidden; margin-bottom: 30px" hidden>
-      <div style="background: #1A0E06; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #FF6B2C">TONIGHT&rsquo;S PICKS</div>
-        <div style="font-size: 13px; color: #8B98A9" id="editorMeta"></div>
-      </div>
-      <div id="editorRows"></div>
-      <div id="editorQuiet" hidden style="background: #11161E; padding: 22px 24px; font-size: 15px; line-height: 1.7; color: #96A3B4">
-        <strong style="color: #C3CDDA; font-weight: 600">Nothing tonight.</strong>
-        The screen ran over every game on the slate and nothing cleared the bar &mdash; either the matchups were flat, or the defences that looked soft have replaced too much of last season&rsquo;s rotation to be read from it.
-        <br><br>
-        We publish this rather than hiding the page, because a card that only ever appears on days we like something tells you nothing about the days we don&rsquo;t. A service that never passes is not selecting.
-      </div>
-      <div style="background: #0D1218; border-top: 1px solid #2A1408; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
-        Every pick is logged here at the line and price shown, before tip, and settled against the official box score tomorrow morning. Nothing is added after the fact and nothing is removed when it loses &mdash; <a href="log.html">the log</a> has all of them, winners and losers, with how close each one came.
-        <div id="editorBoardNote"></div>
-      </div>
-    </div>
+    <!-- Tonight's picks used to live here, fed from the slate log. It
+         has been removed: the measurement card below now carries the
+         bets under THE PICKS, and two sections both claiming to be
+         tonight's picks contradicted each other -- this one printed
+         "Nothing tonight" directly above a card showing a B-graded
+         bet, because it only knew about rows already written into
+         slate.jsonl and nothing writes the card's picks there yet.
+         One source or none. -->
 
     <!-- THE MEASUREMENT: the whole screen, not the subset we like.
          Most services publish the handful of rows they are betting and
@@ -794,114 +780,7 @@ function ticker(t) {
   }).join('');
 }
 
-// --- TONIGHT'S PICKS ----------------------------------------------
-// Pending picks for today only. A settled pick moves to the record
-// and the log; leaving winners on the board after they land turns a
-// results page into a sales page.
-const TIER_STYLE = {
-  core:        ['#FF8A52', '#5C2D12', '#2A1408'],
-  speculative: ['#8B98A9', '#28323F', '#1A212B'],
-  // Not a weaker pick -- a different kind of claim. Blue rather than
-  // a dimmer orange, so nobody reads it as "core but less sure".
-  board:       ['#6FA8DC', '#23384D', '#111C26']
-};
 
-function editorPicks(d) {
-  const block = document.getElementById('editorBlock');
-  const body = document.getElementById('editorRows');
-  const meta = document.getElementById('editorMeta');
-  if (!block || !body) return;
-  const today = todayStr();
-  const all = ((d && d.picks) || []).filter(
-    p => p.day === today && !p.result);
-  // 'log' rows are logged and graded but deliberately not featured:
-  // the screen ran, nothing cleared, and the honest card says so
-  // rather than headlining a coin flip.
-  const picks = all.filter(p => p.tier !== 'log');
-  block.hidden = false;
-  const quiet = document.getElementById('editorQuiet');
-  if (!picks.length) {
-    if (meta) meta.textContent = all.length
-      ? all.length + ' logged, none featured' : '';
-    body.innerHTML = '';
-    if (quiet) quiet.hidden = false;
-    const bn = document.getElementById('editorBoardNote');
-    if (bn) bn.innerHTML = '';
-    return;
-  }
-  if (quiet) quiet.hidden = true;
-
-  const order = { core: 0, speculative: 1, board: 2 };
-  picks.sort((a, b) => (order[a.tier] ?? 9) - (order[b.tier] ?? 9)
-                    || String(a.subject).localeCompare(String(b.subject)));
-  if (meta) {
-    // Board calls are picks. The tier records HOW a row was priced,
-    // not whether it counts -- an earlier version headed an all-board
-    // night "no bets tonight", which read as an empty card when it
-    // was in fact the whole output.
-    const brd = picks.filter(p => p.tier === 'board').length;
-    const n = picks.filter(p => p.tier === 'core').length;
-    meta.textContent = picks.length + ' published'
-      + (n && n !== picks.length ? '  ·  ' + n + ' core' : '')
-      + (brd ? '  ·  ' + brd + ' at fair price' : '');
-  }
-  const MONO = "font-family: 'IBM Plex Mono', monospace;";
-  const ARCH = "font-family: 'Archivo', sans-serif;";
-
-  body.innerHTML = picks.map((p, i) => {
-    const top = i ? 'border-top: 1px solid #1A212B;' : '';
-    const st = TIER_STYLE[p.tier] || TIER_STYLE.speculative;
-    const odds = (p.odds > 0 ? '+' + p.odds : String(p.odds))
-      + (p.tier === 'board' ? ' fair' : '');
-    // "over 2.5 threes" is how a 3+ bet is logged; print it the way it
-    // was sold rather than the way it is stored.
-    const call = p.market === 'ml'
-      ? 'Moneyline'
-      : (p.market === 'threes' && p.side === 'over'
-          ? (p.line + 0.5) + '+ threes'
-          : p.side.charAt(0).toUpperCase() + p.side.slice(1) + ' ' + p.line);
-    const mk = p.market === 'pa' ? 'PTS + AST'
-             : p.market === 'pr' ? 'PTS + REB'
-             : p.market === 'pra' ? 'PTS + REB + AST'
-             : p.market.toUpperCase();
-    return `<div style="display: flex; flex-wrap: wrap; gap: 10px 18px;
-        align-items: baseline; padding: 15px 24px; background: #11161E; ${top}">
-      <span style="${MONO} font-size: 9px; letter-spacing: 1.4px;
-        padding: 4px 8px; border-radius: 4px; color: ${st[0]};
-        border: 1px solid ${st[1]}; background: ${st[2]};
-        text-transform: uppercase">${p.tier || 'core'}</span>
-      <span style="${ARCH} font-weight: 600; font-size: 17px;
-        letter-spacing: -0.2px; min-width: 190px">${p.subject}</span>
-      <span style="font-size: 15px; color: #C3CDDA;
-        min-width: 130px">${call}</span>
-      <span style="${MONO} font-size: 12px; letter-spacing: 0.6px;
-        color: #6B7A8D; min-width: 130px">${mk}</span>
-      <span style="${MONO} font-size: 15px; color: #8B98A9">${odds}</span>
-    </div>`;
-  }).join('');
-
-  // One material disclosure, not an apology: the price on a board row
-  // is the market's fair number, not one that was shopped and taken.
-  // That changes how the units column should be read and nothing else.
-  const note = document.getElementById('editorBoardNote');
-  if (note) {
-    const brd = picks.filter(p => p.tier === 'board');
-    note.innerHTML = !brd.length ? '' :
-      `<br>A <strong style="color: #6FA8DC; font-weight: 600">BOARD</strong>
-       row comes straight off the matchup screen &mdash; soft defence, enough
-       possessions, shots landing where that defence actually gets beaten
-       &mdash; chosen before any line was looked at. The price shown beside
-       ${brd === 1 ? 'it' : 'them'} is the <strong style="color: #96A3B4;
-       font-weight: 600">fair number the market implies</strong> once the vig
-       is stripped, rather than one we shopped for, so read the units column
-       as what the call was worth at a fair price. Graded against the box
-       score like everything else.`;
-  }
-}
-
-// --- THE RECORD -------------------------------------------------
-// Counts from pick one, win rate only at 30. The threshold is the
-// point of the panel: a number shown early gets read as a result.
 function record(d) {
   const block = document.getElementById('recBlock');
   const body = document.getElementById('recRows');
@@ -969,7 +848,6 @@ dateline();
 ticker(null);
 praWatch(null);
 record(null);
-editorPicks(null);
 // Either fetch may fail or arrive first, so each stores its half and
 // re-renders the line. Neither waits on the other: the reads show
 // whether or not we have priced anything, which is the point.
@@ -1152,7 +1030,7 @@ fetch('data/tonight.json', { cache: 'no-store' })
   .catch(() => {});
 fetch('data/record.json', { cache: 'no-store' })
   .then(r => r.ok ? r.json() : Promise.reject())
-  .then(d => { record(d); editorPicks(d); })
+  .then(d => { record(d); })
   .catch(() => {});
 fetch('data/status.json', { cache: 'no-store' })
   .then(r => r.ok ? r.json() : Promise.reject())
