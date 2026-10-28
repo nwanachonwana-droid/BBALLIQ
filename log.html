@@ -46,6 +46,9 @@
     <!-- SUMMARY -->
     <div id="sumBlock" style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 26px">
       <div id="sumRows"></div>
+      <div id="sumScope" hidden style="border-top: 1px solid #1F2733;
+        background: #0D1218; padding: 14px 20px; font-size: 13px;
+        line-height: 1.7; color: #8B98A9"></div>
     </div>
 
     <!-- FILTERS -->
@@ -113,24 +116,32 @@ function margin(p) {
 
 function summary(d) {
   const box = document.getElementById('sumRows');
-  const open = d.graded >= (d.unlocks_at || 30);
-  const u = d.units || 0;
+  // This page lists EVERY row, featured or not, so its counters have to
+  // come from the whole book. The headline figures in record.json are
+  // featured-only on purpose -- the record on the front page answers
+  // "what would following this have returned?" and a pick that was
+  // logged but never shown does not belong in that answer. Reading
+  // those featured-only counts here would print a LOGGED number
+  // smaller than the list of rows directly beneath it.
+  const a = d.all_tiers || d;
+  const open = a.graded >= (d.unlocks_at || 30);
+  const u = a.units || 0;
   const ucol = u > 0 ? '#3FB68B' : (u < 0 ? '#FF6B2C' : '#8B98A9');
   const cell = (label, value, color) => `<div style="min-width: 76px">
     <div style="${MONO} font-size: 9px; letter-spacing: 1.3px;
       color: #5D6B7C; margin-bottom: 4px">${label}</div>
     <div style="${MONO} font-size: 19px; color: ${color || '#C3CDDA'}">${value}</div>
   </div>`;
-  let cells = cell('LOGGED', d.logged) + cell('GRADED', d.graded)
-            + cell('PENDING', d.pending);
+  let cells = cell('LOGGED', a.logged) + cell('GRADED', a.graded)
+            + cell('PENDING', a.pending);
   if (open) {
-    cells += cell('RECORD', d.record || '—')
+    cells += cell('RECORD', a.record || '—')
            + cell('UNITS', (u > 0 ? '+' : '') + u.toFixed(2), ucol);
-    if (d.roi_pct != null) {
-      cells += cell('ROI', (d.roi_pct > 0 ? '+' : '')
-                           + d.roi_pct.toFixed(1) + '%', ucol);
+    if (a.roi_pct != null) {
+      cells += cell('ROI', (a.roi_pct > 0 ? '+' : '')
+                           + a.roi_pct.toFixed(1) + '%', ucol);
     }
-    if (d.win_pct != null) cells += cell('WIN RATE', d.win_pct.toFixed(1) + '%');
+    if (a.win_pct != null) cells += cell('WIN RATE', a.win_pct.toFixed(1) + '%');
   } else {
     cells += cell('WIN RATE', 'AT ' + (d.unlocks_at || 30), '#5D6B7C');
   }
@@ -142,6 +153,30 @@ function summary(d) {
   box.innerHTML = `<div style="display: flex; flex-wrap: wrap; gap: 16px 26px;
     align-items: flex-start; padding: 18px 20px; background: #11161E">
     ${cells}${note}</div>`;
+
+  // The front page and this page now report different totals, and a
+  // reader who spots that before we explain it is right to distrust
+  // both. So say it here, with the arithmetic, rather than hoping the
+  // difference goes unnoticed: the smaller number is the one we claim.
+  const scope = document.getElementById('sumScope');
+  if (!scope || !d.all_tiers) return;
+  const held = (d.all_tiers.graded || 0) - (d.graded || 0);
+  if (held <= 0) { scope.hidden = true; return; }
+  const unf = Object.entries(d.by_tier || {})
+    .filter(([, v]) => v && v.featured === false);
+  scope.hidden = false;
+  scope.innerHTML = `This page counts <strong style="color: #C3CDDA">every
+    pick</strong>, including ${held} the card never featured &mdash; nights
+    the screen ran and nothing cleared the bar, logged at the price we took
+    and graded like the rest.
+    ${unf.map(([t, v]) => `The <code style="color: #96A3B4">${t}</code> tier
+      is ${v.record}, ${v.units > 0 ? '+' : ''}${v.units.toFixed(2)}u.`).join(' ')}
+    <br><br>The record on the <a href="index.html" style="color: #96A3B4;
+    border-bottom: 1px solid #2A3441; text-decoration: none">front page</a>
+    leaves those ${held} out, because it answers a narrower question
+    &mdash; what following the published picks would have returned &mdash;
+    and a pick nobody saw cannot count toward that. The two numbers differ
+    on purpose, and the published one is the smaller claim.`;
 }
 
 function filters(d) {

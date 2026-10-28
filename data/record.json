@@ -1,28 +1,24 @@
 {
- "logged": 31,
+ "logged": 29,
  "graded": 29,
- "pending": 2,
- "record": "15-14",
- "wins": 15,
- "losses": 14,
- "pushes": 0,
- "units": 0.633,
- "roi_pct": 2.18,
- "win_pct": 51.7,
+ "pending": 0,
  "unlocks_at": 30,
  "to_go": 1,
  "by_tier": {
   "board": {
    "record": "8-2",
-   "units": 6.014
+   "units": 6.014,
+   "featured": true
   },
   "core": {
    "record": "3-10",
-   "units": -7.469
+   "units": -7.469,
+   "featured": true
   },
   "speculative": {
    "record": "4-2",
-   "units": 2.087
+   "units": 2.087,
+   "featured": true
   }
  },
  "days": [
@@ -32,10 +28,28 @@
   "20261023",
   "20261024",
   "20261025",
-  "20261026",
-  "20261027"
+  "20261026"
  ],
- "generated": "2026-10-27T11:32:00.062882-04:00",
+ "generated": "2026-10-27T20:48:53.200208-04:00",
+ "record": "15-14",
+ "wins": 15,
+ "losses": 14,
+ "pushes": 0,
+ "units": 0.633,
+ "roi_pct": 2.18,
+ "win_pct": 51.7,
+ "all_tiers": {
+  "record": "15-14",
+  "wins": 15,
+  "losses": 14,
+  "pushes": 0,
+  "units": 0.633,
+  "roi_pct": 2.18,
+  "win_pct": 51.7,
+  "logged": 31,
+  "graded": 29,
+  "pending": 2
+ },
  "picks": [
   {
    "day": "20261020",
@@ -457,12 +471,19 @@
    "side": "under",
    "line": 9.5,
    "odds": -103,
-   "tier": "board",
+   "tier": "log",
    "logged_at": "2026-10-27T09:04:00.410765-04:00",
    "result": null,
    "actual": null,
    "units": null,
-   "graded_at": null
+   "graded_at": null,
+   "retiered": [
+    {
+     "from": "board",
+     "to": "log",
+     "at": "2026-10-27T20:48:52.399771-04:00"
+    }
+   ]
   },
   {
    "day": "20261027",
@@ -471,12 +492,19 @@
    "side": "under",
    "line": 6.5,
    "odds": -107,
-   "tier": "board",
+   "tier": "log",
    "logged_at": "2026-10-27T09:04:00.410734-04:00",
    "result": null,
    "actual": null,
    "units": null,
-   "graded_at": null
+   "graded_at": null,
+   "retiered": [
+    {
+     "from": "board",
+     "to": "log",
+     "at": "2026-10-27T20:48:52.399771-04:00"
+    }
+   ]
   }
  ]
 }

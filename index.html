@@ -77,6 +77,12 @@
         <div style="font-size: 13px; color: #8B98A9" id="editorMeta"></div>
       </div>
       <div id="editorRows"></div>
+      <div id="editorQuiet" hidden style="background: #11161E; padding: 22px 24px; font-size: 15px; line-height: 1.7; color: #96A3B4">
+        <strong style="color: #C3CDDA; font-weight: 600">Nothing tonight.</strong>
+        The screen ran over every game on the slate and nothing cleared the bar &mdash; either the matchups were flat, or the defences that looked soft have replaced too much of last season&rsquo;s rotation to be read from it.
+        <br><br>
+        We publish this rather than hiding the page, because a card that only ever appears on days we like something tells you nothing about the days we don&rsquo;t. A service that never passes is not selecting.
+      </div>
       <div style="background: #0D1218; border-top: 1px solid #2A1408; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
         Every pick is logged here at the line and price shown, before tip, and settled against the official box score tomorrow morning. Nothing is added after the fact and nothing is removed when it loses &mdash; <a href="log.html">the log</a> has all of them, winners and losers, with how close each one came.
         <div id="editorBoardNote"></div>
@@ -775,10 +781,24 @@ function editorPicks(d) {
   const meta = document.getElementById('editorMeta');
   if (!block || !body) return;
   const today = todayStr();
-  const picks = ((d && d.picks) || []).filter(
+  const all = ((d && d.picks) || []).filter(
     p => p.day === today && !p.result);
-  if (!picks.length) { block.hidden = true; return; }
+  // 'log' rows are logged and graded but deliberately not featured:
+  // the screen ran, nothing cleared, and the honest card says so
+  // rather than headlining a coin flip.
+  const picks = all.filter(p => p.tier !== 'log');
   block.hidden = false;
+  const quiet = document.getElementById('editorQuiet');
+  if (!picks.length) {
+    if (meta) meta.textContent = all.length
+      ? all.length + ' logged, none featured' : '';
+    body.innerHTML = '';
+    if (quiet) quiet.hidden = false;
+    const bn = document.getElementById('editorBoardNote');
+    if (bn) bn.innerHTML = '';
+    return;
+  }
+  if (quiet) quiet.hidden = true;
 
   const order = { core: 0, speculative: 1, board: 2 };
   picks.sort((a, b) => (order[a.tier] ?? 9) - (order[b.tier] ?? 9)
