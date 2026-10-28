@@ -1,15 +1,15 @@
 {
- "generated": "2026-10-28T08:23:11.636264-04:00",
- "day": "20261027",
+ "generated": "2026-10-28T09:17:13.172937-04:00",
+ "day": "20261028",
  "source": "Covers.com",
  "counts": {
   "writer_picks": 47,
   "projections": 76,
-  "kept": 24,
+  "kept": 40,
   "dropped": 6,
-  "shown": 14,
+  "shown": 28,
   "held_conflict": 0,
-  "held_unbacked": 10
+  "held_unbacked": 12
  },
  "rows": [
   {
@@ -23,6 +23,18 @@
    "stars": 5,
    "difference": 3.2,
    "game": "CLE@PHI"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Jeremiah Fears",
+   "side": "over",
+   "line": 10.5,
+   "market": "Points Scored",
+   "projection": 13.5,
+   "ev_pct": 25.02,
+   "stars": 5,
+   "difference": 3.0,
+   "game": "IND@NO"
   },
   {
    "status": "CORROBORATED",
@@ -50,6 +62,66 @@
   },
   {
    "status": "CORROBORATED",
+   "player": "Desmond Bane",
+   "side": "over",
+   "line": 3.5,
+   "market": "Total Assists",
+   "projection": 4.06,
+   "ev_pct": 23.4,
+   "stars": 5,
+   "difference": 0.6,
+   "game": "ATL@ORL"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Mikel Brown Jr.",
+   "side": "over",
+   "line": 1.5,
+   "market": "Total Assists",
+   "projection": 4.26,
+   "ev_pct": 23.36,
+   "stars": 5,
+   "difference": 2.8,
+   "game": "CHA@BK"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Isaiah Collier",
+   "side": "over",
+   "line": 6.5,
+   "market": "Points Scored",
+   "projection": 8.16,
+   "ev_pct": 22.84,
+   "stars": 4,
+   "difference": 1.7,
+   "game": "UTA@MEM"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Ty Jerome",
+   "side": "under",
+   "line": 20.5,
+   "market": "Points Scored",
+   "projection": 17.09,
+   "ev_pct": 22.48,
+   "stars": 4,
+   "difference": -3.4,
+   "game": "UTA@MEM"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Jerami Grant",
+   "side": "over",
+   "line": 1.5,
+   "market": "3-Pointers Made",
+   "projection": 1.96,
+   "ev_pct": 22.33,
+   "stars": 4,
+   "difference": 0.5,
+   "game": "UTA@MEM"
+  },
+  {
+   "status": "CORROBORATED",
    "player": "Jalen Duren",
    "side": "under",
    "line": 17.5,
@@ -59,6 +131,18 @@
    "stars": 4,
    "difference": -2.7,
    "game": "BOS@DET"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Jakob Poeltl",
+   "side": "over",
+   "line": 9.5,
+   "market": "Points Scored",
+   "projection": 11.7,
+   "ev_pct": 22.16,
+   "stars": 4,
+   "difference": 2.2,
+   "game": "CHI@TOR"
   },
   {
    "status": "CORROBORATED",
@@ -122,6 +206,30 @@
   },
   {
    "status": "CORROBORATED",
+   "player": "Ace Bailey",
+   "side": "over",
+   "line": 11.5,
+   "market": "Points Scored",
+   "projection": 13.63,
+   "ev_pct": 20.76,
+   "stars": 4,
+   "difference": 2.1,
+   "game": "UTA@MEM"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Josh Giddey",
+   "side": "under",
+   "line": 8.5,
+   "market": "Total Assists",
+   "projection": 7.44,
+   "ev_pct": 20.53,
+   "stars": 4,
+   "difference": -1.1,
+   "game": "CHI@TOR"
+  },
+  {
+   "status": "CORROBORATED",
    "player": "Quentin Grimes",
    "side": "over",
    "line": 10.5,
@@ -131,6 +239,18 @@
    "stars": 4,
    "difference": 1.8,
    "game": "GS@LAL"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Keyonte George",
+   "side": "under",
+   "line": 20.5,
+   "market": "Points Scored",
+   "projection": 17.82,
+   "ev_pct": 20.25,
+   "stars": 4,
+   "difference": -2.7,
+   "game": "UTA@MEM"
   },
   {
    "status": "CORROBORATED",
@@ -158,6 +278,30 @@
   },
   {
    "status": "CORROBORATED",
+   "player": "Jerami Grant",
+   "side": "over",
+   "line": 11.5,
+   "market": "Points Scored",
+   "projection": 13.81,
+   "ev_pct": 20.06,
+   "stars": 4,
+   "difference": 2.3,
+   "game": "UTA@MEM"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "Isaiah Collier",
+   "side": "over",
+   "line": 4.5,
+   "market": "Total Assists",
+   "projection": 5.19,
+   "ev_pct": 19.26,
+   "stars": 4,
+   "difference": 0.7,
+   "game": "UTA@MEM"
+  },
+  {
+   "status": "CORROBORATED",
    "player": "John Collins",
    "side": "over",
    "line": 11.5,
@@ -170,6 +314,18 @@
   },
   {
    "status": "CORROBORATED",
+   "player": "Nikola Vucevic",
+   "side": "over",
+   "line": 5.5,
+   "market": "Total Rebounds",
+   "projection": 6.05,
+   "ev_pct": 18.61,
+   "stars": 4,
+   "difference": 0.5,
+   "game": "ATL@ORL"
+  },
+  {
+   "status": "CORROBORATED",
    "player": "De'Andre Hunter",
    "side": "under",
    "line": 2.5,
@@ -179,9 +335,109 @@
    "stars": 4,
    "difference": -0.9,
    "game": "SAC@LAC"
+  },
+  {
+   "status": "CORROBORATED",
+   "player": "DeMar DeRozan",
+   "side": "over",
+   "line": 2.5,
+   "market": "Total Assists",
+   "projection": 3.02,
+   "ev_pct": 15.13,
+   "stars": 4,
+   "difference": 0.5,
+   "game": "DEN@OKC"
   }
  ],
  "pra_watch": [
+  {
+   "player": "Nikola Jokic",
+   "team": "DEN",
+   "pra_line": 50.0,
+   "minutes": "locked",
+   "components": {
+    "pts": {
+     "line": 26.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 6,
+     "prob_over": 0.4693
+    },
+    "reb": {
+     "line": 12.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 6,
+     "prob_over": 0.4927
+    },
+    "ast": {
+     "line": 9.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 8,
+     "prob_over": 0.4888
+    }
+   },
+   "covered": 3,
+   "covers_pra": null,
+   "market_pra": 49.5,
+   "market_src": "books",
+   "book_prob_over": 0.4917,
+   "book_n": 5,
+   "book_spread": 4.0,
+   "delta": -0.5,
+   "note": null
+  },
+  {
+   "player": "Shai Gilgeous-Alexander",
+   "team": "OKC",
+   "pra_line": 42.5,
+   "minutes": "locked",
+   "components": {
+    "pts": {
+     "line": 31.5,
+     "side": "under",
+     "projection": 26.81,
+     "ev_pct": 21.12,
+     "src": "books",
+     "n_books": 5,
+     "prob_over": 0.4688
+    },
+    "reb": {
+     "line": 4.5,
+     "side": "over",
+     "projection": 3.83,
+     "ev_pct": -6.14,
+     "src": "books",
+     "n_books": 4,
+     "prob_over": 0.4792
+    },
+    "ast": {
+     "line": 6.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4783
+    }
+   },
+   "covered": 3,
+   "covers_pra": null,
+   "market_pra": 41.5,
+   "market_src": "books",
+   "book_prob_over": 0.4798,
+   "book_n": 5,
+   "book_spread": 4.0,
+   "delta": -1.0,
+   "note": null
+  },
   {
    "player": "Cade Cunningham",
    "team": "DET",
@@ -189,13 +445,13 @@
    "minutes": "moved",
    "components": {
     "pts": {
-     "line": 23.5,
+     "line": 24.5,
      "side": "under",
      "projection": 21.4,
      "ev_pct": 23.8,
      "src": "books",
-     "n_books": 7,
-     "prob_over": 0.4772
+     "n_books": 5,
+     "prob_over": 0.4927
     },
     "reb": {
      "line": 5.5,
@@ -203,8 +459,8 @@
      "projection": null,
      "ev_pct": null,
      "src": "books",
-     "n_books": 7,
-     "prob_over": 0.471
+     "n_books": 6,
+     "prob_over": 0.4907
     },
     "ast": {
      "line": 9.5,
@@ -233,13 +489,13 @@
    "minutes": "locked",
    "components": {
     "pts": {
-     "line": 25.5,
+     "line": 26.5,
      "side": null,
      "projection": null,
      "ev_pct": null,
      "src": "books",
-     "n_books": 7,
-     "prob_over": 0.4689
+     "n_books": 6,
+     "prob_over": 0.454
     },
     "reb": {
      "line": 3.5,
@@ -247,8 +503,8 @@
      "projection": null,
      "ev_pct": null,
      "src": "books",
-     "n_books": 7,
-     "prob_over": 0.4553
+     "n_books": 6,
+     "prob_over": 0.4353
     },
     "ast": {
      "line": 6.5,
@@ -268,6 +524,270 @@
    "book_n": 5,
    "book_spread": 4.0,
    "delta": -2.5,
+   "note": null
+  },
+  {
+   "player": "Kevin Durant",
+   "team": "HOU",
+   "pra_line": 36.5,
+   "minutes": "moved",
+   "components": {
+    "pts": {
+     "line": 26.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4698
+    },
+    "reb": {
+     "line": 5.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 6,
+     "prob_over": 0.4905
+    },
+    "ast": {
+     "line": 3.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.5034
+    }
+   },
+   "covered": 3,
+   "covers_pra": null,
+   "market_pra": 32.5,
+   "market_src": "books",
+   "book_prob_over": 0.4881,
+   "book_n": 5,
+   "book_spread": 4.0,
+   "delta": -4.0,
+   "note": null
+  },
+  {
+   "player": "Donovan Mitchell",
+   "team": "CLE",
+   "pra_line": 35.5,
+   "minutes": "locked",
+   "components": {
+    "pts": {
+     "line": 25.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4781
+    },
+    "reb": {
+     "line": 4.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.5232
+    },
+    "ast": {
+     "line": 6.5,
+     "side": "over",
+     "projection": 5.25,
+     "ev_pct": 4.57,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4456
+    }
+   },
+   "covered": 3,
+   "covers_pra": null,
+   "market_pra": 18.5,
+   "market_src": "books",
+   "book_prob_over": 0.4727,
+   "book_n": 5,
+   "book_spread": 4.0,
+   "delta": -17.0,
+   "note": null
+  },
+  {
+   "player": "Alperen Sengun",
+   "team": "HOU",
+   "pra_line": 35.0,
+   "minutes": "moved",
+   "components": {
+    "pts": {
+     "line": 20.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4649
+    },
+    "reb": {
+     "line": 9.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4471
+    },
+    "ast": {
+     "line": 4.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.5135
+    }
+   },
+   "covered": 3,
+   "covers_pra": null,
+   "market_pra": 32.5,
+   "market_src": "books",
+   "book_prob_over": 0.4837,
+   "book_n": 5,
+   "book_spread": 4.0,
+   "delta": -2.5,
+   "note": null
+  },
+  {
+   "player": "Lauri Markkanen",
+   "team": "UTA",
+   "pra_line": 32.0,
+   "minutes": "moved",
+   "components": {
+    "pts": {
+     "line": 22.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 6,
+     "prob_over": 0.4699
+    },
+    "reb": {
+     "line": 6.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4849
+    },
+    "ast": {
+     "line": 2.0,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 5,
+     "prob_over": 0.4854
+    }
+   },
+   "covered": 3,
+   "covers_pra": null,
+   "market_pra": 31.5,
+   "market_src": "books",
+   "book_prob_over": 0.4855,
+   "book_n": 5,
+   "book_spread": 4.0,
+   "delta": -0.5,
+   "note": null
+  },
+  {
+   "player": "RJ Barrett",
+   "team": "TOR",
+   "pra_line": 30.0,
+   "minutes": "moved",
+   "components": {
+    "pts": {
+     "line": 21.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 6,
+     "prob_over": 0.4659
+    },
+    "reb": {
+     "line": 5.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 6,
+     "prob_over": 0.4465
+    },
+    "ast": {
+     "line": 3.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4348
+    }
+   },
+   "covered": 3,
+   "covers_pra": null,
+   "market_pra": 27.5,
+   "market_src": "books",
+   "book_prob_over": 0.4866,
+   "book_n": 5,
+   "book_spread": 4.0,
+   "delta": -2.5,
+   "note": null
+  },
+  {
+   "player": "Amen Thompson",
+   "team": "HOU",
+   "pra_line": 26.0,
+   "minutes": "locked",
+   "components": {
+    "pts": {
+     "line": 17.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 6,
+     "prob_over": 0.4764
+    },
+    "reb": {
+     "line": 8.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 6,
+     "prob_over": 0.4378
+    },
+    "ast": {
+     "line": 4.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 7,
+     "prob_over": 0.4323
+    }
+   },
+   "covered": 3,
+   "covers_pra": null,
+   "market_pra": 27.5,
+   "market_src": "books",
+   "book_prob_over": 0.4855,
+   "book_n": 5,
+   "book_spread": 4.0,
+   "delta": 1.5,
    "note": null
   }
  ],
