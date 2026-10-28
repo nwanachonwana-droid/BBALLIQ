@@ -110,13 +110,13 @@
       </div>
       <div id="cardRows"></div>
       <div id="cardQuiet" hidden style="background: #11161E; padding: 22px 24px; font-size: 15px; line-height: 1.7; color: #96A3B4">
-        <strong style="color: #C3CDDA; font-weight: 600">Nothing graded C or better tonight.</strong>
+        <strong style="color: #C3CDDA; font-weight: 600">No bets tonight.</strong>
         The screen ran over every game and no candidate cleared the bar once the matchup, the minutes and the price were all accounted for.
       </div>
       <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
-        <div id="cardNote"></div>
+        <div id="cardRubric"></div>
         <br>
-        The grade is a function of the row, not a view about the player. It starts from how far the modelled chance sits above the 52.4% a bet needs at &minus;110, then loses a letter for each reason to trust the number less: too few games to read him from, a disagreement with the books large enough that it has usually been our error, or a defence that has replaced most of last season&rsquo;s rotation. Every deduction is named next to the row.
+        <div id="cardNote"></div>
       </div>
     </div>
 
@@ -979,6 +979,7 @@ editorPicks(null);
 // card.py and are reproduced here, never recomputed: a letter that can
 // be derived two different ways will eventually be derived two
 // different ways.
+const CARD_MONO = "font-family: 'IBM Plex Mono', monospace;";
 const GRADE_STYLE = {
   A: ['#3FB68B', '#10261F'], B: ['#6FA8DC', '#111C26'],
   C: ['#C3A14E', '#241E10'], D: ['#8B98A9', '#1A212B'],
@@ -986,10 +987,12 @@ const GRADE_STYLE = {
 };
 
 function measurement(d) {
-  // MONO is declared inside each of the other render functions, so it
-  // is not in scope here. node --check cannot see that -- it is a
-  // ReferenceError at paint time, not a syntax error.
-  const MONO = "font-family: 'IBM Plex Mono', monospace;";
+  // CARD_MONO rather than MONO: the page's other render functions each
+  // declare their own MONO as a function-local const, so the name is
+  // not in scope here. I fixed that once by re-declaring it inside
+  // this function, then wrote biasTag() at top level and used MONO
+  // again -- same ReferenceError, new function. One module-scope
+  // constant removes the chance of a third.
   const block = document.getElementById('cardBlock');
   const body = document.getElementById('cardRows');
   if (!block || !body || !d || !d.cards) return;
@@ -1007,17 +1010,37 @@ function measurement(d) {
                    || (b.p_mine || 0) - (a.p_mine || 0));
 
   const meta = document.getElementById('cardMeta');
-  const playable = rows.filter(r => 'ABC'.includes(r.grade)).length;
-  if (meta) meta.textContent = rows.length + ' scored, ' + playable
-    + ' graded C or better';
+  const nPicks = rows.filter(r => r.pick).length;
+  if (meta) meta.textContent = rows.length + ' scored, ' + nPicks
+    + (nPicks === 1 ? ' pick' : ' picks');
 
   const quiet = document.getElementById('cardQuiet');
-  if (quiet) quiet.hidden = playable > 0;
+  if (quiet) quiet.hidden = nPicks > 0;
 
   const note = document.getElementById('cardNote');
   if (note && d.note) note.textContent = d.note;
 
-  body.innerHTML = rows.map(r => {
+  // Picks first, under their own heading, then everything else the
+  // model scored. One list sorted by grade buried the bets among the
+  // rejects -- the reader cannot tell what we are actually backing.
+  const picks = rows.filter(r => r.pick);
+  const rest = rows.filter(r => !r.pick);
+  const head = (t, sub) => `<div style="border-top: 1px solid #1A212B;
+      background: #0B0F14; padding: 10px 24px; ${CARD_MONO} font-size: 11px;
+      letter-spacing: 1.6px; color: #6FA8DC">${t}
+      <span style="color: #4C5967; letter-spacing: 0">${sub}</span></div>`;
+
+  body.innerHTML =
+    (picks.length
+      ? head('THE PICKS', '&nbsp; graded A or B &mdash; these are the bets')
+        + picks.map(render).join('')
+      : '')
+    + (rest.length
+      ? head('ALSO SCORED', '&nbsp; published and graded, not backed')
+        + rest.map(render).join('')
+      : '');
+
+  function render(r) {
     const [fg, bg] = GRADE_STYLE[r.grade] || GRADE_STYLE.F;
     const side = String(r.side || '').toUpperCase();
     const why = (r.why || []).map(w =>
@@ -1025,27 +1048,78 @@ function measurement(d) {
     ).join('');
     return `<div style="border-top: 1px solid #1A212B; padding: 14px 24px;
         display: flex; gap: 16px; align-items: flex-start">
-      <div style="${MONO} font-size: 20px; font-weight: 600; color: ${fg};
+      <div style="${CARD_MONO} font-size: 20px; font-weight: 600; color: ${fg};
         background: ${bg}; border-radius: 8px; min-width: 42px;
         text-align: center; padding: 6px 0">${esc(r.grade || '?')}</div>
       <div style="flex: 1 1 auto; min-width: 0">
         <div style="font-size: 16px; color: #C3CDDA">
           ${esc(r.player)}
           <span style="color: #6B7A8D; font-size: 13px">${esc(r.team)} vs ${esc(r.opp)}</span>
-          <span style="${MONO} color: ${fg}; font-size: 13px; margin-left: 6px">
+          <span style="${CARD_MONO} color: ${fg}; font-size: 13px; margin-left: 6px">
             ${side} ${esc(r.line)} ${esc(r.market)}</span>
+          ${biasTag(r)}
         </div>
         <div style="font-size: 13px; color: #8B98A9; margin-top: 4px">
           ${esc(r.context || '')}</div>
         <div style="font-size: 13px; color: #6B7A8D; margin-top: 4px">${why}</div>
       </div>
-      <div style="${MONO} text-align: right; font-size: 13px; color: #8B98A9;
+      <div style="${CARD_MONO} text-align: right; font-size: 13px; color: #8B98A9;
         white-space: nowrap">
         <div style="font-size: 17px; color: #C3CDDA">${pct(r.p_mine)}</div>
         <div>market ${pct(r.p_mkt)}</div>
       </div>
     </div>`;
-  }).join('');
+  }
+
+  rubric(d.rubric);
+}
+
+// The depletion flag, shown on the row. It lived only in the JSON and
+// the terminal table, so the one guard that demotes a bet was
+// invisible on the page -- which is precisely where it needs to be
+// readable, since the reader cannot run the script.
+function biasTag(r) {
+  if (!r.flag || r.flag === '-') return '';
+  const out = (r.short || 0) * 100;
+  const style = {
+    'bias-AGAINST': ['#FF8A52', '#2A1408', 'his position group is '
+      + out.toFixed(0) + '% out, so this projection runs low and the under '
+      + 'is the wrong side of a known error'],
+    'bias-FOR': ['#3FB68B', '#10261F', 'his position group is '
+      + out.toFixed(0) + '% out, so this projection is if anything low'],
+    'opp-short': ['#6FA8DC', '#111C26', 'opponent is '
+      + ((r.opp_short || 0) * 100).toFixed(0) + '% of its minutes down']
+  }[r.flag];
+  if (!style) return '';
+  return `<span title="${esc(style[2])}" style="${CARD_MONO} font-size: 10px;
+    letter-spacing: 1px; color: ${style[0]}; background: ${style[1]};
+    border-radius: 4px; padding: 2px 7px; margin-left: 8px;
+    white-space: nowrap">${esc(r.flag.toUpperCase())}</span>`;
+}
+
+// The grading rule, rendered from the card's own constants rather than
+// written out here. A rubric kept in HTML drifts from the code the
+// first time a threshold moves, and then the page is explaining a rule
+// nobody applies.
+function rubric(rb) {
+  const el = document.getElementById('cardRubric');
+  if (!el || !rb) return;
+  const be = (rb.breakeven * 100).toFixed(1);
+  const bands = (rb.bands || []).map(([g, lo, text]) =>
+    `<span style="color: ${(GRADE_STYLE[g] || GRADE_STYLE.F)[0]};
+      font-weight: 600">${esc(g)}</span> ${esc(text)}`).join(' &nbsp;·&nbsp; ');
+  const dem = (rb.demotions || []).map(x =>
+    `<li style="margin-bottom: 4px">${esc(x)}</li>`).join('');
+  el.innerHTML = `
+    <div style="margin-bottom: 10px"><strong style="color: #C3CDDA">How the
+      grade is worked out.</strong> A bet at &minus;110 needs to win
+      ${be}% of the time to break even. The grade starts from how far
+      the modelled chance sits above that line:</div>
+    <div style="margin-bottom: 10px">${bands}</div>
+    <div style="margin-bottom: 4px">Then it loses a letter for each
+      reason to trust the number less:</div>
+    <ul style="margin: 0 0 10px 18px; padding: 0">${dem}</ul>
+    <div>${esc(rb.picks || '')}</div>`;
 }
 
 function pct(v) {
@@ -1059,7 +1133,18 @@ function esc(s) {
 fetch('data/card.json', { cache: 'no-store' })
   .then(r => r.ok ? r.json() : null)
   .then(d => { if (d) measurement(d); })
-  .catch(() => {});
+  .catch(e => {
+    // NOT a silent catch. The previous version swallowed everything,
+    // so a ReferenceError inside measurement() left the panel visible
+    // and empty with nothing in the console -- which looked exactly
+    // like "no data" and cost two rounds of debugging. A missing
+    // card.json is normal and stays quiet; anything else is a bug and
+    // says so.
+    if (e && e.name === 'TypeError') return;   // fetch/404
+    console.error('card render failed:', e);
+    const blk = document.getElementById('cardBlock');
+    if (blk) blk.hidden = true;
+  });
 
 fetch('data/tonight.json', { cache: 'no-store' })
   .then(r => r.ok ? r.json() : Promise.reject())

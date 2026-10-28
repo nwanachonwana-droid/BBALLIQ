@@ -1,8 +1,44 @@
 {
  "day": "20261028",
- "generated": "2026-10-28T09:25:04.258971-04:00",
+ "generated": "2026-10-28T09:33:15.453262-04:00",
  "breakeven": 0.524,
  "max_gap": 0.1,
+ "rubric": {
+  "breakeven": 0.524,
+  "bands": [
+   [
+    "A",
+    0.05,
+    "five or more points of edge"
+   ],
+   [
+    "B",
+    0.03,
+    "three or more"
+   ],
+   [
+    "C",
+    0.015,
+    "one and a half or more"
+   ],
+   [
+    "D",
+    0.0,
+    "anything above break-even"
+   ],
+   [
+    "F",
+    null,
+    "at or below break-even, or a known bias against it"
+   ]
+  ],
+  "demotions": [
+   "fewer than three games of this season to read him from",
+   "more than a six-point disagreement with the books, a band where every gap we have examined turned out to be our own error",
+   "a defence that has kept fewer than six of last season's top eight, so the matchup read describes a roster that has gone"
+  ],
+  "picks": "A row graded A or B is a bet. Everything else is published, graded tomorrow against the box score, and kept out of the headline record."
+ },
  "note": "FIT is the matchup signal the board ranks on. Measured over 546 player-games walk-forward it did not predict production, so it selects the side and is not multiplied into the projection.",
  "cards": {
   "pts": [
@@ -33,7 +69,8 @@
      "24-point disagreement with 6 books -- every large gap we have examined was our error"
     ],
     "context": "ORL is strong from three (-1.22); projects 4.8 against 6.5; -0.5 min for the spread",
-    "shown": false
+    "shown": false,
+    "pick": false
    },
    {
     "player": "Anthony Black",
@@ -63,7 +100,8 @@
      "15-point disagreement with 6 books -- every large gap we have examined was our error"
     ],
     "context": "TOR is strong from short (-0.95); projects 12.4 against 14.0; -0.5 min for the spread",
-    "shown": false
+    "shown": false,
+    "pick": false
    },
    {
     "player": "Tristan Da Silva",
@@ -92,7 +130,8 @@
      "10-point disagreement with 5 books -- every large gap we have examined was our error"
     ],
     "context": "TOR is strong from short (-0.95); projects 10.6 against 11.5; -0.5 min for the spread",
-    "shown": false
+    "shown": false,
+    "pick": false
    },
    {
     "player": "Moussa Diabat\u00e9",
@@ -121,7 +160,8 @@
      "10-point disagreement with 6 books -- every large gap we have examined was our error"
     ],
     "context": "DET is strong from rim (-1.50); projects 7.9 against 8.5; -0.8 min for the spread",
-    "shown": true
+    "shown": true,
+    "pick": true
    },
    {
     "player": "Tre Jones",
@@ -149,7 +189,8 @@
      "+3.8 points of edge over break-even"
     ],
     "context": "NY is strong from short (-1.12); projects 8.5 against 8.5; -0.8 min for the spread",
-    "shown": true
+    "shown": true,
+    "pick": true
    },
    {
     "player": "Joel Embiid",
@@ -178,7 +219,8 @@
      "8-point disagreement with 7 books -- every large gap we have examined was our error"
     ],
     "context": "IND is soft from mid (+0.60); projects 24.7 against 23.5; -0.6 min for the spread",
-    "shown": true
+    "shown": true,
+    "pick": false
    },
    {
     "player": "Kyle Kuzma",
@@ -206,7 +248,8 @@
      "+0.6 points of edge over break-even"
     ],
     "context": "HOU is strong from three (-0.86); projects 12.7 against 12.5; -1.0 min for the spread",
-    "shown": true
+    "shown": true,
+    "pick": false
    },
    {
     "player": "Jamal Murray",
@@ -234,7 +277,8 @@
      "50.8% is below the 52.4% a bet needs at -110"
     ],
     "context": "NO is soft from three (+1.22); projects 24.1 against 23.5; -0.6 min for the spread",
-    "shown": true
+    "shown": true,
+    "pick": false
    },
    {
     "player": "Evan Mobley",
@@ -262,7 +306,8 @@
      "48.8% is below the 52.4% a bet needs at -110"
     ],
     "context": "WSH is soft from rim (+1.25); projects 17.9 against 17.5; -1.2 min for the spread",
-    "shown": true
+    "shown": true,
+    "pick": false
    },
    {
     "player": "De'Aaron Fox",
@@ -290,7 +335,8 @@
      "42.2% is below the 52.4% a bet needs at -110"
     ],
     "context": "UTA is soft from three (+1.92); projects 15.1 against 15.5; -1.8 min for the spread",
-    "shown": true
+    "shown": true,
+    "pick": false
    },
    {
     "player": "Nikola Joki\u0107",
@@ -318,7 +364,8 @@
      "41.6% is below the 52.4% a bet needs at -110"
     ],
     "context": "NO is soft from three (+1.22); projects 25.7 against 26.5; -0.6 min for the spread",
-    "shown": true
+    "shown": true,
+    "pick": false
    },
    {
     "player": "Nickeil Alexander-Walker",
@@ -346,7 +393,8 @@
      "31.8% is below the 52.4% a bet needs at -110"
     ],
     "context": "MIA is soft from three (+0.80); projects 17.0 against 19.0; -0.5 min for the spread",
-    "shown": false
+    "shown": false,
+    "pick": false
    },
    {
     "player": "Stephon Castle",
@@ -374,7 +422,8 @@
      "25.8% is below the 52.4% a bet needs at -110"
     ],
     "context": "UTA is soft from short (+1.74); projects 14.7 against 17.5; -1.8 min for the spread",
-    "shown": false
+    "shown": false,
+    "pick": false
    },
    {
     "player": "Victor Wembanyama",
@@ -402,7 +451,8 @@
      "24.3% is below the 52.4% a bet needs at -110"
     ],
     "context": "UTA is soft from three (+1.92); projects 21.8 against 25.5; -1.8 min for the spread",
-    "shown": false
+    "shown": false,
+    "pick": false
    }
   ],
   "reb": [
@@ -433,7 +483,8 @@
      "21-point disagreement with 5 books -- every large gap we have examined was our error"
     ],
     "context": "ORL is strong from three (-1.22); projects 1.6 against 2.0; -0.5 min for the spread",
-    "shown": false
+    "shown": false,
+    "pick": false
    },
    {
     "player": "Anthony Black",
@@ -463,7 +514,8 @@
      "12-point disagreement with 6 books -- every large gap we have examined was our error"
     ],
     "context": "TOR is strong from short (-0.95); projects 3.2 against 3.5; -0.5 min for the spread",
-    "shown": false
+    "shown": false,
+    "pick": false
    },
    {
     "player": "Moussa Diabat\u00e9",
@@ -491,7 +543,8 @@
      "+6.5 points of edge over break-even"
     ],
     "context": "DET is strong from rim (-1.50); projects 9.2 against 9.5; -0.8 min for the spread",
-    "shown": true
+    "shown": true,
+    "pick": true
    },
    {
     "player": "Jamal Murray",
@@ -520,7 +573,8 @@
      "12-point disagreement with 6 books -- every large gap we have examined was our error"
     ],
     "context": "NO is soft from three (+1.22); projects 5.2 against 4.5; -0.6 min for the spread",
-    "shown": false
+    "shown": false,
+    "pick": false
    },
    {
     "player": "Tristan Da Silva",
@@ -549,7 +603,8 @@
      "7-point disagreement with 5 books -- every large gap we have examined was our error"
     ],
     "context": "TOR is strong from short (-0.95); projects 3.6 against 3.5; -0.5 min for the spread",
-    "shown": true
+    "shown": true,
+    "pick": false
    },
    {
     "player": "De'Aaron Fox",
@@ -577,7 +632,8 @@
      "48.8% is below the 52.4% a bet needs at -110"
     ],
     "context": "UTA is soft from three (+1.92); projects 3.7 against 3.5; -1.8 min for the spread",
-    "shown": true
+    "shown": true,
+    "pick": false
    },
    {
     "player": "Nikola Joki\u0107",
@@ -605,7 +661,8 @@
      "48.0% is below the 52.4% a bet needs at -110"
     ],
     "context": "NO is soft from three (+1.22); projects 12.7 against 12.5; -0.6 min for the spread",
-    "shown": true
+    "shown": true,
+    "pick": false
    },
    {
     "player": "Evan Mobley",
@@ -633,7 +690,8 @@
      "46.9% is below the 52.4% a bet needs at -110"
     ],
     "context": "WSH is soft from rim (+1.25); projects 9.6 against 9.5; -1.2 min for the spread",
-    "shown": true
+    "shown": true,
+    "pick": false
    },
    {
     "player": "Kyle Kuzma",
@@ -661,7 +719,8 @@
      "44.6% is below the 52.4% a bet needs at -110"
     ],
     "context": "HOU is strong from three (-0.86); projects 6.1 against 5.5; -1.0 min for the spread",
-    "shown": true
+    "shown": true,
+    "pick": false
    },
    {
     "player": "Victor Wembanyama",
@@ -689,7 +748,8 @@
      "39.4% is below the 52.4% a bet needs at -110"
     ],
     "context": "UTA is soft from three (+1.92); projects 10.9 against 11.5; -1.8 min for the spread",
-    "shown": true
+    "shown": true,
+    "pick": false
    },
    {
     "player": "Stephon Castle",
@@ -717,7 +777,8 @@
      "36.0% is below the 52.4% a bet needs at -110"
     ],
     "context": "UTA is soft from short (+1.74); projects 5.0 against 5.5; -1.8 min for the spread",
-    "shown": true
+    "shown": true,
+    "pick": false
    },
    {
     "player": "Nickeil Alexander-Walker",
@@ -745,7 +806,8 @@
      "35.0% is below the 52.4% a bet needs at -110"
     ],
     "context": "MIA is soft from three (+0.80); projects 3.1 against 3.5; -0.5 min for the spread",
-    "shown": true
+    "shown": true,
+    "pick": false
    },
    {
     "player": "Joel Embiid",
@@ -773,7 +835,8 @@
      "33.7% is below the 52.4% a bet needs at -110"
     ],
     "context": "IND is soft from mid (+0.60); projects 8.6 against 9.5; -0.6 min for the spread",
-    "shown": false
+    "shown": false,
+    "pick": false
    }
   ],
   "ast": [],
