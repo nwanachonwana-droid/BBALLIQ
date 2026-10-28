@@ -89,6 +89,37 @@
       </div>
     </div>
 
+    <!-- THE MEASUREMENT: the whole screen, not the subset we like.
+         Most services publish the handful of rows they are betting and
+         nothing else, which makes the hit rate unfalsifiable: you
+         cannot tell a good process from a lucky one if the misses are
+         never written down. This is every candidate the model scored
+         tonight, with what it projects, what the market implies, and a
+         grade that comes out of those numbers rather than an opinion
+         typed over them.
+
+         Rows disagreeing with the market by more than ten points are
+         held back deliberately. Every large gap we have examined has
+         turned out to be our own projection error, so publishing them
+         as picks would be publishing the model's worst rows as its
+         best ones. -->
+    <div id="cardBlock" style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px" hidden>
+      <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #6FA8DC">TONIGHT&rsquo;S MEASUREMENT</div>
+        <div style="font-size: 13px; color: #6B7A8D" id="cardMeta"></div>
+      </div>
+      <div id="cardRows"></div>
+      <div id="cardQuiet" hidden style="background: #11161E; padding: 22px 24px; font-size: 15px; line-height: 1.7; color: #96A3B4">
+        <strong style="color: #C3CDDA; font-weight: 600">Nothing graded C or better tonight.</strong>
+        The screen ran over every game and no candidate cleared the bar once the matchup, the minutes and the price were all accounted for.
+      </div>
+      <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
+        <div id="cardNote"></div>
+        <br>
+        The grade is a function of the row, not a view about the player. It starts from how far the modelled chance sits above the 52.4% a bet needs at &minus;110, then loses a letter for each reason to trust the number less: too few games to read him from, a disagreement with the books large enough that it has usually been our error, or a defence that has replaced most of last season&rsquo;s rotation. Every deduction is named next to the row.
+      </div>
+    </div>
+
     <!-- RECORD: every published pick, graded off the official box
          score. The count is shown from pick one; the win rate is not
          shown until 30, because before that it is noise and putting a
@@ -942,6 +973,94 @@ editorPicks(null);
 // Either fetch may fail or arrive first, so each stores its half and
 // re-renders the line. Neither waits on the other: the reads show
 // whether or not we have priced anything, which is the point.
+
+// --- TONIGHT'S MEASUREMENT -------------------------------------------
+// The whole scored slate, not the rows we liked. Grades come from
+// card.py and are reproduced here, never recomputed: a letter that can
+// be derived two different ways will eventually be derived two
+// different ways.
+const GRADE_STYLE = {
+  A: ['#3FB68B', '#10261F'], B: ['#6FA8DC', '#111C26'],
+  C: ['#C3A14E', '#241E10'], D: ['#8B98A9', '#1A212B'],
+  F: ['#6B7A8D', '#161B22']
+};
+
+function measurement(d) {
+  // MONO is declared inside each of the other render functions, so it
+  // is not in scope here. node --check cannot see that -- it is a
+  // ReferenceError at paint time, not a syntax error.
+  const MONO = "font-family: 'IBM Plex Mono', monospace;";
+  const block = document.getElementById('cardBlock');
+  const body = document.getElementById('cardRows');
+  if (!block || !body || !d || !d.cards) return;
+  const rows = [];
+  for (const mk of Object.keys(d.cards)) {
+    for (const r of d.cards[mk] || []) {
+      if (r.shown !== false) rows.push(Object.assign({ market: mk }, r));
+    }
+  }
+  if (!rows.length) return;
+  block.hidden = false;
+
+  const order = { A: 0, B: 1, C: 2, D: 3, F: 4 };
+  rows.sort((a, b) => (order[a.grade] ?? 9) - (order[b.grade] ?? 9)
+                   || (b.p_mine || 0) - (a.p_mine || 0));
+
+  const meta = document.getElementById('cardMeta');
+  const playable = rows.filter(r => 'ABC'.includes(r.grade)).length;
+  if (meta) meta.textContent = rows.length + ' scored, ' + playable
+    + ' graded C or better';
+
+  const quiet = document.getElementById('cardQuiet');
+  if (quiet) quiet.hidden = playable > 0;
+
+  const note = document.getElementById('cardNote');
+  if (note && d.note) note.textContent = d.note;
+
+  body.innerHTML = rows.map(r => {
+    const [fg, bg] = GRADE_STYLE[r.grade] || GRADE_STYLE.F;
+    const side = String(r.side || '').toUpperCase();
+    const why = (r.why || []).map(w =>
+      `<div style="padding-left: 14px; text-indent: -14px">&middot; ${esc(w)}</div>`
+    ).join('');
+    return `<div style="border-top: 1px solid #1A212B; padding: 14px 24px;
+        display: flex; gap: 16px; align-items: flex-start">
+      <div style="${MONO} font-size: 20px; font-weight: 600; color: ${fg};
+        background: ${bg}; border-radius: 8px; min-width: 42px;
+        text-align: center; padding: 6px 0">${esc(r.grade || '?')}</div>
+      <div style="flex: 1 1 auto; min-width: 0">
+        <div style="font-size: 16px; color: #C3CDDA">
+          ${esc(r.player)}
+          <span style="color: #6B7A8D; font-size: 13px">${esc(r.team)} vs ${esc(r.opp)}</span>
+          <span style="${MONO} color: ${fg}; font-size: 13px; margin-left: 6px">
+            ${side} ${esc(r.line)} ${esc(r.market)}</span>
+        </div>
+        <div style="font-size: 13px; color: #8B98A9; margin-top: 4px">
+          ${esc(r.context || '')}</div>
+        <div style="font-size: 13px; color: #6B7A8D; margin-top: 4px">${why}</div>
+      </div>
+      <div style="${MONO} text-align: right; font-size: 13px; color: #8B98A9;
+        white-space: nowrap">
+        <div style="font-size: 17px; color: #C3CDDA">${pct(r.p_mine)}</div>
+        <div>market ${pct(r.p_mkt)}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function pct(v) {
+  return (v === null || v === undefined) ? '&mdash;' : (v * 100).toFixed(1) + '%';
+}
+function esc(s) {
+  return String(s === null || s === undefined ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+fetch('data/card.json', { cache: 'no-store' })
+  .then(r => r.ok ? r.json() : null)
+  .then(d => { if (d) measurement(d); })
+  .catch(() => {});
+
 fetch('data/tonight.json', { cache: 'no-store' })
   .then(r => r.ok ? r.json() : Promise.reject())
   .then(d => { _T = d; ticker(d); praWatch(d); dateline(); })

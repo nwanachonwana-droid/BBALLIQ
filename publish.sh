@@ -22,6 +22,7 @@ WARN=""
 # and nowhere else -- an edit made in a shell gets overwritten the next
 # time a bundle is extracted, which is exactly how this broke before.
 STATUS_GEN="$HOME/Downloads/site_data2.py"
+CARD_GEN="$HOME/Downloads/card.py"
 READS_GEN="$HOME/Downloads/sharpz_screen2.py"
 SLATE_GEN="$HOME/Downloads/slate.py"
 SLATE_CSV="$HOME/kalshi_data/slate_archive.csv"
@@ -53,6 +54,31 @@ generate() {
   rm -f "$out" "$err"
   return 1
 }
+
+# THE MEASUREMENT TABLE
+#
+# Its own step rather than a `generate` call, because card.py writes
+# the file itself (it needs the day and the market list) instead of
+# printing JSON to stdout. Fails soft like everything else here: a
+# card that cannot be built must not stop the record and tonight's
+# picks going out, and a stale card.json with yesterday's date is
+# better than a blank panel -- the page prints the date it was built.
+if [ -f "$CARD_GEN" ]; then
+  [ -f "$HOME/.sharpz_env" ] && . "$HOME/.sharpz_env"
+  CDERR=$(mktemp)
+  if python3 "$CARD_GEN" --day "$(date +%Y%m%d)" --all-markets \
+       --publish . >/dev/null 2>"$CDERR"; then
+    GEN="$GEN card"
+  else
+    WARN="$WARN
+  ! card failed - keeping the published data/card.json
+    $(tail -3 "$CDERR" | sed 's/^/    /')"
+  fi
+  rm -f "$CDERR"
+else
+  WARN="$WARN
+  ! card: no such file - $CARD_GEN"
+fi
 
 generate status  "$STATUS_GEN" data/status.json
 generate tonight "$READS_GEN"  data/tonight.json
