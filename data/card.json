@@ -1,6 +1,6 @@
 {
  "day": "20261029",
- "generated": "2026-10-29T11:23:22.111867-04:00",
+ "generated": "2026-10-29T11:24:58.343011-04:00",
  "breakeven": 0.524,
  "max_gap": 0.1,
  "rubric": {
@@ -41,8 +41,126 @@
  },
  "note": "FIT is the matchup signal the board ranks on. Measured over 546 player-games walk-forward it did not predict production, so it selects the side and is not multiplied into the projection.",
  "cards": {
-  "pts": [],
-  "reb": [],
+  "pts": [
+   {
+    "player": "Zach LaVine",
+    "team": "SAC",
+    "opp": "NO",
+    "pos": "G",
+    "side": "over",
+    "line": 21.5,
+    "fit": 0.08,
+    "via": "three",
+    "via_z": 1.22,
+    "mean": 21.94,
+    "sd": 6.37,
+    "p_mine": 0.4888,
+    "p_mkt": 0.4749,
+    "gap": 0.0139,
+    "books": 7,
+    "g": 4,
+    "short": 0.0,
+    "team_short": 0.0,
+    "opp_short": 0.0,
+    "flag": "-",
+    "grade": "F",
+    "why": [
+     "48.9% is below the 52.4% a bet needs at -110"
+    ],
+    "context": "NO is soft from three (+1.22); projects 21.9 against 21.5; -0.3 min for the spread",
+    "shown": true,
+    "pick": false
+   },
+   {
+    "player": "Domantas Sabonis",
+    "team": "SAC",
+    "opp": "NO",
+    "pos": "C",
+    "side": "over",
+    "line": 17.5,
+    "fit": 0.07,
+    "via": "rim",
+    "via_z": 0.52,
+    "mean": 17.73,
+    "sd": 5.77,
+    "p_mine": 0.4727,
+    "p_mkt": 0.4758,
+    "gap": -0.0031,
+    "books": 7,
+    "g": 4,
+    "short": 0.0,
+    "team_short": 0.0,
+    "opp_short": 0.0,
+    "flag": "-",
+    "grade": "F",
+    "why": [
+     "47.3% is below the 52.4% a bet needs at -110"
+    ],
+    "context": "NO is soft from rim (+0.52); projects 17.7 against 17.5; -0.3 min for the spread",
+    "shown": true,
+    "pick": false
+   }
+  ],
+  "reb": [
+   {
+    "player": "Domantas Sabonis",
+    "team": "SAC",
+    "opp": "NO",
+    "pos": "C",
+    "side": "over",
+    "line": 14.5,
+    "fit": 0.07,
+    "via": "rim",
+    "via_z": 0.52,
+    "mean": 14.53,
+    "sd": 3.86,
+    "p_mine": 0.4677,
+    "p_mkt": 0.4622,
+    "gap": 0.0055,
+    "books": 8,
+    "g": 4,
+    "short": 0.0,
+    "team_short": 0.0,
+    "opp_short": 0.0,
+    "flag": "-",
+    "grade": "F",
+    "why": [
+     "46.8% is below the 52.4% a bet needs at -110"
+    ],
+    "context": "NO is soft from rim (+0.52); projects 14.5 against 14.5; -0.3 min for the spread",
+    "shown": true,
+    "pick": false
+   },
+   {
+    "player": "Zach LaVine",
+    "team": "SAC",
+    "opp": "NO",
+    "pos": "G",
+    "side": "over",
+    "line": 3.5,
+    "fit": 0.08,
+    "via": "three",
+    "via_z": 1.22,
+    "mean": 3.25,
+    "sd": 1.61,
+    "p_mine": 0.3763,
+    "p_mkt": 0.4326,
+    "gap": -0.0563,
+    "books": 7,
+    "g": 4,
+    "short": 0.0,
+    "team_short": 0.0,
+    "opp_short": 0.0,
+    "flag": "-",
+    "grade": "F",
+    "why": [
+     "37.6% is below the 52.4% a bet needs at -110"
+    ],
+    "context": "NO is soft from three (+1.22); projects 3.2 against 3.5; -0.3 min for the spread",
+    "shown": true,
+    "pick": false
+   }
+  ],
   "ast": [],
   "threes": []
  }
