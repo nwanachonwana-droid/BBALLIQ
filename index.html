@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- SITE BUILD v23 -- bump this and the install.sh site check together -->
+<!-- SITE BUILD v24 -- bump this and the install.sh site check together -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sharpz Basketball — the board</title>
@@ -977,6 +977,12 @@ function footing(f) {
     return `<div style="padding: 8px 24px; background: #0B0F14;
       ${CARD_MONO} font-size: 11px; color: #4C5967">
       footing not measured for this market</div>`;
+  }
+  if (f.stale_days !== null && f.stale_days !== undefined && f.stale_days > 7) {
+    return `<div style="padding: 8px 24px; background: #0B0F14;
+      ${CARD_MONO} font-size: 11px; color: #C3A14E">
+      footing last measured ${f.stale_days} days ago and not refreshed
+      since &mdash; the sample has grown and this number has not</div>`;
   }
   const pct1 = (f.se * 100).toFixed(1), mde = (f.mde * 100).toFixed(0);
   const col = f.thin ? '#C3A14E' : '#4C5967';

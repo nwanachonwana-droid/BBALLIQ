@@ -1,16 +1,52 @@
 {
  "day": "20261029",
- "generated": "2026-10-29T15:02:25.692262-04:00",
+ "generated": "2026-10-29T15:11:43.563307-04:00",
  "breakeven": 0.524,
  "max_gap": 0.1,
  "grades_published": false,
  "rubric": null,
  "under_test": "This card is ordered by FIT, the matchup read. Over 546 player-games walk-forward FIT did not predict production, so the ordering is a hypothesis being measured in public, not a set of rated bets. Every row is graded against the box score the next morning. Letters return when the bands separate.",
  "footing": {
-  "pts": null,
-  "reb": null,
-  "ast": null,
-  "threes": null
+  "pts": {
+   "market": "pts",
+   "n": 570,
+   "ratio": 0.937,
+   "se": 0.017,
+   "mde": 0.048,
+   "thin": false,
+   "measured": "2026-10-29",
+   "stale_days": 0
+  },
+  "reb": {
+   "market": "reb",
+   "n": 125,
+   "ratio": 1.03,
+   "se": 0.047,
+   "mde": 0.132,
+   "thin": true,
+   "measured": "2026-10-29",
+   "stale_days": 0
+  },
+  "ast": {
+   "market": "ast",
+   "n": 137,
+   "ratio": 1.077,
+   "se": 0.077,
+   "mde": 0.216,
+   "thin": true,
+   "measured": "2026-10-29",
+   "stale_days": 0
+  },
+  "threes": {
+   "market": "threes",
+   "n": 258,
+   "ratio": 0.999,
+   "se": 0.054,
+   "mde": 0.151,
+   "thin": true,
+   "measured": "2026-10-29",
+   "stale_days": 0
+  }
  },
  "note": "FIT is the matchup signal the board ranks on. Measured over 546 player-games walk-forward it did not predict production, so it selects the side and is not multiplied into the projection.",
  "cards": {
@@ -37,7 +73,8 @@
     "opp_short": 0.0,
     "flag": "-",
     "context": "NO is soft from three (+1.22); projects 21.9 against 21.5; -0.3 min for the spread",
-    "shown": true
+    "shown": false,
+    "conflict": true
    },
    {
     "player": "Domantas Sabonis",
@@ -61,7 +98,8 @@
     "opp_short": 0.0,
     "flag": "-",
     "context": "NO is soft from rim (+0.52); projects 17.7 against 17.5; -0.3 min for the spread",
-    "shown": true
+    "shown": false,
+    "conflict": true
    }
   ],
   "reb": [
@@ -87,7 +125,8 @@
     "opp_short": 0.0,
     "flag": "-",
     "context": "NO is soft from rim (+0.52); projects 14.5 against 14.5; -0.3 min for the spread",
-    "shown": true
+    "shown": false,
+    "conflict": true
    },
    {
     "player": "Zach LaVine",
@@ -111,7 +150,8 @@
     "opp_short": 0.0,
     "flag": "-",
     "context": "NO is soft from three (+1.22); projects 3.2 against 3.5; -0.3 min for the spread",
-    "shown": true
+    "shown": false,
+    "conflict": true
    }
   ],
   "ast": [],
