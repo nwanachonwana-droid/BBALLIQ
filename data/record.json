@@ -35,7 +35,7 @@
   "20261025",
   "20261026"
  ],
- "generated": "2026-10-29T11:24:58.927577-04:00",
+ "generated": "2026-10-29T11:32:51.630858-04:00",
  "record": "15-14",
  "wins": 15,
  "losses": 14,
@@ -51,9 +51,9 @@
   "units": 0.604,
   "roi_pct": 1.95,
   "win_pct": 51.6,
-  "logged": 31,
+  "logged": 35,
   "graded": 31,
-  "pending": 0
+  "pending": 4
  },
  "picks": [
   {
@@ -510,6 +510,86 @@
      "at": "2026-10-27T20:48:52.399771-04:00"
     }
    ]
+  },
+  {
+   "day": "20261029",
+   "subject": "Domantas Sabonis",
+   "market": "points",
+   "side": "over",
+   "line": 17.5,
+   "odds": -110,
+   "tier": "log",
+   "measurement": true,
+   "grade": "F",
+   "p_mine": 0.4727,
+   "p_mkt": 0.4758,
+   "fit": 0.07,
+   "flag": "-",
+   "logged_at": "2026-10-29T11:32:21.204346-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261029",
+   "subject": "Domantas Sabonis",
+   "market": "rebounds",
+   "side": "over",
+   "line": 14.5,
+   "odds": -110,
+   "tier": "log",
+   "measurement": true,
+   "grade": "F",
+   "p_mine": 0.4677,
+   "p_mkt": 0.4622,
+   "fit": 0.07,
+   "flag": "-",
+   "logged_at": "2026-10-29T11:32:21.204351-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261029",
+   "subject": "Zach LaVine",
+   "market": "points",
+   "side": "over",
+   "line": 21.5,
+   "odds": -110,
+   "tier": "log",
+   "measurement": true,
+   "grade": "F",
+   "p_mine": 0.4888,
+   "p_mkt": 0.4749,
+   "fit": 0.08,
+   "flag": "-",
+   "logged_at": "2026-10-29T11:32:21.204334-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
+  },
+  {
+   "day": "20261029",
+   "subject": "Zach LaVine",
+   "market": "rebounds",
+   "side": "over",
+   "line": 3.5,
+   "odds": -110,
+   "tier": "log",
+   "measurement": true,
+   "grade": "F",
+   "p_mine": 0.3763,
+   "p_mkt": 0.4326,
+   "fit": 0.08,
+   "flag": "-",
+   "logged_at": "2026-10-29T11:32:21.204354-04:00",
+   "result": null,
+   "actual": null,
+   "units": null,
+   "graded_at": null
   }
  ]
 }

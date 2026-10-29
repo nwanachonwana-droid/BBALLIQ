@@ -30,3 +30,7 @@ day,subject,market,side,line,odds,tier,result,actual,units,logged_at,graded_at
 20261026,Ty Jerome,threes,over,3.5,146,board,loss,1,-1.0,2026-10-26T10:22:17.643742-04:00,2026-10-27T09:00:10.864003-04:00
 20261027,Day'Ron Sharpe,points,under,9.5,-103,log,win,4,0.970873786407767,2026-10-27T09:04:00.410765-04:00,2026-10-28T08:23:00.566999-04:00
 20261027,Landry Shamet,points,under,6.5,-107,log,loss,13,-1.0,2026-10-27T09:04:00.410734-04:00,2026-10-28T08:23:00.566872-04:00
+20261029,Domantas Sabonis,points,over,17.5,-110,log,,,,2026-10-29T11:32:21.204346-04:00,
+20261029,Domantas Sabonis,rebounds,over,14.5,-110,log,,,,2026-10-29T11:32:21.204351-04:00,
+20261029,Zach LaVine,points,over,21.5,-110,log,,,,2026-10-29T11:32:21.204334-04:00,
+20261029,Zach LaVine,rebounds,over,3.5,-110,log,,,,2026-10-29T11:32:21.204354-04:00,
