@@ -1,43 +1,16 @@
 {
  "day": "20261029",
- "generated": "2026-10-29T11:38:52.047113-04:00",
+ "generated": "2026-10-29T15:02:25.692262-04:00",
  "breakeven": 0.524,
  "max_gap": 0.1,
- "rubric": {
-  "breakeven": 0.524,
-  "bands": [
-   [
-    "A",
-    0.05,
-    "five or more points of edge"
-   ],
-   [
-    "B",
-    0.03,
-    "three or more"
-   ],
-   [
-    "C",
-    0.015,
-    "one and a half or more"
-   ],
-   [
-    "D",
-    0.0,
-    "anything above break-even"
-   ],
-   [
-    "F",
-    null,
-    "at or below break-even, or a known bias against it"
-   ]
-  ],
-  "demotions": [
-   "fewer than three games of this season to read him from",
-   "more than a six-point disagreement with the books, a band where every gap we have examined turned out to be our own error",
-   "a defence that has kept fewer than six of last season's top eight, so the matchup read describes a roster that has gone"
-  ],
-  "picks": "A row graded A or B is a bet. Everything else is published, graded tomorrow against the box score, and kept out of the headline record."
+ "grades_published": false,
+ "rubric": null,
+ "under_test": "This card is ordered by FIT, the matchup read. Over 546 player-games walk-forward FIT did not predict production, so the ordering is a hypothesis being measured in public, not a set of rated bets. Every row is graded against the box score the next morning. Letters return when the bands separate.",
+ "footing": {
+  "pts": null,
+  "reb": null,
+  "ast": null,
+  "threes": null
  },
  "note": "FIT is the matchup signal the board ranks on. Measured over 546 player-games walk-forward it did not predict production, so it selects the side and is not multiplied into the projection.",
  "cards": {
@@ -63,13 +36,8 @@
     "team_short": 0.0,
     "opp_short": 0.0,
     "flag": "-",
-    "grade": "F",
-    "why": [
-     "48.9% is below the 52.4% a bet needs at -110"
-    ],
     "context": "NO is soft from three (+1.22); projects 21.9 against 21.5; -0.3 min for the spread",
-    "shown": true,
-    "pick": false
+    "shown": true
    },
    {
     "player": "Domantas Sabonis",
@@ -92,13 +60,8 @@
     "team_short": 0.0,
     "opp_short": 0.0,
     "flag": "-",
-    "grade": "F",
-    "why": [
-     "47.3% is below the 52.4% a bet needs at -110"
-    ],
     "context": "NO is soft from rim (+0.52); projects 17.7 against 17.5; -0.3 min for the spread",
-    "shown": true,
-    "pick": false
+    "shown": true
    }
   ],
   "reb": [
@@ -123,13 +86,8 @@
     "team_short": 0.0,
     "opp_short": 0.0,
     "flag": "-",
-    "grade": "F",
-    "why": [
-     "46.8% is below the 52.4% a bet needs at -110"
-    ],
     "context": "NO is soft from rim (+0.52); projects 14.5 against 14.5; -0.3 min for the spread",
-    "shown": true,
-    "pick": false
+    "shown": true
    },
    {
     "player": "Zach LaVine",
@@ -152,13 +110,8 @@
     "team_short": 0.0,
     "opp_short": 0.0,
     "flag": "-",
-    "grade": "F",
-    "why": [
-     "37.6% is below the 52.4% a bet needs at -110"
-    ],
     "context": "NO is soft from three (+1.22); projects 3.2 against 3.5; -0.3 min for the spread",
-    "shown": true,
-    "pick": false
+    "shown": true
    }
   ],
   "ast": [],

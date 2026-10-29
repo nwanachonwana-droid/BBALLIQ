@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- SITE BUILD v21 -- bump this and the install.sh site check together -->
+<!-- SITE BUILD v23 -- bump this and the install.sh site check together -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sharpz Basketball — the board</title>
@@ -858,11 +858,18 @@ record(null);
 // be derived two different ways will eventually be derived two
 // different ways.
 const CARD_MONO = "font-family: 'IBM Plex Mono', monospace;";
-const GRADE_STYLE = {
-  A: ['#3FB68B', '#10261F'], B: ['#6FA8DC', '#111C26'],
-  C: ['#C3A14E', '#241E10'], D: ['#8B98A9', '#1A212B'],
-  F: ['#6B7A8D', '#161B22']
-};
+// WHY THERE ARE NO LETTERS HERE ANY MORE
+// The grade was a function of p_mine, and p_mine rests on a projection
+// whose matchup term was measured over 546 player-games walk-forward
+// and did not predict production. Ranking on it may still be right.
+// Printing a letter derived from it claims we have shown that it is.
+// The grade is still computed, still logged, still settled against the
+// box score every morning -- it just is not published until the bands
+// separate. card.json carries grades_published:false and this page
+// refuses to draw a letter regardless, so the two cannot drift.
+const RANK_FG = '#8B98A9', RANK_BG = '#141A22';
+const MKT_NAME = { pts: 'SCORING', reb: 'REBOUNDS',
+                   ast: 'ASSISTS', threes: 'THREES' };
 
 function measurement(d) {
   // CARD_MONO rather than MONO: the page's other render functions each
@@ -874,72 +881,69 @@ function measurement(d) {
   const block = document.getElementById('cardBlock');
   const body = document.getElementById('cardRows');
   if (!block || !body || !d || !d.cards) return;
-  const rows = [];
-  for (const mk of Object.keys(d.cards)) {
-    for (const r of d.cards[mk] || []) {
-      if (r.shown !== false) rows.push(Object.assign({ market: mk }, r));
-    }
+
+  // The switch is honoured here as well as in card.py. A page that
+  // draws whatever the file happens to contain is one bad publish away
+  // from putting the letters back without anyone deciding to.
+  const showGrades = d.grades_published === true;
+
+  const groups = [];
+  for (const mk of ['pts', 'reb', 'threes', 'ast']) {
+    const rows = (d.cards[mk] || [])
+      .filter(r => r.shown !== false)
+      .map(r => Object.assign({ market: mk }, r))
+      .sort((a, b) => (b.p_mine || 0) - (a.p_mine || 0));
+    if (rows.length) groups.push([mk, rows]);
   }
-  if (!rows.length) return;
+  const total = groups.reduce((n, g) => n + g[1].length, 0);
+  if (!total) return;
   block.hidden = false;
 
-  const order = { A: 0, B: 1, C: 2, D: 3, F: 4 };
-  rows.sort((a, b) => (order[a.grade] ?? 9) - (order[b.grade] ?? 9)
-                   || (b.p_mine || 0) - (a.p_mine || 0));
-
   const meta = document.getElementById('cardMeta');
-  const nPicks = rows.filter(r => r.pick).length;
-  if (meta) meta.textContent = rows.length + ' scored, ' + nPicks
-    + (nPicks === 1 ? ' pick' : ' picks');
+  if (meta) meta.textContent = total + ' scored, ordering under test';
 
+  // The "nothing tonight" line was tied to the pick count. There are
+  // no picks now, so it has nothing to say and would contradict a
+  // table full of rows sitting directly beneath it.
   const quiet = document.getElementById('cardQuiet');
-  if (quiet) quiet.hidden = nPicks > 0;
+  if (quiet) quiet.hidden = true;
 
   const note = document.getElementById('cardNote');
-  if (note && d.note) note.textContent = d.note;
+  if (note && (d.under_test || d.note)) {
+    note.textContent = d.under_test || d.note;
+  }
 
-  // Picks first, under their own heading, then everything else the
-  // model scored. One list sorted by grade buried the bets among the
-  // rejects -- the reader cannot tell what we are actually backing.
-  const picks = rows.filter(r => r.pick);
-  const rest = rows.filter(r => !r.pick);
   const head = (t, sub) => `<div style="border-top: 1px solid #1A212B;
       background: #0B0F14; padding: 10px 24px; ${CARD_MONO} font-size: 11px;
-      letter-spacing: 1.6px; color: #6FA8DC">${t}
+      letter-spacing: 1.6px; color: #6FA8DC">${esc(t)}
       <span style="color: #4C5967; letter-spacing: 0">${sub}</span></div>`;
 
-  body.innerHTML =
-    (picks.length
-      ? head('THE PICKS', '&nbsp; graded A or B &mdash; these are the bets')
-        + picks.map(render).join('')
-      : '')
-    + (rest.length
-      ? head('ALSO SCORED', '&nbsp; published and graded, not backed')
-        + rest.map(render).join('')
-      : '');
+  body.innerHTML = groups.map(([mk, rows]) =>
+    head(MKT_NAME[mk] || mk.toUpperCase(),
+         '&nbsp; best matchups first &mdash; not rated, not ranked by '
+         + 'confidence')
+    + footing((d.footing || {})[mk])
+    + rows.map((r, n) => render(r, n + 1)).join('')
+  ).join('');
 
-  function render(r) {
-    const [fg, bg] = GRADE_STYLE[r.grade] || GRADE_STYLE.F;
+  function render(r, n) {
     const side = String(r.side || '').toUpperCase();
-    const why = (r.why || []).map(w =>
-      `<div style="padding-left: 14px; text-indent: -14px">&middot; ${esc(w)}</div>`
-    ).join('');
+    const badge = showGrades ? esc(r.grade || '?') : String(n);
     return `<div style="border-top: 1px solid #1A212B; padding: 14px 24px;
         display: flex; gap: 16px; align-items: flex-start">
-      <div style="${CARD_MONO} font-size: 20px; font-weight: 600; color: ${fg};
-        background: ${bg}; border-radius: 8px; min-width: 42px;
-        text-align: center; padding: 6px 0">${esc(r.grade || '?')}</div>
+      <div style="${CARD_MONO} font-size: 17px; font-weight: 600;
+        color: ${RANK_FG}; background: ${RANK_BG}; border-radius: 8px;
+        min-width: 42px; text-align: center; padding: 8px 0">${badge}</div>
       <div style="flex: 1 1 auto; min-width: 0">
         <div style="font-size: 16px; color: #C3CDDA">
           ${esc(r.player)}
           <span style="color: #6B7A8D; font-size: 13px">${esc(r.team)} vs ${esc(r.opp)}</span>
-          <span style="${CARD_MONO} color: ${fg}; font-size: 13px; margin-left: 6px">
-            ${side} ${esc(r.line)} ${esc(r.market)}</span>
+          <span style="${CARD_MONO} color: #C3CDDA; font-size: 13px; margin-left: 6px">
+            ${side} ${esc(r.line)}</span>
           ${biasTag(r)}
         </div>
         <div style="font-size: 13px; color: #8B98A9; margin-top: 4px">
           ${esc(r.context || '')}</div>
-        <div style="font-size: 13px; color: #6B7A8D; margin-top: 4px">${why}</div>
       </div>
       <div style="${CARD_MONO} text-align: right; font-size: 13px; color: #8B98A9;
         white-space: nowrap">
@@ -949,13 +953,44 @@ function measurement(d) {
     </div>`;
   }
 
-  rubric(d.rubric);
+  underTest(d);
 }
 
 // The depletion flag, shown on the row. It lived only in the JSON and
-// the terminal table, so the one guard that demotes a bet was
-// invisible on the page -- which is precisely where it needs to be
-// readable, since the reader cannot run the script.
+// the terminal table, so the one guard that moves a row to the bottom
+// was invisible on the page -- which is precisely where it needs to be
+// readable, since the reader cannot run the script. It stays while the
+// letters go, because it is a counted fact about tonight's roster
+// rather than a claim about how good the bet is.
+// HOW WELL IS THIS MARKET ACTUALLY KNOWN?
+// The four markets are not calibrated on comparable evidence. Points
+// rests on 570 player-games that had a posted line and settles to
+// +/-1.7%; rebounds rests on 125 and +/-4.7%, assists on 137. Rebounds
+// was half of the first card we graded.
+//
+// Taking the letters off was about not implying a confidence the
+// measurement does not support. Printing a rebound row in the same
+// type, to the same decimal place, as a points row is the same error
+// one level down. So each market says what it is standing on.
+function footing(f) {
+  if (!f) {
+    return `<div style="padding: 8px 24px; background: #0B0F14;
+      ${CARD_MONO} font-size: 11px; color: #4C5967">
+      footing not measured for this market</div>`;
+  }
+  const pct1 = (f.se * 100).toFixed(1), mde = (f.mde * 100).toFixed(0);
+  const col = f.thin ? '#C3A14E' : '#4C5967';
+  const tail = f.thin
+    ? ` &mdash; wide enough to flip the side of a typical row. Treat this
+       list as the weakest of the four.`
+    : '';
+  return `<div style="padding: 8px 24px; background: #0B0F14;
+    ${CARD_MONO} font-size: 11px; line-height: 1.6; color: ${col}">
+    calibrated on ${f.n} player-games that had a posted line
+    (&plusmn;${pct1}% on the ratio; an error up to ${mde}% is still
+    consistent with that sample)${tail}</div>`;
+}
+
 function biasTag(r) {
   if (!r.flag || r.flag === '-') return '';
   const out = (r.short || 0) * 100;
@@ -975,16 +1010,52 @@ function biasTag(r) {
     white-space: nowrap">${esc(r.flag.toUpperCase())}</span>`;
 }
 
-// The grading rule, rendered from the card's own constants rather than
-// written out here. A rubric kept in HTML drifts from the code the
-// first time a threshold moves, and then the page is explaining a rule
-// nobody applies.
+// What replaced the rubric. The rubric explained how a letter was
+// arrived at; with no letter to explain, the honest thing in that
+// space is what the table is actually claiming and what would have to
+// happen for it to claim more.
+function underTest(d) {
+  const el = document.getElementById('cardRubric');
+  if (!el) return;
+  if (d.grades_published === true && d.rubric) { return rubric(d.rubric); }
+  const be = ((d.breakeven || 0.524) * 100).toFixed(1);
+  el.innerHTML = `
+    <div style="margin-bottom: 10px"><strong style="color: #C3CDDA">What this
+      table claims, and what it does not.</strong> Each row is a matchup the
+      model likes for that side &mdash; soft defence in the zones that
+      player shoots from. The rows are ordered by that read. That ordering
+      is a <em>hypothesis</em>, and this page is where it gets tested in
+      public.</div>
+    <div style="margin-bottom: 10px">It is not a rated bet list. We used to
+      put a letter on each row, derived from the modelled chance against the
+      ${be}% a &minus;110 bet needs. We have stopped. Measured over 546
+      player-games, walk-forward and with no lookahead, the matchup signal
+      did not predict production in any of the four markets &mdash; and on
+      the first night the letters were graded, the worst-rated rows
+      outperformed the best-rated ones. One night is noise. But an untested
+      ordering plus a night of contrary evidence is not something to print a
+      grade on.</div>
+    <div>So: every row here is logged and settled against the official box
+      score the next morning, winners and losers alike, including the rows
+      we would not have backed. When the ordering separates &mdash; when the
+      top of these lists beats the bottom by two standard errors over a real
+      sample &mdash; the grades come back with something behind them. Until
+      then you are watching the measurement, not the verdict.
+      <a href="log.html" style="color: #96A3B4; border-bottom: 1px solid #2A3441;
+        text-decoration: none">Every row is in the log.</a></div>`;
+}
+
+// Kept for the day GRADES_PUBLISHED goes back to true. Unreferenced
+// until then, and deliberately not deleted: the rule it renders is the
+// one the measurement is trying to earn back.
 function rubric(rb) {
   const el = document.getElementById('cardRubric');
   if (!el || !rb) return;
+  const GS = { A: ['#3FB68B'], B: ['#6FA8DC'], C: ['#C3A14E'],
+               D: ['#8B98A9'], F: ['#6B7A8D'] };
   const be = (rb.breakeven * 100).toFixed(1);
   const bands = (rb.bands || []).map(([g, lo, text]) =>
-    `<span style="color: ${(GRADE_STYLE[g] || GRADE_STYLE.F)[0]};
+    `<span style="color: ${(GS[g] || GS.F)[0]};
       font-weight: 600">${esc(g)}</span> ${esc(text)}`).join(' &nbsp;·&nbsp; ');
   const dem = (rb.demotions || []).map(x =>
     `<li style="margin-bottom: 4px">${esc(x)}</li>`).join('');
