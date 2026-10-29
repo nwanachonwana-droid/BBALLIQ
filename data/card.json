@@ -1,6 +1,6 @@
 {
  "day": "20261029",
- "generated": "2026-10-29T15:14:07.960279-04:00",
+ "generated": "2026-10-29T15:17:56.311671-04:00",
  "breakeven": 0.524,
  "max_gap": 0.1,
  "grades_published": false,
@@ -73,8 +73,8 @@
     "opp_short": 0.0,
     "flag": "-",
     "context": "NO is soft from three (+1.22); projects 21.9 against 21.5; -0.3 min for the spread",
-    "shown": false,
-    "conflict": true
+    "shown": true,
+    "conflict": false
    },
    {
     "player": "Domantas Sabonis",
@@ -98,8 +98,8 @@
     "opp_short": 0.0,
     "flag": "-",
     "context": "NO is soft from rim (+0.52); projects 17.7 against 17.5; -0.3 min for the spread",
-    "shown": false,
-    "conflict": true
+    "shown": true,
+    "conflict": false
    }
   ],
   "reb": [
@@ -125,8 +125,8 @@
     "opp_short": 0.0,
     "flag": "-",
     "context": "NO is soft from rim (+0.52); projects 14.5 against 14.5; -0.3 min for the spread",
-    "shown": false,
-    "conflict": true
+    "shown": true,
+    "conflict": false
    },
    {
     "player": "Zach LaVine",
