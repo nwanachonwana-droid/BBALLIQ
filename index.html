@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- SITE BUILD v24 -- bump this and the install.sh site check together -->
+<!-- SITE BUILD v25 -- bump this and the install.sh site check together -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sharpz Basketball — the board</title>
@@ -89,6 +89,22 @@
          turned out to be our own projection error, so publishing them
          as picks would be publishing the model's worst rows as its
          best ones. -->
+    <!-- MATCHUP BOARDS. A different question from the panel below,
+         and the page has to keep them apart: this ranks spots before
+         any price is looked at, the measurement panel joins the
+         model against a posted line. Reading one as the other is how
+         a board becomes a tip sheet. -->
+    <div id="boardsBlock" style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px" hidden>
+      <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #6FA8DC">TONIGHT&rsquo;S MATCHUPS</div>
+        <div style="font-size: 13px; color: #6B7A8D" id="boardsMeta"></div>
+      </div>
+      <div id="boardsRows"></div>
+      <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
+        <div id="boardsNote"></div>
+      </div>
+    </div>
+
     <div id="cardBlock" style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px" hidden>
       <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
         <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #6FA8DC">TONIGHT&rsquo;S MEASUREMENT</div>
@@ -852,6 +868,134 @@ record(null);
 // re-renders the line. Neither waits on the other: the reads show
 // whether or not we have priced anything, which is the point.
 
+// --- TONIGHT'S MATCHUPS ----------------------------------------------
+// The four boards, top five each. Separate from the measurement panel
+// below on purpose: this one never looks at a price.
+//
+// THE RELIABILITY TRAVELS WITH THE ROWS. Rebounds and assists rest on
+// three to five games of team data and measured 32% and 15% real; the
+// heading says so above the rows rather than in a footnote that will
+// drift away from them. Same rule the card's footing follows -- a
+// reader who cannot run the script has only what the page prints.
+const BOARD_ORDER = ['pts', 'threes', 'reb', 'ast'];
+
+function boards(d) {
+  const block = document.getElementById('boardsBlock');
+  const body = document.getElementById('boardsRows');
+  if (!block || !body || !d || !d.boards) return;
+  const groups = BOARD_ORDER
+    .map(mk => [mk, (d.boards[mk] || [])])
+    .filter(([, rows]) => rows.length);
+  const total = groups.reduce((n, g) => n + g[1].length, 0);
+  if (!total) return;
+  block.hidden = false;
+
+  const meta = document.getElementById('boardsMeta');
+  if (meta) meta.textContent = 'top ' + Math.max(...groups.map(g => g[1].length))
+    + ' per category \u00b7 no price consulted';
+
+  const note = document.getElementById('boardsNote');
+  if (note && d.note) note.textContent = d.note;
+
+  const rel = d.reliability || {};
+  const relKey = { reb: 'share', ast: 'ast100' };
+
+  body.innerHTML = groups.map(([mk, rows]) => {
+    const title = (d.title || {})[mk] || mk.toUpperCase();
+    const model = (d.model || {})[mk] || '';
+    const unit = (d.unit || {})[mk] || '';
+    const src = (d.source || {})[mk];
+    let basis, bcol;
+    if (src === 'last season') {
+      basis = 'built on last season &mdash; full sample, nothing shrunk';
+      bcol = '#4C5967';
+    } else {
+      const r = rel[relKey[mk]];
+      basis = r === undefined
+        ? 'built on this season'
+        : 'built on this season &mdash; <strong>' + Math.round(r * 100)
+          + '% reliable</strong> at these game counts, and shrunk to match';
+      bcol = '#C3A14E';
+    }
+    return `<div style="border-top: 1px solid #1A212B; background: #0B0F14;
+        padding: 10px 24px 8px">
+        <div style="${CARD_MONO} font-size: 11px; letter-spacing: 1.6px;
+          color: #6FA8DC">${esc(title)}</div>
+        <div style="font-size: 12px; color: #6B7A8D; margin-top: 3px">${esc(model)}</div>
+        <div style="${CARD_MONO} font-size: 11px; color: ${bcol};
+          margin-top: 3px">${basis}</div>
+      </div>`
+      + rows.map((r, i) => boardRow(r, i + 1, unit)).join('');
+  }).join('') + praBlock(d);
+}
+
+function boardRow(r, n, unit) {
+  return `<div style="border-top: 1px solid #1A212B; padding: 12px 24px;
+      display: flex; gap: 14px; align-items: flex-start">
+    <div style="${CARD_MONO} font-size: 15px; font-weight: 600; color: #8B98A9;
+      background: #141A22; border-radius: 7px; min-width: 34px;
+      text-align: center; padding: 6px 0">${n}</div>
+    <div style="flex: 1 1 auto; min-width: 0">
+      <div style="font-size: 15px; color: #C3CDDA">${esc(r.player)}
+        <span style="color: #6B7A8D; font-size: 13px">${esc(r.team)} vs ${esc(r.opp)}</span>
+      </div>
+      <div style="font-size: 12px; color: #8B98A9; margin-top: 3px">${esc(r.why || '')}</div>
+    </div>
+    <div style="${CARD_MONO} text-align: right; font-size: 12px; color: #8B98A9;
+      white-space: nowrap">
+      <div style="font-size: 15px; color: #C3CDDA">${(r.zs >= 0 ? '+' : '')}${Number(r.zs).toFixed(2)}</div>
+      <div>${Number(r.base).toFixed(1)} ${esc(unit)}</div>
+    </div>
+  </div>`;
+}
+
+// PRA and the points+threes pairing, with the double-count named --
+// the flag is the whole value of that list and dropping it on the way
+// to the page would leave a reader treating one claim as two.
+function praBlock(d) {
+  let out = '';
+  const pra = d.pra || [];
+  if (pra.length) {
+    out += `<div style="border-top: 1px solid #1A212B; background: #0B0F14;
+      padding: 10px 24px; ${CARD_MONO} font-size: 11px; letter-spacing: 1.6px;
+      color: #6FA8DC">PRA &nbsp;<span style="color: #4C5967; letter-spacing: 0">
+      on all three of points, rebounds and assists</span></div>`;
+    out += pra.map(r => `<div style="border-top: 1px solid #1A212B;
+      padding: 12px 24px; font-size: 14px; color: #C3CDDA">${esc(r.player)}
+      <span style="color: #6B7A8D; font-size: 13px">${esc(r.team)} vs ${esc(r.opp)}
+      &middot; ${Number(r.base_pra).toFixed(1)} P+R+A a game</span>
+      <div style="${CARD_MONO} font-size: 12px; color: #8B98A9; margin-top: 4px">
+        pts ${fmtz(r.pts_z)} &nbsp; reb ${fmtz(r.reb_z)} &nbsp; ast ${fmtz(r.ast_z)}
+        &nbsp;&rarr;&nbsp; ${fmtz(r.z_sum)}</div></div>`).join('');
+  }
+  const pt = d.points_threes || [];
+  if (pt.length) {
+    out += `<div style="border-top: 1px solid #1A212B; background: #0B0F14;
+      padding: 10px 24px; ${CARD_MONO} font-size: 11px; letter-spacing: 1.6px;
+      color: #6FA8DC">POINTS + THREES &nbsp;<span style="color: #4C5967;
+      letter-spacing: 0">both built on last season</span></div>`;
+    out += pt.map(r => {
+      const tag = r.same_claim
+        ? `<span style="color: #FF8A52">one claim, not two &mdash; his points
+           edge is the three zone</span>`
+        : `<span style="color: #3FB68B">two separate reads &mdash; his points
+           edge is ${esc(r.via)}, not three</span>`;
+      return `<div style="border-top: 1px solid #1A212B; padding: 12px 24px;
+        font-size: 14px; color: #C3CDDA">${esc(r.player)}
+        <span style="color: #6B7A8D; font-size: 13px">${esc(r.team)} vs ${esc(r.opp)}</span>
+        <div style="${CARD_MONO} font-size: 12px; color: #8B98A9; margin-top: 4px">
+          pts ${fmtz(r.pts_z)} &nbsp; threes ${fmtz(r.thr_z)}</div>
+        <div style="font-size: 12px; margin-top: 3px">${tag}</div></div>`;
+    }).join('');
+  }
+  return out;
+}
+
+function fmtz(v) {
+  return (v === null || v === undefined) ? '&mdash;'
+    : (v >= 0 ? '+' : '') + Number(v).toFixed(2);
+}
+
 // --- TONIGHT'S MEASUREMENT -------------------------------------------
 // The whole scored slate, not the rows we liked. Grades come from
 // card.py and are reproduced here, never recomputed: a letter that can
@@ -1084,6 +1228,16 @@ function esc(s) {
   return String(s === null || s === undefined ? '' : s)
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
+
+fetch('data/boards.json', { cache: 'no-store' })
+  .then(r => r.ok ? r.json() : null)
+  .then(d => { if (d) boards(d); })
+  .catch(e => {
+    // not silent, for the same reason the card's catch is not: an
+    // exception in boards() would otherwise leave an empty panel and
+    // a clean console, which reads exactly like "no data".
+    if (e && e.name !== 'TypeError') console.error('boards:', e);
+  });
 
 fetch('data/card.json', { cache: 'no-store' })
   .then(r => r.ok ? r.json() : null)
