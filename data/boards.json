@@ -1,7 +1,7 @@
 {
  "day": "20261031",
- "build": "2026-10-31a",
- "generated": "2026-10-31T14:35:24-04:00",
+ "build": "2026-10-31b",
+ "generated": "2026-10-31T14:38:24-04:00",
  "reliability": {
   "misses": 0.046,
   "share": 0.155,
@@ -330,17 +330,6 @@
  "pra": [],
  "points_threes": [
   {
-   "player": "jrue holiday",
-   "team": "POR",
-   "opp": "UTA",
-   "pts_z": 2.239,
-   "thr_z": 1.594,
-   "pts_why": "soft from three; UTA drtg -3.9 vs last season",
-   "thr_why": "UTA is +1.57 from three; he takes 5.8 a game at 35%; UTA drtg -3.9 vs last season",
-   "via": "three",
-   "same_claim": true
-  },
-  {
    "player": "toumani camara",
    "team": "POR",
    "opp": "UTA",
@@ -348,6 +337,17 @@
    "thr_z": 1.594,
    "pts_why": "soft from three; UTA drtg -3.9 vs last season",
    "thr_why": "UTA is +1.57 from three; he takes 7.5 a game at 41%; UTA drtg -3.9 vs last season",
+   "via": "three",
+   "same_claim": true
+  },
+  {
+   "player": "jrue holiday",
+   "team": "POR",
+   "opp": "UTA",
+   "pts_z": 2.239,
+   "thr_z": 1.594,
+   "pts_why": "soft from three; UTA drtg -3.9 vs last season",
+   "thr_why": "UTA is +1.57 from three; he takes 5.8 a game at 35%; UTA drtg -3.9 vs last season",
    "via": "three",
    "same_claim": true
   },
