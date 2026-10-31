@@ -1,7 +1,7 @@
 {
  "day": "20261031",
- "build": "2026-10-30v",
- "generated": "2026-10-31T14:30:20-04:00",
+ "build": "2026-10-31a",
+ "generated": "2026-10-31T14:35:24-04:00",
  "reliability": {
   "misses": 0.046,
   "share": 0.155,
@@ -204,8 +204,8 @@
     "opp": "PHI",
     "base": 9.9,
     "mins": 29.7,
-    "zs": 0.277,
-    "lift": 0.16,
+    "zs": 0.468,
+    "lift": 0.28,
     "why": "101 misses in PHI games (+1.20); PHI leaves 2.08 more on the floor than average",
     "parts": {
      "vol": 1.2,
@@ -218,8 +218,8 @@
     "opp": "PHI",
     "base": 7.8,
     "mins": 28.0,
-    "zs": 0.277,
-    "lift": 0.13,
+    "zs": 0.468,
+    "lift": 0.22,
     "why": "101 misses in PHI games (+1.20); PHI leaves 2.08 more on the floor than average",
     "parts": {
      "vol": 1.2,
@@ -232,8 +232,8 @@
     "opp": "OKC",
     "base": 9.0,
     "mins": 34.0,
-    "zs": 0.103,
-    "lift": 0.06,
+    "zs": 0.313,
+    "lift": 0.17,
     "why": "102 misses in OKC games (+1.55); OKC leaves 0.56 more on the floor than average",
     "parts": {
      "vol": 1.55,
@@ -241,44 +241,44 @@
     }
    },
    {
-    "player": "derik queen",
-    "team": "NO",
-    "opp": "ATL",
-    "base": 7.1,
-    "mins": 23.8,
-    "zs": 0.112,
-    "lift": 0.05,
-    "why": "97 misses in ATL games (+0.33); ATL leaves 0.76 more on the floor than average",
-    "parts": {
-     "vol": 0.33,
-     "shr": 0.76
-    }
-   },
-   {
-    "player": "tari eason",
+    "player": "amen thompson",
     "team": "HOU",
     "opp": "OKC",
-    "base": 7.4,
-    "mins": 29.6,
-    "zs": 0.103,
-    "lift": 0.05,
+    "base": 7.2,
+    "mins": 34.7,
+    "zs": 0.313,
+    "lift": 0.14,
     "why": "102 misses in OKC games (+1.55); OKC leaves 0.56 more on the floor than average",
     "parts": {
      "vol": 1.55,
      "shr": 0.56
+    }
+   },
+   {
+    "player": "rudy gobert",
+    "team": "MIN",
+    "opp": "SA",
+    "base": 11.6,
+    "mins": 30.0,
+    "zs": 0.194,
+    "lift": 0.14,
+    "why": "99 misses in SA games (+0.80); SA leaves 0.42 more on the floor than average",
+    "parts": {
+     "vol": 0.8,
+     "shr": 0.42
     }
    }
   ],
   "ast": [
    {
-    "player": "cameron boozer",
-    "team": "MEM",
-    "opp": "SAC",
-    "base": 6.2,
-    "mins": 32.0,
-    "zs": 0.073,
-    "lift": 0.03,
-    "why": "SAC allows 30.4 ast/100 (+1.61 after shrinking to 4% reliability)",
+    "player": "jalen johnson",
+    "team": "ATL",
+    "opp": "NO",
+    "base": 8.0,
+    "mins": 33.5,
+    "zs": 0.35,
+    "lift": 0.17,
+    "why": "NO allows 30.1 ast/100 (+1.43 after shrinking to 21% reliability)",
     "parts": {}
    },
    {
@@ -287,20 +287,20 @@
     "opp": "SAC",
     "base": 6.8,
     "mins": 30.0,
-    "zs": 0.073,
-    "lift": 0.03,
-    "why": "SAC allows 30.4 ast/100 (+1.61 after shrinking to 4% reliability)",
+    "zs": 0.387,
+    "lift": 0.16,
+    "why": "SAC allows 30.4 ast/100 (+1.61 after shrinking to 21% reliability)",
     "parts": {}
    },
    {
-    "player": "jalen johnson",
-    "team": "ATL",
-    "opp": "NO",
-    "base": 8.0,
-    "mins": 33.5,
-    "zs": 0.066,
-    "lift": 0.03,
-    "why": "NO allows 30.1 ast/100 (+1.43 after shrinking to 4% reliability)",
+    "player": "cameron boozer",
+    "team": "MEM",
+    "opp": "SAC",
+    "base": 6.2,
+    "mins": 32.0,
+    "zs": 0.387,
+    "lift": 0.14,
+    "why": "SAC allows 30.4 ast/100 (+1.61 after shrinking to 21% reliability)",
     "parts": {}
    },
    {
@@ -309,20 +309,20 @@
     "opp": "ATL",
     "base": 6.9,
     "mins": 32.2,
-    "zs": 0.065,
-    "lift": 0.03,
-    "why": "ATL allows 29.5 ast/100 (+1.16 after shrinking to 5% reliability)",
+    "zs": 0.294,
+    "lift": 0.12,
+    "why": "ATL allows 29.5 ast/100 (+1.16 after shrinking to 21% reliability)",
     "parts": {}
    },
    {
-    "player": "jaden mcdaniels",
+    "player": "lamelo ball",
     "team": "MIN",
     "opp": "SA",
-    "base": 3.2,
-    "mins": 32.5,
-    "zs": 0.012,
-    "lift": 0.0,
-    "why": "SA allows 27.1 ast/100 (+0.06 after shrinking to 4% reliability)",
+    "base": 6.7,
+    "mins": 26.2,
+    "zs": 0.064,
+    "lift": 0.03,
+    "why": "SA allows 27.1 ast/100 (+0.06 after shrinking to 21% reliability)",
     "parts": {}
    }
   ]
