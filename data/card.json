@@ -1,6 +1,6 @@
 {
- "day": "20261030",
- "generated": "2026-10-30T18:10:54.535904-04:00",
+ "day": "20261031",
+ "generated": "2026-10-31T14:30:43.316301-04:00",
  "breakeven": 0.524,
  "max_gap": 0.1,
  "grades_published": false,
@@ -15,7 +15,7 @@
    "mde": 0.048,
    "thin": false,
    "measured": "2026-10-29",
-   "stale_days": 1
+   "stale_days": 2
   },
   "reb": {
    "market": "reb",
@@ -25,7 +25,7 @@
    "mde": 0.132,
    "thin": true,
    "measured": "2026-10-29",
-   "stale_days": 1
+   "stale_days": 2
   },
   "ast": {
    "market": "ast",
@@ -35,7 +35,7 @@
    "mde": 0.216,
    "thin": true,
    "measured": "2026-10-29",
-   "stale_days": 1
+   "stale_days": 2
   },
   "threes": {
    "market": "threes",
@@ -45,7 +45,7 @@
    "mde": 0.151,
    "thin": true,
    "measured": "2026-10-29",
-   "stale_days": 1
+   "stale_days": 2
   },
   "pra": null
  },
