@@ -26,7 +26,6 @@ CARD_GEN="$HOME/Downloads/card.py"
 READS_GEN="$HOME/Downloads/sharpz_screen2.py"
 SLATE_GEN="$HOME/Downloads/slate.py"
 SLATE_CSV="$HOME/kalshi_data/slate_archive.csv"
-COVERS_CSV="$HOME/kalshi_data/covers_archive.csv"
 
 # Run one generator into one data file. On failure the published file
 # is left alone and the REAL error is printed: the first version sent
@@ -98,24 +97,10 @@ if [ -f "$SLATE_GEN" ]; then
     rm -f "$RT"
   fi
   rm -f "$RE"
-  # the Covers study, reported from its archive rather than re-graded
-  CT=$(mktemp); CE=$(mktemp)
-  if python3 "$SLATE_GEN" covers-report --json > "$CT" 2> "$CE" \
-     && python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$CT" 2>/dev/null; then
-    mv "$CT" data/covers.json
-    GEN="$GEN covers"
-  else
-    WARN="$WARN
-  ! covers-report failed - keeping the published covers.json
-    $(tail -3 "$CE" | sed 's/^/    /')"
-    rm -f "$CT"
-  fi
-  rm -f "$CE"
 
   # the archives are deliverables, not by-products: they are linked
   # from the page, so they ship with every publish
   [ -f "$SLATE_CSV" ] && cp "$SLATE_CSV" data/slate_archive.csv
-  [ -f "$COVERS_CSV" ] && cp "$COVERS_CSV" data/covers_archive.csv
 else
   WARN="$WARN
   ! record: no such file - $SLATE_GEN"

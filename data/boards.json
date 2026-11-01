@@ -1,7 +1,7 @@
 {
  "day": "20261101",
- "build": "2026-11-01d",
- "generated": "2026-11-01T11:08:54-05:00",
+ "build": "2026-11-01e",
+ "generated": "2026-11-01T11:09:23-05:00",
  "reliability": {
   "misses": 0.084,
   "share": 0.138,
@@ -361,6 +361,43 @@
    "thr_why": "GS is -0.58 from three; he takes 7.4 a game at 37%; GS drtg +4.0 vs last season",
    "via": "short",
    "same_claim": false
+  }
+ ],
+ "picks": [
+  {
+   "player": "desmond bane",
+   "team": "ORL",
+   "opp": "BOS",
+   "market": "threes",
+   "side": "over",
+   "zs": 2.198,
+   "base": 3.4,
+   "mins": 33.6,
+   "why": "BOS is +1.44 from three; he takes 9.6 a game at 35%; BOS drtg -2.2 vs last season",
+   "parts": {
+    "att": 9.6,
+    "pct": 0.35,
+    "att_seen": 48.0,
+    "drift": -2.210000000000008,
+    "w_now": 0.167
+   },
+   "corroborated": false
+  },
+  {
+   "player": "darius garland",
+   "team": "LAC",
+   "opp": "GS",
+   "market": "pts",
+   "side": "over",
+   "zs": 1.485,
+   "base": 20.9,
+   "mins": 32.4,
+   "why": "soft from short; GS drtg +4.0 vs last season",
+   "parts": {
+    "drift": 3.990000000000009,
+    "w_now": 0.2
+   },
+   "corroborated": true
   }
  ],
  "note": "No price was consulted. These are matchup rankings -- which spots on tonight's slate the model likes, before the market gets a vote. Whether any of them is worth backing is a separate question that needs a line."

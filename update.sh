@@ -40,8 +40,6 @@ else
   python3 "$SLATE" grade || echo "  ! grade failed - continuing"
 fi
 
-step "grading the Covers list"
-python3 "$SLATE" covers || echo "  ! covers grade failed - continuing"
 
 # --- 1b. check the grader ----------------------------------------------
 # A grader's failure mode is not a crash, it is a plausible number: a
@@ -68,7 +66,7 @@ step "archiving"
 python3 "$SLATE" csv || echo "  ! csv failed - continuing"
 
 # --- 3. publish --------------------------------------------------------
-# publish.sh regenerates status/tonight/record/covers and pushes. Its
+# publish.sh regenerates status/tonight/record and pushes. Its
 # exit code is this script's: it is the step that decides whether the
 # site is actually current.
 step "publishing"

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- SITE BUILD v25 -- bump this and the install.sh site check together -->
+<!-- SITE BUILD v26 -- bump this and the install.sh site check together -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sharpz Basketball — the board</title>
@@ -89,6 +89,22 @@
          turned out to be our own projection error, so publishing them
          as picks would be publishing the model's worst rows as its
          best ones. -->
+    <!-- THE SLIP. Rules, not a nightly judgement: last-season boards
+         only, a real sample underneath, no injury flag, and no
+         double-counting a points edge that is already a threes edge.
+         Written down in three.py so the shortlist cannot drift with
+         whoever happens to be reading it. -->
+    <div id="picksBlock" style="border: 1px solid #2A3441; border-radius: 12px; overflow: hidden; margin-bottom: 30px" hidden>
+      <div style="background: #11161E; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #FF8A52">TONIGHT&rsquo;S PICKS</div>
+        <div style="font-size: 13px; color: #6B7A8D" id="picksMeta"></div>
+      </div>
+      <div id="picksRows"></div>
+      <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
+        <div id="picksNote"></div>
+      </div>
+    </div>
+
     <!-- MATCHUP BOARDS. A different question from the panel below,
          and the page has to keep them apart: this ranks spots before
          any price is looked at, the measurement panel joins the
@@ -192,47 +208,6 @@
 
         <p style="margin: 0 0 6px; color: #C3CDDA"><strong style="font-weight: 600">How you will know if this is nonsense.</strong></p>
         <p style="margin: 0">Win rate cannot tell you. It scores a one-point miss and a blowout identically, which is exactly the distinction that matters here. So alongside the record we track the <strong style="color: #C3CDDA; font-weight: 600">margin ratio</strong>: the average size of a win against the average size of a loss. If the thesis is real the wins run bigger and that number sits above one. If it comes back near one, the selection is finding fair coins and we will say so here rather than quietly keep going. We publish it at 25 graded picks, for the same reason we hold the win rate to 30 &mdash; <a href="research.html" style="color: #96A3B4; border-bottom: 1px solid #2A3441; text-decoration: none">before that it is noise</a>.</p>
-      </div>
-    </div>
-
-    <!-- PRA WATCH leads. These are the players we hold a number on, so
-         they are the reason to open the page; everyone else's picks are
-         context for them, not the other way round. Covers quotes the
-         three components separately and never the combined line, so the
-         row sums them and says plainly when a piece is missing. -->
-    <div id="praBlock" style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px" hidden>
-      <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #FF6B2C">PRA WATCH &nbsp;·&nbsp; PLAYING TONIGHT</div>
-        <div style="font-size: 13px; color: #6B7A8D" id="praMeta"></div>
-      </div>
-      <div id="praRows"></div>
-      <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
-        <strong style="color: #96A3B4; font-weight: 600">OUR PRA</strong> is the player&rsquo;s typical points+rebounds+assists across three seasons &mdash; roughly where a book would set him, and a measure of how <a href="minutes.html">forecastable his minutes are</a>, not a prediction for tonight. <strong style="color: #96A3B4; font-weight: 600">LOCKED</strong> means his minutes have held steady across those seasons; <strong style="color: #96A3B4; font-weight: 600">MOVED</strong> means they haven&rsquo;t, and the PRA figure is correspondingly softer.
-        <br><br>
-        <strong style="color: #96A3B4; font-weight: 600">BOOK PRA</strong> is the combined points+rebounds+assists line the sportsbooks are quoting tonight, via <strong style="color: #96A3B4; font-weight: 600">The Odds API</strong>. We take the median line across books rather than the average, so one stale number can&rsquo;t drag it, and we strip the vig from each book&rsquo;s pair of prices before averaging them into <strong style="color: #96A3B4; font-weight: 600">P(OVER)</strong>. The book count beside the label says how many were quoting.
-        <br><br>
-        <strong style="color: #96A3B4; font-weight: 600">VS OURS</strong> is that market line minus our figure. It is not an edge. The market price already contains tonight&rsquo;s injuries, rest and matchup, none of which a three-season average knows about, so a gap is a question worth logging rather than a bet. <strong style="color: #96A3B4; font-weight: 600">PTS</strong>, <strong style="color: #96A3B4; font-weight: 600">REB</strong> and <strong style="color: #96A3B4; font-weight: 600">AST</strong> break the same player into his three legs. A column headed <strong style="color: #96A3B4; font-weight: 600">LINE</strong> is the book&rsquo;s number alone; one headed <strong style="color: #96A3B4; font-weight: 600">LINE &rarr; PROJ</strong> also carries a <strong style="color: #96A3B4; font-weight: 600">Covers.com</strong> projection for that leg, which exists only for the handful of props their model chooses to flag. The heading changes rather than the two being blended, because a traded line and a model&rsquo;s output are different claims.
-        <br><br>
-        Where no book quotes a combined line, the <strong style="color: #96A3B4; font-weight: 600">PRA</strong> column falls back to the three Covers projections added together and is labelled <strong style="color: #96A3B4; font-weight: 600">SUMMED</strong>. Book lines are never added into that sum &mdash; doing so would quietly turn a market price into a model output.
-      </div>
-    </div>
-
-    <!-- Covers used to sit here as a full table. It moved to its own
-         page: readers were taking the whole list as a card and losing
-         with it. It is someone else's work and belongs beside ours,
-         not inside it. One line and a link, no numbers -- a preview
-         would be the same mistake in a smaller box. -->
-    <div style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px">
-      <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #6B7A8D">ELSEWHERE &nbsp;·&nbsp; NOT OURS</div>
-        <div style="font-size: 13px; color: #6B7A8D" id="coversMeta"></div>
-      </div>
-      <div style="background: #11161E; padding: 18px 24px; font-size: 14px; line-height: 1.75; color: #96A3B4">
-        <strong style="color: #C3CDDA; font-weight: 600">Covers.com</strong> publishes its own props each night, from a writer desk and a projection model. We capture them, log every one, and grade them &mdash; because whether a free public list beats the closing line is worth knowing, and almost nobody checks.
-        <br><br>
-        They are <strong style="color: #C3CDDA; font-weight: 600">not our picks and not our recommendations</strong>, and we would not bet the list. It is reference material and a benchmark to measure ourselves against. Our own card is at the top of this page.
-        <br><br>
-        <a href="covers.html" style="color: #FF8A52; border-bottom: 1px solid #5C2D12; text-decoration: none; font-weight: 600">Tonight&rsquo;s Covers props and how the list has done &rarr;</a>
       </div>
     </div>
 
@@ -578,7 +553,7 @@ function dateline() {
 }
 
 render();
-// Tonight's independent reads. Covers' numbers, our ordering.
+// Tonight's independent reads, ours alone.
 // ---------------------------------------------------------------
 // Every number on this page carries its own label. An unlabelled
 // 42.5 beside an unlabelled 26.81 is two facts the reader has to
@@ -631,110 +606,6 @@ function staleNotice(what, day) {
     <strong style="color: #C3CDDA">${prettyDay(day)}</strong> and are not
     shown here, because last night's players are not tonight's slate.
   </div>`;
-}
-
-// --- PRA WATCH ---------------------------------------------------
-// Leads the page: these are the players we hold a number on. The
-// three components are shown whether or not Covers quoted them, so a
-// gap reads as a gap instead of vanishing.
-function praWatch(t) {
-  const block = document.getElementById('praBlock');
-  const body = document.getElementById('praRows');
-  const meta = document.getElementById('praMeta');
-  if (!block || !body) return;
-  const stale = staleDay(t);
-  if (stale) {
-    block.hidden = false;
-    if (meta) meta.textContent = '';
-    body.innerHTML = staleNotice('board players on', stale);
-    return;
-  }
-  const w = (t && t.pra_watch) || [];
-  if (!w.length) { block.hidden = true; return; }
-  block.hidden = false;
-  const priced = w.filter(p => p.market_pra !== null
-                            && p.market_pra !== undefined).length;
-  const booked = w.filter(p => p.market_src === 'books').length;
-  if (meta) {
-    let tail;
-    if (!priced) tail = 'no market line on any of them';
-    else if (booked === priced) tail = booked + ' with a book line';
-    else tail = priced + ' comparable, ' + booked + ' from the books';
-    meta.textContent = w.length + ' of 10 board players on tonight'
-      + '  ·  ' + tail;
-  }
-  const MONO = "font-family: 'IBM Plex Mono', monospace;";
-  const ARCH = "font-family: 'Archivo', sans-serif;";
-
-  body.innerHTML = w.map((p, i) => {
-    const top = i ? 'border-top: 1px solid #1A212B;' : '';
-    const lock = p.minutes === 'locked';
-    const pill = lock
-      ? 'color: #FF8A52; border: 1px solid #5C2D12; background: #2A1408;'
-      : 'color: #96A3B4; border: 1px solid #28323F; background: #1A212B;';
-
-    // A leg may carry a book line, a Covers projection, or both. The
-    // label says which, because "9.5" from a book and "9.5 -> 8.2"
-    // from a model are different claims and a reader who cannot tell
-    // them apart is worse off than one shown nothing.
-    const comp = p.components || {};
-    const part = (key, name) => {
-      const c = comp[key];
-      if (!c) return cell(name + '  LINE', DASH, null, 92);
-      const hasProj = c.projection !== null && c.projection !== undefined;
-      const label = name + (hasProj ? '  LINE → PROJ' : '  LINE');
-      const v = hasProj
-        ? `${fmt(c.line)} → ${fmt(c.projection)}`
-        : fmt(c.line);
-      return cell(label, v, '#C3CDDA', 92);
-    };
-
-    // Name the source in the column label itself. A traded price and a
-    // sum of somebody's projections are not the same kind of claim and
-    // must not share an unmarked column.
-    const mlabel = p.market_src === 'books'
-      ? 'BOOK PRA · ' + (p.book_n || 0) + ' BOOKS'
-      : (p.market_src === 'covers' ? 'COVERS PRA · SUMMED'
-                                   : 'MARKET PRA');
-
-    // Green when the market sits under our PRA, orange when over: the
-    // direction is the whole content of the comparison.
-    const d = p.delta;
-    const dcol = (d === null || d === undefined) ? '#5D6B7C'
-               : (d < 0 ? '#3FB68B' : '#FF6B2C');
-
-    const note = p.note
-      ? `<div style="flex: 1 1 100%; font-size: 13px; color: #6B7A8D;
-           padding-top: 2px">${p.note}</div>`
-      : '';
-
-    return `<div style="padding: 16px 24px; background: #11161E; ${top}">
-      <div style="display: flex; flex-wrap: wrap; gap: 10px 14px;
-        align-items: center; margin-bottom: 12px">
-        <span style="${ARCH} font-weight: 600; font-size: 17px;
-          letter-spacing: -0.2px">${p.player}</span>
-        <span style="${MONO} font-size: 12px; letter-spacing: 0.6px;
-          color: #8B98A9">${p.team}</span>
-        <span style="${MONO} font-size: 9px; letter-spacing: 1.4px;
-          padding: 4px 8px; border-radius: 4px; text-transform: uppercase;
-          ${pill}">${p.minutes}</span>
-      </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 14px 22px;
-        align-items: flex-start">
-        ${cell('OUR PRA', fmt(p.pra_line), '#FF6B2C', 70)}
-        ${cell(mlabel, fmt(p.market_pra), '#C3CDDA', 112)}
-        ${cell('VS OURS', sgn(p.delta), dcol, 70)}
-        ${p.book_prob_over != null
-            ? cell('P(OVER)', (p.book_prob_over * 100).toFixed(1) + '%',
-                   '#8B98A9', 72)
-            : ''}
-        ${part('pts', 'PTS')}
-        ${part('reb', 'REB')}
-        ${part('ast', 'AST')}
-        ${note}
-      </div>
-    </div>`;
-  }).join('');
 }
 
 // --- CORROBORATED PROPS ------------------------------------------
@@ -862,11 +733,79 @@ function record(d) {
 
 dateline();
 ticker(null);
-praWatch(null);
 record(null);
 // Either fetch may fail or arrive first, so each stores its half and
 // re-renders the line. Neither waits on the other: the reads show
 // whether or not we have priced anything, which is the point.
+
+// --- TONIGHT'S PICKS -------------------------------------------------
+// Rendered from three.py's computed slip, never decided here. The
+// tests live in the model so the shortlist is reproducible: boards
+// built on a full prior season only (rebounds and assists measured
+// 10-14% reliable and were floored UP to 23%, so their numbers are
+// mostly floor), a real sample underneath, no injury flag, and a
+// points edge that IS a threes edge appears once rather than twice.
+function picks(d) {
+  const block = document.getElementById('picksBlock');
+  const body = document.getElementById('picksRows');
+  if (!block || !body || !d) return;
+  const rows = d.picks || [];
+  const meta = document.getElementById('picksMeta');
+  const note = document.getElementById('picksNote');
+  block.hidden = false;
+
+  if (!rows.length) {
+    if (meta) meta.textContent = 'nothing clears the bar';
+    body.innerHTML = `<div style="border-top: 1px solid #1A212B;
+      padding: 18px 24px; font-size: 15px; line-height: 1.7; color: #96A3B4">
+      <strong style="color: #C3CDDA">No picks tonight.</strong> That is a
+      result rather than a gap. A row has to come off a board built on a
+      full prior season, carry a real sample underneath, be free of an
+      injury flag, and not be a second count of an edge already listed.
+      Some slates have nobody.</div>`;
+  } else {
+    if (meta) meta.textContent = rows.length
+      + (rows.length === 1 ? ' pick' : ' picks')
+      + ' \u00b7 no price consulted';
+    const MKT = { threes: 'THREES', pts: 'POINTS', reb: 'REBOUNDS',
+                  ast: 'ASSISTS' };
+    body.innerHTML = rows.map((r, i) => `
+      <div style="border-top: 1px solid #1A212B; padding: 16px 24px;
+        display: flex; gap: 16px; align-items: flex-start">
+        <div style="${CARD_MONO} font-size: 17px; font-weight: 600;
+          color: #FF8A52; background: #2A1408; border-radius: 8px;
+          min-width: 38px; text-align: center; padding: 8px 0">${i + 1}</div>
+        <div style="flex: 1 1 auto; min-width: 0">
+          <div style="font-size: 17px; color: #E6ECF3">${esc(r.player)}
+            <span style="${CARD_MONO} color: #FF8A52; font-size: 14px;
+              margin-left: 6px">OVER ${esc(MKT[r.market] || r.market)}</span>
+            <span style="color: #6B7A8D; font-size: 13px">${esc(r.team)} vs ${esc(r.opp)}</span>
+          </div>
+          <div style="font-size: 13px; color: #8B98A9; margin-top: 5px">${esc(r.why || '')}</div>
+          ${r.corroborated ? `<div style="font-size: 12px; color: #3FB68B;
+            margin-top: 4px">his points and threes reads are separate, so
+            they corroborate rather than repeat</div>` : ''}
+        </div>
+        <div style="${CARD_MONO} text-align: right; font-size: 12px;
+          color: #8B98A9; white-space: nowrap">
+          <div style="font-size: 17px; color: #E6ECF3">${(r.zs >= 0 ? '+' : '')}${Number(r.zs).toFixed(2)}</div>
+          <div>projects ${Number(r.base).toFixed(1)}</div>
+          <div>${Number(r.mins).toFixed(0)} min</div>
+        </div>
+      </div>`).join('');
+  }
+
+  if (note) {
+    note.innerHTML = `<strong style="color: #C3CDDA">No price was
+      consulted.</strong> These are the best spots for production tonight
+      by this model, not claims that anything is mispriced. The matchup
+      term behind them has been measured over 959 player-games and
+      <strong style="color: #C3CDDA">has not been shown to predict
+      production</strong> &mdash; which is why every row below is logged
+      and graded against the box score rather than presented as a rated
+      bet.`;
+  }
+}
 
 // --- TONIGHT'S MATCHUPS ----------------------------------------------
 // The four boards, top five each. Separate from the measurement panel
@@ -1231,7 +1170,7 @@ function esc(s) {
 
 fetch('data/boards.json', { cache: 'no-store' })
   .then(r => r.ok ? r.json() : null)
-  .then(d => { if (d) boards(d); })
+  .then(d => { if (d) { picks(d); boards(d); } })
   .catch(e => {
     // not silent, for the same reason the card's catch is not: an
     // exception in boards() would otherwise leave an empty panel and
@@ -1257,7 +1196,7 @@ fetch('data/card.json', { cache: 'no-store' })
 
 fetch('data/tonight.json', { cache: 'no-store' })
   .then(r => r.ok ? r.json() : Promise.reject())
-  .then(d => { _T = d; ticker(d); praWatch(d); dateline(); })
+  .then(d => { _T = d; ticker(d); dateline(); })
   .catch(() => {});
 fetch('data/record.json', { cache: 'no-store' })
   .then(r => r.ok ? r.json() : Promise.reject())
