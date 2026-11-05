@@ -1,11 +1,11 @@
 {
- "day": "20261104",
- "build": "2026-11-04b",
- "generated": "2026-11-04T09:38:54-05:00",
+ "day": "20261105",
+ "build": "2026-11-05b",
+ "generated": "2026-11-05T13:19:50-05:00",
  "reliability": {
-  "misses": 0.318,
-  "share": 0.34,
-  "ast100": 0.137
+  "misses": 0.37,
+  "share": 0.399,
+  "ast100": 0.132
  },
  "floors": {
   "mpg": 18.0,
@@ -40,368 +40,291 @@
  "boards": {
   "pts": [
    {
-    "player": "og anunoby",
-    "team": "NY",
-    "opp": "CHI",
-    "base": 18.5,
-    "mins": 32.4,
-    "zs": 2.891,
-    "lift": null,
-    "why": "soft from rim; CHI drtg +3.4 vs last season",
-    "parts": {
-     "drift": 3.430000000000007,
-     "w_now": 0.2,
-     "via_w": 0.567,
-     "via_share": 0.31,
-     "three_att": null,
-     "thin_zone": false
-    }
-   },
-   {
-    "player": "karlanthony towns",
-    "team": "NY",
-    "opp": "CHI",
-    "base": 22.4,
-    "mins": 30.3,
-    "zs": 2.153,
-    "lift": null,
-    "why": "soft from rim; CHI drtg +3.4 vs last season",
-    "parts": {
-     "drift": 3.430000000000007,
-     "w_now": 0.2,
-     "via_w": 0.589,
-     "via_share": 0.408,
-     "three_att": null,
-     "thin_zone": false
-    }
-   },
-   {
-    "player": "darius garland",
-    "team": "LAC",
+    "player": "stephen curry",
+    "team": "GS",
     "opp": "MIA",
-    "base": 20.1,
-    "mins": 32.0,
-    "zs": 1.626,
+    "base": 26.5,
+    "mins": 28.3,
+    "zs": 1.574,
     "lift": null,
     "why": "soft from three; MIA drtg +1.6 vs last season",
     "parts": {
      "drift": 1.5899999999999892,
      "w_now": 0.2,
-     "via_w": 0.767,
-     "via_share": 0.488,
-     "three_att": 7.0,
+     "via_w": 0.839,
+     "via_share": 0.606,
+     "three_att": 10.5,
      "thin_zone": false
     }
    },
    {
-    "player": "myles turner",
-    "team": "MIL",
-    "opp": "BOS",
-    "base": 9.5,
-    "mins": 25.7,
-    "zs": 1.52,
+    "player": "draymond green",
+    "team": "GS",
+    "opp": "MIA",
+    "base": 6.5,
+    "mins": 26.0,
+    "zs": 1.458,
     "lift": null,
-    "why": "soft from three; BOS drtg -2.2 vs last season",
+    "why": "soft from three; MIA drtg +1.6 vs last season; THIN -- labelled three, he takes 1.2 a game",
     "parts": {
-     "drift": -2.210000000000008,
-     "w_now": 0.167,
-     "via_w": 0.508,
-     "via_share": 0.594,
-     "three_att": 4.6,
-     "thin_zone": false
-    }
-   },
-   {
-    "player": "trey murphy iii",
-    "team": "NO",
-    "opp": "UTA",
-    "base": 17.1,
-    "mins": 31.9,
-    "zs": 1.485,
-    "lift": null,
-    "why": "soft from three; UTA drtg -3.9 vs last season; that zone is 41% of his fit",
-    "parts": {
-     "drift": -3.8799999999999955,
+     "drift": 1.5899999999999892,
      "w_now": 0.2,
-     "via_w": 0.414,
-     "via_share": 0.538,
-     "three_att": 5.6,
+     "via_w": 0.806,
+     "via_share": 0.631,
+     "three_att": 1.2,
+     "thin_zone": true
+    }
+   },
+   {
+    "player": "devin booker",
+    "team": "PHX",
+    "opp": "ORL",
+    "base": 25.0,
+    "mins": 33.7,
+    "zs": -0.28,
+    "lift": null,
+    "why": "soft from mid; ORL drtg +1.0 vs last season; that zone is 33% of his fit",
+    "parts": {
+     "drift": 1.019999999999996,
+     "w_now": 0.167,
+     "via_w": 0.327,
+     "via_share": 0.384,
+     "three_att": null,
+     "thin_zone": false
+    }
+   },
+   {
+    "player": "dillon brooks",
+    "team": "PHX",
+    "opp": "ORL",
+    "base": 18.4,
+    "mins": 30.2,
+    "zs": -0.541,
+    "lift": null,
+    "why": "soft from three; ORL drtg +1.0 vs last season",
+    "parts": {
+     "drift": 1.019999999999996,
+     "w_now": 0.167,
+     "via_w": 0.565,
+     "via_share": 0.385,
+     "three_att": 4.3,
      "thin_zone": false
     }
    }
   ],
   "threes": [
    {
-    "player": "lauri markkanen",
-    "team": "UTA",
-    "opp": "NO",
-    "base": 3.2,
-    "mins": 32.5,
-    "zs": 1.443,
-    "lift": 0.28,
-    "why": "NO is +1.38 from three; he takes 9.0 a game at 36%; NO drtg -2.5 vs last season",
-    "parts": {
-     "att": 9.0,
-     "pct": 0.358,
-     "att_seen": 45.0,
-     "drift": -2.539999999999992,
-     "w_now": 0.167
-    }
-   },
-   {
-    "player": "trey murphy iii",
-    "team": "NO",
-    "opp": "UTA",
-    "base": 2.1,
-    "mins": 31.9,
-    "zs": 1.693,
-    "lift": 0.21,
-    "why": "UTA is +1.60 from three; he takes 5.6 a game at 37%; UTA drtg -3.9 vs last season",
-    "parts": {
-     "att": 5.6,
-     "pct": 0.368,
-     "att_seen": 39.0,
-     "drift": -3.8799999999999955,
-     "w_now": 0.2
-    }
-   },
-   {
-    "player": "darius garland",
-    "team": "LAC",
+    "player": "stephen curry",
+    "team": "GS",
     "opp": "MIA",
-    "base": 2.4,
-    "mins": 32.0,
+    "base": 4.1,
+    "mins": 28.3,
     "zs": 1.489,
-    "lift": 0.21,
-    "why": "MIA is +1.42 from three; he takes 7.0 a game at 35%; MIA drtg +1.6 vs last season",
+    "lift": 0.37,
+    "why": "MIA is +1.42 from three; he takes 10.5 a game at 39%; MIA drtg +1.6 vs last season",
     "parts": {
-     "att": 7.0,
-     "pct": 0.347,
-     "att_seen": 49.0,
+     "att": 10.5,
+     "pct": 0.391,
+     "att_seen": 63.0,
      "drift": 1.5899999999999892,
      "w_now": 0.2
     }
    },
    {
-    "player": "jayson tatum",
-    "team": "BOS",
-    "opp": "MIL",
-    "base": 2.1,
-    "mins": 33.4,
-    "zs": 1.443,
-    "lift": 0.18,
-    "why": "MIL is +1.38 from three; he takes 6.9 a game at 31%; MIL drtg +0.8 vs last season",
+    "player": "brandin podziemski",
+    "team": "GS",
+    "opp": "MIA",
+    "base": 2.4,
+    "mins": 32.3,
+    "zs": 1.489,
+    "lift": 0.21,
+    "why": "MIA is +1.42 from three; he takes 6.7 a game at 36%; MIA drtg +1.6 vs last season",
     "parts": {
-     "att": 6.9,
-     "pct": 0.309,
-     "att_seen": 48.0,
-     "drift": 0.7599999999999909,
+     "att": 6.7,
+     "pct": 0.357,
+     "att_seen": 40.0,
+     "drift": 1.5899999999999892,
      "w_now": 0.2
     }
    },
    {
-    "player": "payton pritchard",
-    "team": "BOS",
-    "opp": "MIL",
-    "base": 2.1,
-    "mins": 27.0,
-    "zs": 1.443,
-    "lift": 0.18,
-    "why": "MIL is +1.38 from three; he takes 6.0 a game at 34%; MIL drtg +0.8 vs last season",
+    "player": "jalen green",
+    "team": "PHX",
+    "opp": "ORL",
+    "base": 1.4,
+    "mins": 28.7,
+    "zs": -0.868,
+    "lift": -0.07,
+    "why": "ORL is -1.17 from three; he takes 4.3 a game at 33%; ORL drtg +1.0 vs last season",
     "parts": {
-     "att": 6.0,
-     "pct": 0.342,
-     "att_seen": 42.0,
-     "drift": 0.7599999999999909,
-     "w_now": 0.2
+     "att": 4.3,
+     "pct": 0.327,
+     "att_seen": 26.0,
+     "drift": 1.019999999999996,
+     "w_now": 0.167
+    }
+   },
+   {
+    "player": "devin booker",
+    "team": "PHX",
+    "opp": "ORL",
+    "base": 1.6,
+    "mins": 33.7,
+    "zs": -0.868,
+    "lift": -0.08,
+    "why": "ORL is -1.17 from three; he takes 4.7 a game at 35%; ORL drtg +1.0 vs last season",
+    "parts": {
+     "att": 4.7,
+     "pct": 0.35,
+     "att_seen": 28.0,
+     "drift": 1.019999999999996,
+     "w_now": 0.167
     }
    }
   ],
   "reb": [
    {
-    "player": "karlanthony towns",
-    "team": "NY",
-    "opp": "CHI",
-    "base": 12.6,
-    "mins": 30.3,
-    "zs": 0.452,
-    "lift": 0.34,
-    "why": "101 misses in CHI games (+1.35); CHI leaves 0.59 more on the floor than average",
+    "player": "wendell carter jr",
+    "team": "ORL",
+    "opp": "PHX",
+    "base": 8.1,
+    "mins": 31.6,
+    "zs": 0.255,
+    "lift": 0.12,
+    "why": "92 misses in PHX games (-0.76); PHX leaves 1.59 more on the floor than average",
     "parts": {
-     "vol": 1.35,
-     "shr": 0.59
+     "vol": -0.76,
+     "shr": 1.59
     }
    },
    {
-    "player": "jalen johnson",
-    "team": "ATL",
-    "opp": "WSH",
-    "base": 9.2,
-    "mins": 31.8,
-    "zs": 0.504,
-    "lift": 0.28,
-    "why": "97 misses in WSH games (+0.39); WSH leaves 1.69 more on the floor than average",
+    "player": "franz wagner",
+    "team": "ORL",
+    "opp": "PHX",
+    "base": 5.9,
+    "mins": 34.9,
+    "zs": 0.255,
+    "lift": 0.09,
+    "why": "92 misses in PHX games (-0.76); PHX leaves 1.59 more on the floor than average",
     "parts": {
-     "vol": 0.39,
-     "shr": 1.69
+     "vol": -0.76,
+     "shr": 1.59
     }
    },
    {
-    "player": "paul reed",
-    "team": "DET",
-    "opp": "PHI",
-    "base": 7.4,
-    "mins": 26.5,
-    "zs": 0.592,
-    "lift": 0.26,
-    "why": "98 misses in PHI games (+0.61); PHI leaves 1.64 more on the floor than average",
+    "player": "brandin podziemski",
+    "team": "GS",
+    "opp": "MIA",
+    "base": 5.5,
+    "mins": 32.3,
+    "zs": 0.018,
+    "lift": 0.01,
+    "why": "95 misses in MIA games (-0.15); MIA leaves 0.32 more on the floor than average",
     "parts": {
-     "vol": 0.61,
-     "shr": 1.64
+     "vol": -0.15,
+     "shr": 0.32
     }
    },
    {
-    "player": "onyeka okongwu",
-    "team": "ATL",
-    "opp": "WSH",
-    "base": 7.3,
-    "mins": 28.3,
-    "zs": 0.504,
-    "lift": 0.22,
-    "why": "97 misses in WSH games (+0.39); WSH leaves 1.69 more on the floor than average",
+    "player": "draymond green",
+    "team": "GS",
+    "opp": "MIA",
+    "base": 5.2,
+    "mins": 26.0,
+    "zs": 0.018,
+    "lift": 0.01,
+    "why": "95 misses in MIA games (-0.15); MIA leaves 0.32 more on the floor than average",
     "parts": {
-     "vol": 0.39,
-     "shr": 1.69
-    }
-   },
-   {
-    "player": "evan mobley",
-    "team": "CLE",
-    "opp": "OKC",
-    "base": 8.5,
-    "mins": 32.0,
-    "zs": 0.432,
-    "lift": 0.22,
-    "why": "102 misses in OKC games (+1.62); OKC leaves 0.26 more on the floor than average",
-    "parts": {
-     "vol": 1.62,
-     "shr": 0.26
+     "vol": -0.15,
+     "shr": 0.32
     }
    }
   ],
   "ast": [
    {
-    "player": "trae young",
-    "team": "WSH",
-    "opp": "ATL",
-    "base": 10.9,
-    "mins": 35.2,
-    "zs": 0.294,
-    "lift": 0.19,
-    "why": "ATL allows 29.1 ast/100 (+0.96 after shrinking to 26% reliability)",
+    "player": "devin booker",
+    "team": "PHX",
+    "opp": "ORL",
+    "base": 5.2,
+    "mins": 33.7,
+    "zs": 0.263,
+    "lift": 0.08,
+    "why": "ORL allows 30.3 ast/100 (+1.74 after shrinking to 29% reliability)",
     "parts": {}
    },
    {
-    "player": "darius garland",
-    "team": "LAC",
+    "player": "draymond green",
+    "team": "GS",
     "opp": "MIA",
-    "base": 7.2,
-    "mins": 32.0,
-    "zs": 0.418,
-    "lift": 0.18,
-    "why": "MIA allows 30.0 ast/100 (+1.44 after shrinking to 26% reliability)",
+    "base": 5.8,
+    "mins": 26.0,
+    "zs": 0.22,
+    "lift": 0.08,
+    "why": "MIA allows 30.2 ast/100 (+1.65 after shrinking to 29% reliability)",
     "parts": {}
    },
    {
-    "player": "luka doncic",
-    "team": "LAL",
-    "opp": "SAC",
-    "base": 7.8,
-    "mins": 34.0,
-    "zs": 0.327,
-    "lift": 0.15,
-    "why": "SAC allows 29.3 ast/100 (+1.09 after shrinking to 26% reliability)",
+    "player": "collin gillespie",
+    "team": "PHX",
+    "opp": "ORL",
+    "base": 4.2,
+    "mins": 25.2,
+    "zs": 0.263,
+    "lift": 0.07,
+    "why": "ORL allows 30.3 ast/100 (+1.74 after shrinking to 29% reliability)",
     "parts": {}
    },
    {
-    "player": "dennis schroder",
-    "team": "CHA",
-    "opp": "BKN",
-    "base": 6.0,
-    "mins": 30.7,
-    "zs": 0.354,
-    "lift": 0.13,
-    "why": "BKN allows 29.5 ast/100 (+1.19 after shrinking to 26% reliability)",
-    "parts": {}
-   },
-   {
-    "player": "kris dunn",
-    "team": "LAC",
+    "player": "brandin podziemski",
+    "team": "GS",
     "opp": "MIA",
-    "base": 4.5,
-    "mins": 29.3,
-    "zs": 0.418,
-    "lift": 0.11,
-    "why": "MIA allows 30.0 ast/100 (+1.44 after shrinking to 26% reliability)",
+    "base": 4.6,
+    "mins": 32.3,
+    "zs": 0.22,
+    "lift": 0.06,
+    "why": "MIA allows 30.2 ast/100 (+1.65 after shrinking to 29% reliability)",
     "parts": {}
    }
   ]
  },
- "pra": [],
+ "pra": [
+  {
+   "player": "draymond green",
+   "team": "GS",
+   "opp": "MIA",
+   "pts_z": 1.458,
+   "reb_z": 0.018,
+   "ast_z": 0.22,
+   "base_pra": 17.5,
+   "z_sum": 1.696,
+   "why": [
+    "soft from three; MIA drtg +1.6 vs last season; THIN -- labelled three, he takes 1.2 a game",
+    "95 misses in MIA games (-0.15); MIA leaves 0.32 more on the floor than average",
+    "MIA allows 30.2 ast/100 (+1.65 after shrinking to 29% reliability)"
+   ]
+  }
+ ],
  "points_threes": [
   {
-   "player": "og anunoby",
-   "team": "NY",
-   "opp": "CHI",
-   "pts_z": 2.891,
-   "thr_z": 0.821,
-   "pts_why": "soft from rim; CHI drtg +3.4 vs last season",
-   "thr_why": "CHI is +0.83 from three; he takes 6.1 a game at 34%; CHI drtg +3.4 vs last season",
-   "via": "rim",
-   "same_claim": false
-  },
-  {
-   "player": "trey murphy iii",
-   "team": "NO",
-   "opp": "UTA",
-   "pts_z": 1.485,
-   "thr_z": 1.693,
-   "pts_why": "soft from three; UTA drtg -3.9 vs last season; that zone is 41% of his fit",
-   "thr_why": "UTA is +1.60 from three; he takes 5.6 a game at 37%; UTA drtg -3.9 vs last season",
-   "via": "three",
-   "same_claim": true
-  },
-  {
-   "player": "darius garland",
-   "team": "LAC",
+   "player": "stephen curry",
+   "team": "GS",
    "opp": "MIA",
-   "pts_z": 1.626,
+   "pts_z": 1.574,
    "thr_z": 1.489,
    "pts_why": "soft from three; MIA drtg +1.6 vs last season",
-   "thr_why": "MIA is +1.42 from three; he takes 7.0 a game at 35%; MIA drtg +1.6 vs last season",
+   "thr_why": "MIA is +1.42 from three; he takes 10.5 a game at 39%; MIA drtg +1.6 vs last season",
    "via": "three",
    "same_claim": true
   },
   {
-   "player": "james harden",
-   "team": "CLE",
-   "opp": "OKC",
-   "pts_z": 0.747,
-   "thr_z": 1.104,
-   "pts_why": "soft from three; OKC drtg -1.8 vs last season",
-   "thr_why": "OKC is +1.08 from three; he takes 7.1 a game at 36%; OKC drtg -1.8 vs last season",
-   "via": "three",
-   "same_claim": true
-  },
-  {
-   "player": "nickeil alexanderwalker",
-   "team": "ATL",
-   "opp": "WSH",
-   "pts_z": 0.993,
-   "thr_z": 0.21,
-   "pts_why": "soft from rim; WSH drtg -6.8 vs last season",
-   "thr_why": "WSH is +0.29 from three; he takes 9.6 a game at 38%; WSH drtg -6.8 vs last season",
-   "via": "rim",
+   "player": "devin booker",
+   "team": "PHX",
+   "opp": "ORL",
+   "pts_z": -0.28,
+   "thr_z": -0.868,
+   "pts_why": "soft from mid; ORL drtg +1.0 vs last season; that zone is 33% of his fit",
+   "thr_why": "ORL is -1.17 from three; he takes 4.7 a game at 35%; ORL drtg +1.0 vs last season",
+   "via": "mid",
    "same_claim": false
   }
  ],
