@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- SITE BUILD v26 -- bump this and the install.sh site check together -->
+<!-- SITE BUILD v27 -- bump this and the install.sh site check together -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sharpz Basketball — the board</title>
@@ -89,6 +89,21 @@
          turned out to be our own projection error, so publishing them
          as picks would be publishing the model's worst rows as its
          best ones. -->
+    <!-- GO-TO PICKS. Leads the page because it needs no line, so it
+         has something to say on the nights props_lines.py has not
+         run -- which has been every night this week. Stars descend
+         from five: the model's own ordering, not a confidence claim. -->
+    <div id="gotoBlock" style="border: 1px solid #3A2A12; border-radius: 12px; overflow: hidden; margin-bottom: 30px; background: #0E1016" hidden>
+      <div style="background: #17120A; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #E8B43A">&#9733; GO-TO PICKS</div>
+        <div style="font-size: 13px; color: #6B7A8D" id="gotoMeta"></div>
+      </div>
+      <div id="gotoRows"></div>
+      <div style="background: #0B0D12; border-top: 1px solid #241B0E; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
+        <div id="gotoNote"></div>
+      </div>
+    </div>
+
     <!-- THE SLIP. Rules, not a nightly judgement: last-season boards
          only, a real sample underneath, no injury flag, and no
          double-counting a points edge that is already a threes edge.
@@ -738,6 +753,74 @@ record(null);
 // re-renders the line. Neither waits on the other: the reads show
 // whether or not we have priced anything, which is the point.
 
+// --- GO-TO PICKS -----------------------------------------------------
+// three.py's goto_picks(): a price-free top five across all four
+// boards, scored against the best SURVIVING row on each board and
+// docked for blowout risk, a share-led rebound read, and a thin
+// variance sample. The weights are a heuristic calibrated to nothing
+// and the panel says so -- the point is that the list is reproducible
+// from the repo rather than assembled by hand each night.
+const GOTO_UNIT = { pts: 'POINTS', threes: 'THREES', reb: 'REBOUNDS',
+                    ast: 'ASSISTS' };
+
+function gotoPicks(d) {
+  const block = document.getElementById('gotoBlock');
+  const body = document.getElementById('gotoRows');
+  if (!block || !body || !d) return;
+  const rows = d.goto || [];
+  const meta = document.getElementById('gotoMeta');
+  const note = document.getElementById('gotoNote');
+  block.hidden = false;
+
+  if (!rows.length) {
+    if (meta) meta.textContent = 'nobody clears the floors';
+    body.innerHTML = `<div style="border-top: 1px solid #241B0E;
+      padding: 18px 24px; font-size: 15px; line-height: 1.7; color: #96A3B4">
+      <strong style="color: #C3CDDA">Nothing tonight.</strong>
+      Every candidate was under the minutes floor, carrying an injury
+      flag, or a duplicate of a finding already taken.</div>`;
+  } else {
+    if (meta) meta.textContent = rows.length + ' spots \u00b7 no price consulted';
+    body.innerHTML = rows.map((r, i) => {
+      const stars = '\u2605'.repeat(rows.length - i);
+      return `
+      <div style="border-top: 1px solid #241B0E; padding: 16px 24px;
+        display: flex; gap: 16px; align-items: flex-start">
+        <div style="${CARD_MONO} font-size: 13px; color: #E8B43A;
+          min-width: 68px; letter-spacing: 1px; padding-top: 3px">${stars}</div>
+        <div style="flex: 1 1 auto; min-width: 0">
+          <div style="font-size: 17px; color: #E6ECF3">${esc(r.player)}
+            <span style="${CARD_MONO} color: #E8B43A; font-size: 14px;
+              margin-left: 6px">${esc(GOTO_UNIT[r.market] || r.market)}</span>
+            <span style="color: #6B7A8D; font-size: 13px">${esc(r.team)} vs ${esc(r.opp)}</span>
+          </div>
+          <div style="font-size: 13px; color: #8B98A9; margin-top: 5px">${esc(r.why || '')}</div>
+          ${r.goto_why ? `<div style="font-size: 12px; color: #C3A14E;
+            margin-top: 4px">docked for: ${esc(r.goto_why)}</div>` : ''}
+        </div>
+        <div style="${CARD_MONO} text-align: right; font-size: 12px;
+          color: #8B98A9; white-space: nowrap">
+          <div style="font-size: 17px; color: #E6ECF3">${Number(r.base).toFixed(1)}</div>
+          <div>in ${Number(r.mins).toFixed(0)} min</div>
+          <div>z ${(r.zs >= 0 ? '+' : '')}${Number(r.zs).toFixed(2)}</div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  if (note) {
+    note.innerHTML = `<strong style="color: #C3CDDA">No price was
+      consulted.</strong> These are the best spots for production
+      tonight across all four boards &mdash; scored against the best
+      eligible row on each board, then docked for blowout risk, for a
+      rebound read standing on share rather than volume, and for a
+      thin variance sample. <strong style="color: #C3CDDA">Those
+      weights are a heuristic calibrated to nothing.</strong> Stars are
+      this ordering, not a confidence level. Whether any of these is
+      worth backing is a separate question and it needs a line.`;
+  }
+}
+
 // --- TONIGHT'S PICKS -------------------------------------------------
 // Rendered from three.py's computed slip, never decided here. The
 // tests live in the model so the shortlist is reproducible: boards
@@ -1170,7 +1253,7 @@ function esc(s) {
 
 fetch('data/boards.json', { cache: 'no-store' })
   .then(r => r.ok ? r.json() : null)
-  .then(d => { if (d) { picks(d); boards(d); } })
+  .then(d => { if (d) { gotoPicks(d); picks(d); boards(d); } })
   .catch(e => {
     // not silent, for the same reason the card's catch is not: an
     // exception in boards() would otherwise leave an empty panel and
