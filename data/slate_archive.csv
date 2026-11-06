@@ -61,3 +61,9 @@ day,subject,market,side,line,odds,tier,result,actual,units,logged_at,graded_at
 20261029,Domantas Sabonis,rebounds,over,14.5,-110,log,,,,2026-10-29T11:32:21.204351-04:00,
 20261029,Zach LaVine,points,over,21.5,-110,log,,,,2026-10-29T11:32:21.204334-04:00,
 20261029,Zach LaVine,rebounds,over,3.5,-110,log,,,,2026-10-29T11:32:21.204354-04:00,
+20261102,devin vassell,points,over,12.5,-110,board,loss,11,-1.0,,2026-11-05T13:41:00.099003-05:00
+20261102,kevin durant,points,over,21.5,-110,board,loss,12,-1.0,,2026-11-05T13:41:00.098855-05:00
+20261102,luka doncic,threes,over,4.5,-110,board,win,6,0.9090909090909091,2026-11-02T10:02:20.746894-05:00,2026-11-05T13:41:00.099068-05:00
+20261102,stephon castle,threes,over,1.5,-110,board,win,2,0.9090909090909091,,2026-11-05T13:41:00.099032-05:00
+20261102,victor wembanyama,threes,over,1.5,-110,board,loss,0,-1.0,,2026-11-05T13:41:00.099051-05:00
+20261102,wendell carter jr,points,over,12.5,-110,board,loss,6,-1.0,2026-11-02T10:02:20.756896-05:00,2026-11-05T13:41:00.099085-05:00
