@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- SITE BUILD v29 -- bump this and the install.sh site check together -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sharpz Basketball — performance</title>
+<meta name="description" content="Every pick, and what happened.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #0A0D12; --panel: #0E1219; --line: #1C232E;
+    --ink: #ECEFF4; --mid: #8B98A9; --dim: #6B7A8D; --hot: #FF6B2C;
+    --win: #35C08A; --loss: #D2544B;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font-family: 'IBM Plex Sans', system-ui, sans-serif;
+         overflow-x: hidden; }
+  a { color: var(--hot); }
+  a:hover { color: #FF8A52; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 720px) { .wrap { padding: 0 32px; } }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+  .arch { font-family: 'Archivo', sans-serif; }
+
+  .daybar { font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+            letter-spacing: 2px; color: var(--dim);
+            padding: 26px 0 10px; }
+  .row { display: flex; gap: 12px; align-items: center;
+         padding: 14px 0; border-top: 1px solid var(--line); }
+  .rk  { font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+         color: var(--hot); min-width: 48px; flex: 0 0 auto;
+         letter-spacing: 1px; }
+  .nmw { flex: 1 1 auto; min-width: 0; }
+  .nm  { font-size: 17px; font-weight: 600; }
+  .mk  { font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+         letter-spacing: 1.3px; color: var(--dim); margin-top: 3px; }
+  .cell { font-family: 'IBM Plex Mono', monospace; text-align: right;
+          flex: 0 0 auto; min-width: 56px; }
+  .lab { font-size: 9px; letter-spacing: 1.2px; color: var(--dim); }
+  .val { font-size: 18px; margin-top: 2px; }
+  .mark { flex: 0 0 auto; min-width: 26px; text-align: right;
+          font-size: 17px; }
+  @media (max-width: 520px) {
+    .rk { min-width: 34px; } .nm { font-size: 15px; }
+    .cell { min-width: 44px; } .val { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div style="border-bottom: 1px solid var(--line)">
+  <div class="wrap" style="padding-top: 20px; padding-bottom: 20px; display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between">
+    <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit">
+      <svg width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="Sharpz Basketball">
+        <circle cx="16" cy="16" r="14" fill="#FF6B2C"></circle>
+        <path d="M16 2 L16 30 M2 16 L30 16" stroke="#0A0D12" stroke-width="1.7"></path>
+        <path d="M6.2 5.4 Q15 16 6.2 26.6" fill="none" stroke="#0A0D12" stroke-width="1.7"></path>
+        <path d="M25.8 5.4 Q17 16 25.8 26.6" fill="none" stroke="#0A0D12" stroke-width="1.7"></path>
+      </svg>
+      <div style="line-height: 1">
+        <div class="arch" style="font-weight: 800; font-size: 19px; letter-spacing: -0.4px">SHARPZ</div>
+        <div class="mono" style="font-size: 9px; letter-spacing: 3.4px; color: var(--hot); margin-top: 3px">BASKETBALL</div>
+      </div>
+    </a>
+    <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center">
+      <a href="index.html" style="color: var(--mid); text-decoration: none; font-size: 15px">Tonight</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top: 54px; padding-bottom: 80px">
+  <h1 class="arch" style="font-weight: 800; font-size: 46px; line-height: 1.02; letter-spacing: -1.6px; margin: 0 0 22px">
+    Performance
+  </h1>
+
+  <div id="head"></div>
+  <div id="log"></div>
+  <div id="foot" class="mono" style="margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 12px; line-height: 1.8; color: var(--dim); letter-spacing: 0.3px"></div>
+</div>
+
+<script>
+const UNIT = { pts: 'POINTS', threes: 'THREES', reb: 'REBOUNDS', ast: 'ASSISTS' };
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g,
+  c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+// Graded rows carry the box score's own spelling, so most names
+// arrive correct and are passed through untouched. This only has to
+// handle an UNGRADED row, which still holds the board log's
+// lowercase name -- where capitalising every word would print
+// "Pj Washington" and "Jaden Mcdaniels".
+const INITIALS = new Set(['pj','cj','tj','aj','jt','rj','kj','bj','dj','jj']);
+const SUFFIX = { jr: 'Jr.', sr: 'Sr.', ii: 'II', iii: 'III', iv: 'IV' };
+const cap = w => w ? w.charAt(0).toUpperCase() + w.slice(1) : w;
+function title(s) {
+  s = String(s || '');
+  if (/[A-Z]/.test(s)) return s;
+  return s.split(/\s+/).map(w => {
+    const k = w.toLowerCase(), bare = k.replace(/\./g, '');
+    if (SUFFIX[bare]) return SUFFIX[bare];
+    if (INITIALS.has(bare)) return bare.toUpperCase();
+    if (/^mc[a-z]{2,}$/.test(k)) return 'Mc' + cap(k.slice(2));
+    if (/^[od]'[a-z]+$/.test(k)) return cap(k.slice(0, 1)) + "'" + cap(k.slice(2));
+    return k.split('-').map(cap).join('-');
+  }).join(' ');
+}
+
+function dayText(d) {
+  if (!/^\d{8}$/.test(d || '')) return '';
+  const dt = new Date(+d.slice(0,4), +d.slice(4,6) - 1, +d.slice(6,8));
+  return dt.toLocaleDateString('en-US',
+    { weekday: 'long', month: 'long', day: 'numeric' });
+}
+
+function render(d) {
+  const picks = (d && d.picks) || [];
+  const head = document.getElementById('head');
+  const log = document.getElementById('log');
+  const ft = document.getElementById('foot');
+
+  if (!picks.length) {
+    head.innerHTML = `<div style="font-size: 17px; color: var(--mid)">
+      Nothing recorded yet.</div>`;
+    return;
+  }
+
+  const beat = d.beat || 0, graded = d.graded || 0;
+  const pct = graded ? Math.round(100 * beat / graded) : null;
+  head.innerHTML = `
+    <div style="display: flex; flex-wrap: wrap; gap: 34px; align-items: baseline;
+                padding-bottom: 8px">
+      <div>
+        <div class="mono lab">BEAT THE NUMBER</div>
+        <div class="arch" style="font-weight: 800; font-size: 40px;
+             letter-spacing: -1.2px; margin-top: 4px">${beat}<span
+             style="color: var(--dim)">/${graded}</span></div>
+      </div>
+      ${pct === null ? '' : `<div>
+        <div class="mono lab">RATE</div>
+        <div class="arch" style="font-weight: 800; font-size: 40px;
+             letter-spacing: -1.2px; margin-top: 4px">${pct}%</div>
+      </div>`}
+    </div>`;
+
+  // Group by day, newest first. goto_history already returns them in
+  // that order with rank 1 first inside each day, so a running key is
+  // enough -- no re-sorting here, which would be a second ordering to
+  // keep in step with the first.
+  let out = '', seen = null;
+  for (const r of picks) {
+    if (r.day !== seen) {
+      seen = r.day;
+      out += `<div class="daybar">${esc(dayText(r.day).toUpperCase())}</div>`;
+    }
+    const act = r.actual == null ? null : Number(r.actual);
+    const mark = r.beat === null || r.beat === undefined ? ''
+      : (r.beat ? '<span style="color: var(--win)">&#10003;</span>'
+                : '<span style="color: var(--loss)">&#10007;</span>');
+    out += `
+      <div class="row">
+        <div class="rk">${'★'.repeat(6 - (r.rank || 5))}</div>
+        <div class="nmw">
+          <div class="nm">${esc(title(r.player))}</div>
+          <div class="mk">${esc(UNIT[r.market] || r.market)} &middot;
+            ${esc(r.team)} vs ${esc(r.opp)}</div>
+        </div>
+        <div class="cell">
+          <div class="lab">CALLED</div>
+          <div class="val" style="color: var(--mid)">${
+            r.base == null ? '&mdash;' : Number(r.base).toFixed(1)}</div>
+        </div>
+        <div class="cell">
+          <div class="lab">GOT</div>
+          <div class="val">${act === null ? '&mdash;' : act}</div>
+        </div>
+        <div class="mark">${mark}</div>
+      </div>`;
+  }
+  log.innerHTML = out;
+
+  const ungraded = picks.filter(r => r.beat === null
+                                  || r.beat === undefined).length;
+  ft.textContent = 'A tick means he cleared the number we called. '
+    + 'No line was consulted, so this is production, not a betting '
+    + 'record.'
+    + (ungraded ? ` ${ungraded} not yet graded.` : '');
+}
+
+fetch('data/performance.json', { cache: 'no-store' })
+  .then(r => r.ok ? r.json() : null)
+  .then(render)
+  .catch(() => render(null));
+</script>
+</body>
+</html>

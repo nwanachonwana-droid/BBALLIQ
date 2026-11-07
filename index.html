@@ -1,1295 +1,155 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- SITE BUILD v27 -- bump this and the install.sh site check together -->
+<!-- SITE BUILD v29 -- bump this and the install.sh site check together -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sharpz Basketball — the board</title>
-<meta name="description" content="Players and teams we can put a number on.">
+<title>Sharpz Basketball — tonight</title>
+<meta name="description" content="Tonight's five.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
-  body { margin: 0; background: #0A0D12; font-family: 'IBM Plex Sans', system-ui, sans-serif; }
-  a { color: #FF6B2C; }
-  a:hover { color: #FF8A52; }
+  :root {
+    --bg: #0A0D12; --panel: #0E1219; --line: #1C232E;
+    --ink: #ECEFF4; --mid: #8B98A9; --dim: #6B7A8D; --hot: #FF6B2C;
+  }
   * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font-family: 'IBM Plex Sans', system-ui, sans-serif;
+         overflow-x: hidden; }
+  a { color: var(--hot); }
+  a:hover { color: #FF8A52; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 720px) { .wrap { padding: 0 32px; } }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+  .arch { font-family: 'Archivo', sans-serif; }
+
+  .pick { display: flex; gap: 14px; align-items: baseline;
+          padding: 22px 0; border-top: 1px solid var(--line); }
+  .rank { font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+          color: var(--hot); letter-spacing: 1px; min-width: 52px;
+          flex: 0 0 auto; }
+  .who  { flex: 1 1 auto; min-width: 0; }
+  .nm   { font-family: 'Archivo', sans-serif; font-weight: 700;
+          font-size: 25px; letter-spacing: -0.5px; line-height: 1.15; }
+  .mk   { font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+          letter-spacing: 1.6px; color: var(--hot); margin-top: 6px; }
+  .vs   { color: var(--dim); font-size: 14px; margin-top: 5px; }
+  .num  { text-align: right; flex: 0 0 auto; }
+  .big  { font-family: 'Archivo', sans-serif; font-weight: 700;
+          font-size: 29px; letter-spacing: -0.5px; }
+  .unit { font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+          color: var(--dim); letter-spacing: 1px; margin-top: 3px; }
+  @media (max-width: 520px) {
+    .nm { font-size: 21px; } .big { font-size: 24px; }
+    .rank { min-width: 40px; }
+  }
 </style>
 </head>
 <body>
 
-<helmet>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<style>
-  body { margin: 0; background: #0A0D12; font-family: 'IBM Plex Sans', system-ui, sans-serif; }
-  a { color: #FF6B2C; }
-  a:hover { color: #FF8A52; }
-  * { box-sizing: border-box; }
-</style>
-</helmet>
-
-<div style="width: 100%; background: #0A0D12; color: #ECEFF4; overflow-x: hidden">
-
-  <!-- NAV -->
-  <div style="border-bottom: 1px solid #1A212B">
-    <div style="max-width: 1120px; margin: 0 auto; padding: 20px 32px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between">
-      <div style="display: flex; align-items: center; gap: 12px">
-        <svg width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="Sharpz Basketball">
-          <circle cx="16" cy="16" r="14" fill="#FF6B2C"></circle>
-          <path d="M16 2 L16 30 M2 16 L30 16" stroke="#0A0D12" stroke-width="1.7"></path>
-          <path d="M6.2 5.4 Q15 16 6.2 26.6" fill="none" stroke="#0A0D12" stroke-width="1.7"></path>
-          <path d="M25.8 5.4 Q17 16 25.8 26.6" fill="none" stroke="#0A0D12" stroke-width="1.7"></path>
-        </svg>
-        <div style="line-height: 1">
-          <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 19px; letter-spacing: -0.4px">SHARPZ</div>
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 3.4px; color: #FF6B2C; margin-top: 3px">BASKETBALL</div>
-        </div>
+<div style="border-bottom: 1px solid var(--line)">
+  <div class="wrap" style="padding-top: 20px; padding-bottom: 20px; display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between">
+    <div style="display: flex; align-items: center; gap: 12px">
+      <svg width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="Sharpz Basketball">
+        <circle cx="16" cy="16" r="14" fill="#FF6B2C"></circle>
+        <path d="M16 2 L16 30 M2 16 L30 16" stroke="#0A0D12" stroke-width="1.7"></path>
+        <path d="M6.2 5.4 Q15 16 6.2 26.6" fill="none" stroke="#0A0D12" stroke-width="1.7"></path>
+        <path d="M25.8 5.4 Q17 16 25.8 26.6" fill="none" stroke="#0A0D12" stroke-width="1.7"></path>
+      </svg>
+      <div style="line-height: 1">
+        <div class="arch" style="font-weight: 800; font-size: 19px; letter-spacing: -0.4px">SHARPZ</div>
+        <div class="mono" style="font-size: 9px; letter-spacing: 3.4px; color: var(--hot); margin-top: 3px">BASKETBALL</div>
       </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 26px; align-items: center">
-        <a href="research.html" style="color: #8B98A9; text-decoration: none; font-size: 15px">Research</a>
-        <a href="#join" style="background: #FF6B2C; color: #0A0D12; text-decoration: none; font-weight: 600; font-size: 15px; padding: 11px 20px; border-radius: 6px; display: inline-block; min-height: 44px; line-height: 22px">Get access</a>
-      </div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center">
+      <a href="performance.html" style="color: var(--mid); text-decoration: none; font-size: 15px">Performance</a>
     </div>
   </div>
+</div>
 
-  <!-- BOARD -->
-  <div style="max-width: 1120px; margin: 0 auto; padding: 56px 32px 72px">
+<div class="wrap" style="padding-top: 54px; padding-bottom: 80px">
+  <h1 class="arch" style="font-weight: 800; font-size: 46px; line-height: 1.02; letter-spacing: -1.6px; margin: 0 0 10px">
+    Tonight
+  </h1>
+  <div class="mono" id="dateline" style="font-size: 12px; letter-spacing: 1px; color: var(--dim); margin-bottom: 30px"></div>
 
-    <h1 style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 54px; line-height: 1.02; letter-spacing: -1.8px; margin: 0 0 16px">
-      The board
-    </h1>
-    <p style="font-size: 17px; line-height: 1.55; color: #8B98A9; max-width: 560px; margin: 0 0 36px">
-      Players and teams we can put a number on.
-      <a href="research.html" style="text-decoration: none; border-bottom: 1px solid #5C2D12; white-space: nowrap">How these are chosen</a>
-    </p>
+  <div id="picks"></div>
 
-    <!-- One quiet line. The board leads with names; this says only what a
-         bettor wants before scanning it: is there anything on tonight.
-         The reasoning behind the numbers lives on the research page. -->
-    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.8px; color: #6B7A8D; margin-bottom: 22px" id="dateline"></div>
-
-    <!-- Tonight's picks used to live here, fed from the slate log. It
-         has been removed: the measurement card below now carries the
-         bets under THE PICKS, and two sections both claiming to be
-         tonight's picks contradicted each other -- this one printed
-         "Nothing tonight" directly above a card showing a B-graded
-         bet, because it only knew about rows already written into
-         slate.jsonl and nothing writes the card's picks there yet.
-         One source or none. -->
-
-    <!-- THE MEASUREMENT: the whole screen, not the subset we like.
-         Most services publish the handful of rows they are betting and
-         nothing else, which makes the hit rate unfalsifiable: you
-         cannot tell a good process from a lucky one if the misses are
-         never written down. This is every candidate the model scored
-         tonight, with what it projects, what the market implies, and a
-         grade that comes out of those numbers rather than an opinion
-         typed over them.
-
-         Rows disagreeing with the market by more than ten points are
-         held back deliberately. Every large gap we have examined has
-         turned out to be our own projection error, so publishing them
-         as picks would be publishing the model's worst rows as its
-         best ones. -->
-    <!-- GO-TO PICKS. Leads the page because it needs no line, so it
-         has something to say on the nights props_lines.py has not
-         run -- which has been every night this week. Stars descend
-         from five: the model's own ordering, not a confidence claim. -->
-    <div id="gotoBlock" style="border: 1px solid #3A2A12; border-radius: 12px; overflow: hidden; margin-bottom: 30px; background: #0E1016" hidden>
-      <div style="background: #17120A; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #E8B43A">&#9733; GO-TO PICKS</div>
-        <div style="font-size: 13px; color: #6B7A8D" id="gotoMeta"></div>
-      </div>
-      <div id="gotoRows"></div>
-      <div style="background: #0B0D12; border-top: 1px solid #241B0E; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
-        <div id="gotoNote"></div>
-      </div>
-    </div>
-
-    <!-- THE SLIP. Rules, not a nightly judgement: last-season boards
-         only, a real sample underneath, no injury flag, and no
-         double-counting a points edge that is already a threes edge.
-         Written down in three.py so the shortlist cannot drift with
-         whoever happens to be reading it. -->
-    <div id="picksBlock" style="border: 1px solid #2A3441; border-radius: 12px; overflow: hidden; margin-bottom: 30px" hidden>
-      <div style="background: #11161E; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #FF8A52">TONIGHT&rsquo;S PICKS</div>
-        <div style="font-size: 13px; color: #6B7A8D" id="picksMeta"></div>
-      </div>
-      <div id="picksRows"></div>
-      <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
-        <div id="picksNote"></div>
-      </div>
-    </div>
-
-    <!-- MATCHUP BOARDS. A different question from the panel below,
-         and the page has to keep them apart: this ranks spots before
-         any price is looked at, the measurement panel joins the
-         model against a posted line. Reading one as the other is how
-         a board becomes a tip sheet. -->
-    <div id="boardsBlock" style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px" hidden>
-      <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #6FA8DC">TONIGHT&rsquo;S MATCHUPS</div>
-        <div style="font-size: 13px; color: #6B7A8D" id="boardsMeta"></div>
-      </div>
-      <div id="boardsRows"></div>
-      <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
-        <div id="boardsNote"></div>
-      </div>
-    </div>
-
-    <div id="cardBlock" style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px" hidden>
-      <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #6FA8DC">TONIGHT&rsquo;S MEASUREMENT</div>
-        <div style="font-size: 13px; color: #6B7A8D" id="cardMeta"></div>
-      </div>
-      <div id="cardRows"></div>
-      <div id="cardQuiet" hidden style="background: #11161E; padding: 22px 24px; font-size: 15px; line-height: 1.7; color: #96A3B4">
-        <strong style="color: #C3CDDA; font-weight: 600">No bets tonight.</strong>
-        The screen ran over every game and no candidate cleared the bar once the matchup, the minutes and the price were all accounted for.
-      </div>
-      <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
-        <div id="cardRubric"></div>
-        <br>
-        <div id="cardNote"></div>
-      </div>
-    </div>
-
-    <!-- RECORD: every published pick, graded off the official box
-         score. The count is shown from pick one; the win rate is not
-         shown until 30, because before that it is noise and putting a
-         number on the page invites reading it as a result. -->
-    <div id="recBlock" style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px" hidden>
-      <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #FF6B2C">THE RECORD</div>
-        <div style="font-size: 13px; color: #6B7A8D" id="recMeta"></div>
-      </div>
-      <div id="recRows"></div>
-      <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
-        Every pick we publish is logged with the line and price it was published at, and settled against the official NBA box score the next morning. The log is never edited after the fact &mdash; grading only adds a result to a row that already exists. Staking is flat, one unit a pick, so a good run and a lucky one cannot be made to look different.
-        <br><br>
-        We publish the win rate at 30 graded picks. Not before, and not later. Below that number a 3&ndash;0 start and an 0&ndash;3 start carry the same information, which is none, and <a href="research.html">showing either would be dishonest</a>. The count and the full archive are up from pick one: <a href="log.html">see every pick in the log</a>, or <a id="recCsv" href="data/slate_archive.csv" download>download the CSV</a>.
-      </div>
-    </div>
-
-    <!-- THE APPROACH: what we are actually buying, and how we will
-         know whether it works. Placed after the record and before the
-         evidence tables, because a reader who has just seen the
-         results deserves the method next rather than more numbers. -->
-    <div id="approachBlock" style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px">
-      <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #FF6B2C">THE APPROACH &nbsp;·&nbsp; WHAT WE ARE BUYING</div>
-        <div style="font-size: 13px; color: #6B7A8D">updated 23 Oct 2026</div>
-      </div>
-
-      <div style="background: #11161E; padding: 20px 24px; font-size: 14px; line-height: 1.75; color: #96A3B4">
-        <p style="margin: 0 0 14px">We stopped looking for mispriced lines. Across the first week every apparent edge we found turned out to be our own model&rsquo;s error &mdash; a rate-times-minutes projection running about 9% high on heavy-minute players and 9% low on bench players, which is larger than any disagreement it was reporting. A seven-book consensus that has been shopped all day is not wrong by twenty points. It is not usually wrong by two.</p>
-
-        <p style="margin: 0 0 14px">So the question changed. The posted line sits near the <strong style="color: #C3CDDA; font-weight: 600">median</strong> &mdash; that is what makes it a fair line. But an over is a bet on the <strong style="color: #C3CDDA; font-weight: 600">right tail</strong>, and two players with the same fair price do not have the same tail. Scoring is bounded below at zero and unbounded above. A guard with the ball in his hands against a fast, soft defence has a different shape of night available to him than a role player with the same number next to his name.</p>
-      </div>
-
-      <!-- Two real densities, same median, standardised to the same
-           spread: a symmetric one and a right-skewed one (gamma,
-           k=3). Drawn from the actual distributions rather than by
-           hand, because the whole claim is a claim about shape. -->
-      <div style="background: #0D1218; border-top: 1px solid #1A212B; border-bottom: 1px solid #1A212B; padding: 22px 24px 16px">
-        <svg viewBox="0 0 384 186" style="width: 100%; max-width: 560px; display: block; margin: 0 auto; overflow: visible" role="img" aria-labelledby="skewTitle skewDesc">
-          <title id="skewTitle">Two outcome distributions with the same median</title>
-          <desc id="skewDesc">A symmetric distribution and a right-skewed one share the same line and the same fifty percent chance of clearing it, but beyond 1.6 standard deviations the skewed one is 1.65 times as likely.</desc>
-
-          <path d="M222.2,119.0 L227.3,122.6 L232.5,125.8 L237.7,128.7 L242.8,131.4 L248.0,133.7 L253.2,135.8 L258.3,137.7 L263.5,139.4 L268.7,140.9 L273.8,142.3 L279.0,143.5 L284.2,144.5 L289.3,145.4 L294.5,146.3 L299.7,147.0 L304.8,147.6 L310.0,148.2 L315.2,148.7 L320.3,149.1 L325.5,149.5 L330.7,149.8 L335.8,150.1 L341.0,150.3 L346.2,150.6 L351.3,150.8 L356.5,150.9 L361.7,151.1 L366.8,151.2 L372.0,151.3 L372.0,152.0 L366.8,152.0 L361.7,152.0 L356.5,152.0 L351.3,152.0 L346.2,152.0 L341.0,152.0 L335.8,151.9 L330.7,151.9 L325.5,151.9 L320.3,151.8 L315.2,151.7 L310.0,151.6 L304.8,151.4 L299.7,151.2 L294.5,150.9 L289.3,150.4 L284.2,149.9 L279.0,149.2 L273.8,148.3 L268.7,147.2 L263.5,145.8 L258.3,144.0 L253.2,141.9 L248.0,139.4 L242.8,136.4 L237.7,132.9 L232.5,128.8 L227.3,124.2 L222.2,119.0 Z" fill="#FF6B2C" fill-opacity="0.26"/>
-
-          <line x1="12" y1="152" x2="378" y2="152" stroke="#2A3441" stroke-width="1"/>
-          <line x1="142" y1="12" x2="142" y2="152" stroke="#C3CDDA" stroke-width="1.5" stroke-dasharray="4 3"/>
-          <line x1="222.2" y1="60" x2="222.2" y2="152" stroke="#3B4654" stroke-width="1" stroke-dasharray="2 3"/>
-
-          <path d="M12.0,147.9 L17.0,146.8 L22.0,145.3 L27.0,143.5 L32.0,141.4 L37.0,138.9 L42.0,135.9 L47.0,132.4 L52.0,128.4 L57.0,123.9 L62.0,118.9 L67.0,113.3 L72.0,107.3 L77.0,100.8 L82.0,94.0 L87.0,86.9 L92.0,79.7 L97.0,72.5 L102.0,65.5 L107.0,58.7 L112.0,52.5 L117.0,46.9 L122.0,42.0 L127.0,38.1 L132.0,35.2 L137.0,33.4 L142.0,32.9 L147.0,33.4 L152.0,35.2 L157.0,38.1 L162.0,42.0 L167.0,46.9 L172.0,52.5 L177.0,58.7 L182.0,65.5 L187.0,72.5 L192.0,79.7 L197.0,86.9 L202.0,94.0 L207.0,100.8 L212.0,107.3 L217.0,113.3 L222.0,118.9 L227.0,123.9 L232.0,128.4 L237.0,132.4 L242.0,135.9 L247.0,138.9 L252.0,141.4 L257.0,143.5 L262.0,145.3 L267.0,146.8 L272.0,147.9 L277.0,148.9 L282.0,149.6 L287.0,150.2 L292.0,150.7 L297.0,151.0 L302.0,151.3 L307.0,151.5 L312.0,151.6 L317.0,151.7 L322.0,151.8 L327.0,151.9 L332.0,151.9 L337.0,151.9 L342.0,152.0 L347.0,152.0 L352.0,152.0 L357.0,152.0 L362.0,152.0 L367.0,152.0 L372.0,152.0" fill="none" stroke="#5A6878" stroke-width="1.6" stroke-dasharray="5 4"/>
-
-          <path d="M12.0,152.0 L17.0,152.0 L22.0,152.0 L27.0,152.0 L32.0,152.0 L37.0,152.0 L42.0,152.0 L47.0,152.0 L52.0,152.0 L57.0,152.0 L62.0,152.0 L67.0,150.6 L72.0,139.5 L77.0,121.7 L82.0,101.4 L87.0,81.1 L92.0,62.5 L97.0,46.5 L102.0,33.6 L107.0,23.9 L112.0,17.2 L117.0,13.4 L122.0,12.0 L127.0,12.8 L132.0,15.3 L137.0,19.3 L142.0,24.4 L147.0,30.4 L152.0,36.9 L157.0,43.8 L162.0,50.9 L167.0,58.0 L172.0,65.0 L177.0,71.8 L182.0,78.5 L187.0,84.8 L192.0,90.7 L197.0,96.3 L202.0,101.6 L207.0,106.5 L212.0,111.0 L217.0,115.1 L222.0,118.9 L227.0,122.4 L232.0,125.5 L237.0,128.4 L242.0,131.0 L247.0,133.3 L252.0,135.4 L257.0,137.3 L262.0,139.0 L267.0,140.5 L272.0,141.8 L277.0,143.0 L282.0,144.1 L287.0,145.0 L292.0,145.9 L297.0,146.6 L302.0,147.3 L307.0,147.9 L312.0,148.4 L317.0,148.8 L322.0,149.2 L327.0,149.6 L332.0,149.9 L337.0,150.2 L342.0,150.4 L347.0,150.6 L352.0,150.8 L357.0,150.9 L362.0,151.1 L367.0,151.2 L372.0,151.3" fill="none" stroke="#FF6B2C" stroke-width="2.2"/>
-
-          <g font-family="'IBM Plex Mono', monospace" font-size="9" letter-spacing="0.6">
-            <text x="142" y="172" fill="#C3CDDA" text-anchor="middle">THE LINE</text>
-            <text x="142" y="183" fill="#6B7A8D" text-anchor="middle">50% either way</text>
-            <text x="300" y="172" fill="#FF8A52" text-anchor="middle">1.65&times; AS LIKELY OUT HERE</text>
-            <text x="300" y="183" fill="#6B7A8D" text-anchor="middle">this is the part we are buying</text>
-            <text x="58" y="60" fill="#5A6878">symmetric</text>
-            <text x="86" y="26" fill="#FF8A52">right&ndash;skewed</text>
-          </g>
-        </svg>
-      </div>
-
-      <div style="background: #11161E; padding: 18px 24px 20px; font-size: 14px; line-height: 1.75; color: #96A3B4">
-        <p style="margin: 0 0 14px">Both curves above cross the line at exactly the same place and both clear it exactly half the time. The difference is what happens when they do. Past about 1.6 standard deviations the skewed outcome is <strong style="color: #C3CDDA; font-weight: 600">1.65 times</strong> as likely &mdash; the same win rate, much bigger wins. That is the whole bet, and it is why we would rather take a player&rsquo;s <strong style="color: #C3CDDA; font-weight: 600">points</strong> than his combined points-rebounds-assists: a sum of three stats averages its own variance away, which is the opposite of what we want.</p>
-
-        <p style="margin: 0 0 14px">So the screen looks for soft defences that have no personnel reason to improve, then for the players carrying enough of the ball to reach the tail when the game allows it. Where a defence is soft matters as much as how much: we weight each component by how reliably it repeats season to season, which turns out to mean <strong style="color: #C3CDDA; font-weight: 600">where a team lets you shoot from persists, how well you shoot there mostly does not</strong>.</p>
-
-        <p style="margin: 0 0 6px; color: #C3CDDA"><strong style="font-weight: 600">How you will know if this is nonsense.</strong></p>
-        <p style="margin: 0">Win rate cannot tell you. It scores a one-point miss and a blowout identically, which is exactly the distinction that matters here. So alongside the record we track the <strong style="color: #C3CDDA; font-weight: 600">margin ratio</strong>: the average size of a win against the average size of a loss. If the thesis is real the wins run bigger and that number sits above one. If it comes back near one, the selection is finding fair coins and we will say so here rather than quietly keep going. We publish it at 25 graded picks, for the same reason we hold the win rate to 30 &mdash; <a href="research.html" style="color: #96A3B4; border-bottom: 1px solid #2A3441; text-decoration: none">before that it is noise</a>.</p>
-      </div>
-    </div>
-
-    <!-- tabs -->
-    <div role="tablist" aria-label="Board view" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px" id="tabbar"></div>
-
-    <!-- NBA table -->
-    <div id="panel-isNba" hidden>
-      <div style="background: #11161E; border: 1px solid #1F2733; border-radius: 12px; overflow: hidden">
-        <table style="width: 100%; border-collapse: collapse">
-          <thead>
-            <tr style="background: #0D1218">
-              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 24px">PLAYER</th>
-              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">TEAM</th>
-              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px"><span id="lineHead"></span></th>
-              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">MINUTES</th>
-              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 24px">NOTE</th>
-            </tr>
-          </thead>
-          <tbody id="tb-rows"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- College table -->
-    <div id="panel-isCollege" hidden>
-      <div style="background: #11161E; border: 1px solid #1F2733; border-radius: 12px; overflow: hidden">
-        <table style="width: 100%; border-collapse: collapse">
-          <thead>
-            <tr style="background: #0D1218">
-              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 24px">TEAM</th>
-              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">OFFENCE</th>
-              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">DEFENCE</th>
-              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">NET</th>
-              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 24px">TEMPO</th>
-            </tr>
-          </thead>
-          <tbody id="tb-crows"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Mid-major table -->
-    <div id="panel-isMid" hidden>
-      <div style="background: #11161E; border: 1px solid #1F2733; border-radius: 12px; overflow: hidden">
-        <table style="width: 100%; border-collapse: collapse">
-          <thead>
-            <tr style="background: #0D1218">
-              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 18px 14px 24px">#NAT</th>
-              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">TEAM</th>
-              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">CONF</th>
-              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">NET</th>
-              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 24px">TEMPO</th>
-            </tr>
-          </thead>
-          <tbody id="tb-mrows"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- EuroLeague table -->
-    <div id="panel-isEuro" hidden>
-      <div style="background: #11161E; border: 1px solid #1F2733; border-radius: 12px; overflow: hidden">
-        <table style="width: 100%; border-collapse: collapse">
-          <thead>
-            <tr style="background: #0D1218">
-              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 24px">TEAM</th>
-              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">OFFENCE</th>
-              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">DEFENCE</th>
-              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">NET</th>
-              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">6 GAMES SAY</th>
-              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 24px">TEMPO</th>
-            </tr>
-          </thead>
-          <tbody id="tb-erows"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <p style="font-size: 13px; line-height: 1.7; color: #6B7A8D; margin: 16px 0 0; max-width: 840px" id="foot"></p>
-  </div>
-
-  <!-- JOIN -->
-  <div id="join" style="border-top: 1px solid #1A212B; background: #0D1218">
-    <div style="max-width: 1120px; margin: 0 auto; padding: 44px 32px">
-      <div style="display: flex; flex-wrap: wrap; gap: 36px; align-items: center; justify-content: space-between">
-        <div style="flex: 1 1 360px; min-width: 0">
-          <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.5px; margin-bottom: 7px">Daily board, from opening night</div>
-          <div style="font-size: 15px; color: #8B98A9">Updated lines, minutes and what changed. No picks until there's a track record.</div>
-        </div>
-        <div style="flex: 0 1 420px; min-width: 0; display: flex; flex-wrap: wrap; gap: 10px">
-          <label for="email" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Email address</label>
-          <input id="email" type="email" placeholder="you@example.com" style="flex: 1 1 220px; background: #0A0D12; border: 1px solid #28323F; border-radius: 7px; padding: 14px 16px; color: #ECEFF4; font-size: 15px; font-family: 'IBM Plex Sans', sans-serif; min-height: 44px">
-          <button type="submit" style="background: #FF6B2C; color: #0A0D12; border: none; border-radius: 7px; padding: 14px 24px; font-size: 15px; font-weight: 600; font-family: 'IBM Plex Sans', sans-serif; cursor: pointer; min-height: 44px">Get access</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <div style="border-top: 1px solid #1A212B">
-    <div style="max-width: 1120px; margin: 0 auto; padding: 36px 32px 52px">
-      <div style="display: flex; flex-wrap: wrap; gap: 26px; align-items: center; justify-content: space-between; margin-bottom: 24px">
-        <div style="display: flex; align-items: center; gap: 10px">
-          <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true">
-            <circle cx="16" cy="16" r="14" fill="none" stroke="#4A5566" stroke-width="2"></circle>
-            <path d="M16 2 L16 30 M2 16 L30 16" stroke="#4A5566" stroke-width="1.5"></path>
-            <path d="M6.2 5.4 Q15 16 6.2 26.6" fill="none" stroke="#4A5566" stroke-width="1.5"></path>
-            <path d="M25.8 5.4 Q17 16 25.8 26.6" fill="none" stroke="#4A5566" stroke-width="1.5"></path>
-          </svg>
-          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; color: #8B98A9; letter-spacing: -0.2px">SHARPZ BASKETBALL</span>
-        </div>
-        <div style="display: flex; flex-wrap: wrap; gap: 24px">
-          <a href="research.html" style="color: #6B7A8D; text-decoration: none; font-size: 14px">Research</a>
-          <a href="#join" style="color: #6B7A8D; text-decoration: none; font-size: 14px">Contact</a>
-        </div>
-      </div>
-      <p style="font-size: 12px; line-height: 1.75; color: #586678; margin: 0; max-width: 840px">
-        Statistical forecasts for informational purposes. Not a sportsbook; we do not accept wagers. Betting involves risk of loss. 21+ and where legal. 1-800-GAMBLER.
-      </p>
-    </div>
-  </div>
-
+  <!-- The only sentence on the page. It is not an explanation of the
+       model, it is what these five ARE: no line was looked at, so
+       they are spots, not bets. Without it a visitor reads five names
+       on a betting site as five bets. -->
+  <div id="foot" class="mono" style="margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 12px; line-height: 1.8; color: var(--dim); letter-spacing: 0.3px"></div>
 </div>
 
 <script>
-
-// Data, lifted verbatim from the design so nothing is retyped.
-const PRA = [['Nikola Jokic', 'DEN', '50', 'locked', 'Same team, coach and role'],
-      ['Shai Gilgeous-Alexander', 'OKC', '42.5', 'locked', 'Core intact; role unchanged'],
-      ['Cade Cunningham', 'DET', '38', 'moved', 'Healthy after a collapsed lung cut 2025-26'],
-      ['Jalen Brunson', 'NYK', '37', 'locked', 'Cleared, no restrictions, Sep 24'],
-      ['Kevin Durant', 'HOU', '36.5', 'moved', 'VanVleet back from ACL; usage should fall'],
-      ['Donovan Mitchell', 'CLE', '35.5', 'locked', 'Four-year extension; same role'],
-      ['Alperen Sengun', 'HOU', '35', 'moved', 'Creator role shrinks with VanVleet back'],
-      ['Lauri Markkanen', 'UTA', '32', 'moved', 'Neck day-to-day; hip ended 2025-26'],
-      ['RJ Barrett', 'TOR', '30', 'moved', 'Ingram out, Kawhi Leonard in'],
-      ['Amen Thompson', 'HOU', '26', 'locked', 'Five-year extension; same team']];
-const PR  = [['Nikola Jokic', 'DEN', '40', 'locked', 'Same team, coach and role'],
-      ['Shai Gilgeous-Alexander', 'OKC', '36', 'locked', 'Core intact; role unchanged'],
-      ['Kevin Durant', 'HOU', '32', 'moved', 'VanVleet back from ACL; usage should fall'],
-      ['Lauri Markkanen', 'UTA', '30', 'moved', 'Jackson Jr. and Peterson take shots'],
-      ['Jalen Brunson', 'NYK', '30', 'locked', 'Cleared, no restrictions, Sep 24'],
-      ['Donovan Mitchell', 'CLE', '30', 'locked', 'Four-year extension; same role'],
-      ['Cade Cunningham', 'DET', '29.5', 'moved', 'Healthy after a shortened 2025-26'],
-      ['RJ Barrett', 'TOR', '26', 'moved', 'Ingram out, Kawhi Leonard in'],
-      ['Jalen Duren', 'DET', '25.5', 'locked', 'Re-signed Oct 1; Stewart traded'],
-      ['Amen Thompson', 'HOU', '22', 'locked', 'Five-year extension; same team']];
-const COL = [['Duke', '120.5', '91.0', '+29.5', '70.1', 'average'],
-      ['Florida', '120.6', '93.5', '+27.1', '74.1', 'very fast'],
-      ['Arizona', '118.8', '91.8', '+27.0', '74.2', 'very fast'],
-      ['Virginia', '120.7', '94.0', '+26.7', '70.4', 'average'],
-      ['Illinois', '122.8', '96.5', '+26.3', '72.1', 'fast'],
-      ['Houston', '118.8', '93.0', '+25.8', '67.3', 'slow'],
-      ['Kansas', '119.2', '93.7', '+25.5', '72.2', 'fast'],
-      ['Louisville', '119.2', '94.6', '+24.6', '72.6', 'fast']];
-const MID = [['44', 'Grand Canyon', 'MWC', '+16.8', '73.1', 'top 50'],
-      ['57', 'VCU', 'A10', '+15.3', '73.3', 'top 75'],
-      ['65', 'High Point', 'BSth', '+13.0', '73.4', 'top 75'],
-      ['66', 'New Mexico', 'MWC', '+12.9', '72.4', 'top 75'],
-      ['67', "Saint Mary's", 'WCC', '+12.9', '70.8', 'top 75'],
-      ['68', 'Saint Louis', 'A10', '+12.8', '72.7', 'top 75'],
-      ['69', 'Wichita St.', 'Amer', '+12.4', '71.8', 'top 75'],
-      ['72', 'Dayton', 'A10', '+11.8', '70.2', 'top 75'],
-      ['77', 'George Washington', 'A10', '+10.9', '72.7', ''],
-      ['86', 'Nevada', 'MWC', '+9.6', '69.7', ''],
-      ['89', 'Santa Clara', 'WCC', '+9.3', '73.1', ''],
-      ['90', 'South Florida', 'Amer', '+9.2', '73.1', '']];
-const EUR = [['Panathinaikos', '117.4', '105.2', '+12.2', '+18.7', '74.6', 'average'],
-      ['Olympiacos', '121.7', '112.4', '+9.4', '+10.4', '78.0', 'very fast'],
-      ['Fenerbahçe', '114.2', '105.8', '+8.4', '+12.6', '73.0', 'slow'],
-      ['Valencia', '120.2', '113.2', '+6.9', '+8.1', '79.2', 'very fast'],
-      ['Real Madrid', '120.1', '113.3', '+6.8', '+7.2', '76.0', 'average'],
-      ['Hapoel Tel Aviv', '118.4', '113.3', '+5.2', '+6.2', '75.9', 'average'],
-      ['Crvena Zvezda', '109.9', '106.2', '+3.7', '+5.3', '76.1', 'average'],
-      ['Barcelona', '118.8', '116.5', '+2.3', '+3.1', '74.8', 'average'],
-      ['Žalgiris', '114.5', '114.1', '+0.3', '−3.7', '74.1', 'slow'],
-      ['Beşiktaş', '119.6', '119.5', '+0.1', '+0.2', '76.1', 'no prior'],
-      ['Dubai', '115.2', '116.2', '−0.9', '−1.7', '73.2', 'slow'],
-      ['Virtus Bologna', '112.3', '113.9', '−1.6', '+1.4', '76.1', 'average'],
-      ['Partizan', '107.3', '109.8', '−2.4', '+0.2', '74.5', 'slow'],
-      ['Anadolu Efes', '107.6', '112.4', '−4.8', '−4.2', '75.8', 'average'],
-      ['Maccabi Tel Aviv', '114.3', '120.4', '−6.2', '−8.3', '76.1', 'average'],
-      ['Paris', '111.0', '117.3', '−6.2', '−9.7', '77.9', 'fast'],
-      ['Bayern Munich', '112.6', '119.1', '−6.5', '−8.6', '74.9', 'average'],
-      ['Olimpia Milan', '114.6', '122.4', '−7.8', '−13.0', '74.3', 'slow'],
-      ['ASVEL', '110.3', '120.3', '−10.0', '−9.9', '76.5', 'fast'],
-      ['Baskonia', '110.3', '120.9', '−10.5', '−14.1', '77.8', 'fast']];
-
-const FOOTS = {
- "pra": "Each player\u2019s own typical points+rebounds+assists across his last three seasons \u2014 roughly where a book would set him. Not a projection for any given night. LOCKED: situation unchanged. MOVED: something a three-year average would miss.",
- "pr": "Each player\u2019s own typical points+rebounds across his last three seasons \u2014 roughly where a book would set him. Not a projection for any given night. LOCKED: situation unchanged. MOVED: something a three-year average would miss.",
- "college": "Adjusted efficiency per 100 possessions, opponent-adjusted. Preseason projections \u2014 these move once games are played. A high rating means a team is good, not that the market has it wrong.",
- "mid": "Teams outside the ACC, Big Ten, Big 12, SEC, Big East and Pac-12, ranked by where they sit NATIONALLY \u2014 that column is the point. None crack the top 43 this preseason. Ratings ignore conference; prices don\u2019t, and non-conference season is where that gap would show.",
- "euro": "Points scored and allowed per 100 possessions, 2026-27, after six rounds. NET is what we price: these six games blended 58/42 with each club\u2019s finish last season, because six games on their own overstate how far apart teams are. 6 GAMES SAY is that unblended figure, with an arrow where the two disagree by more than 2.5 points \u2014 Panathinaikos and Fenerbah\u00e7e are being held back off a hot start, \u017dalgiris and Baskonia lifted off a cold one. Be\u015fikta\u015f is newly promoted and has no last season to blend, so it is pulled toward the league average instead. Margins in this league carry a standard error of 11.7 points, measured out-of-sample across 310 games."
-};
-
-const DEFS = [
-  { id:'pra',     kicker:'NBA',        label:'Points + rebounds + assists' },
-  { id:'pr',      kicker:'NBA',        label:'Points + rebounds' },
-  { id:'college', kicker:'COLLEGE',    label:'Team efficiency' },
-  { id:'mid',     kicker:'COLLEGE',    label:'Best outside the big leagues' },
-  { id:'euro',    kicker:'EUROLEAGUE', label:'Team efficiency, in season' }
-];
-
-const pill = st => {
-  const on = st === 'locked';
-  return "font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.4px; "
-    + 'padding: 5px 10px; border-radius: 4px; text-transform: uppercase; '
-    + (on ? 'color: #FF8A52; border: 1px solid #5C2D12; background: #2A1408;'
-          : 'color: #96A3B4; border: 1px solid #28323F; background: #1A212B;');
-};
-const tabStyle = on =>
-  "text-align: left; font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; "
-  + 'font-weight: 600; padding: 11px 18px; border-radius: 8px; cursor: pointer; min-height: 44px; '
-  + (on ? 'background: #FF6B2C; color: #0A0D12; border: 1px solid #FF6B2C;'
-        : 'background: #11161E; color: #96A3B4; border: 1px solid #28323F;');
-
-const num = s => parseFloat(String(s).replace('\u2212', '-'));
-
-const T = {
-  rows:  d => `<tr>
-                <td style="padding: 15px 24px; border-top: 1px solid #1A212B; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: -0.2px; white-space: nowrap">${d.name}</td>
-                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.6px; color: #8B98A9">${d.team}</td>
-                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 500; color: #FF6B2C; letter-spacing: -0.5px">${d.line}</td>
-                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; white-space: nowrap"><span style="${d.pill}">${d.status}</span></td>
-                <td style="padding: 15px 24px; border-top: 1px solid #1A212B; font-size: 14px; line-height: 1.5; color: #96A3B4">${d.note}</td>
-              </tr>`,
-  crows: d => `<tr>
-                <td style="padding: 15px 24px; border-top: 1px solid #1A212B; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: -0.2px; white-space: nowrap">${d.team}</td>
-                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #C3CDDA">${d.oe}</td>
-                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #C3CDDA">${d.de}</td>
-                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 500; color: #FF6B2C; letter-spacing: -0.5px">${d.net}</td>
-                <td style="padding: 15px 24px; border-top: 1px solid #1A212B; font-size: 14px; color: #96A3B4">
-                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #C3CDDA">${d.tempo}</span>
-                  <span style="color: #6B7A8D; margin-left: 10px">${d.pace}</span>
-                </td>
-              </tr>`,
-  mrows: d => `<tr>
-                <td style="padding: 15px 18px 15px 24px; border-top: 1px solid #1A212B; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #8B98A9">${d.rank}</td>
-                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: -0.2px; white-space: nowrap">${d.team}</td>
-                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.6px; color: #8B98A9">${d.conf}</td>
-                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 500; color: #FF6B2C; letter-spacing: -0.5px">${d.net}</td>
-                <td style="padding: 15px 24px; border-top: 1px solid #1A212B; font-size: 14px; color: #96A3B4">
-                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #C3CDDA">${d.tempo}</span>
-                  <span style="color: #6B7A8D; margin-left: 10px">${d.tag}</span>
-                </td>
-              </tr>`,
-  erows: d => `<tr>
-                <td style="padding: 15px 24px; border-top: 1px solid #1A212B; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: -0.2px; white-space: nowrap">${d.team}</td>
-                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #C3CDDA">${d.oe}</td>
-                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #C3CDDA">${d.de}</td>
-                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 500; color: #FF6B2C; letter-spacing: -0.5px">${d.net}</td>
-                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; text-align: right; white-space: nowrap">
-                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #6B7A8D">${d.raw}</span>
-                  <span style="${d.gapStyle}">${d.gap}</span>
-                </td>
-                <td style="padding: 15px 24px; border-top: 1px solid #1A212B; font-size: 14px; color: #96A3B4">
-                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #C3CDDA">${d.tempo}</span>
-                  <span style="color: #6B7A8D; margin-left: 10px">${d.pace}</span>
-                </td>
-              </tr>`,
-  tabs:  d => `<button type="button" role="tab" aria-selected="${d.sel}" onClick="${d.pick}" style="${d.style}">
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.8px; display: block; margin-bottom: 4px; opacity: 0.7">${d.kicker}</span>
-          ${d.label}
-        </button>`
-};
-
-let tab = 'pra';
-
-function erow(e) {
-  const dgap = num(e[3]) - num(e[4]);
-  const big = Math.abs(dgap) >= 2.5;
-  return { team:e[0], oe:e[1], de:e[2], net:e[3], raw:e[4],
-           tempo:e[5], pace:e[6],
-           gap: big ? (dgap > 0 ? ' \u25B2' : ' \u25BC') : '',
-           gapStyle: 'font-size: 11px; margin-left: 5px; color: '
-             + (big ? (dgap > 0 ? '#3FB68B' : '#C2693C') : 'transparent') };
+const UNIT = { pts: 'POINTS', threes: 'THREES', reb: 'REBOUNDS', ast: 'ASSISTS' };
+const SHORT = { pts: 'pts', threes: '3PM', reb: 'reb', ast: 'ast' };
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g,
+  c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+// Board rows store names normalised to lowercase, and a naive
+// capitalise-every-word turns "pj washington" into "Pj Washington" and
+// "jaden mcdaniels" into "Jaden Mcdaniels". A name a reader sees
+// misspelled is the cheapest possible way to look careless.
+// Anything that already carries a capital came from a box score and
+// is left exactly as it is.
+const INITIALS = new Set(['pj','cj','tj','aj','jt','rj','kj','bj','dj','jj']);
+const SUFFIX = { jr: 'Jr.', sr: 'Sr.', ii: 'II', iii: 'III', iv: 'IV' };
+const cap = w => w ? w.charAt(0).toUpperCase() + w.slice(1) : w;
+function title(s) {
+  s = String(s || '');
+  if (/[A-Z]/.test(s)) return s;
+  return s.split(/\s+/).map(w => {
+    const k = w.toLowerCase(), bare = k.replace(/\./g, '');
+    if (SUFFIX[bare]) return SUFFIX[bare];
+    if (INITIALS.has(bare)) return bare.toUpperCase();
+    if (/^mc[a-z]{2,}$/.test(k)) return 'Mc' + cap(k.slice(2));
+    if (/^[od]'[a-z]+$/.test(k)) return cap(k.slice(0, 1)) + "'" + cap(k.slice(2));
+    return k.split('-').map(cap).join('-');
+  }).join(' ');
 }
 
-function render() {
-  const src = tab === 'pr' ? PR : PRA;
-  document.getElementById('tb-rows').innerHTML = src.map(r =>
-    T.rows({ name:r[0], team:r[1], line:r[2], status:r[3], note:r[4],
-             pill: pill(r[3]) })).join('');
-  document.getElementById('tb-crows').innerHTML = COL.map(c =>
-    T.crows({ team:c[0], oe:c[1], de:c[2], net:c[3], tempo:c[4],
-              pace:c[5] })).join('');
-  document.getElementById('tb-mrows').innerHTML = MID.map(m =>
-    T.mrows({ rank:m[0], team:m[1], conf:m[2], net:m[3], tempo:m[4],
-              tag:m[5] })).join('');
-  document.getElementById('tb-erows').innerHTML =
-    EUR.map(e => T.erows(erow(e))).join('');
-
-  document.getElementById('tabbar').innerHTML = DEFS.map(d =>
-    T.tabs({ label:d.label, kicker:d.kicker, sel: d.id === tab,
-             style: tabStyle(d.id === tab), pick:'' })).join('');
-  [...document.querySelectorAll('#tabbar button')].forEach((b, i) => {
-    b.onclick = () => { tab = DEFS[i].id; render(); };
-  });
-
-  const on = {
-    'panel-isNba':     tab === 'pra' || tab === 'pr',
-    'panel-isCollege': tab === 'college',
-    'panel-isMid':     tab === 'mid',
-    'panel-isEuro':    tab === 'euro'
-  };
-  for (const [id, show] of Object.entries(on)) {
-    const el = document.getElementById(id);
-    if (el) el.hidden = !show;
-  }
-  document.getElementById('lineHead').textContent =
-    tab === 'pr' ? '3-SEASON PR' : '3-SEASON PRA';
-  document.getElementById('foot').textContent = FOOTS[tab];
+function dayText(d) {
+  if (!/^\d{8}$/.test(d || '')) return '';
+  const dt = new Date(+d.slice(0,4), +d.slice(4,6) - 1, +d.slice(6,8));
+  return dt.toLocaleDateString('en-US',
+    { weekday: 'long', month: 'long', day: 'numeric' });
 }
 
-// One line, from data/status.json. The board leads with names; this
-// says only whether anything is on tonight. If the fetch fails the
-// line still reads sensibly rather than going blank.
-// Two things feed this line, and they arrive at different times: our
-// own priced run, which some nights produces nothing, and the outside
-// reads, which land every morning. Leading with "NO PRICES YET" while
-// seventeen screened reads sat directly below it described the half of
-// the page that was empty and ignored the half that wasn't.
-let _S = null, _T = null;
-function dateline() {
-  const el = document.getElementById('dateline');
-  if (!el) return;
-  const r = _S && _S.latest;
-  const fresh = _T && !staleDay(_T);
-  const n = (fresh && _T.rows && _T.rows.length) || 0;
-  const SEP = '  ·  ';
-  const when = r ? r.when
-    : (fresh ? _T.day.slice(4, 6) + '/' + _T.day.slice(6, 8) : '');
-  const outside = n ? n + ' OUTSIDE READS SCREENED'
-                    : (_T && staleDay(_T) ? 'NO READS YET TODAY' : '');
-  const ours = r
-    ? (r.games + ' GAMES PRICED' + SEP
-       + (r.taken > 0 ? r.taken + ' ON THE BOARD' : 'NOTHING CLEARED'))
-    : 'OUR PRICES NOT IN YET';
-  const txt = [when, outside, ours].filter(Boolean).join(SEP);
-  el.textContent = txt || 'NOTHING IN YET TONIGHT';
-}
-
-render();
-// Tonight's independent reads, ours alone.
-// ---------------------------------------------------------------
-// Every number on this page carries its own label. An unlabelled
-// 42.5 beside an unlabelled 26.81 is two facts the reader has to
-// guess at; a stacked caption survives flex wrapping, which a table
-// header row does not once a phone forces the columns to stack.
-function cell(label, value, color, min) {
-  return `<div style="min-width: ${min || 64}px">
-    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px;
-      letter-spacing: 1.3px; color: #5D6B7C; margin-bottom: 3px;
-      white-space: nowrap">${label}</div>
-    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 15px;
-      color: ${color || '#C3CDDA'}; white-space: nowrap">${value}</div>
-  </div>`;
-}
-
-const DASH = '<span style="color: #3C4654">&mdash;</span>';
-function fmt(v, dp) {
-  return (v === undefined || v === null) ? DASH
-    : (dp === undefined ? String(v) : Number(v).toFixed(dp));
-}
-function sgn(v, dp) {
-  if (v === undefined || v === null) return DASH;
-  return (v > 0 ? '+' : '') + Number(v).toFixed(dp === undefined ? 2 : dp);
-}
-
-// Data from a previous day is not "tonight". The board showed
-// yesterday's players as tonight's slate because nothing compared the
-// file's date to the calendar -- the morning scrape had not run yet,
-// so the newest rows in the log were still last night's. A board that
-// silently presents stale reads as live ones is worse than an empty
-// one, so this refuses to render rows and says which day they are from.
-function todayStr() {
-  const d = new Date();
-  return d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0')
-       + String(d.getDate()).padStart(2, '0');
-}
-function staleDay(t) {
-  return (t && t.day && t.day < todayStr()) ? t.day : null;
-}
-function prettyDay(d) {
-  if (!d || d.length !== 8) return d || '';
-  const m = ['Jan','Feb','Mar','Apr','May','Jun',
-             'Jul','Aug','Sep','Oct','Nov','Dec'][+d.slice(4, 6) - 1];
-  return +d.slice(6, 8) + ' ' + m;
-}
-function staleNotice(what, day) {
-  return `<div style="padding: 20px 24px; background: #11161E;
-      font-size: 14px; line-height: 1.7; color: #8B98A9">
-    No ${what} for today yet. The most recent are from
-    <strong style="color: #C3CDDA">${prettyDay(day)}</strong> and are not
-    shown here, because last night's players are not tonight's slate.
-  </div>`;
-}
-
-// --- CORROBORATED PROPS ------------------------------------------
-// Second block. Only props where a writer and the projection model
-// independently took the same side; the rest are counted, not shown.
-function ticker(t) {
-  const meta = document.getElementById('tickMeta');
-  const body = document.getElementById('tickRows');
-  const when = document.getElementById('tickWhen');
-  if (!body) return;
-  const stale = staleDay(t);
-  if (stale) {
-    if (meta) meta.textContent = '';
-    body.innerHTML = staleNotice('outside reads', stale);
-    return;
-  }
-  if (!t || !t.rows || !t.rows.length) {
-    body.innerHTML = '<div style="padding: 20px 24px; color: #6B7A8D; '
-      + 'font-size: 14px">Nothing corroborated tonight.</div>';
-    return;
-  }
-  if (meta) {
-    const c = t.counts || {};
-    const held = (c.held_conflict || 0) + (c.held_unbacked || 0);
-    meta.textContent = t.rows.length + ' of ' + (c.writer_picks || 0)
-      + ' picks corroborated'
-      + (held ? '  ·  ' + held + ' read but not shown' : '');
-  }
-  if (when && t.generated) {
-    when.textContent = new Date(t.generated)
-      .toLocaleString(undefined, { day: 'numeric', month: 'short',
-                                   hour: '2-digit', minute: '2-digit' });
-  }
-  const MONO = "font-family: 'IBM Plex Mono', monospace;";
-  const ARCH = "font-family: 'Archivo', sans-serif;";
-
-  body.innerHTML = t.rows.map((r, i) => {
-    const top = i ? 'border-top: 1px solid #1A212B;' : '';
-    const side = r.side.charAt(0).toUpperCase() + r.side.slice(1);
-    return `<div style="padding: 15px 24px; background: #11161E; ${top}">
-      <div style="display: flex; flex-wrap: wrap; gap: 8px 14px;
-        align-items: baseline; margin-bottom: 11px">
-        <span style="${ARCH} font-weight: 600; font-size: 16px;
-          letter-spacing: -0.2px">${r.player}</span>
-        <span style="font-size: 14px; color: #8B98A9">${r.market}</span>
-        ${r.game ? `<span style="${MONO} font-size: 11px;
-          color: #6B7A8D">${r.game}</span>` : ''}
-      </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 14px 22px;
-        align-items: flex-start">
-        ${cell('PICK', side, '#C3CDDA', 62)}
-        ${cell('LINE', fmt(r.line), '#C3CDDA', 56)}
-        ${cell('PROJ', fmt(r.projection), '#C3CDDA', 62)}
-        ${cell('EDGE', sgn(r.difference, 1), '#8B98A9', 62)}
-        ${cell('EV', r.ev_pct != null ? r.ev_pct.toFixed(1) + '%' : DASH,
-               '#3FB68B', 62)}
-      </div>
-    </div>`;
-  }).join('');
-}
-
-
-function record(d) {
-  const block = document.getElementById('recBlock');
-  const body = document.getElementById('recRows');
-  const meta = document.getElementById('recMeta');
-  if (!block || !body) return;
-  if (!d || !d.logged) { block.hidden = true; return; }
-  block.hidden = false;
-  if (meta) {
-    meta.textContent = d.days && d.days.length
-      ? d.days.length + (d.days.length === 1 ? ' day' : ' days') + ' published'
-      : '';
-  }
-  const open = d.graded >= (d.unlocks_at || 30);
-  const cells = [
-    cell('LOGGED', String(d.logged), '#C3CDDA', 70),
-    cell('GRADED', String(d.graded), '#C3CDDA', 70),
-    cell('PENDING', String(d.pending), '#8B98A9', 70)
-  ];
-  if (open) {
-    const u = d.units || 0;
-    const ucol = u > 0 ? '#3FB68B' : (u < 0 ? '#FF6B2C' : '#8B98A9');
-    cells.push(cell('RECORD', d.record || '—', '#C3CDDA', 86));
-    cells.push(cell('UNITS', sgn(u, 2), ucol, 70));
-    if (d.roi_pct !== null && d.roi_pct !== undefined) {
-      cells.push(cell('ROI', sgn(d.roi_pct, 1) + '%', ucol, 70));
-    }
-    if (d.win_pct !== null && d.win_pct !== undefined) {
-      cells.push(cell('WIN RATE', d.win_pct.toFixed(1) + '%', '#C3CDDA', 80));
-    }
-  } else {
-    cells.push(cell('WIN RATE', 'AT ' + (d.unlocks_at || 30), '#5D6B7C', 86));
-  }
-
-  const note = open
-    ? ''
-    : `<div style="flex: 1 1 100%; font-size: 13px; color: #6B7A8D;
-         padding-top: 4px">${d.to_go} more graded before the win rate
-         goes up. Everything logged so far is in the CSV below.</div>`;
-
-  let tiers = '';
-  if (open && d.by_tier) {
-    tiers = Object.entries(d.by_tier).map(([k, v]) => {
-      const u = v.units || 0;
-      const c = u > 0 ? '#3FB68B' : (u < 0 ? '#FF6B2C' : '#8B98A9');
-      return `<div style="display: flex; flex-wrap: wrap; gap: 10px 18px;
-          align-items: baseline; padding: 11px 24px; background: #11161E;
-          border-top: 1px solid #1A212B">
-        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px;
-          letter-spacing: 1.3px; color: #5D6B7C; min-width: 96px;
-          text-transform: uppercase">${k}</span>
-        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px;
-          color: #C3CDDA; min-width: 70px">${v.record}</span>
-        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px;
-          color: ${c}">${sgn(u, 2)}u</span>
-      </div>`;
-    }).join('');
-  }
-
-  body.innerHTML = `<div style="display: flex; flex-wrap: wrap;
-      gap: 14px 22px; align-items: flex-start; padding: 16px 24px;
-      background: #11161E">${cells.join('')}${note}</div>` + tiers;
-}
-
-dateline();
-ticker(null);
-record(null);
-// Either fetch may fail or arrive first, so each stores its half and
-// re-renders the line. Neither waits on the other: the reads show
-// whether or not we have priced anything, which is the point.
-
-// --- GO-TO PICKS -----------------------------------------------------
-// three.py's goto_picks(): a price-free top five across all four
-// boards, scored against the best SURVIVING row on each board and
-// docked for blowout risk, a share-led rebound read, and a thin
-// variance sample. The weights are a heuristic calibrated to nothing
-// and the panel says so -- the point is that the list is reproducible
-// from the repo rather than assembled by hand each night.
-const GOTO_UNIT = { pts: 'POINTS', threes: 'THREES', reb: 'REBOUNDS',
-                    ast: 'ASSISTS' };
-
-function gotoPicks(d) {
-  const block = document.getElementById('gotoBlock');
-  const body = document.getElementById('gotoRows');
-  if (!block || !body || !d) return;
-  const rows = d.goto || [];
-  const meta = document.getElementById('gotoMeta');
-  const note = document.getElementById('gotoNote');
-  block.hidden = false;
+function render(d) {
+  const rows = (d && d.goto) || [];
+  const dl = document.getElementById('dateline');
+  const box = document.getElementById('picks');
+  const ft = document.getElementById('foot');
+  dl.textContent = dayText(d && d.day).toUpperCase();
 
   if (!rows.length) {
-    if (meta) meta.textContent = 'nobody clears the floors';
-    body.innerHTML = `<div style="border-top: 1px solid #241B0E;
-      padding: 18px 24px; font-size: 15px; line-height: 1.7; color: #96A3B4">
-      <strong style="color: #C3CDDA">Nothing tonight.</strong>
-      Every candidate was under the minutes floor, carrying an injury
-      flag, or a duplicate of a finding already taken.</div>`;
-  } else {
-    if (meta) meta.textContent = rows.length + ' spots \u00b7 no price consulted';
-    body.innerHTML = rows.map((r, i) => {
-      const stars = '\u2605'.repeat(rows.length - i);
-      return `
-      <div style="border-top: 1px solid #241B0E; padding: 16px 24px;
-        display: flex; gap: 16px; align-items: flex-start">
-        <div style="${CARD_MONO} font-size: 13px; color: #E8B43A;
-          min-width: 68px; letter-spacing: 1px; padding-top: 3px">${stars}</div>
-        <div style="flex: 1 1 auto; min-width: 0">
-          <div style="font-size: 17px; color: #E6ECF3">${esc(r.player)}
-            <span style="${CARD_MONO} color: #E8B43A; font-size: 14px;
-              margin-left: 6px">${esc(GOTO_UNIT[r.market] || r.market)}</span>
-            <span style="color: #6B7A8D; font-size: 13px">${esc(r.team)} vs ${esc(r.opp)}</span>
-          </div>
-          <div style="font-size: 13px; color: #8B98A9; margin-top: 5px">${esc(r.why || '')}</div>
-          ${r.goto_why ? `<div style="font-size: 12px; color: #C3A14E;
-            margin-top: 4px">docked for: ${esc(r.goto_why)}</div>` : ''}
-        </div>
-        <div style="${CARD_MONO} text-align: right; font-size: 12px;
-          color: #8B98A9; white-space: nowrap">
-          <div style="font-size: 17px; color: #E6ECF3">${Number(r.base).toFixed(1)}</div>
-          <div>in ${Number(r.mins).toFixed(0)} min</div>
-          <div>z ${(r.zs >= 0 ? '+' : '')}${Number(r.zs).toFixed(2)}</div>
-        </div>
-      </div>`;
-    }).join('');
+    box.innerHTML = `<div style="border-top: 1px solid var(--line);
+      padding: 30px 0; font-size: 17px; color: var(--mid)">Nothing
+      tonight.</div>`;
+    ft.textContent = '';
+    return;
   }
-
-  if (note) {
-    note.innerHTML = `<strong style="color: #C3CDDA">No price was
-      consulted.</strong> These are the best spots for production
-      tonight across all four boards &mdash; scored against the best
-      eligible row on each board, then docked for blowout risk, for a
-      rebound read standing on share rather than volume, and for a
-      thin variance sample. <strong style="color: #C3CDDA">Those
-      weights are a heuristic calibrated to nothing.</strong> Stars are
-      this ordering, not a confidence level. Whether any of these is
-      worth backing is a separate question and it needs a line.`;
-  }
-}
-
-// --- TONIGHT'S PICKS -------------------------------------------------
-// Rendered from three.py's computed slip, never decided here. The
-// tests live in the model so the shortlist is reproducible: boards
-// built on a full prior season only (rebounds and assists measured
-// 10-14% reliable and were floored UP to 23%, so their numbers are
-// mostly floor), a real sample underneath, no injury flag, and a
-// points edge that IS a threes edge appears once rather than twice.
-function picks(d) {
-  const block = document.getElementById('picksBlock');
-  const body = document.getElementById('picksRows');
-  if (!block || !body || !d) return;
-  const rows = d.picks || [];
-  const meta = document.getElementById('picksMeta');
-  const note = document.getElementById('picksNote');
-  block.hidden = false;
-
-  if (!rows.length) {
-    if (meta) meta.textContent = 'nothing clears the bar';
-    body.innerHTML = `<div style="border-top: 1px solid #1A212B;
-      padding: 18px 24px; font-size: 15px; line-height: 1.7; color: #96A3B4">
-      <strong style="color: #C3CDDA">No picks tonight.</strong> That is a
-      result rather than a gap. A row has to come off a board built on a
-      full prior season, carry a real sample underneath, be free of an
-      injury flag, and not be a second count of an edge already listed.
-      Some slates have nobody.</div>`;
-  } else {
-    if (meta) meta.textContent = rows.length
-      + (rows.length === 1 ? ' pick' : ' picks')
-      + ' \u00b7 no price consulted';
-    const MKT = { threes: 'THREES', pts: 'POINTS', reb: 'REBOUNDS',
-                  ast: 'ASSISTS' };
-    body.innerHTML = rows.map((r, i) => `
-      <div style="border-top: 1px solid #1A212B; padding: 16px 24px;
-        display: flex; gap: 16px; align-items: flex-start">
-        <div style="${CARD_MONO} font-size: 17px; font-weight: 600;
-          color: #FF8A52; background: #2A1408; border-radius: 8px;
-          min-width: 38px; text-align: center; padding: 8px 0">${i + 1}</div>
-        <div style="flex: 1 1 auto; min-width: 0">
-          <div style="font-size: 17px; color: #E6ECF3">${esc(r.player)}
-            <span style="${CARD_MONO} color: #FF8A52; font-size: 14px;
-              margin-left: 6px">OVER ${esc(MKT[r.market] || r.market)}</span>
-            <span style="color: #6B7A8D; font-size: 13px">${esc(r.team)} vs ${esc(r.opp)}</span>
-          </div>
-          <div style="font-size: 13px; color: #8B98A9; margin-top: 5px">${esc(r.why || '')}</div>
-          ${r.corroborated ? `<div style="font-size: 12px; color: #3FB68B;
-            margin-top: 4px">his points and threes reads are separate, so
-            they corroborate rather than repeat</div>` : ''}
-        </div>
-        <div style="${CARD_MONO} text-align: right; font-size: 12px;
-          color: #8B98A9; white-space: nowrap">
-          <div style="font-size: 17px; color: #E6ECF3">${(r.zs >= 0 ? '+' : '')}${Number(r.zs).toFixed(2)}</div>
-          <div>projects ${Number(r.base).toFixed(1)}</div>
-          <div>${Number(r.mins).toFixed(0)} min</div>
-        </div>
-      </div>`).join('');
-  }
-
-  if (note) {
-    note.innerHTML = `<strong style="color: #C3CDDA">No price was
-      consulted.</strong> These are the best spots for production tonight
-      by this model, not claims that anything is mispriced. The matchup
-      term behind them has been measured over 959 player-games and
-      <strong style="color: #C3CDDA">has not been shown to predict
-      production</strong> &mdash; which is why every row below is logged
-      and graded against the box score rather than presented as a rated
-      bet.`;
-  }
-}
-
-// --- TONIGHT'S MATCHUPS ----------------------------------------------
-// The four boards, top five each. Separate from the measurement panel
-// below on purpose: this one never looks at a price.
-//
-// THE RELIABILITY TRAVELS WITH THE ROWS. Rebounds and assists rest on
-// three to five games of team data and measured 32% and 15% real; the
-// heading says so above the rows rather than in a footnote that will
-// drift away from them. Same rule the card's footing follows -- a
-// reader who cannot run the script has only what the page prints.
-const BOARD_ORDER = ['pts', 'threes', 'reb', 'ast'];
-
-function boards(d) {
-  const block = document.getElementById('boardsBlock');
-  const body = document.getElementById('boardsRows');
-  if (!block || !body || !d || !d.boards) return;
-  const groups = BOARD_ORDER
-    .map(mk => [mk, (d.boards[mk] || [])])
-    .filter(([, rows]) => rows.length);
-  const total = groups.reduce((n, g) => n + g[1].length, 0);
-  if (!total) return;
-  block.hidden = false;
-
-  const meta = document.getElementById('boardsMeta');
-  if (meta) meta.textContent = 'top ' + Math.max(...groups.map(g => g[1].length))
-    + ' per category \u00b7 no price consulted';
-
-  const note = document.getElementById('boardsNote');
-  if (note && d.note) note.textContent = d.note;
-
-  const rel = d.reliability || {};
-  const relKey = { reb: 'share', ast: 'ast100' };
-
-  body.innerHTML = groups.map(([mk, rows]) => {
-    const title = (d.title || {})[mk] || mk.toUpperCase();
-    const model = (d.model || {})[mk] || '';
-    const unit = (d.unit || {})[mk] || '';
-    const src = (d.source || {})[mk];
-    let basis, bcol;
-    if (src === 'last season') {
-      basis = 'built on last season &mdash; full sample, nothing shrunk';
-      bcol = '#4C5967';
-    } else {
-      const r = rel[relKey[mk]];
-      basis = r === undefined
-        ? 'built on this season'
-        : 'built on this season &mdash; <strong>' + Math.round(r * 100)
-          + '% reliable</strong> at these game counts, and shrunk to match';
-      bcol = '#C3A14E';
-    }
-    return `<div style="border-top: 1px solid #1A212B; background: #0B0F14;
-        padding: 10px 24px 8px">
-        <div style="${CARD_MONO} font-size: 11px; letter-spacing: 1.6px;
-          color: #6FA8DC">${esc(title)}</div>
-        <div style="font-size: 12px; color: #6B7A8D; margin-top: 3px">${esc(model)}</div>
-        <div style="${CARD_MONO} font-size: 11px; color: ${bcol};
-          margin-top: 3px">${basis}</div>
-      </div>`
-      + rows.map((r, i) => boardRow(r, i + 1, unit)).join('');
-  }).join('') + praBlock(d);
-}
-
-function boardRow(r, n, unit) {
-  return `<div style="border-top: 1px solid #1A212B; padding: 12px 24px;
-      display: flex; gap: 14px; align-items: flex-start">
-    <div style="${CARD_MONO} font-size: 15px; font-weight: 600; color: #8B98A9;
-      background: #141A22; border-radius: 7px; min-width: 34px;
-      text-align: center; padding: 6px 0">${n}</div>
-    <div style="flex: 1 1 auto; min-width: 0">
-      <div style="font-size: 15px; color: #C3CDDA">${esc(r.player)}
-        <span style="color: #6B7A8D; font-size: 13px">${esc(r.team)} vs ${esc(r.opp)}</span>
+  box.innerHTML = rows.map((r, i) => `
+    <div class="pick">
+      <div class="rank">${'★'.repeat(rows.length - i)}</div>
+      <div class="who">
+        <div class="nm">${esc(title(r.player))}</div>
+        <div class="mk">${esc(UNIT[r.market] || r.market)}</div>
+        <div class="vs">${esc(r.team)} vs ${esc(r.opp)}</div>
       </div>
-      <div style="font-size: 12px; color: #8B98A9; margin-top: 3px">${esc(r.why || '')}</div>
-    </div>
-    <div style="${CARD_MONO} text-align: right; font-size: 12px; color: #8B98A9;
-      white-space: nowrap">
-      <div style="font-size: 15px; color: #C3CDDA">${(r.zs >= 0 ? '+' : '')}${Number(r.zs).toFixed(2)}</div>
-      <div>${Number(r.base).toFixed(1)} ${esc(unit)}</div>
-    </div>
-  </div>`;
-}
-
-// PRA and the points+threes pairing, with the double-count named --
-// the flag is the whole value of that list and dropping it on the way
-// to the page would leave a reader treating one claim as two.
-function praBlock(d) {
-  let out = '';
-  const pra = d.pra || [];
-  if (pra.length) {
-    out += `<div style="border-top: 1px solid #1A212B; background: #0B0F14;
-      padding: 10px 24px; ${CARD_MONO} font-size: 11px; letter-spacing: 1.6px;
-      color: #6FA8DC">PRA &nbsp;<span style="color: #4C5967; letter-spacing: 0">
-      on all three of points, rebounds and assists</span></div>`;
-    out += pra.map(r => `<div style="border-top: 1px solid #1A212B;
-      padding: 12px 24px; font-size: 14px; color: #C3CDDA">${esc(r.player)}
-      <span style="color: #6B7A8D; font-size: 13px">${esc(r.team)} vs ${esc(r.opp)}
-      &middot; ${Number(r.base_pra).toFixed(1)} P+R+A a game</span>
-      <div style="${CARD_MONO} font-size: 12px; color: #8B98A9; margin-top: 4px">
-        pts ${fmtz(r.pts_z)} &nbsp; reb ${fmtz(r.reb_z)} &nbsp; ast ${fmtz(r.ast_z)}
-        &nbsp;&rarr;&nbsp; ${fmtz(r.z_sum)}</div></div>`).join('');
-  }
-  const pt = d.points_threes || [];
-  if (pt.length) {
-    out += `<div style="border-top: 1px solid #1A212B; background: #0B0F14;
-      padding: 10px 24px; ${CARD_MONO} font-size: 11px; letter-spacing: 1.6px;
-      color: #6FA8DC">POINTS + THREES &nbsp;<span style="color: #4C5967;
-      letter-spacing: 0">both built on last season</span></div>`;
-    out += pt.map(r => {
-      const tag = r.same_claim
-        ? `<span style="color: #FF8A52">one claim, not two &mdash; his points
-           edge is the three zone</span>`
-        : `<span style="color: #3FB68B">two separate reads &mdash; his points
-           edge is ${esc(r.via)}, not three</span>`;
-      return `<div style="border-top: 1px solid #1A212B; padding: 12px 24px;
-        font-size: 14px; color: #C3CDDA">${esc(r.player)}
-        <span style="color: #6B7A8D; font-size: 13px">${esc(r.team)} vs ${esc(r.opp)}</span>
-        <div style="${CARD_MONO} font-size: 12px; color: #8B98A9; margin-top: 4px">
-          pts ${fmtz(r.pts_z)} &nbsp; threes ${fmtz(r.thr_z)}</div>
-        <div style="font-size: 12px; margin-top: 3px">${tag}</div></div>`;
-    }).join('');
-  }
-  return out;
-}
-
-function fmtz(v) {
-  return (v === null || v === undefined) ? '&mdash;'
-    : (v >= 0 ? '+' : '') + Number(v).toFixed(2);
-}
-
-// --- TONIGHT'S MEASUREMENT -------------------------------------------
-// The whole scored slate, not the rows we liked. Grades come from
-// card.py and are reproduced here, never recomputed: a letter that can
-// be derived two different ways will eventually be derived two
-// different ways.
-const CARD_MONO = "font-family: 'IBM Plex Mono', monospace;";
-// WHY THERE ARE NO LETTERS HERE ANY MORE
-// The grade was a function of p_mine, and p_mine rests on a projection
-// whose matchup term was measured over 546 player-games walk-forward
-// and did not predict production. Ranking on it may still be right.
-// Printing a letter derived from it claims we have shown that it is.
-// The grade is still computed, still logged, still settled against the
-// box score every morning -- it just is not published until the bands
-// separate. card.json carries grades_published:false and this page
-// refuses to draw a letter regardless, so the two cannot drift.
-const RANK_FG = '#8B98A9', RANK_BG = '#141A22';
-const MKT_NAME = { pts: 'SCORING', reb: 'REBOUNDS',
-                   ast: 'ASSISTS', threes: 'THREES' };
-
-function measurement(d) {
-  // CARD_MONO rather than MONO: the page's other render functions each
-  // declare their own MONO as a function-local const, so the name is
-  // not in scope here. I fixed that once by re-declaring it inside
-  // this function, then wrote biasTag() at top level and used MONO
-  // again -- same ReferenceError, new function. One module-scope
-  // constant removes the chance of a third.
-  const block = document.getElementById('cardBlock');
-  const body = document.getElementById('cardRows');
-  if (!block || !body || !d || !d.cards) return;
-
-  // The switch is honoured here as well as in card.py. A page that
-  // draws whatever the file happens to contain is one bad publish away
-  // from putting the letters back without anyone deciding to.
-  const showGrades = d.grades_published === true;
-
-  const groups = [];
-  for (const mk of ['pts', 'reb', 'threes', 'ast']) {
-    const rows = (d.cards[mk] || [])
-      .filter(r => r.shown !== false)
-      .map(r => Object.assign({ market: mk }, r))
-      .sort((a, b) => (b.p_mine || 0) - (a.p_mine || 0));
-    if (rows.length) groups.push([mk, rows]);
-  }
-  const total = groups.reduce((n, g) => n + g[1].length, 0);
-  if (!total) return;
-  block.hidden = false;
-
-  const meta = document.getElementById('cardMeta');
-  if (meta) meta.textContent = total + ' scored, ordering under test';
-
-  // The "nothing tonight" line was tied to the pick count. There are
-  // no picks now, so it has nothing to say and would contradict a
-  // table full of rows sitting directly beneath it.
-  const quiet = document.getElementById('cardQuiet');
-  if (quiet) quiet.hidden = true;
-
-  const note = document.getElementById('cardNote');
-  if (note && (d.under_test || d.note)) {
-    note.textContent = d.under_test || d.note;
-  }
-
-  const head = (t, sub) => `<div style="border-top: 1px solid #1A212B;
-      background: #0B0F14; padding: 10px 24px; ${CARD_MONO} font-size: 11px;
-      letter-spacing: 1.6px; color: #6FA8DC">${esc(t)}
-      <span style="color: #4C5967; letter-spacing: 0">${sub}</span></div>`;
-
-  body.innerHTML = groups.map(([mk, rows]) =>
-    head(MKT_NAME[mk] || mk.toUpperCase(),
-         '&nbsp; best matchups first &mdash; not rated, not ranked by '
-         + 'confidence')
-    + footing((d.footing || {})[mk])
-    + rows.map((r, n) => render(r, n + 1)).join('')
-  ).join('');
-
-  function render(r, n) {
-    const side = String(r.side || '').toUpperCase();
-    const badge = showGrades ? esc(r.grade || '?') : String(n);
-    return `<div style="border-top: 1px solid #1A212B; padding: 14px 24px;
-        display: flex; gap: 16px; align-items: flex-start">
-      <div style="${CARD_MONO} font-size: 17px; font-weight: 600;
-        color: ${RANK_FG}; background: ${RANK_BG}; border-radius: 8px;
-        min-width: 42px; text-align: center; padding: 8px 0">${badge}</div>
-      <div style="flex: 1 1 auto; min-width: 0">
-        <div style="font-size: 16px; color: #C3CDDA">
-          ${esc(r.player)}
-          <span style="color: #6B7A8D; font-size: 13px">${esc(r.team)} vs ${esc(r.opp)}</span>
-          <span style="${CARD_MONO} color: #C3CDDA; font-size: 13px; margin-left: 6px">
-            ${side} ${esc(r.line)}</span>
-          ${biasTag(r)}
-        </div>
-        <div style="font-size: 13px; color: #8B98A9; margin-top: 4px">
-          ${esc(r.context || '')}</div>
+      <div class="num">
+        <div class="big">${Number(r.base).toFixed(1)}</div>
+        <div class="unit">${esc(SHORT[r.market] || '')}</div>
       </div>
-      <div style="${CARD_MONO} text-align: right; font-size: 13px; color: #8B98A9;
-        white-space: nowrap">
-        <div style="font-size: 17px; color: #C3CDDA">${pct(r.p_mine)}</div>
-        <div>market ${pct(r.p_mkt)}</div>
-      </div>
-    </div>`;
-  }
-
-  underTest(d);
-}
-
-// The depletion flag, shown on the row. It lived only in the JSON and
-// the terminal table, so the one guard that moves a row to the bottom
-// was invisible on the page -- which is precisely where it needs to be
-// readable, since the reader cannot run the script. It stays while the
-// letters go, because it is a counted fact about tonight's roster
-// rather than a claim about how good the bet is.
-// HOW WELL IS THIS MARKET ACTUALLY KNOWN?
-// The four markets are not calibrated on comparable evidence. Points
-// rests on 570 player-games that had a posted line and settles to
-// +/-1.7%; rebounds rests on 125 and +/-4.7%, assists on 137. Rebounds
-// was half of the first card we graded.
-//
-// Taking the letters off was about not implying a confidence the
-// measurement does not support. Printing a rebound row in the same
-// type, to the same decimal place, as a points row is the same error
-// one level down. So each market says what it is standing on.
-function footing(f) {
-  if (!f) {
-    return `<div style="padding: 8px 24px; background: #0B0F14;
-      ${CARD_MONO} font-size: 11px; color: #4C5967">
-      footing not measured for this market</div>`;
-  }
-  if (f.stale_days !== null && f.stale_days !== undefined && f.stale_days > 7) {
-    return `<div style="padding: 8px 24px; background: #0B0F14;
-      ${CARD_MONO} font-size: 11px; color: #C3A14E">
-      footing last measured ${f.stale_days} days ago and not refreshed
-      since &mdash; the sample has grown and this number has not</div>`;
-  }
-  const pct1 = (f.se * 100).toFixed(1), mde = (f.mde * 100).toFixed(0);
-  const col = f.thin ? '#C3A14E' : '#4C5967';
-  const tail = f.thin
-    ? ` &mdash; wide enough to flip the side of a typical row. Treat this
-       list as the weakest of the four.`
-    : '';
-  return `<div style="padding: 8px 24px; background: #0B0F14;
-    ${CARD_MONO} font-size: 11px; line-height: 1.6; color: ${col}">
-    calibrated on ${f.n} player-games that had a posted line
-    (&plusmn;${pct1}% on the ratio; an error up to ${mde}% is still
-    consistent with that sample)${tail}</div>`;
-}
-
-function biasTag(r) {
-  if (!r.flag || r.flag === '-') return '';
-  const out = (r.short || 0) * 100;
-  const style = {
-    'bias-AGAINST': ['#FF8A52', '#2A1408', 'his position group is '
-      + out.toFixed(0) + '% out, so this projection runs low and the under '
-      + 'is the wrong side of a known error'],
-    'bias-FOR': ['#3FB68B', '#10261F', 'his position group is '
-      + out.toFixed(0) + '% out, so this projection is if anything low'],
-    'opp-short': ['#6FA8DC', '#111C26', 'opponent is '
-      + ((r.opp_short || 0) * 100).toFixed(0) + '% of its minutes down']
-  }[r.flag];
-  if (!style) return '';
-  return `<span title="${esc(style[2])}" style="${CARD_MONO} font-size: 10px;
-    letter-spacing: 1px; color: ${style[0]}; background: ${style[1]};
-    border-radius: 4px; padding: 2px 7px; margin-left: 8px;
-    white-space: nowrap">${esc(r.flag.toUpperCase())}</span>`;
-}
-
-// What replaced the rubric. The rubric explained how a letter was
-// arrived at; with no letter to explain, the honest thing in that
-// space is what the table is actually claiming and what would have to
-// happen for it to claim more.
-function underTest(d) {
-  const el = document.getElementById('cardRubric');
-  if (!el) return;
-  if (d.grades_published === true && d.rubric) { return rubric(d.rubric); }
-  const be = ((d.breakeven || 0.524) * 100).toFixed(1);
-  el.innerHTML = `
-    <div style="margin-bottom: 10px"><strong style="color: #C3CDDA">What this
-      table claims, and what it does not.</strong> Each row is a matchup the
-      model likes for that side &mdash; soft defence in the zones that
-      player shoots from. The rows are ordered by that read. That ordering
-      is a <em>hypothesis</em>, and this page is where it gets tested in
-      public.</div>
-    <div style="margin-bottom: 10px">It is not a rated bet list. We used to
-      put a letter on each row, derived from the modelled chance against the
-      ${be}% a &minus;110 bet needs. We have stopped. Measured over 546
-      player-games, walk-forward and with no lookahead, the matchup signal
-      did not predict production in any of the four markets &mdash; and on
-      the first night the letters were graded, the worst-rated rows
-      outperformed the best-rated ones. One night is noise. But an untested
-      ordering plus a night of contrary evidence is not something to print a
-      grade on.</div>
-    <div>So: every row here is logged and settled against the official box
-      score the next morning, winners and losers alike, including the rows
-      we would not have backed. When the ordering separates &mdash; when the
-      top of these lists beats the bottom by two standard errors over a real
-      sample &mdash; the grades come back with something behind them. Until
-      then you are watching the measurement, not the verdict.
-      <a href="log.html" style="color: #96A3B4; border-bottom: 1px solid #2A3441;
-        text-decoration: none">Every row is in the log.</a></div>`;
-}
-
-// Kept for the day GRADES_PUBLISHED goes back to true. Unreferenced
-// until then, and deliberately not deleted: the rule it renders is the
-// one the measurement is trying to earn back.
-function rubric(rb) {
-  const el = document.getElementById('cardRubric');
-  if (!el || !rb) return;
-  const GS = { A: ['#3FB68B'], B: ['#6FA8DC'], C: ['#C3A14E'],
-               D: ['#8B98A9'], F: ['#6B7A8D'] };
-  const be = (rb.breakeven * 100).toFixed(1);
-  const bands = (rb.bands || []).map(([g, lo, text]) =>
-    `<span style="color: ${(GS[g] || GS.F)[0]};
-      font-weight: 600">${esc(g)}</span> ${esc(text)}`).join(' &nbsp;·&nbsp; ');
-  const dem = (rb.demotions || []).map(x =>
-    `<li style="margin-bottom: 4px">${esc(x)}</li>`).join('');
-  el.innerHTML = `
-    <div style="margin-bottom: 10px"><strong style="color: #C3CDDA">How the
-      grade is worked out.</strong> A bet at &minus;110 needs to win
-      ${be}% of the time to break even. The grade starts from how far
-      the modelled chance sits above that line:</div>
-    <div style="margin-bottom: 10px">${bands}</div>
-    <div style="margin-bottom: 4px">Then it loses a letter for each
-      reason to trust the number less:</div>
-    <ul style="margin: 0 0 10px 18px; padding: 0">${dem}</ul>
-    <div>${esc(rb.picks || '')}</div>`;
-}
-
-function pct(v) {
-  return (v === null || v === undefined) ? '&mdash;' : (v * 100).toFixed(1) + '%';
-}
-function esc(s) {
-  return String(s === null || s === undefined ? '' : s)
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    </div>`).join('');
+  ft.textContent = 'No line was consulted. These are spots, not bets.';
 }
 
 fetch('data/boards.json', { cache: 'no-store' })
   .then(r => r.ok ? r.json() : null)
-  .then(d => { if (d) { gotoPicks(d); picks(d); boards(d); } })
-  .catch(e => {
-    // not silent, for the same reason the card's catch is not: an
-    // exception in boards() would otherwise leave an empty panel and
-    // a clean console, which reads exactly like "no data".
-    if (e && e.name !== 'TypeError') console.error('boards:', e);
-  });
-
-fetch('data/card.json', { cache: 'no-store' })
-  .then(r => r.ok ? r.json() : null)
-  .then(d => { if (d) measurement(d); })
-  .catch(e => {
-    // NOT a silent catch. The previous version swallowed everything,
-    // so a ReferenceError inside measurement() left the panel visible
-    // and empty with nothing in the console -- which looked exactly
-    // like "no data" and cost two rounds of debugging. A missing
-    // card.json is normal and stays quiet; anything else is a bug and
-    // says so.
-    if (e && e.name === 'TypeError') return;   // fetch/404
-    console.error('card render failed:', e);
-    const blk = document.getElementById('cardBlock');
-    if (blk) blk.hidden = true;
-  });
-
-fetch('data/tonight.json', { cache: 'no-store' })
-  .then(r => r.ok ? r.json() : Promise.reject())
-  .then(d => { _T = d; ticker(d); dateline(); })
-  .catch(() => {});
-fetch('data/record.json', { cache: 'no-store' })
-  .then(r => r.ok ? r.json() : Promise.reject())
-  .then(d => { record(d); })
-  .catch(() => {});
-fetch('data/status.json', { cache: 'no-store' })
-  .then(r => r.ok ? r.json() : Promise.reject())
-  .then(d => { _S = d; dateline(); })
-  .catch(() => {});
-
+  .then(render)
+  .catch(() => render(null));
 </script>
 </body>
 </html>
