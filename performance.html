@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- SITE BUILD v29 -- bump this and the install.sh site check together -->
+<!-- SITE BUILD v30 -- bump this and the install.sh site check together -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sharpz Basketball — performance</title>
@@ -186,10 +186,24 @@ function render(d) {
     + (ungraded ? ` ${ungraded} not yet graded.` : '');
 }
 
+// A MISSING FILE AND AN EMPTY ONE ARE NOT THE SAME PROBLEM, and this
+// page rendered both as "Nothing recorded yet" -- which cost an
+// afternoon of looking for a grading bug when 15 picks were sitting
+// correctly in the board log the whole time. Say which.
 fetch('data/performance.json', { cache: 'no-store' })
-  .then(r => r.ok ? r.json() : null)
+  .then(r => {
+    if (!r.ok) throw new Error('data/performance.json -> HTTP ' + r.status);
+    return r.json();
+  })
   .then(render)
-  .catch(() => render(null));
+  .catch(e => {
+    const head = document.getElementById('head');
+    if (head) head.innerHTML = `<div style="font-size: 16px;
+      line-height: 1.7; color: var(--mid)"><strong style="color:
+      var(--loss)">Could not load the record.</strong><br>
+      <span class="mono" style="font-size: 12px; color: var(--dim)">${
+        esc(e && e.message || 'unknown error')}</span></div>`;
+  });
 </script>
 </body>
 </html>
