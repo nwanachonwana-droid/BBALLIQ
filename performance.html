@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- SITE BUILD v30 -- bump this and the install.sh site check together -->
+<!-- SITE BUILD v31 -- bump this and the install.sh site check together -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sharpz Basketball — performance</title>
@@ -130,7 +130,7 @@ function render(d) {
     <div style="display: flex; flex-wrap: wrap; gap: 34px; align-items: baseline;
                 padding-bottom: 8px">
       <div>
-        <div class="mono lab">BEAT THE NUMBER</div>
+        <div class="mono lab">HIT THE NUMBER</div>
         <div class="arch" style="font-weight: 800; font-size: 40px;
              letter-spacing: -1.2px; margin-top: 4px">${beat}<span
              style="color: var(--dim)">/${graded}</span></div>
@@ -167,7 +167,16 @@ function render(d) {
         <div class="cell">
           <div class="lab">CALLED</div>
           <div class="val" style="color: var(--mid)">${
-            r.base == null ? '&mdash;' : Number(r.base).toFixed(1)}</div>
+            r.target == null
+              ? (r.base == null ? '&mdash;' : Number(r.base).toFixed(1))
+              : r.target}</div>
+          <!-- The whole number he was graded against, with the raw
+               projection beneath it. Showing 4.3 next to a got-4 tick
+               reads like a mistake; showing only 4 hides what the
+               model actually said. Both, small. -->
+          ${r.target == null || r.base == null ? '' : `<div class="lab"
+            style="margin-top: 2px; letter-spacing: 0.6px">${
+              Number(r.base).toFixed(1)}</div>`}
         </div>
         <div class="cell">
           <div class="lab">GOT</div>
@@ -180,9 +189,10 @@ function render(d) {
 
   const ungraded = picks.filter(r => r.beat === null
                                   || r.beat === undefined).length;
-  ft.textContent = 'A tick means he cleared the number we called. '
-    + 'No line was consulted, so this is production, not a betting '
-    + 'record.'
+  ft.textContent = 'A tick means he reached the number we called, '
+    + 'rounded to a whole — production comes in whole numbers and a '
+    + 'projection does not, so 4.3 is graded as 4. No line was '
+    + 'consulted, so this is production, not a betting record.'
     + (ungraded ? ` ${ungraded} not yet graded.` : '');
 }
 
