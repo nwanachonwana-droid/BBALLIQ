@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- SITE BUILD v32 -- bump this and the install.sh site check together -->
+<!-- SITE BUILD v33 -- bump this and the install.sh site check together -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sharpz Basketball — tonight</title>
@@ -83,6 +83,11 @@
       <div class="mono" id="collegeMeta" style="font-size: 11px;
            letter-spacing: 1.4px; color: var(--dim)"></div>
     </div>
+    <!-- Band toggle. Opens on 70-80%: the band where the model has a
+         real opinion about a real game. 90-100% in November is mostly
+         buy games, which are right and unactionable. -->
+    <div id="collegeBands" style="display: flex; flex-wrap: wrap; gap: 8px;
+         margin: 14px 0 2px"></div>
     <div id="college"></div>
   </div>
 
@@ -163,22 +168,52 @@ function render(d) {
 // the paper strong enough to act on: below it the system ran 56.8% on
 // n=377, at or above it 78.2% on n=1,167. A game that misses the gate
 // is not a quiet pick, it is not a pick.
-function collegeRender(d) {
-  const wrap = document.getElementById('collegeWrap');
+const BANDS = [
+  { key: '90', lo: 0.90, hi: 1.01, label: '90-100%' },
+  { key: '80', lo: 0.80, hi: 0.90, label: '80-90%' },
+  { key: '70', lo: 0.70, hi: 0.80, label: '70-80%' },
+  { key: '60', lo: 0.60, hi: 0.70, label: '60-70%' },
+];
+let COLLEGE = [], BAND = '70';
+
+function collegeRows(rows) {
+  const b = BANDS.find(x => x.key === BAND) || BANDS[2];
+  return rows.filter(r => r.conf >= b.lo && r.conf < b.hi);
+}
+
+function collegeTabs() {
+  const bar = document.getElementById('collegeBands');
+  if (!bar) return;
+  bar.innerHTML = BANDS.map(b => {
+    const n = COLLEGE.filter(r => r.conf >= b.lo && r.conf < b.hi).length;
+    const on = b.key === BAND;
+    return `<button data-band="${b.key}" ${n ? '' : 'disabled'}
+      style="font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+      letter-spacing: 0.6px; padding: 7px 13px; border-radius: 999px;
+      cursor: ${n ? 'pointer' : 'default'}; transition: all .12s;
+      border: 1px solid ${on ? 'var(--hot)' : 'var(--line)'};
+      background: ${on ? 'var(--hot)' : 'transparent'};
+      color: ${on ? '#0A0D12' : (n ? 'var(--mid)' : '#3A4350')}">${
+        b.label}<span style="opacity:.65; margin-left:7px">${n}</span></button>`;
+  }).join('');
+  bar.querySelectorAll('button[data-band]').forEach(el => {
+    el.addEventListener('click', () => {
+      if (el.disabled) return;
+      BAND = el.getAttribute('data-band');
+      collegeTabs();
+      collegePaint();
+    });
+  });
+}
+
+function collegePaint() {
   const box = document.getElementById('college');
-  const meta = document.getElementById('collegeMeta');
-  if (!wrap || !box) return;
-  const rows = (d && d.picks) || [];
-  wrap.hidden = false;
-  if (meta) {
-    meta.textContent = rows.length
-      ? `${rows.length} CLEAR ${Math.round((d.gate || 0.6) * 100)}%`
-      : `NOTHING CLEARS ${Math.round(((d && d.gate) || 0.6) * 100)}%`;
-  }
+  if (!box) return;
+  const rows = collegeRows(COLLEGE);
   if (!rows.length) {
     box.innerHTML = `<div style="border-top: 1px solid var(--line);
-      padding: 24px 0; font-size: 16px; color: var(--mid)">No game
-      tonight clears the confidence gate.</div>`;
+      padding: 24px 0; font-size: 16px; color: var(--mid)">Nothing in
+      this band tonight.</div>`;
     return;
   }
   box.innerHTML = rows.map(r => `
@@ -198,6 +233,27 @@ function collegeRender(d) {
         <div class="unit">MARGIN</div>
       </div>
     </div>`).join('');
+}
+
+function collegeRender(d) {
+  const wrap = document.getElementById('collegeWrap');
+  const meta = document.getElementById('collegeMeta');
+  if (!wrap) return;
+  COLLEGE = (d && d.picks) || [];
+  wrap.hidden = false;
+  if (meta) {
+    meta.textContent = COLLEGE.length
+      ? `${COLLEGE.length} CLEAR ${Math.round((d.gate || 0.6) * 100)}%`
+      : `NOTHING CLEARS ${Math.round(((d && d.gate) || 0.6) * 100)}%`;
+  }
+  // Open on a band that actually has something, preferring 70-80.
+  if (!collegeRows(COLLEGE).length) {
+    const alt = BANDS.find(b =>
+      COLLEGE.some(r => r.conf >= b.lo && r.conf < b.hi));
+    if (alt) BAND = alt.key;
+  }
+  collegeTabs();
+  collegePaint();
 }
 
 fetch('data/college.json', { cache: 'no-store' })

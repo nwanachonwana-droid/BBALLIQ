@@ -1,5 +1,5 @@
 {
- "build": "2026-11-11e",
+ "build": "2026-11-11f",
  "day": "20261111",
  "gate": 0.6,
  "picks": [
@@ -18,7 +18,7 @@
    "margin": 36.5,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -35,7 +35,7 @@
    "margin": 31.3,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -52,7 +52,7 @@
    "margin": 31.3,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -69,7 +69,7 @@
    "margin": 27.5,
    "venue_flag": "weak_road",
    "venue_note": "weak road team (0% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -86,7 +86,7 @@
    "margin": 26.1,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -103,7 +103,7 @@
    "margin": 24.9,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -120,7 +120,7 @@
    "margin": 23.1,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -137,7 +137,7 @@
    "margin": 22.6,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -154,7 +154,7 @@
    "margin": 19.3,
    "venue_flag": "weak_road",
    "venue_note": "weak road team (0% away, 4g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -171,7 +171,7 @@
    "margin": 18.4,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -188,7 +188,7 @@
    "margin": 17.8,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -205,7 +205,7 @@
    "margin": 16.7,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -222,7 +222,7 @@
    "margin": 16.4,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -239,7 +239,7 @@
    "margin": 15.3,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -256,7 +256,7 @@
    "margin": -14.1,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -273,7 +273,7 @@
    "margin": 11.0,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -290,7 +290,7 @@
    "margin": 11.0,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -307,7 +307,7 @@
    "margin": 10.6,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -324,7 +324,7 @@
    "margin": 9.7,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -341,7 +341,7 @@
    "margin": 9.3,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -358,7 +358,7 @@
    "margin": 8.1,
    "venue_flag": "weak_road",
    "venue_note": "weak road team (33% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -375,7 +375,7 @@
    "margin": -7.9,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -392,7 +392,7 @@
    "margin": 7.8,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -409,7 +409,7 @@
    "margin": 7.3,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -426,7 +426,7 @@
    "margin": 7.3,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -443,7 +443,7 @@
    "margin": -7.1,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -460,7 +460,7 @@
    "margin": -6.4,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -477,7 +477,7 @@
    "margin": 5.9,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -494,7 +494,7 @@
    "margin": 5.9,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -511,7 +511,7 @@
    "margin": 5.8,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -528,7 +528,7 @@
    "margin": 5.3,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -545,7 +545,7 @@
    "margin": 5.0,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -562,7 +562,7 @@
    "margin": -4.8,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -579,7 +579,7 @@
    "margin": -4.8,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -596,7 +596,7 @@
    "margin": 4.6,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   },
   {
    "day": "20261111",
@@ -613,12 +613,15 @@
    "margin": -3.6,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11e"
+   "build": "2026-11-11f"
   }
  ],
+ "picks_all": 36,
+ "max_conf": 1.01,
  "wins": 0,
  "graded": 0,
  "brier": null,
  "bins": [],
+ "bands": [],
  "history": []
 }
