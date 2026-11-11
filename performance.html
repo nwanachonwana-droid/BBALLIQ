@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- SITE BUILD v31 -- bump this and the install.sh site check together -->
+<!-- SITE BUILD v32 -- bump this and the install.sh site check together -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sharpz Basketball — performance</title>
@@ -74,6 +74,9 @@
   <h1 class="arch" style="font-weight: 800; font-size: 46px; line-height: 1.02; letter-spacing: -1.6px; margin: 0 0 22px">
     Performance
   </h1>
+
+  <div id="collegeHead"></div>
+  <div id="collegeLog" style="margin-bottom: 46px"></div>
 
   <div id="head"></div>
   <div id="log"></div>
@@ -200,6 +203,59 @@ function render(d) {
 // page rendered both as "Nothing recorded yet" -- which cost an
 // afternoon of looking for a grading bug when 15 picks were sitting
 // correctly in the board log the whole time. Say which.
+
+// --- COLLEGE RECORD --------------------------------------------------
+// Binary winner calls, so this IS a win/loss record -- unlike the NBA
+// production record above it, which consults no line and therefore
+// cannot be one. Brier is carried because the paper graded itself on
+// Brier, and a winner call with a stated confidence deserves a proper
+// scoring rule rather than a bare hit count.
+function collegeRecord(d) {
+  const head = document.getElementById('collegeHead');
+  const log = document.getElementById('collegeLog');
+  if (!head || !log || !d) return;
+  const g = d.graded || 0, w = d.wins || 0;
+  if (!g) { head.innerHTML = ''; log.innerHTML = ''; return; }
+  const pct = Math.round(100 * w / g);
+  head.innerHTML = `
+    <h2 class="arch" style="font-weight: 800; font-size: 30px;
+        letter-spacing: -0.9px; margin: 42px 0 14px">College</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 34px; align-items: baseline">
+      <div><div class="mono lab">WON</div>
+        <div class="arch" style="font-weight: 800; font-size: 40px;
+          letter-spacing: -1.2px; margin-top: 4px">${w}<span
+          style="color: var(--dim)">/${g}</span></div></div>
+      <div><div class="mono lab">RATE</div>
+        <div class="arch" style="font-weight: 800; font-size: 40px;
+          letter-spacing: -1.2px; margin-top: 4px">${pct}%</div></div>
+      ${d.brier == null ? '' : `<div><div class="mono lab">BRIER</div>
+        <div class="arch" style="font-weight: 800; font-size: 40px;
+          letter-spacing: -1.2px; margin-top: 4px">${
+            Number(d.brier).toFixed(3)}</div></div>`}
+    </div>`;
+  const hist = (d.history || []).slice().reverse().slice(0, 40);
+  log.innerHTML = hist.map(r => `
+    <div class="row">
+      <div class="rk">${Math.round(r.conf * 100)}%</div>
+      <div class="nmw">
+        <div class="nm">${esc(r.pick_name)}</div>
+        <div class="mk">${esc(r.away_name)} ${r.neutral ? 'vs' : 'at'}
+          ${esc(r.home_name)}</div>
+      </div>
+      <div class="cell"><div class="lab">FINAL</div>
+        <div class="val" style="font-size: 13px; color: var(--mid)">${
+          esc(r.actual || '—')}</div></div>
+      <div class="mark">${r.result === 'win'
+        ? '<span style="color: var(--win)">&#10003;</span>'
+        : '<span style="color: var(--loss)">&#10007;</span>'}</div>
+    </div>`).join('');
+}
+
+fetch('data/college.json', { cache: 'no-store' })
+  .then(r => r.ok ? r.json() : null)
+  .then(d => { if (d) collegeRecord(d); })
+  .catch(() => {});
+
 fetch('data/performance.json', { cache: 'no-store' })
   .then(r => {
     if (!r.ok) throw new Error('data/performance.json -> HTTP ' + r.status);

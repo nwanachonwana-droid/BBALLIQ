@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- SITE BUILD v31 -- bump this and the install.sh site check together -->
+<!-- SITE BUILD v32 -- bump this and the install.sh site check together -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sharpz Basketball — tonight</title>
@@ -75,6 +75,17 @@
 
   <div id="picks"></div>
 
+  <div id="collegeWrap" hidden>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline;
+         justify-content: space-between; margin: 54px 0 4px">
+      <h2 class="arch" style="font-weight: 800; font-size: 30px;
+          letter-spacing: -0.9px; margin: 0">College</h2>
+      <div class="mono" id="collegeMeta" style="font-size: 11px;
+           letter-spacing: 1.4px; color: var(--dim)"></div>
+    </div>
+    <div id="college"></div>
+  </div>
+
   <!-- The only sentence on the page. It is not an explanation of the
        model, it is what these five ARE: no line was looked at, so
        they are spots, not bets. Without it a visitor reads five names
@@ -145,6 +156,54 @@ function render(d) {
     </div>`).join('');
   ft.textContent = 'No line was consulted. These are spots, not bets.';
 }
+
+
+// --- COLLEGE ---------------------------------------------------------
+// Binary winner calls, gated at 60% because that is the one finding in
+// the paper strong enough to act on: below it the system ran 56.8% on
+// n=377, at or above it 78.2% on n=1,167. A game that misses the gate
+// is not a quiet pick, it is not a pick.
+function collegeRender(d) {
+  const wrap = document.getElementById('collegeWrap');
+  const box = document.getElementById('college');
+  const meta = document.getElementById('collegeMeta');
+  if (!wrap || !box) return;
+  const rows = (d && d.picks) || [];
+  wrap.hidden = false;
+  if (meta) {
+    meta.textContent = rows.length
+      ? `${rows.length} CLEAR ${Math.round((d.gate || 0.6) * 100)}%`
+      : `NOTHING CLEARS ${Math.round(((d && d.gate) || 0.6) * 100)}%`;
+  }
+  if (!rows.length) {
+    box.innerHTML = `<div style="border-top: 1px solid var(--line);
+      padding: 24px 0; font-size: 16px; color: var(--mid)">No game
+      tonight clears the confidence gate.</div>`;
+    return;
+  }
+  box.innerHTML = rows.map(r => `
+    <div class="pick">
+      <div class="rank">${Math.round(r.conf * 100)}%</div>
+      <div class="who">
+        <div class="nm">${esc(r.pick_name)}</div>
+        <div class="vs">${esc(r.away_name)} ${r.neutral ? 'vs' : 'at'}
+          ${esc(r.home_name)}</div>
+        ${r.venue_flag ? `<div style="font-size: 12px; color: #C3A14E;
+          margin-top: 5px">${r.venue_flag === 'weak_road'
+            ? 'weak road team — this system has overestimated these'
+            : 'strong road team — this system has underestimated these'}</div>` : ''}
+      </div>
+      <div class="num">
+        <div class="big">${Math.abs(Number(r.margin)).toFixed(0)}</div>
+        <div class="unit">MARGIN</div>
+      </div>
+    </div>`).join('');
+}
+
+fetch('data/college.json', { cache: 'no-store' })
+  .then(r => r.ok ? r.json() : null)
+  .then(d => { if (d) collegeRender(d); })
+  .catch(() => {});
 
 fetch('data/boards.json', { cache: 'no-store' })
   .then(r => r.ok ? r.json() : null)
