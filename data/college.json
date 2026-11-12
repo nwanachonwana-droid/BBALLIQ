@@ -1,8 +1,418 @@
 {
  "build": "2026-11-11f",
- "day": "20261111",
+ "day": "20261112",
  "gate": 0.6,
  "picks": [
+  {
+   "day": "20261112",
+   "game_id": "401916306",
+   "home": "135",
+   "away": "2582",
+   "home_name": "Minnesota",
+   "away_name": "Southern",
+   "neutral": false,
+   "pick": "135",
+   "pick_name": "Minnesota",
+   "side": "home",
+   "conf": 0.9847,
+   "margin": 23.8,
+   "venue_flag": "weak_road",
+   "venue_note": "weak road team (0% away, 4g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401921768",
+   "home": "277",
+   "away": "2382",
+   "home_name": "West Virginia",
+   "away_name": "Mercer",
+   "neutral": false,
+   "pick": "277",
+   "pick_name": "West Virginia",
+   "side": "home",
+   "conf": 0.9753,
+   "margin": 21.6,
+   "venue_flag": "weak_road",
+   "venue_note": "weak road team (33% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401920064",
+   "home": "227",
+   "away": "2379",
+   "home_name": "Rhode Island",
+   "away_name": "MD Eastern",
+   "neutral": false,
+   "pick": "227",
+   "pick_name": "Rhode Island",
+   "side": "home",
+   "conf": 0.9689,
+   "margin": 20.5,
+   "venue_flag": "weak_road",
+   "venue_note": "weak road team (0% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401916288",
+   "home": "84",
+   "away": "2635",
+   "home_name": "Indiana",
+   "away_name": "Tennessee Tech",
+   "neutral": false,
+   "pick": "84",
+   "pick_name": "Indiana",
+   "side": "home",
+   "conf": 0.9659,
+   "margin": 20.1,
+   "venue_flag": null,
+   "venue_note": null,
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401920412",
+   "home": "2272",
+   "away": "253",
+   "home_name": "High Point",
+   "away_name": "Southern Utah",
+   "neutral": false,
+   "pick": "2272",
+   "pick_name": "High Point",
+   "side": "home",
+   "conf": 0.9522,
+   "margin": 18.3,
+   "venue_flag": null,
+   "venue_note": null,
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401917176",
+   "home": "213",
+   "away": "2385",
+   "home_name": "Penn State",
+   "away_name": "Mercyhurst",
+   "neutral": false,
+   "pick": "213",
+   "pick_name": "Penn State",
+   "side": "home",
+   "conf": 0.9518,
+   "margin": 18.3,
+   "venue_flag": null,
+   "venue_note": null,
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401921741",
+   "home": "252",
+   "away": "147",
+   "home_name": "BYU",
+   "away_name": "Montana St",
+   "neutral": false,
+   "pick": "252",
+   "pick_name": "BYU",
+   "side": "home",
+   "conf": 0.9429,
+   "margin": 17.4,
+   "venue_flag": null,
+   "venue_note": null,
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401920566",
+   "home": "119",
+   "away": "2352",
+   "home_name": "Towson",
+   "away_name": "Loyola MD",
+   "neutral": false,
+   "pick": "119",
+   "pick_name": "Towson",
+   "side": "home",
+   "conf": 0.9081,
+   "margin": 14.6,
+   "venue_flag": null,
+   "venue_note": null,
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401911013",
+   "home": "189",
+   "away": "315",
+   "home_name": "Bowling Green",
+   "away_name": "Niagara",
+   "neutral": false,
+   "pick": "189",
+   "pick_name": "Bowling Green",
+   "side": "home",
+   "conf": 0.8802,
+   "margin": 12.9,
+   "venue_flag": null,
+   "venue_note": null,
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401911307",
+   "home": "225",
+   "away": "2099",
+   "home_name": "Brown",
+   "away_name": "Canisius",
+   "neutral": false,
+   "pick": "225",
+   "pick_name": "Brown",
+   "side": "home",
+   "conf": 0.868,
+   "margin": 12.3,
+   "venue_flag": null,
+   "venue_note": null,
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401920073",
+   "home": "2244",
+   "away": "140",
+   "home_name": "George Mason",
+   "away_name": "Kansas City",
+   "neutral": true,
+   "pick": "2244",
+   "pick_name": "George Mason",
+   "side": "home",
+   "conf": 0.8602,
+   "margin": 11.9,
+   "venue_flag": null,
+   "venue_note": null,
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401925631",
+   "home": "2154",
+   "away": "71",
+   "home_name": "Coppin St",
+   "away_name": "Bradley",
+   "neutral": true,
+   "pick": "71",
+   "pick_name": "Bradley",
+   "side": "away",
+   "conf": 0.8109,
+   "margin": -9.7,
+   "venue_flag": null,
+   "venue_note": null,
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401922239",
+   "home": "47",
+   "away": "56",
+   "home_name": "Howard",
+   "away_name": "Stetson",
+   "neutral": false,
+   "pick": "47",
+   "pick_name": "Howard",
+   "side": "home",
+   "conf": 0.7754,
+   "margin": 8.3,
+   "venue_flag": "weak_road",
+   "venue_note": "weak road team (0% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401920135",
+   "home": "2710",
+   "away": "2934",
+   "home_name": "W Illinois",
+   "away_name": "Bakersfield",
+   "neutral": false,
+   "pick": "2934",
+   "pick_name": "Bakersfield",
+   "side": "away",
+   "conf": 0.7644,
+   "margin": -7.9,
+   "venue_flag": null,
+   "venue_note": null,
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401911471",
+   "home": "23",
+   "away": "27",
+   "home_name": "San Jos\u00e9 St",
+   "away_name": "UC Riverside",
+   "neutral": false,
+   "pick": "23",
+   "pick_name": "San Jos\u00e9 St",
+   "side": "home",
+   "conf": 0.7374,
+   "margin": 7.0,
+   "venue_flag": null,
+   "venue_note": null,
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401921086",
+   "home": "2378",
+   "away": "2415",
+   "home_name": "UMBC",
+   "away_name": "Morgan St",
+   "neutral": false,
+   "pick": "2378",
+   "pick_name": "UMBC",
+   "side": "home",
+   "conf": 0.7338,
+   "margin": 6.9,
+   "venue_flag": null,
+   "venue_note": null,
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401922250",
+   "home": "2010",
+   "away": "2697",
+   "home_name": "Alabama A&M",
+   "away_name": "West Florida",
+   "neutral": false,
+   "pick": "2010",
+   "pick_name": "Alabama A&M",
+   "side": "home",
+   "conf": 0.7176,
+   "margin": 6.3,
+   "venue_flag": null,
+   "venue_note": null,
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401924876",
+   "home": "2529",
+   "away": "2115",
+   "home_name": "Sacred Heart",
+   "away_name": "C Connecticut",
+   "neutral": false,
+   "pick": "2529",
+   "pick_name": "Sacred Heart",
+   "side": "home",
+   "conf": 0.7061,
+   "margin": 6.0,
+   "venue_flag": "weak_road",
+   "venue_note": "weak road team (33% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401919041",
+   "home": "245",
+   "away": "197",
+   "home_name": "Texas A&M",
+   "away_name": "Oklahoma St",
+   "neutral": false,
+   "pick": "245",
+   "pick_name": "Texas A&M",
+   "side": "home",
+   "conf": 0.695,
+   "margin": 5.6,
+   "venue_flag": null,
+   "venue_note": null,
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401911239",
+   "home": "79",
+   "away": "257",
+   "home_name": "S Illinois",
+   "away_name": "Richmond",
+   "neutral": false,
+   "pick": "257",
+   "pick_name": "Richmond",
+   "side": "away",
+   "conf": 0.6476,
+   "margin": -4.2,
+   "venue_flag": null,
+   "venue_note": null,
+   "build": "2026-11-11f"
+  },
+  {
+   "day": "20261112",
+   "game_id": "401917524",
+   "home": "6",
+   "away": "2351",
+   "home_name": "South Alabama",
+   "away_name": "LMU",
+   "neutral": true,
+   "pick": "2351",
+   "pick_name": "LMU",
+   "side": "away",
+   "conf": 0.6136,
+   "margin": -3.2,
+   "venue_flag": null,
+   "venue_note": null,
+   "build": "2026-11-11f"
+  }
+ ],
+ "picks_all": 21,
+ "max_conf": 1.01,
+ "wins": 29,
+ "graded": 36,
+ "brier": 0.1356,
+ "bins": [
+  {
+   "bin": "60%-70%",
+   "n": 6,
+   "predicted": 0.6641,
+   "actual": 0.6667
+  },
+  {
+   "bin": "70%-80%",
+   "n": 10,
+   "predicted": 0.7358,
+   "actual": 0.6
+  },
+  {
+   "bin": "80%-90%",
+   "n": 5,
+   "predicted": 0.8254,
+   "actual": 0.8
+  },
+  {
+   "bin": "90%-100%",
+   "n": 15,
+   "predicted": 0.9651,
+   "actual": 1.0
+  }
+ ],
+ "bands": [
+  {
+   "band": "60%-80%",
+   "n": 16,
+   "wins": 10,
+   "rate": 0.625
+  },
+  {
+   "band": "80%-95%",
+   "n": 10,
+   "wins": 9,
+   "rate": 0.9
+  },
+  {
+   "band": "95%-100%",
+   "n": 10,
+   "wins": 10,
+   "rate": 1.0
+  }
+ ],
+ "history": [
   {
    "day": "20261111",
    "game_id": "401930177",
@@ -18,7 +428,10 @@
    "margin": 36.5,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2029 37 @ 26 106",
+   "graded_at": "2026-11-12T08:31:25.754724-05:00"
   },
   {
    "day": "20261111",
@@ -35,7 +448,10 @@
    "margin": 31.3,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2815 60 @ 158 94",
+   "graded_at": "2026-11-12T08:31:25.754790-05:00"
   },
   {
    "day": "20261111",
@@ -52,7 +468,10 @@
    "margin": 31.3,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2400 66 @ 2483 100",
+   "graded_at": "2026-11-12T08:31:25.754797-05:00"
   },
   {
    "day": "20261111",
@@ -69,7 +488,10 @@
    "margin": 27.5,
    "venue_flag": "weak_road",
    "venue_note": "weak road team (0% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2885 49 @ 2670 87",
+   "graded_at": "2026-11-12T08:31:25.754803-05:00"
   },
   {
    "day": "20261111",
@@ -86,7 +508,10 @@
    "margin": 26.1,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "55 46 @ 248 92",
+   "graded_at": "2026-11-12T08:31:25.754808-05:00"
   },
   {
    "day": "20261111",
@@ -103,7 +528,10 @@
    "margin": 24.9,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2142 59 @ 2599 90",
+   "graded_at": "2026-11-12T08:31:25.754814-05:00"
   },
   {
    "day": "20261111",
@@ -120,7 +548,10 @@
    "margin": 23.1,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2569 59 @ 87 99",
+   "graded_at": "2026-11-12T08:31:25.754819-05:00"
   },
   {
    "day": "20261111",
@@ -137,7 +568,10 @@
    "margin": 22.6,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2523 53 @ 8 76",
+   "graded_at": "2026-11-12T08:31:25.754823-05:00"
   },
   {
    "day": "20261111",
@@ -154,7 +588,10 @@
    "margin": 19.3,
    "venue_flag": "weak_road",
    "venue_note": "weak road team (0% away, 4g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2473 79 @ 68 111",
+   "graded_at": "2026-11-12T08:31:25.754829-05:00"
   },
   {
    "day": "20261111",
@@ -171,7 +608,10 @@
    "margin": 18.4,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2612 41 @ 2579 77",
+   "graded_at": "2026-11-12T08:31:25.754834-05:00"
   },
   {
    "day": "20261111",
@@ -188,7 +628,10 @@
    "margin": 17.8,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "13 71 @ 2253 99",
+   "graded_at": "2026-11-12T08:31:25.754839-05:00"
   },
   {
    "day": "20261111",
@@ -205,7 +648,10 @@
    "margin": 16.7,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "198 71 @ 202 80",
+   "graded_at": "2026-11-12T08:31:25.754845-05:00"
   },
   {
    "day": "20261111",
@@ -222,7 +668,10 @@
    "margin": 16.4,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2065 75 @ 21 88",
+   "graded_at": "2026-11-12T08:31:25.754849-05:00"
   },
   {
    "day": "20261111",
@@ -239,7 +688,10 @@
    "margin": 15.3,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2502 71 @ 36 87",
+   "graded_at": "2026-11-12T08:31:25.754855-05:00"
   },
   {
    "day": "20261111",
@@ -256,7 +708,10 @@
    "margin": -14.1,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "231 80 @ 107 67",
+   "graded_at": "2026-11-12T08:31:25.754860-05:00"
   },
   {
    "day": "20261111",
@@ -273,7 +728,10 @@
    "margin": 11.0,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "loss",
+   "actual": "161 80 @ 2837 76",
+   "graded_at": "2026-11-12T08:31:25.754866-05:00"
   },
   {
    "day": "20261111",
@@ -290,7 +748,10 @@
    "margin": 11.0,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2916 69 @ 302 81",
+   "graded_at": "2026-11-12T08:31:25.754871-05:00"
   },
   {
    "day": "20261111",
@@ -307,7 +768,10 @@
    "margin": 10.6,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2448 67 @ 151 72",
+   "graded_at": "2026-11-12T08:31:25.754876-05:00"
   },
   {
    "day": "20261111",
@@ -324,7 +788,10 @@
    "margin": 9.7,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2097 53 @ 2193 68",
+   "graded_at": "2026-11-12T08:31:25.754882-05:00"
   },
   {
    "day": "20261111",
@@ -341,7 +808,10 @@
    "margin": 9.3,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2349 62 @ 113 72",
+   "graded_at": "2026-11-12T08:31:25.754890-05:00"
   },
   {
    "day": "20261111",
@@ -358,7 +828,10 @@
    "margin": 8.1,
    "venue_flag": "weak_road",
    "venue_note": "weak road team (33% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2296 80 @ 2572 84",
+   "graded_at": "2026-11-12T08:31:25.754896-05:00"
   },
   {
    "day": "20261111",
@@ -375,7 +848,10 @@
    "margin": -7.9,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "loss",
+   "actual": "219 76 @ 2426 81",
+   "graded_at": "2026-11-12T08:31:25.754901-05:00"
   },
   {
    "day": "20261111",
@@ -392,7 +868,10 @@
    "margin": 7.8,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "loss",
+   "actual": "2130 81 @ 2856 62",
+   "graded_at": "2026-11-12T08:31:25.754907-05:00"
   },
   {
    "day": "20261111",
@@ -409,7 +888,10 @@
    "margin": 7.3,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "loss",
+   "actual": "270 82 @ 282 73",
+   "graded_at": "2026-11-12T08:31:25.754912-05:00"
   },
   {
    "day": "20261111",
@@ -426,7 +908,10 @@
    "margin": 7.3,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2309 73 @ 350 91",
+   "graded_at": "2026-11-12T08:31:25.754917-05:00"
   },
   {
    "day": "20261111",
@@ -443,7 +928,10 @@
    "margin": -7.1,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "loss",
+   "actual": "2350 93 @ 2005 107",
+   "graded_at": "2026-11-12T08:31:25.754922-05:00"
   },
   {
    "day": "20261111",
@@ -460,7 +948,10 @@
    "margin": -6.4,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "30 77 @ 25 65",
+   "graded_at": "2026-11-12T08:31:25.754927-05:00"
   },
   {
    "day": "20261111",
@@ -477,7 +968,10 @@
    "margin": 5.9,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2729 90 @ 2226 95",
+   "graded_at": "2026-11-12T08:31:25.754933-05:00"
   },
   {
    "day": "20261111",
@@ -494,7 +988,10 @@
    "margin": 5.9,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "172 64 @ 179 88",
+   "graded_at": "2026-11-12T08:31:25.754938-05:00"
   },
   {
    "day": "20261111",
@@ -511,7 +1008,10 @@
    "margin": 5.8,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2428 51 @ 2678 65",
+   "graded_at": "2026-11-12T08:31:25.754943-05:00"
   },
   {
    "day": "20261111",
@@ -528,7 +1028,10 @@
    "margin": 5.3,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "2619 59 @ 163 69",
+   "graded_at": "2026-11-12T08:31:25.754948-05:00"
   },
   {
    "day": "20261111",
@@ -545,7 +1048,10 @@
    "margin": 5.0,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "loss",
+   "actual": "58 80 @ 2603 83",
+   "graded_at": "2026-11-12T08:31:25.754954-05:00"
   },
   {
    "day": "20261111",
@@ -562,7 +1068,10 @@
    "margin": -4.8,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "140 87 @ 50 65",
+   "graded_at": "2026-11-12T08:31:25.754960-05:00"
   },
   {
    "day": "20261111",
@@ -579,7 +1088,10 @@
    "margin": -4.8,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "295 71 @ 2450 60",
+   "graded_at": "2026-11-12T08:31:25.754964-05:00"
   },
   {
    "day": "20261111",
@@ -596,7 +1108,10 @@
    "margin": 4.6,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "win",
+   "actual": "88 70 @ 85 74",
+   "graded_at": "2026-11-12T08:31:25.754969-05:00"
   },
   {
    "day": "20261111",
@@ -613,15 +1128,10 @@
    "margin": -3.6,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-11f"
+   "build": "2026-11-11f",
+   "result": "loss",
+   "actual": "279 59 @ 299 62",
+   "graded_at": "2026-11-12T08:31:25.754974-05:00"
   }
- ],
- "picks_all": 36,
- "max_conf": 1.01,
- "wins": 0,
- "graded": 0,
- "brier": null,
- "bins": [],
- "bands": [],
- "history": []
+ ]
 }
