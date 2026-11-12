@@ -1,5 +1,5 @@
 {
- "build": "2026-11-12a",
+ "build": "2026-11-12b",
  "day": "20261112",
  "gate": 0.6,
  "picks": [
@@ -18,7 +18,8 @@
    "margin": 23.8,
    "venue_flag": "weak_road",
    "venue_note": "weak road team (0% away, 4g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
-   "build": "2026-11-12a"
+   "venue_effect": "safer",
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -35,7 +36,8 @@
    "margin": 21.6,
    "venue_flag": "weak_road",
    "venue_note": "weak road team (33% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
-   "build": "2026-11-12a"
+   "venue_effect": "safer",
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -52,7 +54,8 @@
    "margin": 20.5,
    "venue_flag": "weak_road",
    "venue_note": "weak road team (0% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
-   "build": "2026-11-12a"
+   "venue_effect": "safer",
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -69,7 +72,8 @@
    "margin": 20.1,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-12a"
+   "venue_effect": null,
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -86,7 +90,8 @@
    "margin": 18.3,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-12a"
+   "venue_effect": null,
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -103,7 +108,8 @@
    "margin": 18.3,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-12a"
+   "venue_effect": null,
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -120,7 +126,8 @@
    "margin": 17.4,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-12a"
+   "venue_effect": null,
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -137,7 +144,8 @@
    "margin": 14.6,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-12a"
+   "venue_effect": null,
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -154,7 +162,8 @@
    "margin": 12.9,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-12a"
+   "venue_effect": null,
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -171,7 +180,8 @@
    "margin": 12.3,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-12a"
+   "venue_effect": null,
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -188,7 +198,8 @@
    "margin": 11.9,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-12a"
+   "venue_effect": null,
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -205,7 +216,8 @@
    "margin": -9.7,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-12a"
+   "venue_effect": null,
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -222,7 +234,8 @@
    "margin": 8.3,
    "venue_flag": "weak_road",
    "venue_note": "weak road team (0% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
-   "build": "2026-11-12a"
+   "venue_effect": "safer",
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -239,7 +252,8 @@
    "margin": -7.9,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-12a"
+   "venue_effect": null,
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -256,7 +270,8 @@
    "margin": 7.0,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-12a"
+   "venue_effect": null,
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -273,7 +288,8 @@
    "margin": 6.9,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-12a"
+   "venue_effect": null,
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -290,7 +306,8 @@
    "margin": 6.3,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-12a"
+   "venue_effect": null,
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -307,7 +324,8 @@
    "margin": 6.0,
    "venue_flag": "weak_road",
    "venue_note": "weak road team (33% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
-   "build": "2026-11-12a"
+   "venue_effect": "safer",
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -324,7 +342,8 @@
    "margin": 5.6,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-12a"
+   "venue_effect": null,
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -341,7 +360,8 @@
    "margin": -4.2,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-12a"
+   "venue_effect": null,
+   "build": "2026-11-12b"
   },
   {
    "day": "20261112",
@@ -358,7 +378,8 @@
    "margin": -3.2,
    "venue_flag": null,
    "venue_note": null,
-   "build": "2026-11-12a"
+   "venue_effect": null,
+   "build": "2026-11-12b"
   }
  ],
  "picks_all": 21,

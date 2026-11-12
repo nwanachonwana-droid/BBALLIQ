@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- SITE BUILD v33 -- bump this and the install.sh site check together -->
+<!-- SITE BUILD v34 -- bump this and the install.sh site check together -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sharpz Basketball — tonight</title>
@@ -223,10 +223,16 @@ function collegePaint() {
         <div class="nm">${esc(r.pick_name)}</div>
         <div class="vs">${esc(r.away_name)} ${r.neutral ? 'vs' : 'at'}
           ${esc(r.home_name)}</div>
-        ${r.venue_flag ? `<div style="font-size: 12px; color: #C3A14E;
-          margin-top: 5px">${r.venue_flag === 'weak_road'
-            ? 'weak road team — this system has overestimated these'
-            : 'strong road team — this system has underestimated these'}</div>` : ''}
+        ${r.venue_flag ? `<div style="font-size: 12px; margin-top: 5px;
+          color: ${r.venue_effect === 'shakier' ? '#C3A14E' : '#6E8B7A'}">${
+            r.venue_effect === 'shakier'
+              ? (r.venue_flag === 'weak_road'
+                  ? 'Shakier than it looks — this pick is a weak road team, and the model has historically given those about 18 points too much credit.'
+                  : 'Shakier than it looks — this pick is against a strong road team, and the model has historically given those about 15 points too little credit.')
+              : (r.venue_flag === 'weak_road'
+                  ? 'If anything understated — the opponent is a weak road team, and the model has historically overrated those.'
+                  : 'If anything understated — this pick is a strong road team, and the model has historically underrated those.')
+          }</div>` : ''}
       </div>
       <div class="num">
         <div class="big">${Math.abs(Number(r.margin)).toFixed(0)}</div>
