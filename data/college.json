@@ -1,5 +1,5 @@
 {
- "build": "2026-11-13a",
+ "build": "2026-11-13b",
  "day": "20261113",
  "gate": 0.6,
  "picks": [
@@ -19,7 +19,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -37,7 +37,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -55,7 +55,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -73,7 +73,7 @@
    "venue_flag": "weak_road",
    "venue_note": "weak road team (0% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
    "venue_effect": "safer",
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -91,7 +91,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -109,7 +109,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -127,7 +127,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -145,7 +145,7 @@
    "venue_flag": "weak_road",
    "venue_note": "weak road team (0% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
    "venue_effect": "safer",
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -163,7 +163,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -181,7 +181,7 @@
    "venue_flag": "weak_road",
    "venue_note": "weak road team (33% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
    "venue_effect": "safer",
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -199,7 +199,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -217,7 +217,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -235,7 +235,7 @@
    "venue_flag": "weak_road",
    "venue_note": "weak road team (33% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
    "venue_effect": "safer",
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -253,7 +253,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -271,7 +271,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -289,7 +289,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -307,7 +307,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -325,7 +325,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -343,7 +343,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -361,7 +361,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -379,7 +379,7 @@
    "venue_flag": "weak_road",
    "venue_note": "weak road team (0% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
    "venue_effect": "safer",
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -397,7 +397,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -415,7 +415,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -433,7 +433,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -451,7 +451,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -469,7 +469,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -487,7 +487,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -505,7 +505,7 @@
    "venue_flag": "weak_road",
    "venue_note": "weak road team (0% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
    "venue_effect": "safer",
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -523,7 +523,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -541,7 +541,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -559,7 +559,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -577,7 +577,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -595,7 +595,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -613,7 +613,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -631,7 +631,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -649,7 +649,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -667,7 +667,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -685,7 +685,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -703,7 +703,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -721,7 +721,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -739,7 +739,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -757,7 +757,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -775,7 +775,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   },
   {
    "day": "20261113",
@@ -793,7 +793,7 @@
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13a"
+   "build": "2026-11-13b"
   }
  ],
  "picks_all": 44,
@@ -870,7 +870,10 @@
    "final_home": 106,
    "final_away": 37,
    "actual_margin": 69,
-   "margin_err": 32.5
+   "margin_err": 32.5,
+   "margin_target": 37,
+   "margin_got": 69,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -894,7 +897,10 @@
    "final_home": 94,
    "final_away": 60,
    "actual_margin": 34,
-   "margin_err": 2.7
+   "margin_err": 2.7,
+   "margin_target": 31,
+   "margin_got": 34,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -918,7 +924,10 @@
    "final_home": 100,
    "final_away": 66,
    "actual_margin": 34,
-   "margin_err": 2.7
+   "margin_err": 2.7,
+   "margin_target": 31,
+   "margin_got": 34,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -942,7 +951,10 @@
    "final_home": 87,
    "final_away": 49,
    "actual_margin": 38,
-   "margin_err": 10.5
+   "margin_err": 10.5,
+   "margin_target": 28,
+   "margin_got": 38,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -966,7 +978,10 @@
    "final_home": 92,
    "final_away": 46,
    "actual_margin": 46,
-   "margin_err": 19.9
+   "margin_err": 19.9,
+   "margin_target": 26,
+   "margin_got": 46,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -990,7 +1005,10 @@
    "final_home": 90,
    "final_away": 59,
    "actual_margin": 31,
-   "margin_err": 6.1
+   "margin_err": 6.1,
+   "margin_target": 25,
+   "margin_got": 31,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -1014,7 +1032,10 @@
    "final_home": 99,
    "final_away": 59,
    "actual_margin": 40,
-   "margin_err": 16.9
+   "margin_err": 16.9,
+   "margin_target": 23,
+   "margin_got": 40,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -1038,7 +1059,10 @@
    "final_home": 76,
    "final_away": 53,
    "actual_margin": 23,
-   "margin_err": 0.4
+   "margin_err": 0.4,
+   "margin_target": 23,
+   "margin_got": 23,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -1062,7 +1086,10 @@
    "final_home": 111,
    "final_away": 79,
    "actual_margin": 32,
-   "margin_err": 12.7
+   "margin_err": 12.7,
+   "margin_target": 19,
+   "margin_got": 32,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -1086,7 +1113,10 @@
    "final_home": 77,
    "final_away": 41,
    "actual_margin": 36,
-   "margin_err": 17.6
+   "margin_err": 17.6,
+   "margin_target": 18,
+   "margin_got": 36,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -1110,7 +1140,10 @@
    "final_home": 99,
    "final_away": 71,
    "actual_margin": 28,
-   "margin_err": 10.2
+   "margin_err": 10.2,
+   "margin_target": 18,
+   "margin_got": 28,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -1134,7 +1167,10 @@
    "final_home": 80,
    "final_away": 71,
    "actual_margin": 9,
-   "margin_err": -7.7
+   "margin_err": -7.7,
+   "margin_target": 17,
+   "margin_got": 9,
+   "margin_result": "loss"
   },
   {
    "day": "20261111",
@@ -1158,7 +1194,10 @@
    "final_home": 88,
    "final_away": 75,
    "actual_margin": 13,
-   "margin_err": -3.4
+   "margin_err": -3.4,
+   "margin_target": 16,
+   "margin_got": 13,
+   "margin_result": "loss"
   },
   {
    "day": "20261111",
@@ -1182,7 +1221,10 @@
    "final_home": 87,
    "final_away": 71,
    "actual_margin": 16,
-   "margin_err": 0.7
+   "margin_err": 0.7,
+   "margin_target": 15,
+   "margin_got": 16,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -1206,7 +1248,10 @@
    "final_home": 67,
    "final_away": 80,
    "actual_margin": -13,
-   "margin_err": 1.1
+   "margin_err": 1.1,
+   "margin_target": 14,
+   "margin_got": 13,
+   "margin_result": "loss"
   },
   {
    "day": "20261111",
@@ -1230,7 +1275,10 @@
    "final_home": 76,
    "final_away": 80,
    "actual_margin": -4,
-   "margin_err": -15.0
+   "margin_err": -15.0,
+   "margin_target": 11,
+   "margin_got": -4,
+   "margin_result": "loss"
   },
   {
    "day": "20261111",
@@ -1254,7 +1302,10 @@
    "final_home": 81,
    "final_away": 69,
    "actual_margin": 12,
-   "margin_err": 1.0
+   "margin_err": 1.0,
+   "margin_target": 11,
+   "margin_got": 12,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -1278,7 +1329,10 @@
    "final_home": 72,
    "final_away": 67,
    "actual_margin": 5,
-   "margin_err": -5.6
+   "margin_err": -5.6,
+   "margin_target": 11,
+   "margin_got": 5,
+   "margin_result": "loss"
   },
   {
    "day": "20261111",
@@ -1302,7 +1356,10 @@
    "final_home": 68,
    "final_away": 53,
    "actual_margin": 15,
-   "margin_err": 5.3
+   "margin_err": 5.3,
+   "margin_target": 10,
+   "margin_got": 15,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -1326,7 +1383,10 @@
    "final_home": 72,
    "final_away": 62,
    "actual_margin": 10,
-   "margin_err": 0.7
+   "margin_err": 0.7,
+   "margin_target": 9,
+   "margin_got": 10,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -1350,7 +1410,10 @@
    "final_home": 84,
    "final_away": 80,
    "actual_margin": 4,
-   "margin_err": -4.1
+   "margin_err": -4.1,
+   "margin_target": 8,
+   "margin_got": 4,
+   "margin_result": "loss"
   },
   {
    "day": "20261111",
@@ -1374,7 +1437,10 @@
    "final_home": 81,
    "final_away": 76,
    "actual_margin": 5,
-   "margin_err": 12.9
+   "margin_err": 12.9,
+   "margin_target": 8,
+   "margin_got": -5,
+   "margin_result": "loss"
   },
   {
    "day": "20261111",
@@ -1398,7 +1464,10 @@
    "final_home": 62,
    "final_away": 81,
    "actual_margin": -19,
-   "margin_err": -26.8
+   "margin_err": -26.8,
+   "margin_target": 8,
+   "margin_got": -19,
+   "margin_result": "loss"
   },
   {
    "day": "20261111",
@@ -1422,7 +1491,10 @@
    "final_home": 73,
    "final_away": 82,
    "actual_margin": -9,
-   "margin_err": -16.3
+   "margin_err": -16.3,
+   "margin_target": 7,
+   "margin_got": -9,
+   "margin_result": "loss"
   },
   {
    "day": "20261111",
@@ -1446,7 +1518,10 @@
    "final_home": 91,
    "final_away": 73,
    "actual_margin": 18,
-   "margin_err": 10.7
+   "margin_err": 10.7,
+   "margin_target": 7,
+   "margin_got": 18,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -1470,7 +1545,10 @@
    "final_home": 107,
    "final_away": 93,
    "actual_margin": 14,
-   "margin_err": 21.1
+   "margin_err": 21.1,
+   "margin_target": 7,
+   "margin_got": -14,
+   "margin_result": "loss"
   },
   {
    "day": "20261111",
@@ -1494,7 +1572,10 @@
    "final_home": 65,
    "final_away": 77,
    "actual_margin": -12,
-   "margin_err": -5.6
+   "margin_err": -5.6,
+   "margin_target": 6,
+   "margin_got": 12,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -1518,7 +1599,10 @@
    "final_home": 95,
    "final_away": 90,
    "actual_margin": 5,
-   "margin_err": -0.9
+   "margin_err": -0.9,
+   "margin_target": 6,
+   "margin_got": 5,
+   "margin_result": "loss"
   },
   {
    "day": "20261111",
@@ -1542,7 +1626,10 @@
    "final_home": 88,
    "final_away": 64,
    "actual_margin": 24,
-   "margin_err": 18.1
+   "margin_err": 18.1,
+   "margin_target": 6,
+   "margin_got": 24,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -1566,7 +1653,10 @@
    "final_home": 65,
    "final_away": 51,
    "actual_margin": 14,
-   "margin_err": 8.2
+   "margin_err": 8.2,
+   "margin_target": 6,
+   "margin_got": 14,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -1590,7 +1680,10 @@
    "final_home": 69,
    "final_away": 59,
    "actual_margin": 10,
-   "margin_err": 4.7
+   "margin_err": 4.7,
+   "margin_target": 5,
+   "margin_got": 10,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -1614,7 +1707,10 @@
    "final_home": 83,
    "final_away": 80,
    "actual_margin": 3,
-   "margin_err": -2.0
+   "margin_err": -2.0,
+   "margin_target": 5,
+   "margin_got": 3,
+   "margin_result": "loss"
   },
   {
    "day": "20261111",
@@ -1638,7 +1734,10 @@
    "final_home": 65,
    "final_away": 87,
    "actual_margin": -22,
-   "margin_err": -17.2
+   "margin_err": -17.2,
+   "margin_target": 5,
+   "margin_got": 22,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -1662,7 +1761,10 @@
    "final_home": 60,
    "final_away": 71,
    "actual_margin": -11,
-   "margin_err": -6.2
+   "margin_err": -6.2,
+   "margin_target": 5,
+   "margin_got": 11,
+   "margin_result": "win"
   },
   {
    "day": "20261111",
@@ -1686,7 +1788,10 @@
    "final_home": 74,
    "final_away": 70,
    "actual_margin": 4,
-   "margin_err": -0.6
+   "margin_err": -0.6,
+   "margin_target": 5,
+   "margin_got": 4,
+   "margin_result": "loss"
   },
   {
    "day": "20261111",
@@ -1710,7 +1815,10 @@
    "final_home": 62,
    "final_away": 59,
    "actual_margin": 3,
-   "margin_err": 6.6
+   "margin_err": 6.6,
+   "margin_target": 4,
+   "margin_got": -3,
+   "margin_result": "loss"
   },
   {
    "day": "20261112",
@@ -1735,7 +1843,10 @@
    "final_home": 91,
    "final_away": 61,
    "actual_margin": 30,
-   "margin_err": 6.2
+   "margin_err": 6.2,
+   "margin_target": 24,
+   "margin_got": 30,
+   "margin_result": "win"
   },
   {
    "day": "20261112",
@@ -1760,7 +1871,10 @@
    "final_home": 75,
    "final_away": 61,
    "actual_margin": 14,
-   "margin_err": -7.6
+   "margin_err": -7.6,
+   "margin_target": 22,
+   "margin_got": 14,
+   "margin_result": "loss"
   },
   {
    "day": "20261112",
@@ -1785,7 +1899,10 @@
    "final_home": 67,
    "final_away": 47,
    "actual_margin": 20,
-   "margin_err": -0.5
+   "margin_err": -0.5,
+   "margin_target": 21,
+   "margin_got": 20,
+   "margin_result": "loss"
   },
   {
    "day": "20261112",
@@ -1810,7 +1927,10 @@
    "final_home": 90,
    "final_away": 66,
    "actual_margin": 24,
-   "margin_err": 3.9
+   "margin_err": 3.9,
+   "margin_target": 20,
+   "margin_got": 24,
+   "margin_result": "win"
   },
   {
    "day": "20261112",
@@ -1835,7 +1955,10 @@
    "final_home": 88,
    "final_away": 59,
    "actual_margin": 29,
-   "margin_err": 10.7
+   "margin_err": 10.7,
+   "margin_target": 18,
+   "margin_got": 29,
+   "margin_result": "win"
   },
   {
    "day": "20261112",
@@ -1860,7 +1983,10 @@
    "final_home": 72,
    "final_away": 57,
    "actual_margin": 15,
-   "margin_err": -3.3
+   "margin_err": -3.3,
+   "margin_target": 18,
+   "margin_got": 15,
+   "margin_result": "loss"
   },
   {
    "day": "20261112",
@@ -1885,7 +2011,10 @@
    "final_home": 86,
    "final_away": 71,
    "actual_margin": 15,
-   "margin_err": -2.4
+   "margin_err": -2.4,
+   "margin_target": 17,
+   "margin_got": 15,
+   "margin_result": "loss"
   },
   {
    "day": "20261112",
@@ -1910,7 +2039,10 @@
    "final_home": 90,
    "final_away": 60,
    "actual_margin": 30,
-   "margin_err": 15.4
+   "margin_err": 15.4,
+   "margin_target": 15,
+   "margin_got": 30,
+   "margin_result": "win"
   },
   {
    "day": "20261112",
@@ -1935,7 +2067,10 @@
    "final_home": 88,
    "final_away": 76,
    "actual_margin": 12,
-   "margin_err": -0.9
+   "margin_err": -0.9,
+   "margin_target": 13,
+   "margin_got": 12,
+   "margin_result": "loss"
   },
   {
    "day": "20261112",
@@ -1960,7 +2095,10 @@
    "final_home": 81,
    "final_away": 86,
    "actual_margin": -5,
-   "margin_err": -17.3
+   "margin_err": -17.3,
+   "margin_target": 12,
+   "margin_got": -5,
+   "margin_result": "loss"
   },
   {
    "day": "20261112",
@@ -1985,7 +2123,10 @@
    "final_home": 76,
    "final_away": 68,
    "actual_margin": 8,
-   "margin_err": -3.9
+   "margin_err": -3.9,
+   "margin_target": 12,
+   "margin_got": 8,
+   "margin_result": "loss"
   },
   {
    "day": "20261112",
@@ -2010,7 +2151,10 @@
    "final_home": 54,
    "final_away": 56,
    "actual_margin": -2,
-   "margin_err": 7.7
+   "margin_err": 7.7,
+   "margin_target": 10,
+   "margin_got": 2,
+   "margin_result": "loss"
   },
   {
    "day": "20261112",
@@ -2035,7 +2179,10 @@
    "final_home": 75,
    "final_away": 62,
    "actual_margin": 13,
-   "margin_err": 4.7
+   "margin_err": 4.7,
+   "margin_target": 8,
+   "margin_got": 13,
+   "margin_result": "win"
   },
   {
    "day": "20261112",
@@ -2060,7 +2207,10 @@
    "final_home": 83,
    "final_away": 91,
    "actual_margin": -8,
-   "margin_err": -0.1
+   "margin_err": -0.1,
+   "margin_target": 8,
+   "margin_got": 8,
+   "margin_result": "win"
   },
   {
    "day": "20261112",
@@ -2085,7 +2235,10 @@
    "final_home": 75,
    "final_away": 80,
    "actual_margin": -5,
-   "margin_err": -12.0
+   "margin_err": -12.0,
+   "margin_target": 7,
+   "margin_got": -5,
+   "margin_result": "loss"
   },
   {
    "day": "20261112",
@@ -2110,7 +2263,10 @@
    "final_home": 85,
    "final_away": 70,
    "actual_margin": 15,
-   "margin_err": 8.1
+   "margin_err": 8.1,
+   "margin_target": 7,
+   "margin_got": 15,
+   "margin_result": "win"
   },
   {
    "day": "20261112",
@@ -2135,7 +2291,10 @@
    "final_home": 85,
    "final_away": 83,
    "actual_margin": 2,
-   "margin_err": -4.3
+   "margin_err": -4.3,
+   "margin_target": 6,
+   "margin_got": 2,
+   "margin_result": "loss"
   },
   {
    "day": "20261112",
@@ -2160,7 +2319,10 @@
    "final_home": 75,
    "final_away": 79,
    "actual_margin": -4,
-   "margin_err": -10.0
+   "margin_err": -10.0,
+   "margin_target": 6,
+   "margin_got": -4,
+   "margin_result": "loss"
   },
   {
    "day": "20261112",
@@ -2185,7 +2347,10 @@
    "final_home": 88,
    "final_away": 69,
    "actual_margin": 19,
-   "margin_err": 13.4
+   "margin_err": 13.4,
+   "margin_target": 6,
+   "margin_got": 19,
+   "margin_result": "win"
   },
   {
    "day": "20261112",
@@ -2210,7 +2375,10 @@
    "final_home": 80,
    "final_away": 70,
    "actual_margin": 10,
-   "margin_err": 14.2
+   "margin_err": 14.2,
+   "margin_target": 4,
+   "margin_got": -10,
+   "margin_result": "loss"
   },
   {
    "day": "20261112",
@@ -2235,7 +2403,10 @@
    "final_home": 79,
    "final_away": 72,
    "actual_margin": 7,
-   "margin_err": 10.2
+   "margin_err": 10.2,
+   "margin_target": 3,
+   "margin_got": -7,
+   "margin_result": "loss"
   }
  ]
 }

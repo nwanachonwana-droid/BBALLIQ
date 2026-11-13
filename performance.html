@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- SITE BUILD v35 -- bump this and the install.sh site check together -->
+<!-- SITE BUILD v36 -- bump this and the install.sh site check together -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sharpz Basketball — performance</title>
@@ -85,6 +85,9 @@
   </h1>
 
   <div id="collegeHead"></div>
+  <div id="collegeNote" class="mono" style="font-size: 12px;
+       line-height: 1.75; color: var(--dim); margin: 12px 0 2px;
+       max-width: 62ch"></div>
   <div id="collegeLog" style="margin-bottom: 46px"></div>
 
   <div id="head"></div>
@@ -201,6 +204,10 @@ function render(d) {
 
   const ungraded = picks.filter(r => r.beat === null
                                   || r.beat === undefined).length;
+  const _ignored = 'Two records. WON is the moneyline — did the team we picked '
+    + 'win. MARGIN is whether they reached or beat the number we '
+    + 'published, rounded to a whole. A team can win the game and '
+    + 'miss the number, which is why both are shown.';
   ft.textContent = 'A tick means he reached the number we called, '
     + 'rounded to a whole — production comes in whole numbers and a '
     + 'projection does not, so 4.3 is graded as 4. No line was '
@@ -237,6 +244,15 @@ function collegeRecord(d) {
       <div><div class="mono lab">RATE</div>
         <div class="arch" style="font-weight: 800; font-size: 40px;
           letter-spacing: -1.2px; margin-top: 4px">${pct}%</div></div>
+      ${!d.margin_graded ? '' : `<div style="padding-left: 24px;
+        border-left: 1px solid var(--line)">
+        <div class="mono lab">MADE THE MARGIN</div>
+        <div class="arch" style="font-weight: 800; font-size: 40px;
+          letter-spacing: -1.2px; margin-top: 4px">${d.margin_wins}<span
+          style="color: var(--dim)">/${d.margin_graded}</span>
+          <span style="font-size: 22px; color: var(--mid)">
+          ${Math.round(100 * d.margin_wins / d.margin_graded)}%</span>
+        </div></div>`}
       ${d.brier == null ? '' : `<div><div class="mono lab">BRIER</div>
         <div class="arch" style="font-weight: 800; font-size: 40px;
           letter-spacing: -1.2px; margin-top: 4px">${
@@ -255,6 +271,14 @@ function collegeRecord(d) {
       ${Math.abs(d.margin.bias) >= 2
         ? '(a steady lean — home court or the ratings are off)'
         : '(no systematic lean)'}</div>`}`;
+  const note = document.getElementById('collegeNote');
+  if (note) {
+    note.textContent = 'Two records. WON is the moneyline — did the '
+      + 'team we picked win. MADE THE MARGIN is whether they reached '
+      + 'or beat the number we published, rounded to a whole. A team '
+      + 'can win the game and miss the number, which is why both are '
+      + 'shown.';
+  }
   const hist = (d.history || []).slice().reverse().slice(0, 40);
   log.innerHTML = hist.map(r => `
     <div class="row">
@@ -271,6 +295,9 @@ function collegeRecord(d) {
         <div class="val">${r.margin == null ? '—'
           : (Math.abs(r.margin) < 10 ? Math.abs(r.margin).toFixed(1)
                                      : Math.round(Math.abs(r.margin)))}</div>
+        ${r.margin_target == null ? '' : `<div class="lab"
+          style="margin-top: 2px; letter-spacing: 0.6px">needs ${
+            r.margin_target}</div>`}
       </div>
       <div class="cell" style="min-width: 92px">
         <div class="lab">WON BY</div>
@@ -287,9 +314,20 @@ function collegeRecord(d) {
         <div class="val" style="font-size: 12px; color: var(--mid);
           white-space: normal; text-align: right; line-height: 1.4">${
           esc(r.actual || '—')}</div></div>
-      <div class="mark">${r.result === 'win'
-        ? '<span style="color: var(--win)">&#10003;</span>'
-        : '<span style="color: var(--loss)">&#10007;</span>'}</div>
+      <div class="cell" style="min-width: 78px">
+        <div class="lab">WON &middot; MARGIN</div>
+        <div style="margin-top: 4px; font-size: 16px; white-space: nowrap">
+          ${r.result === 'win'
+            ? '<span style="color: var(--win)">&#10003;</span>'
+            : '<span style="color: var(--loss)">&#10007;</span>'}
+          <span style="opacity:.25; margin: 0 4px">|</span>
+          ${r.margin_result == null
+            ? '<span style="color: var(--dim)">&mdash;</span>'
+            : (r.margin_result === 'win'
+                ? '<span style="color: var(--win)">&#10003;</span>'
+                : '<span style="color: var(--loss)">&#10007;</span>')}
+        </div>
+      </div>
     </div>`).join('');
 }
 
