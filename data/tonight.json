@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13T10:33:25.659769-05:00",
+ "generated": "2026-11-13T10:46:55.750624-05:00",
  "day": "20261113",
  "source": "Covers.com",
  "counts": {
@@ -303,7 +303,7 @@
      "ev_pct": 21.12,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4599
+     "prob_over": 0.462
     },
     "reb": {
      "line": 4.5,
@@ -312,7 +312,7 @@
      "ev_pct": -6.14,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4182
+     "prob_over": 0.4195
     },
     "ast": {
      "line": 5.5,
@@ -321,7 +321,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.5021
+     "prob_over": 0.5015
     }
    },
    "covered": 3,
@@ -347,7 +347,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 8,
-     "prob_over": 0.4802
+     "prob_over": 0.4804
     },
     "reb": {
      "line": 3.5,
@@ -365,7 +365,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 8,
-     "prob_over": 0.4285
+     "prob_over": 0.4286
     }
    },
    "covered": 3,
@@ -391,7 +391,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4756
+     "prob_over": 0.4753
     },
     "reb": {
      "line": 5.5,
@@ -400,7 +400,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4803
+     "prob_over": 0.4865
     },
     "ast": {
      "line": 3.5,
@@ -409,7 +409,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.5311
+     "prob_over": 0.5304
     }
    },
    "covered": 3,
@@ -435,7 +435,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4633
+     "prob_over": 0.4558
     },
     "reb": {
      "line": 2.5,
@@ -444,7 +444,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 6,
-     "prob_over": 0.4681
+     "prob_over": 0.4702
     },
     "ast": {
      "line": 5.5,
@@ -453,7 +453,7 @@
      "ev_pct": 4.57,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4648
+     "prob_over": 0.4666
     }
    },
    "covered": 3,
@@ -479,7 +479,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4733
+     "prob_over": 0.4671
     },
     "reb": {
      "line": 9.5,
@@ -488,7 +488,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4595
+     "prob_over": 0.4616
     },
     "ast": {
      "line": 6.5,
@@ -497,7 +497,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4917
+     "prob_over": 0.4938
     }
    },
    "covered": 3,
@@ -576,7 +576,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4354
+     "prob_over": 0.4373
     },
     "ast": {
      "line": 3.5,
@@ -585,7 +585,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4748
+     "prob_over": 0.472
     }
    },
    "covered": 3,

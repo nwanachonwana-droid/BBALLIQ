@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- SITE BUILD v34 -- bump this and the install.sh site check together -->
+<!-- SITE BUILD v35 -- bump this and the install.sh site check together -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sharpz Basketball — performance</title>
@@ -42,9 +42,18 @@
   .val { font-size: 18px; margin-top: 2px; }
   .mark { flex: 0 0 auto; min-width: 26px; text-align: right;
           font-size: 17px; }
+  /* FOUR COLUMNS DO NOT FIT A PHONE. At 390px the row ran to 550
+     and the page scrolled sideways. The final score is the widest
+     and the least urgent of the four, so below 620px it drops out
+     of the row and reappears under the matchup, where it wraps. */
+  @media (max-width: 620px) {
+    .cfinal { display: none; }
+    .mfinal { display: block !important; }
+  }
   @media (max-width: 520px) {
     .rk { min-width: 34px; } .nm { font-size: 15px; }
-    .cell { min-width: 44px; } .val { font-size: 16px; }
+    .cell { min-width: 44px !important; } .val { font-size: 16px; }
+    .row { gap: 8px; }
   }
 </style>
 </head>
@@ -232,7 +241,20 @@ function collegeRecord(d) {
         <div class="arch" style="font-weight: 800; font-size: 40px;
           letter-spacing: -1.2px; margin-top: 4px">${
             Number(d.brier).toFixed(3)}</div></div>`}
-    </div>`;
+      ${!d.margin ? '' : `<div><div class="mono lab">MARGIN OFF BY</div>
+        <div class="arch" style="font-weight: 800; font-size: 40px;
+          letter-spacing: -1.2px; margin-top: 4px">${
+            Number(d.margin.mae).toFixed(1)}<span style="font-size: 20px;
+            color: var(--dim)"> pts</span></div></div>`}
+    </div>
+    ${!d.margin ? '' : `<div class="mono" style="font-size: 12px;
+      color: var(--dim); margin-top: 10px; line-height: 1.7">
+      ${Math.round(d.margin.within5 * 100)}% within 5 points &middot;
+      ${Math.round(d.margin.within10 * 100)}% within 10 &middot;
+      bias ${d.margin.bias > 0 ? '+' : ''}${Number(d.margin.bias).toFixed(1)}
+      ${Math.abs(d.margin.bias) >= 2
+        ? '(a steady lean — home court or the ratings are off)'
+        : '(no systematic lean)'}</div>`}`;
   const hist = (d.history || []).slice().reverse().slice(0, 40);
   log.innerHTML = hist.map(r => `
     <div class="row">
@@ -241,9 +263,29 @@ function collegeRecord(d) {
         <div class="nm">${esc(r.pick_name)}</div>
         <div class="mk">${esc(r.away_name)} ${r.neutral ? 'vs' : 'at'}
           ${esc(r.home_name)}</div>
+        <div class="mk mfinal" style="display: none; color: var(--mid);
+          margin-top: 3px">${esc(r.actual || '')}</div>
       </div>
-      <div class="cell"><div class="lab">FINAL</div>
-        <div class="val" style="font-size: 13px; color: var(--mid)">${
+      <div class="cell" style="min-width: 92px">
+        <div class="lab">CALLED BY</div>
+        <div class="val">${r.margin == null ? '—'
+          : (Math.abs(r.margin) < 10 ? Math.abs(r.margin).toFixed(1)
+                                     : Math.round(Math.abs(r.margin)))}</div>
+      </div>
+      <div class="cell" style="min-width: 92px">
+        <div class="lab">WON BY</div>
+        <div class="val">${r.actual_margin == null ? '—'
+          : Math.abs(r.actual_margin)}</div>
+        ${r.margin_err == null ? '' : `<div class="lab"
+          style="margin-top: 2px; letter-spacing: 0.6px; color: ${
+            Math.abs(r.margin_err) <= 5 ? '#6E8B7A' : 'var(--dim)'}">${
+            r.margin_err > 0 ? '+' : ''}${Number(r.margin_err).toFixed(0)}
+          </div>`}
+      </div>
+      <div class="cell cfinal" style="min-width: 150px">
+        <div class="lab">FINAL</div>
+        <div class="val" style="font-size: 12px; color: var(--mid);
+          white-space: normal; text-align: right; line-height: 1.4">${
           esc(r.actual || '—')}</div></div>
       <div class="mark">${r.result === 'win'
         ? '<span style="color: var(--win)">&#10003;</span>'
