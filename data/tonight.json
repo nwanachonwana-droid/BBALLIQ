@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-14T09:52:29.605547-05:00",
+ "generated": "2026-11-14T09:54:29.707184-05:00",
  "day": "20261114",
  "source": "Covers.com",
  "counts": {
@@ -295,7 +295,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4642
+     "prob_over": 0.4646
     },
     "reb": {
      "line": 2.5,
