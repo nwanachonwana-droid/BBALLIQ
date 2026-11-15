@@ -1,78 +1,9 @@
 {
- "generated": "2026-11-01T11:09:02.316479-05:00",
- "days": [
-  "20261020",
-  "20261021"
- ],
- "settled": 81,
+ "generated": "2026-10-21T12:16:36.190981-04:00",
+ "days": [],
+ "settled": 0,
  "unlocks_at": 100,
- "surfaces": [
-  {
-   "n": 42,
-   "w": 22,
-   "l": 20,
-   "p": 0,
-   "hit": 52.4,
-   "name": "writer"
-  },
-  {
-   "n": 39,
-   "w": 20,
-   "l": 19,
-   "p": 0,
-   "hit": 51.3,
-   "name": "projection"
-  }
- ],
- "statuses": [
-  {
-   "n": 56,
-   "w": 28,
-   "l": 28,
-   "p": 0,
-   "hit": 50.0,
-   "name": "CORROBORATED"
-  },
-  {
-   "n": 2,
-   "w": 1,
-   "l": 1,
-   "p": 0,
-   "hit": 50.0,
-   "name": "CONFLICT"
-  },
-  {
-   "n": 13,
-   "w": 7,
-   "l": 6,
-   "p": 0,
-   "hit": 53.8,
-   "name": "UNBACKED"
-  },
-  {
-   "n": 10,
-   "w": 6,
-   "l": 4,
-   "p": 0,
-   "hit": 60.0,
-   "name": "NO_WRITER"
-  }
- ],
- "conflicts": {
-  "writer": {
-   "n": 1,
-   "w": 1,
-   "l": 0,
-   "p": 0,
-   "hit": 100.0
-  },
-  "projection": {
-   "n": 1,
-   "w": 0,
-   "l": 1,
-   "p": 0,
-   "hit": 0.0
-  }
- },
- "to_go": 19
+ "to_go": 100,
+ "surfaces": [],
+ "statuses": []
 }

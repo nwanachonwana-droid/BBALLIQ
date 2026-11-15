@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sharpz Basketball — the board</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  body { margin: 0; background: #0A0D12; font-family: 'IBM Plex Sans', system-ui, sans-serif; }
+  a { color: #FF6B2C; }
+  a:hover { color: #FF8A52; }
+  * { box-sizing: border-box; }
+</style>
+</helmet>
+
+<div style="width: 100%; background: #0A0D12; color: #ECEFF4; overflow-x: hidden">
+
+  <!-- NAV -->
+  <div style="border-bottom: 1px solid #1A212B">
+    <div style="max-width: 1120px; margin: 0 auto; padding: 20px 32px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <svg width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="Sharpz Basketball">
+          <circle cx="16" cy="16" r="14" fill="#FF6B2C"></circle>
+          <path d="M16 2 L16 30 M2 16 L30 16" stroke="#0A0D12" stroke-width="1.7"></path>
+          <path d="M6.2 5.4 Q15 16 6.2 26.6" fill="none" stroke="#0A0D12" stroke-width="1.7"></path>
+          <path d="M25.8 5.4 Q17 16 25.8 26.6" fill="none" stroke="#0A0D12" stroke-width="1.7"></path>
+        </svg>
+        <div style="line-height: 1">
+          <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 19px; letter-spacing: -0.4px">SHARPZ</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 3.4px; color: #FF6B2C; margin-top: 3px">BASKETBALL</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 26px; align-items: center">
+        <a href="Research.dc.html" style="color: #8B98A9; text-decoration: none; font-size: 15px">Research</a>
+        <a href="#join" style="background: #FF6B2C; color: #0A0D12; text-decoration: none; font-weight: 600; font-size: 15px; padding: 11px 20px; border-radius: 6px; display: inline-block; min-height: 44px; line-height: 22px">Get access</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOARD -->
+  <div style="max-width: 1120px; margin: 0 auto; padding: 56px 32px 72px">
+
+    <h1 style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 54px; line-height: 1.02; letter-spacing: -1.8px; margin: 0 0 16px">
+      The board
+    </h1>
+    <p style="font-size: 17px; line-height: 1.55; color: #8B98A9; max-width: 560px; margin: 0 0 36px">
+      Players and teams we can put a number on.
+      <a href="Research.dc.html" style="text-decoration: none; border-bottom: 1px solid #5C2D12; white-space: nowrap">How these are chosen</a>
+    </p>
+
+    <!-- One quiet line. The board leads with names; this says only what a
+         bettor wants before scanning it: is there anything on tonight.
+         The reasoning behind the numbers lives on the research page. -->
+    <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.8px; color: #6B7A8D; margin-bottom: 22px" id="dateline">{{dateline}}</div>
+
+    <!-- TONIGHT'S PICKS: the card, first. Everything else on this
+         page is evidence about whether these are any good; the picks
+         themselves are what a reader came for. Pending only -- once a
+         pick settles it belongs in the record and the log, not here,
+         because a board that keeps yesterday's winners up is selling
+         rather than reporting. -->
+    <div id="editorBlock" style="border: 1px solid #5C2D12; border-radius: 12px; overflow: hidden; margin-bottom: 30px" hidden>
+      <div style="background: #1A0E06; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #FF6B2C">TONIGHT&rsquo;S PICKS</div>
+        <div style="font-size: 13px; color: #8B98A9" id="editorMeta"></div>
+      </div>
+      <div id="editorRows"></div>
+      <div style="background: #0D1218; border-top: 1px solid #2A1408; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
+        Every pick is logged here at the line and price shown, before tip, and settled against the official box score tomorrow morning. Nothing is added after the fact and nothing is removed when it loses &mdash; <a href="log.html">the log</a> has all of them, winners and losers, with how close each one came.
+      </div>
+    </div>
+
+    <!-- RECORD: every published pick, graded off the official box
+         score. The count is shown from pick one; the win rate is not
+         shown until 30, because before that it is noise and putting a
+         number on the page invites reading it as a result. -->
+    <div id="recBlock" style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px" hidden>
+      <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #FF6B2C">THE RECORD</div>
+        <div style="font-size: 13px; color: #6B7A8D" id="recMeta"></div>
+      </div>
+      <div id="recRows"></div>
+      <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
+        Every pick we publish is logged with the line and price it was published at, and settled against the official NBA box score the next morning. The log is never edited after the fact &mdash; grading only adds a result to a row that already exists. Staking is flat, one unit a pick, so a good run and a lucky one cannot be made to look different.
+        <br><br>
+        We publish the win rate at 30 graded picks. Not before, and not later. Below that number a 3&ndash;0 start and an 0&ndash;3 start carry the same information, which is none, and <a href="research.html">showing either would be dishonest</a>. The count and the full archive are up from pick one: <a href="log.html">see every pick in the log</a>, or <a id="recCsv" href="data/slate_archive.csv" download>download the CSV</a>.
+      </div>
+    </div>
+
+    <!-- PRA WATCH leads. These are the players we hold a number on, so
+         they are the reason to open the page; everyone else's picks are
+         context for them, not the other way round. Covers quotes the
+         three components separately and never the combined line, so the
+         row sums them and says plainly when a piece is missing. -->
+    <div id="praBlock" style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px" hidden>
+      <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #FF6B2C">PRA WATCH &nbsp;·&nbsp; PLAYING TONIGHT</div>
+        <div style="font-size: 13px; color: #6B7A8D" id="praMeta"></div>
+      </div>
+      <div id="praRows"></div>
+      <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
+        <strong style="color: #96A3B4; font-weight: 600">OUR PRA</strong> is the player&rsquo;s typical points+rebounds+assists across three seasons &mdash; roughly where a book would set him, and a measure of how <a href="minutes.html">forecastable his minutes are</a>, not a prediction for tonight. <strong style="color: #96A3B4; font-weight: 600">LOCKED</strong> means his minutes have held steady across those seasons; <strong style="color: #96A3B4; font-weight: 600">MOVED</strong> means they haven&rsquo;t, and the PRA figure is correspondingly softer.
+        <br><br>
+        <strong style="color: #96A3B4; font-weight: 600">BOOK PRA</strong> is the combined points+rebounds+assists line the sportsbooks are quoting tonight, via <strong style="color: #96A3B4; font-weight: 600">The Odds API</strong>. We take the median line across books rather than the average, so one stale number can&rsquo;t drag it, and we strip the vig from each book&rsquo;s pair of prices before averaging them into <strong style="color: #96A3B4; font-weight: 600">P(OVER)</strong>. The book count beside the label says how many were quoting.
+        <br><br>
+        <strong style="color: #96A3B4; font-weight: 600">VS OURS</strong> is that market line minus our figure. It is not an edge. The market price already contains tonight&rsquo;s injuries, rest and matchup, none of which a three-season average knows about, so a gap is a question worth logging rather than a bet. <strong style="color: #96A3B4; font-weight: 600">PTS</strong>, <strong style="color: #96A3B4; font-weight: 600">REB</strong> and <strong style="color: #96A3B4; font-weight: 600">AST</strong> break the same player into his three legs. A column headed <strong style="color: #96A3B4; font-weight: 600">LINE</strong> is the book&rsquo;s number alone; one headed <strong style="color: #96A3B4; font-weight: 600">LINE &rarr; PROJ</strong> also carries a <strong style="color: #96A3B4; font-weight: 600">Covers.com</strong> projection for that leg, which exists only for the handful of props their model chooses to flag. The heading changes rather than the two being blended, because a traded line and a model&rsquo;s output are different claims.
+        <br><br>
+        Where no book quotes a combined line, the <strong style="color: #96A3B4; font-weight: 600">PRA</strong> column falls back to the three Covers projections added together and is labelled <strong style="color: #96A3B4; font-weight: 600">SUMMED</strong>. Book lines are never added into that sum &mdash; doing so would quietly turn a market price into a model output.
+      </div>
+    </div>
+
+    <!-- CORROBORATED PROPS: second, because these are other people's
+         players. Only props a writer took AND the projection model
+         agreed with. Picks carrying one surface rather than two are
+         logged and counted but not shown; mixing them in this table
+         would invite reading the checked and unchecked alike. -->
+    <div style="border: 1px solid #1F2733; border-radius: 12px; overflow: hidden; margin-bottom: 30px">
+      <div style="background: #0D1218; padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.8px; color: #FF6B2C">CORROBORATED PROPS &nbsp;·&nbsp; TONIGHT</div>
+        <div style="font-size: 13px; color: #6B7A8D" id="tickMeta"></div>
+      </div>
+      <div id="tickRows"></div>
+      <div style="background: #0D1218; border-top: 1px solid #1A212B; padding: 14px 24px; font-size: 13px; line-height: 1.7; color: #6B7A8D">
+        Every figure here is <strong style="color: #96A3B4; font-weight: 600">Covers.com</strong>&rsquo;s, captured <span id="tickWhen">daily</span>. Not our numbers and not our recommendations. Covers runs two desks that work independently &mdash; named writers picking sides, and a projection model &mdash; and a prop shows here only when both landed on the same side of the same line.
+        <br><br>
+        <strong style="color: #96A3B4; font-weight: 600">LINE</strong> is the number quoted, <strong style="color: #96A3B4; font-weight: 600">PROJ</strong> what their model returns, <strong style="color: #96A3B4; font-weight: 600">EDGE</strong> the gap between them, <strong style="color: #96A3B4; font-weight: 600">EV</strong> their stated expected value. Ordered by EV. A projection sitting within 0.5 of the line is dropped however large its stated EV, and a player two writers quoted on opposite sides is dropped entirely. Picks we read but did not show are counted above and <a href="research.html">kept in the log</a>, since whether the unbacked ones land is itself worth knowing.
+      </div>
+    </div>
+
+    <!-- tabs -->
+    <div role="tablist" aria-label="Board view" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px">
+      <sc-for list="{{tabs}}" as="t" hint-placeholder-count="5">
+        <button type="button" role="tab" aria-selected="{{t.sel}}" onClick="{{t.pick}}" style="{{t.style}}">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.8px; display: block; margin-bottom: 4px; opacity: 0.7">{{t.kicker}}</span>
+          {{t.label}}
+        </button>
+      </sc-for>
+    </div>
+
+    <!-- NBA table -->
+    <sc-if value="{{isNba}}" hint-placeholder-val="{{true}}">
+      <div style="background: #11161E; border: 1px solid #1F2733; border-radius: 12px; overflow: hidden">
+        <table style="width: 100%; border-collapse: collapse">
+          <thead>
+            <tr style="background: #0D1218">
+              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 24px">PLAYER</th>
+              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">TEAM</th>
+              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">{{lineHead}}</th>
+              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">MINUTES</th>
+              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 24px">NOTE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{rows}}" as="r" hint-placeholder-count="10">
+              <tr>
+                <td style="padding: 15px 24px; border-top: 1px solid #1A212B; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: -0.2px; white-space: nowrap">{{r.name}}</td>
+                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.6px; color: #8B98A9">{{r.team}}</td>
+                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 500; color: #FF6B2C; letter-spacing: -0.5px">{{r.line}}</td>
+                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; white-space: nowrap"><span style="{{r.pill}}">{{r.status}}</span></td>
+                <td style="padding: 15px 24px; border-top: 1px solid #1A212B; font-size: 14px; line-height: 1.5; color: #96A3B4">{{r.note}}</td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </sc-if>
+
+    <!-- College table -->
+    <sc-if value="{{isCollege}}" hint-placeholder-val="{{false}}">
+      <div style="background: #11161E; border: 1px solid #1F2733; border-radius: 12px; overflow: hidden">
+        <table style="width: 100%; border-collapse: collapse">
+          <thead>
+            <tr style="background: #0D1218">
+              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 24px">TEAM</th>
+              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">OFFENCE</th>
+              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">DEFENCE</th>
+              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">NET</th>
+              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 24px">TEMPO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{crows}}" as="c" hint-placeholder-count="8">
+              <tr>
+                <td style="padding: 15px 24px; border-top: 1px solid #1A212B; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: -0.2px; white-space: nowrap">{{c.team}}</td>
+                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #C3CDDA">{{c.oe}}</td>
+                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #C3CDDA">{{c.de}}</td>
+                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 500; color: #FF6B2C; letter-spacing: -0.5px">{{c.net}}</td>
+                <td style="padding: 15px 24px; border-top: 1px solid #1A212B; font-size: 14px; color: #96A3B4">
+                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #C3CDDA">{{c.tempo}}</span>
+                  <span style="color: #6B7A8D; margin-left: 10px">{{c.pace}}</span>
+                </td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </sc-if>
+
+    <!-- Mid-major table -->
+    <sc-if value="{{isMid}}" hint-placeholder-val="{{false}}">
+      <div style="background: #11161E; border: 1px solid #1F2733; border-radius: 12px; overflow: hidden">
+        <table style="width: 100%; border-collapse: collapse">
+          <thead>
+            <tr style="background: #0D1218">
+              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 18px 14px 24px">#NAT</th>
+              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">TEAM</th>
+              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">CONF</th>
+              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">NET</th>
+              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 24px">TEMPO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{mrows}}" as="m" hint-placeholder-count="12">
+              <tr>
+                <td style="padding: 15px 18px 15px 24px; border-top: 1px solid #1A212B; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #8B98A9">{{m.rank}}</td>
+                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: -0.2px; white-space: nowrap">{{m.team}}</td>
+                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.6px; color: #8B98A9">{{m.conf}}</td>
+                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 500; color: #FF6B2C; letter-spacing: -0.5px">{{m.net}}</td>
+                <td style="padding: 15px 24px; border-top: 1px solid #1A212B; font-size: 14px; color: #96A3B4">
+                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #C3CDDA">{{m.tempo}}</span>
+                  <span style="color: #6B7A8D; margin-left: 10px">{{m.tag}}</span>
+                </td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </sc-if>
+
+    <!-- EuroLeague table -->
+    <sc-if value="{{isEuro}}" hint-placeholder-val="{{false}}">
+      <div style="background: #11161E; border: 1px solid #1F2733; border-radius: 12px; overflow: hidden">
+        <table style="width: 100%; border-collapse: collapse">
+          <thead>
+            <tr style="background: #0D1218">
+              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 24px">TEAM</th>
+              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">OFFENCE</th>
+              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">DEFENCE</th>
+              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">NET</th>
+              <th scope="col" style="text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 12px">6 GAMES SAY</th>
+              <th scope="col" style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.6px; color: #6B7A8D; font-weight: 500; padding: 14px 24px">TEMPO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{erows}}" as="e" hint-placeholder-count="20">
+              <tr>
+                <td style="padding: 15px 24px; border-top: 1px solid #1A212B; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: -0.2px; white-space: nowrap">{{e.team}}</td>
+                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #C3CDDA">{{e.oe}}</td>
+                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #C3CDDA">{{e.de}}</td>
+                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 500; color: #FF6B2C; letter-spacing: -0.5px">{{e.net}}</td>
+                <td style="padding: 15px 12px; border-top: 1px solid #1A212B; text-align: right; white-space: nowrap">
+                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #6B7A8D">{{e.raw}}</span>
+                  <span style="{{e.gapStyle}}">{{e.gap}}</span>
+                </td>
+                <td style="padding: 15px 24px; border-top: 1px solid #1A212B; font-size: 14px; color: #96A3B4">
+                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #C3CDDA">{{e.tempo}}</span>
+                  <span style="color: #6B7A8D; margin-left: 10px">{{e.pace}}</span>
+                </td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </sc-if>
+
+    <p style="font-size: 13px; line-height: 1.7; color: #6B7A8D; margin: 16px 0 0; max-width: 840px">{{foot}}</p>
+  </div>
+
+  <!-- JOIN -->
+  <div id="join" style="border-top: 1px solid #1A212B; background: #0D1218">
+    <div style="max-width: 1120px; margin: 0 auto; padding: 44px 32px">
+      <div style="display: flex; flex-wrap: wrap; gap: 36px; align-items: center; justify-content: space-between">
+        <div style="flex: 1 1 360px; min-width: 0">
+          <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.5px; margin-bottom: 7px">Daily board, from opening night</div>
+          <div style="font-size: 15px; color: #8B98A9">Updated lines, minutes and what changed. No picks until there's a track record.</div>
+        </div>
+        <div style="flex: 0 1 420px; min-width: 0; display: flex; flex-wrap: wrap; gap: 10px">
+          <label for="email" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Email address</label>
+          <input id="email" type="email" placeholder="you@example.com" style="flex: 1 1 220px; background: #0A0D12; border: 1px solid #28323F; border-radius: 7px; padding: 14px 16px; color: #ECEFF4; font-size: 15px; font-family: 'IBM Plex Sans', sans-serif; min-height: 44px">
+          <button type="submit" style="background: #FF6B2C; color: #0A0D12; border: none; border-radius: 7px; padding: 14px 24px; font-size: 15px; font-weight: 600; font-family: 'IBM Plex Sans', sans-serif; cursor: pointer; min-height: 44px">Get access</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="border-top: 1px solid #1A212B">
+    <div style="max-width: 1120px; margin: 0 auto; padding: 36px 32px 52px">
+      <div style="display: flex; flex-wrap: wrap; gap: 26px; align-items: center; justify-content: space-between; margin-bottom: 24px">
+        <div style="display: flex; align-items: center; gap: 10px">
+          <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="14" fill="none" stroke="#4A5566" stroke-width="2"></circle>
+            <path d="M16 2 L16 30 M2 16 L30 16" stroke="#4A5566" stroke-width="1.5"></path>
+            <path d="M6.2 5.4 Q15 16 6.2 26.6" fill="none" stroke="#4A5566" stroke-width="1.5"></path>
+            <path d="M25.8 5.4 Q17 16 25.8 26.6" fill="none" stroke="#4A5566" stroke-width="1.5"></path>
+          </svg>
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; color: #8B98A9; letter-spacing: -0.2px">SHARPZ BASKETBALL</span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px">
+          <a href="Research.dc.html" style="color: #6B7A8D; text-decoration: none; font-size: 14px">Research</a>
+          <a href="#join" style="color: #6B7A8D; text-decoration: none; font-size: 14px">Contact</a>
+        </div>
+      </div>
+      <p style="font-size: 12px; line-height: 1.75; color: #586678; margin: 0; max-width: 840px">
+        Statistical forecasts for informational purposes. Not a sportsbook; we do not accept wagers. Betting involves risk of loss. 21+ and where legal. 1-800-GAMBLER.
+      </p>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FF6B2C","options":["#FF6B2C","#F0B429","#4D9DE0","#3FB68B"]},"$preview":{"width":1280,"height":2480}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tab: 'pra' };
+  }
+
+  renderVals() {
+    var tab = this.state.tab;
+    var self = this;
+
+    var PRA = [
+      ['Nikola Jokic', 'DEN', '50', 'locked', 'Same team, coach and role'],
+      ['Shai Gilgeous-Alexander', 'OKC', '42.5', 'locked', 'Core intact; role unchanged'],
+      ['Cade Cunningham', 'DET', '38', 'moved', 'Healthy after a collapsed lung cut 2025-26'],
+      ['Jalen Brunson', 'NYK', '37', 'locked', 'Cleared, no restrictions, Sep 24'],
+      ['Kevin Durant', 'HOU', '36.5', 'moved', 'VanVleet back from ACL; usage should fall'],
+      ['Donovan Mitchell', 'CLE', '35.5', 'locked', 'Four-year extension; same role'],
+      ['Alperen Sengun', 'HOU', '35', 'moved', 'Creator role shrinks with VanVleet back'],
+      ['Lauri Markkanen', 'UTA', '32', 'moved', 'Neck day-to-day; hip ended 2025-26'],
+      ['RJ Barrett', 'TOR', '30', 'moved', 'Ingram out, Kawhi Leonard in'],
+      ['Amen Thompson', 'HOU', '26', 'locked', 'Five-year extension; same team']
+    ];
+
+    var PR = [
+      ['Nikola Jokic', 'DEN', '40', 'locked', 'Same team, coach and role'],
+      ['Shai Gilgeous-Alexander', 'OKC', '36', 'locked', 'Core intact; role unchanged'],
+      ['Kevin Durant', 'HOU', '32', 'moved', 'VanVleet back from ACL; usage should fall'],
+      ['Lauri Markkanen', 'UTA', '30', 'moved', 'Jackson Jr. and Peterson take shots'],
+      ['Jalen Brunson', 'NYK', '30', 'locked', 'Cleared, no restrictions, Sep 24'],
+      ['Donovan Mitchell', 'CLE', '30', 'locked', 'Four-year extension; same role'],
+      ['Cade Cunningham', 'DET', '29.5', 'moved', 'Healthy after a shortened 2025-26'],
+      ['RJ Barrett', 'TOR', '26', 'moved', 'Ingram out, Kawhi Leonard in'],
+      ['Jalen Duren', 'DET', '25.5', 'locked', 'Re-signed Oct 1; Stewart traded'],
+      ['Amen Thompson', 'HOU', '22', 'locked', 'Five-year extension; same team']
+    ];
+
+    var COL = [
+      ['Duke', '120.5', '91.0', '+29.5', '70.1', 'average'],
+      ['Florida', '120.6', '93.5', '+27.1', '74.1', 'very fast'],
+      ['Arizona', '118.8', '91.8', '+27.0', '74.2', 'very fast'],
+      ['Virginia', '120.7', '94.0', '+26.7', '70.4', 'average'],
+      ['Illinois', '122.8', '96.5', '+26.3', '72.1', 'fast'],
+      ['Houston', '118.8', '93.0', '+25.8', '67.3', 'slow'],
+      ['Kansas', '119.2', '93.7', '+25.5', '72.2', 'fast'],
+      ['Louisville', '119.2', '94.6', '+24.6', '72.6', 'fast']
+    ];
+
+    var MID = [
+      ['44', 'Grand Canyon', 'MWC', '+16.8', '73.1', 'top 50'],
+      ['57', 'VCU', 'A10', '+15.3', '73.3', 'top 75'],
+      ['65', 'High Point', 'BSth', '+13.0', '73.4', 'top 75'],
+      ['66', 'New Mexico', 'MWC', '+12.9', '72.4', 'top 75'],
+      ['67', "Saint Mary's", 'WCC', '+12.9', '70.8', 'top 75'],
+      ['68', 'Saint Louis', 'A10', '+12.8', '72.7', 'top 75'],
+      ['69', 'Wichita St.', 'Amer', '+12.4', '71.8', 'top 75'],
+      ['72', 'Dayton', 'A10', '+11.8', '70.2', 'top 75'],
+      ['77', 'George Washington', 'A10', '+10.9', '72.7', ''],
+      ['86', 'Nevada', 'MWC', '+9.6', '69.7', ''],
+      ['89', 'Santa Clara', 'WCC', '+9.3', '73.1', ''],
+      ['90', 'South Florida', 'Amer', '+9.2', '73.1', '']
+    ];
+
+    // EuroLeague 2026-27 after six rounds. NET is six games of this
+    // season blended with each club's finish last season; RAW is the
+    // six games alone. The pair is on the page deliberately -- six
+    // games overstate how far apart teams are, and a reader should be
+    // able to see where the restraint is being applied.
+    // [team, offence, defence, net, raw net, pace, tempo]
+    var EUR = [
+      ['Panathinaikos', '117.4', '105.2', '+12.2', '+18.7', '74.6', 'average'],
+      ['Olympiacos', '121.7', '112.4', '+9.4', '+10.4', '78.0', 'very fast'],
+      ['Fenerbahçe', '114.2', '105.8', '+8.4', '+12.6', '73.0', 'slow'],
+      ['Valencia', '120.2', '113.2', '+6.9', '+8.1', '79.2', 'very fast'],
+      ['Real Madrid', '120.1', '113.3', '+6.8', '+7.2', '76.0', 'average'],
+      ['Hapoel Tel Aviv', '118.4', '113.3', '+5.2', '+6.2', '75.9', 'average'],
+      ['Crvena Zvezda', '109.9', '106.2', '+3.7', '+5.3', '76.1', 'average'],
+      ['Barcelona', '118.8', '116.5', '+2.3', '+3.1', '74.8', 'average'],
+      ['Žalgiris', '114.5', '114.1', '+0.3', '−3.7', '74.1', 'slow'],
+      ['Beşiktaş', '119.6', '119.5', '+0.1', '+0.2', '76.1', 'no prior'],
+      ['Dubai', '115.2', '116.2', '−0.9', '−1.7', '73.2', 'slow'],
+      ['Virtus Bologna', '112.3', '113.9', '−1.6', '+1.4', '76.1', 'average'],
+      ['Partizan', '107.3', '109.8', '−2.4', '+0.2', '74.5', 'slow'],
+      ['Anadolu Efes', '107.6', '112.4', '−4.8', '−4.2', '75.8', 'average'],
+      ['Maccabi Tel Aviv', '114.3', '120.4', '−6.2', '−8.3', '76.1', 'average'],
+      ['Paris', '111.0', '117.3', '−6.2', '−9.7', '77.9', 'fast'],
+      ['Bayern Munich', '112.6', '119.1', '−6.5', '−8.6', '74.9', 'average'],
+      ['Olimpia Milan', '114.6', '122.4', '−7.8', '−13.0', '74.3', 'slow'],
+      ['ASVEL', '110.3', '120.3', '−10.0', '−9.9', '76.5', 'fast'],
+      ['Baskonia', '110.3', '120.9', '−10.5', '−14.1', '77.8', 'fast']
+    ];
+
+    // The board leads with names. This is the only status on the page:
+    // one line saying whether anything is on tonight. Everything about
+    // how the ratings are built, and why a track record is not shown
+    // yet, is on the research page where someone can choose to read it.
+    var STATUS = { run: null };
+    var dateline = STATUS.run
+      ? (STATUS.run.when + '  \u00b7  ' + STATUS.run.games + ' GAMES PRICED  \u00b7  '
+         + (STATUS.run.taken > 0
+              ? STATUS.run.taken + ' ON THE BOARD'
+              : 'NOTHING CLEARED TONIGHT'))
+      : '10/20  \u00b7  17 OUTSIDE READS SCREENED  \u00b7  OUR PRICES NOT IN YET';
+
+    var pill = function (st) {
+      var on = st === 'locked';
+      return 'font-family: \'IBM Plex Mono\', monospace; font-size: 10px; letter-spacing: 1.4px; '
+        + 'padding: 5px 10px; border-radius: 4px; text-transform: uppercase; '
+        + (on
+          ? 'color: #FF8A52; border: 1px solid #5C2D12; background: #2A1408;'
+          : 'color: #96A3B4; border: 1px solid #28323F; background: #1A212B;');
+    };
+
+    var src = (tab === 'pr') ? PR : PRA;
+    var rows = src.map(function (r) {
+      return { name: r[0], team: r[1], line: r[2], status: r[3], note: r[4], pill: pill(r[3]) };
+    });
+    var crows = COL.map(function (c) {
+      return { team: c[0], oe: c[1], de: c[2], net: c[3], tempo: c[4], pace: c[5] };
+    });
+    var mrows = MID.map(function (m) {
+      return { rank: m[0], team: m[1], conf: m[2], net: m[3], tempo: m[4], tag: m[5] };
+    });
+    var num = function (s) { return parseFloat(String(s).replace('−', '-')); };
+    var erows = EUR.map(function (e) {
+      // how far last season is pulling this club off its six-game form
+      var d = num(e[3]) - num(e[4]);
+      var big = Math.abs(d) >= 2.5;
+      return {
+        team: e[0], oe: e[1], de: e[2], net: e[3], raw: e[4],
+        tempo: e[5], pace: e[6],
+        gap: big ? (d > 0 ? ' ▲' : ' ▼') : '',
+        gapStyle: 'font-size: 11px; margin-left: 5px; color: '
+          + (big ? (d > 0 ? '#3FB68B' : '#C2693C') : 'transparent')
+      };
+    });
+
+    var defs = [
+      { id: 'pra', kicker: 'NBA', label: 'Points + rebounds + assists' },
+      { id: 'pr', kicker: 'NBA', label: 'Points + rebounds' },
+      { id: 'college', kicker: 'COLLEGE', label: 'Team efficiency' },
+      { id: 'mid', kicker: 'COLLEGE', label: 'Best outside the big leagues' },
+      { id: 'euro', kicker: 'EUROLEAGUE', label: 'Team efficiency, in season' }
+    ];
+    var tabs = defs.map(function (d) {
+      var on = d.id === tab;
+      return {
+        label: d.label,
+        kicker: d.kicker,
+        sel: on ? 'true' : 'false',
+        pick: function () { self.setState({ tab: d.id }); },
+        style: 'text-align: left; font-family: \'IBM Plex Sans\', sans-serif; font-size: 15px; '
+          + 'font-weight: 600; padding: 11px 18px; border-radius: 8px; cursor: pointer; min-height: 44px; '
+          + (on
+            ? 'background: #FF6B2C; color: #0A0D12; border: 1px solid #FF6B2C;'
+            : 'background: #11161E; color: #96A3B4; border: 1px solid #28323F;')
+      };
+    });
+
+    var foots = {
+      pra: 'Each player’s own typical points+rebounds+assists across his last three seasons — roughly where a book would set him. Not a projection for any given night. LOCKED: situation unchanged. MOVED: something a three-year average would miss.',
+      pr: 'Each player’s own typical points+rebounds across his last three seasons — roughly where a book would set him. Not a projection for any given night. LOCKED: situation unchanged. MOVED: something a three-year average would miss.',
+      college: 'Adjusted efficiency per 100 possessions, opponent-adjusted. Preseason projections — these move once games are played. A high rating means a team is good, not that the market has it wrong.',
+      mid: 'Teams outside the ACC, Big Ten, Big 12, SEC, Big East and Pac-12, ranked by where they sit NATIONALLY — that column is the point. None crack the top 43 this preseason. Ratings ignore conference; prices don’t, and non-conference season is where that gap would show.',
+      euro: 'Points scored and allowed per 100 possessions, 2026-27, after six rounds. NET is what we price: these six games blended 58/42 with each club’s finish last season, because six games on their own overstate how far apart teams are. 6 GAMES SAY is that unblended figure, with an arrow where the two disagree by more than 2.5 points — Panathinaikos and Fenerbahçe are being held back off a hot start, Žalgiris and Baskonia lifted off a cold one. Beşiktaş is newly promoted and has no last season to blend, so it is pulled toward the league average instead. Margins in this league carry a standard error of 11.7 points, measured out-of-sample across 310 games.'
+    };
+
+    return {
+      accent: this.props.accent || '#FF6B2C',
+      tabs: tabs,
+      rows: rows,
+      crows: crows,
+      mrows: mrows,
+      erows: erows,
+      lineHead: (tab === 'pr') ? '3-SEASON PR' : '3-SEASON PRA',
+      isNba: tab === 'pra' || tab === 'pr',
+      isCollege: tab === 'college',
+      isMid: tab === 'mid',
+      isEuro: tab === 'euro',
+      dateline: dateline,
+      foot: foots[tab]
+    };
+  }
+}
+</script>
+</body>
+</html>
