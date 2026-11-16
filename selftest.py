@@ -883,7 +883,7 @@ def main():
 
     if os.path.exists(idx):
         body = open(idx, errors='ignore').read()
-        check('index is the v43 build', 'SITE BUILD v43' in body)
+        check('index is the v44 build', 'SITE BUILD v44' in body)
         check('index renders the five and nothing else',
               'd.goto' in body and 'boardsBlock' not in body
               and 'function boards(d)' not in body)
@@ -903,7 +903,7 @@ def main():
 
     if os.path.exists(perf):
         body = open(perf, errors='ignore').read()
-        check('performance is the v43 build', 'SITE BUILD v43' in body)
+        check('performance is the v44 build', 'SITE BUILD v44' in body)
         check('performance reads its own file',
               "fetch('data/performance.json'" in body)
         # Production, not profit. Saying otherwise on a public page
@@ -1345,6 +1345,60 @@ def main():
               'def market_env')[1])
     check('the announcement says the five are unaffected',
           'consults no price' in tsrc_bm)
+    check('an SD-basis change replaces the stored row',
+          "(row.get('sd_inf') or 1.0) != (old.get('sd_inf') or 1.0)"
+          in tsrc_bm)
+    check('the SD replacement has its own counter and message',
+          'upg_sd' in tsrc_bm
+          # the literal is split across two source strings
+          and 'priced on a different SD ' in tsrc_bm)
+
+    # --- slate.py: a void is not a result -------------------------
+    _sl = os.path.join(HERE, 'slate.py')
+    if os.path.exists(_sl):
+        ssrc = open(_sl, encoding='utf-8').read()
+        # The docstring QUOTES the old line on purpose, so a
+        # whole-file "not in" fires on the explanation. Check the
+        # code only -- the same trap as the nightly.sh array check.
+        scode = '\n'.join(l for l in ssrc.splitlines()
+                           if not l.lstrip().startswith('#'))
+        check('summarise filters on RESULT_CODE, not truthiness',
+              "graded = [r for r in rows if r.get('result') in "
+              "RESULT_CODE]" in scode,
+              "result='void' is truthy -- this is what raised "
+              "KeyError: 'void' and stopped record.json for 11 days")
+        check('tally cannot raise on an odd row',
+              "RESULT_CODE.get(r.get('result'))" in ssrc
+              and "t['u'] += r['units'] or 0.0" not in ssrc)
+        check('voids are counted, not silently dropped',
+              "out['voided'] = len(voided)" in ssrc)
+        check('an unknown result word is reported',
+              'carry an unknown result' in ssrc)
+        try:
+            import importlib.util as _iu
+            _s2 = _iu.spec_from_file_location('_slate_ck', _sl)
+            _SL = _iu.module_from_spec(_s2)
+            _s2.loader.exec_module(_SL)
+            _base = [{'day': '20261110', 'tier': 'board', 'subject': c,
+                      'result': r, 'units': u}
+                     for c, r, u in (('a', 'win', 0.9),
+                                     ('b', 'loss', -1.0),
+                                     ('c', 'push', 0.0))]
+            _o = _SL.summarise(_base + [
+                {'day': '20261110', 'tier': 'board', 'subject': 'd',
+                 'result': 'void', 'units': None}])
+            check('a void row no longer breaks the record',
+                  _o['graded'] == 3 and _o['voided'] == 1,
+                  f"graded={_o['graded']} voided={_o['voided']}")
+            check('a void is not counted as pending',
+                  _o['pending'] == 0, _o['pending'])
+            _o2 = _SL.summarise(_base + [
+                {'tier': 'board', 'subject': 'g', 'result': 'win'}])
+            check('a row missing units or day does not break it',
+                  _o2['graded'] == 4, _o2['graded'])
+        except Exception as e:
+            check('slate.py summarise robustness',
+                  False, f'{type(e).__name__}: {e}')
 
     # the arithmetic, against values computed by hand
     try:

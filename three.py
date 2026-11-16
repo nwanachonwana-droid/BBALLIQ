@@ -88,7 +88,7 @@ except Exception as e:                                    # pragma: no cover
           f'it: {e}', file=sys.stderr)
     raise SystemExit(2)
 
-BUILD = '2026-11-16e'
+BUILD = '2026-11-16f'
 LOGS = os.path.join(DATA, 'season_logs.json')
 BOARDLOG = os.path.join(DATA, 'boards.jsonl')
 PRICES = os.path.join(DATA, 'external_picks.jsonl')
@@ -3405,7 +3405,7 @@ def log_boards(day, boards, path=None, goto=None):
                 order.append(k)
             stored[k] = r
 
-    n = dup = upg = stamped = 0
+    n = dup = upg = upg_sd = stamped = 0
     for mk in CATS:
         for r in boards.get(mk) or []:
             k = (day, mk, r['player'], r['team'])
@@ -3448,6 +3448,22 @@ def log_boards(day, boards, path=None, goto=None):
             elif row['market_on'] and not old.get('market_on'):
                 stored[k] = row
                 upg += 1
+            elif (row.get('sd_inf') or 1.0) != (old.get('sd_inf') or 1.0):
+                # THE SD BASIS CHANGED, so this is a different
+                # quantity and not a noisier copy -- the same
+                # argument as the market term above.
+                #
+                # 16 Nov: --fit-sd --apply wrote x1.26/x1.30/x1.06/
+                # x1.12, the board was re-run, and every row came back
+                # "0 logged, 59 already there". The rows WERE new --
+                # they carried the widened sd -- but the only upgrade
+                # path was market_on, so they were dropped as
+                # duplicates and the stored rows kept the uninflated
+                # sd. That would have made the next --fit-sd measure
+                # against a stale denominator while the slip was
+                # priced on the new one.
+                stored[k] = row
+                upg_sd += 1
             else:
                 # A duplicate row still gets the rank if the stored
                 # one predates the stamp. Adding a field the row did
@@ -3459,7 +3475,7 @@ def log_boards(day, boards, path=None, goto=None):
                     stamped += 1
                 dup += 1
 
-    if n or upg or stamped:
+    if n or upg or upg_sd or stamped:
         tmp = path + '.log'
         with io.open(tmp, 'w', encoding='utf-8') as fh:
             for k in order:
@@ -3480,11 +3496,22 @@ def log_boards(day, boards, path=None, goto=None):
               'not a\n  worse estimate of the same one -- and they would '
               'have been settled\n  against tonight\'s box score as if '
               'they were the model.')
+    # SEPARATE COUNTER, SEPARATE MESSAGE. These two replacements have
+    # different causes, and one shared message said "market term OFF"
+    # over an SD change -- a correct action with the wrong reason
+    # printed over it, which is worse than no message.
+    if upg_sd:
+        print(f'  REPLACED {upg_sd} row(s) priced on a different SD '
+              f'basis.')
+        print('  --fit-sd changed the inflation factor, so the stored '
+              'rows carried a\n  different denominator from the one '
+              'tonight priced with. Keeping them\n  would have made '
+              'the next --fit-sd measure against a stale SD.')
     print('  these settle against the box score tomorrow. No line is '
           'needed: the\n  claim is that a better matchup lifts him '
           'above his own baseline,\n  which the box score can answer '
           'on its own.')
-    return n + upg
+    return n + upg + upg_sd
 
 
 def drop_board_day(day, path=None):

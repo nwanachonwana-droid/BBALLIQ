@@ -1059,10 +1059,22 @@ UNFEATURED = {'log'}
 
 
 def tally(graded):
+    """Counts over rows ALREADY filtered to win/loss/push.
+
+    Same two bracket accesses that broke summarise: result through a
+    dict with no 'void' key, and r['units'] on a row that may not
+    carry the key. Both are .get() here so one odd row cannot take
+    down record.json for the whole file. Callers are expected to have
+    filtered on RESULT_CODE, and a row that slips through is skipped
+    rather than raising.
+    """
     t = {'w': 0, 'l': 0, 'p': 0, 'u': 0.0}
     for r in graded:
-        t[{'win': 'w', 'loss': 'l', 'push': 'p'}[r['result']]] += 1
-        t['u'] += r['units'] or 0.0
+        code = RESULT_CODE.get(r.get('result'))
+        if code is None:
+            continue
+        t[code] += 1
+        t['u'] += r.get('units') or 0.0
     return t
 
 
@@ -1077,28 +1089,64 @@ def _block(t):
     }
 
 
+RESULT_CODE = {'win': 'w', 'loss': 'l', 'push': 'p'}
+
+
 def summarise(rows):
-    graded = [r for r in rows if r['result']]
+    """The record. VOIDS ARE NOT RESULTS.
+
+    THE BUG THIS FIXES, found 16 Nov after 11 days of
+    "record failed - keeping the published record.json".
+
+    This read `graded = [r for r in rows if r['result']]` and then
+    looked the result up in {'win','loss','push'}. three.py
+    --void-dnp writes result='void' for a man who never dressed --
+    truthy, so it passed the filter, and then the dict lookup raised
+    KeyError: 'void'. One voided pick therefore stopped record.json
+    rebuilding for the WHOLE file, every night, and publish.sh
+    reported only "record failed" because the exception never
+    surfaced further.
+
+    A void is not a bet that lost, it is a bet that never happened,
+    so it is excluded from the record and counted separately rather
+    than mapped to anything. Unknown result strings are counted too
+    instead of crashing: a new vocabulary word in one row must not be
+    able to take down the record again.
+    """
+    graded = [r for r in rows if r.get('result') in RESULT_CODE]
+    voided = [r for r in rows if r.get('result') == 'void']
+    odd = [r for r in rows
+           if r.get('result') and r.get('result') not in RESULT_CODE
+           and r.get('result') != 'void']
+    if odd:
+        seen = sorted({str(r.get('result')) for r in odd})
+        print(f'  ! {len(odd)} row(s) carry an unknown result '
+              f'({", ".join(seen)}) and are excluded',
+              file=sys.stderr)
     featured = [r for r in graded
                 if r.get('tier', 'core') not in UNFEATURED]
     by_tier = collections.defaultdict(
         lambda: {'w': 0, 'l': 0, 'p': 0, 'u': 0.0})
     for r in graded:
         t = by_tier[r.get('tier', 'core')]
-        t[{'win': 'w', 'loss': 'l', 'push': 'p'}[r['result']]] += 1
-        t['u'] += r['units'] or 0.0
+        t[RESULT_CODE[r['result']]] += 1
+        t['u'] += r.get('units') or 0.0
 
     feat_rows = [r for r in rows if r.get('tier', 'core') not in UNFEATURED]
     out = {
         'logged': len(feat_rows), 'graded': len(featured),
-        'pending': len(feat_rows) - len(featured),
+        # a VOID is not pending: it never happened. Counting it as
+        # pending is what made "to_go" never reach zero.
+        'pending': len(feat_rows) - len(featured)
+                   - len([r for r in feat_rows
+                          if r.get('result') == 'void']),
         'unlocks_at': 30, 'to_go': max(0, 30 - len(featured)),
         'by_tier': {k: {'record': f"{v['w']}-{v['l']}"
                         + (f"-{v['p']}" if v['p'] else ''),
                         'units': round(v['u'], 3),
                         'featured': k not in UNFEATURED}
                     for k, v in sorted(by_tier.items())},
-        'days': sorted({r['day'] for r in feat_rows}),
+        'days': sorted({r['day'] for r in feat_rows if r.get('day')}),
         'generated': datetime.datetime.now().astimezone().isoformat(),
     }
     # the published figures: featured only, and the keys keep their old
@@ -1107,7 +1155,11 @@ def summarise(rows):
     # the whole book, for his own P&L -- every tier, nothing dropped
     out['all_tiers'] = _block(tally(graded)) | {
         'logged': len(rows), 'graded': len(graded),
-        'pending': len(rows) - len(graded)}
+        'pending': len(rows) - len(graded) - len(voided)}
+    # COUNTED, NOT HIDDEN. A void dropped silently looks like a pick
+    # that was never logged, which is the ambiguity that made this
+    # failure take 11 days to find.
+    out['voided'] = len(voided)
     return out
 
 
@@ -1125,7 +1177,7 @@ def summarise(rows):
 # So each script states what it is. stderr rather than stdout, so
 # --json output stays machine-readable while a terminal paste always
 # carries the build.
-BUILD = '2026-11-05a'
+BUILD = '2026-11-16a'
 
 
 def _stamp(name):
