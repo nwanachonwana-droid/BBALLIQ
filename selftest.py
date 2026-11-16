@@ -883,7 +883,7 @@ def main():
 
     if os.path.exists(idx):
         body = open(idx, errors='ignore').read()
-        check('index is the v36 build', 'SITE BUILD v36' in body)
+        check('index is the v38 build', 'SITE BUILD v38' in body)
         check('index renders the five and nothing else',
               'd.goto' in body and 'boardsBlock' not in body
               and 'function boards(d)' not in body)
@@ -903,7 +903,7 @@ def main():
 
     if os.path.exists(perf):
         body = open(perf, errors='ignore').read()
-        check('performance is the v36 build', 'SITE BUILD v36' in body)
+        check('performance is the v38 build', 'SITE BUILD v38' in body)
         check('performance reads its own file',
               "fetch('data/performance.json'" in body)
         # Production, not profit. Saying otherwise on a public page
@@ -1259,6 +1259,66 @@ def main():
         except Exception as e:
             check('nightly.sh stub run', False,
                   f'{type(e).__name__}: {e}')
+
+    # --- --by-market: per-market slip inclusion -------------------
+    #
+    # The trap this guards is the NULL. "act >= round(proj)" is not a
+    # coin: target is an integer, so a projection of 20.0 needs only
+    # 19.5 to round up, and on threes that free room is worth far
+    # more than on points. An earlier draft tested against 0.500 and
+    # would have reported threes as "projecting low" for doing
+    # exactly what an unbiased projection does.
+    tsrc_bm = tsrc if 'tsrc' in dir() else open(
+        os.path.join(HERE, 'three.py'), encoding='utf-8').read()
+
+    check('--by-market is wired',
+          "'--by-market'" in tsrc_bm and 'a.by_market' in tsrc_bm)
+    check('--by-market has a tier filter',
+          "ap.add_argument('--tier'" in tsrc_bm)
+    check('the board null is the model, not 0.500',
+          'p_over(base, target - 1, sd, mk)' in tsrc_bm
+          and "_binom_p(d['hit'], d['n'], 0.5)" not in tsrc_bm)
+    check('a DROP needs a minimum n',
+          'DROP_MIN_N' in tsrc_bm
+          and "if dec < DROP_MIN_N:" in tsrc_bm)
+    check('only the slip can DROP a category',
+          "'DROP'" in tsrc_bm
+          and tsrc_bm.count("verdict = 'DROP'") == 1)
+    check('pushes and voids are not decided bets',
+          "dec = s['w'] + s['l']" in tsrc_bm)
+    check('breakeven comes from the logged odds',
+          "_breakeven(statistics.fmean(s['odds']))" in tsrc_bm)
+    check('skill is gated on the spread of the predictions',
+          "b['p_sd'] is not None and b['p_sd'] > 0.05" in tsrc_bm)
+    check('unscaled rows excluded from the breakdown',
+          tsrc_bm.count("if r.get('market_on') is False:") >= 4)
+
+    # the arithmetic, against values computed by hand
+    try:
+        import importlib.util as _ilu
+        _sp = _ilu.spec_from_file_location(
+            '_three_bm', os.path.join(HERE, 'three.py'))
+        _T = _ilu.module_from_spec(_sp)
+        _sp.loader.exec_module(_T)
+        _lo, _hi = _T._wilson(6, 10)
+        check('wilson(6,10) = 0.3127-0.8318',
+              abs(_lo - 0.3127) < 5e-4 and abs(_hi - 0.8318) < 5e-4,
+              f'{_lo:.4f}-{_hi:.4f}')
+        check('breakeven(-110) = 110/210',
+              abs(_T._breakeven(-110) - 110 / 210) < 1e-12)
+        check('binom_p(0,10,.5) = 2*0.5^10',
+              abs(_T._binom_p(0, 10, 0.5) - 2 * 0.5 ** 10) < 1e-12)
+        check('wilson survives n=0', _T._wilson(0, 0) == (None, None))
+        # the whole reason the 0.500 null was wrong, asserted
+        _p, _ = _T.p_over(20.0, 19, 3.0, 'pts')
+        check('P(X>=20 | 20.0, sd 3) is ~0.566, not 0.500',
+              abs(_p - 0.5662) < 2e-3 and abs(_p - 0.5) > 0.05,
+              f'{_p:.4f}')
+        check('n_needed is None at or above breakeven',
+              _T._n_needed(6, 10, _T._breakeven(-110)) is None)
+    except Exception as e:
+        check('--by-market arithmetic', False,
+              f'{type(e).__name__}: {e}')
 
     print(f'\n{CHECKS - len(FAILS)}/{CHECKS} checks passed')
     if FAILS:

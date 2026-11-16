@@ -88,7 +88,7 @@ except Exception as e:                                    # pragma: no cover
           f'it: {e}', file=sys.stderr)
     raise SystemExit(2)
 
-BUILD = '2026-11-11a'
+BUILD = '2026-11-16a'
 LOGS = os.path.join(DATA, 'season_logs.json')
 BOARDLOG = os.path.join(DATA, 'boards.jsonl')
 PRICES = os.path.join(DATA, 'external_picks.jsonl')
@@ -3737,6 +3737,513 @@ def seed_goto(day=None, picks=None, path=None):
     return hit
 
 
+# ------------------------------------------------------------------
+# PER-MARKET: should this category be on the slip?
+# ------------------------------------------------------------------
+#
+# TWO LOGS, TWO QUESTIONS, AND MIXING THEM IS THE WHOLE TRAP.
+#
+# boards.jsonl is price-free BY DESIGN -- no line, no side -- so it
+# can say whether the PROJECTION for a market is any good and it
+# cannot say whether BETTING that market wins. slate.jsonl carries
+# the line and the side and is the only thing that can.
+#
+# A market can project beautifully and still carry no edge, because
+# the book's number already contains the same information. So a
+# category is dropped on the SLIP evidence, never on the board
+# evidence -- but the board evidence is what exists until the slip
+# has n, so both print, each with its own n and its own verdict.
+#
+# AND EACH NULL IS STATED, because a hit rate with no null attached
+# is a number that always looks like something:
+#
+#   board hit rate    ~0.50.  act >= round(proj) is a coin when the
+#                     projection is unbiased, so a market at .62 is
+#                     projecting LOW, not picking well.
+#   board level       ~1.00.  sum(actual)/sum(projected).
+#   sd(zact)          ~1.00.  at 1.4 the per-player sd is too tight
+#                     and every probability the slip prints is
+#                     overconfident -- which shows up as losing bets
+#                     in a market whose projections look fine.
+#   slip win rate     the BREAKEVEN the logged odds imply, not an
+#                     assumed -110.
+#
+# AND IT WILL NOT LET YOU DROP A CATEGORY ON TEN BETS. The 60% gate
+# in the paper came off n=1,544 with p<0.001; venue bias was left as
+# a tag at p=0.093 on n=58. Same bar here: below DROP_MIN_N decided
+# bets the verdict is UNDERPOWERED and the printout says how many
+# more bets the current rate would need before it could decide.
+
+DROP_MIN_N = 25          # decided bets before a DROP is allowed
+
+
+def _wilson(k, n, z=1.96):
+    """Wilson score interval for a proportion.
+
+    Wilson rather than the normal approximation because the slip has
+    single-digit n per market right now, where normal CIs run outside
+    [0, 1] and report a width that is simply wrong.
+    """
+    if not n:
+        return None, None
+    p = k / n
+    d = 1.0 + z * z / n
+    c = (p + z * z / (2 * n)) / d
+    h = (z / d) * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n))
+    return max(0.0, c - h), min(1.0, c + h)
+
+
+def _binom_p(k, n, p0):
+    """Exact two-sided binomial p-value against p0."""
+    if not n or p0 is None or not (0.0 < p0 < 1.0):
+        return None
+
+    def pmf(i):
+        return math.comb(n, i) * (p0 ** i) * ((1.0 - p0) ** (n - i))
+
+    obs = pmf(k)
+    return min(1.0, sum(pmf(i) for i in range(n + 1)
+                        if pmf(i) <= obs * (1.0 + 1e-9)))
+
+
+def _breakeven(odds):
+    """Win rate a bet at these American odds needs to break even."""
+    if odds is None:
+        return None
+    o = float(odds)
+    if o < 0:
+        return (-o) / ((-o) + 100.0)
+    return 100.0 / (o + 100.0)
+
+
+def _n_needed(k, n, p0, cap=4000):
+    """Decided bets needed, AT THE OBSERVED RATE, to call a DROP.
+
+    The answer to "so how long until I know". Holds the observed win
+    rate fixed and grows n until the Wilson upper bound clears below
+    breakeven. None when the observed rate is already at or above
+    breakeven, because then no amount of n produces a DROP.
+    """
+    if not n or p0 is None:
+        return None
+    p = k / n
+    if p >= p0:
+        return None
+    m = n
+    while m < cap:
+        m += 1
+        _, hi = _wilson(int(round(p * m)), m)
+        if hi is not None and hi < p0:
+            return m
+    return None
+
+
+def market_breakdown(logs_days, boardlog=None, slate=None, tier='board'):
+    """Per-market board accuracy and slip W/L, with verdicts.
+
+    Returns {'board': {mk: {...}}, 'slip': {mk: {...}}, 'tier': tier}.
+    """
+    boardlog = boardlog or BOARDLOG
+    slate = slate or SLATE
+
+    # --- board side: is the projection for this market any good? ---
+    #
+    # Resolution is (norm_player, code(team)) into that day's box
+    # scores via GOTO_FIELD -- the same path settle_day and
+    # goto_history use. A second way of answering "what did he get"
+    # is a second way to get it wrong.
+    actual = {}
+    for day, rows in (logs_days or {}).items():
+        for r in rows:
+            actual[(day, norm_player(r.get('player')),
+                    code(r.get('team')))] = r
+
+    bd = {}
+    if os.path.exists(boardlog):
+        for ln in io.open(boardlog, encoding='utf-8'):
+            ln = ln.strip()
+            if not ln:
+                continue
+            try:
+                r = json.loads(ln)
+            except Exception:
+                continue
+            # an unscaled base is a different quantity, not a noisier
+            # one -- see settle_day
+            if r.get('market_on') is False:
+                continue
+            mk = r.get('market')
+            f = GOTO_FIELD.get(mk)
+            box = actual.get((r.get('day'), r.get('player'),
+                              r.get('team')))
+            act = None if (not box or not f) else box.get(f)
+            base, sd = r.get('base'), r.get('sd')
+            # `act is None`, never `not act`: a 0-three night is the
+            # row where the projection was most wrong.
+            if act is None or not base:
+                continue
+            d = bd.setdefault(mk, {
+                'n': 0, 'hit': 0, 'proj': 0.0, 'act': 0.0, 'z': [],
+                'days': set(), 'goto_n': 0, 'goto_hit': 0, 'p': []})
+            target = int(math.floor(base + 0.5))   # half-up
+            d['n'] += 1
+            hit = 1 if act >= target else 0
+            d['hit'] += hit
+            # THE MODEL'S OWN PROBABILITY FOR THIS ROW.
+            #
+            # The null for "act >= round(proj)" is NOT 0.500. target
+            # is an integer and act is an integer, so when base is
+            # 20.0 the actual only has to clear 19.5 to round to 20 --
+            # half a point of free room, and the atom at the centre
+            # pushes the true rate to 0.566 on sd 3. On threes, where
+            # sd is near 1 and the atoms are fat, that same effect is
+            # worth far more. A 0.500 null would therefore have called
+            # threes "projecting low" for doing exactly what an
+            # unbiased projection does, which is the kind of confident
+            # wrong finding that gets a category dropped.
+            #
+            # So the null is the model's own number: P(X >= target) is
+            # P(X > target - 1), from p_over, which picks normal,
+            # negative binomial or Poisson by the data.
+            pr, _dist = p_over(base, target - 1, sd, mk)
+            if pr is not None:
+                d['p'].append((pr, hit))
+            d['proj'] += base
+            d['act'] += act
+            d['days'].add(r.get('day'))
+            if sd:
+                d['z'].append((act - base) / sd)
+            if r.get('goto_rank'):
+                d['goto_n'] += 1
+                d['goto_hit'] += 1 if act >= target else 0
+
+    board = {}
+    for mk, d in bd.items():
+        lo, hi = _wilson(d['hit'], d['n'])
+        # CALIBRATION, against the model's own probabilities.
+        #
+        # Observed hits vs the sum of predicted probabilities. Under
+        # independence the count of hits is Poisson-binomial, whose
+        # variance is sum(p(1-p)) exactly -- no approximation needed,
+        # and it does not assume a common p the way a binomial test
+        # would.
+        ps = [x[0] for x in d['p']]
+        hs = [x[1] for x in d['p']]
+        exp = sum(ps)
+        var = sum(q * (1 - q) for q in ps)
+        z_cal = ((sum(hs) - exp) / math.sqrt(var)
+                 if var > 0 else None)
+        # Brier is a PROPER score: it punishes confident and wrong
+        # harder than unsure and wrong, which is the failure that
+        # actually costs money on a slip.
+        brier = (statistics.fmean([(q - h) ** 2
+                                   for q, h in zip(ps, hs)])
+                 if ps else None)
+        # reference: predicting this market's own base rate every
+        # time. Brier alone is unreadable without it.
+        base_rate = statistics.fmean(hs) if hs else None
+        brier_ref = (statistics.fmean([(base_rate - h) ** 2
+                                       for h in hs])
+                     if hs else None)
+        skill = (None if not brier_ref
+                 else 1.0 - brier / brier_ref)
+        # SPREAD OF THE PREDICTIONS THEMSELVES.
+        #
+        # Skill is measured against predicting this market's base rate
+        # every time, so it only means anything when the per-row
+        # probabilities actually vary. Where they are near-constant,
+        # skill is ~0 BY CONSTRUCTION and a flag on it fires every
+        # night while saying nothing -- which is the kind of printout
+        # that trains you to ignore printouts.
+        p_sd = statistics.stdev(ps) if len(ps) > 1 else None
+        board[mk] = {
+            'n': d['n'], 'days': len(d['days']),
+            'hit': d['hit'], 'rate': d['hit'] / d['n'] if d['n'] else None,
+            'lo': lo, 'hi': hi,
+            'graded_p': len(ps),
+            'exp_rate': (exp / len(ps)) if ps else None,
+            'z_cal': None if z_cal is None else round(z_cal, 2),
+            'brier': brier, 'brier_ref': brier_ref, 'skill': skill,
+            'p_sd': p_sd,
+            'level': (d['act'] / d['proj']) if d['proj'] else None,
+            'zmean': (statistics.fmean(d['z']) if d['z'] else None),
+            'zsd': (statistics.stdev(d['z']) if len(d['z']) > 1 else None),
+            'goto_n': d['goto_n'], 'goto_hit': d['goto_hit'],
+        }
+
+    # --- slip side: does betting this market win? ------------------
+    rev = {v: k for k, v in SLATE_MARKET.items()}
+    sl = {}
+    if os.path.exists(slate):
+        for ln in io.open(slate, encoding='utf-8'):
+            ln = ln.strip()
+            if not ln:
+                continue
+            try:
+                r = json.loads(ln)
+            except Exception:
+                continue
+            if tier and r.get('tier') != tier:
+                continue
+            mk = rev.get(r.get('market'), r.get('market'))
+            s = sl.setdefault(mk, {
+                'w': 0, 'l': 0, 'push': 0, 'void': 0, 'pending': 0,
+                'unpriced': 0, 'units': 0.0, 'odds': [], 'days': set()})
+            res = r.get('result')
+            if r.get('unpriced'):
+                s['unpriced'] += 1
+            if res == 'win':
+                s['w'] += 1
+            elif res == 'loss':
+                s['l'] += 1
+            elif res == 'push':
+                s['push'] += 1
+            elif res == 'void':
+                s['void'] += 1
+            else:
+                s['pending'] += 1
+            if r.get('units') is not None:
+                try:
+                    s['units'] += float(r['units'])
+                except (TypeError, ValueError):
+                    pass
+            if r.get('odds') is not None:
+                s['odds'].append(r['odds'])
+            if r.get('day'):
+                s['days'].add(r['day'])
+
+    slip = {}
+    for mk, s in sl.items():
+        dec = s['w'] + s['l']            # pushes and voids are not bets
+        be = (_breakeven(statistics.fmean(s['odds']))
+              if s['odds'] else _breakeven(-110))
+        lo, hi = _wilson(s['w'], dec)
+        p = _binom_p(s['w'], dec, be)
+        if dec < DROP_MIN_N:
+            verdict = 'UNDERPOWERED'
+        elif hi is not None and be is not None and hi < be:
+            verdict = 'DROP'
+        elif lo is not None and be is not None and lo > be:
+            verdict = 'KEEP'
+        else:
+            verdict = 'inconclusive'
+        slip[mk] = {
+            'w': s['w'], 'l': s['l'], 'push': s['push'],
+            'void': s['void'], 'pending': s['pending'],
+            'unpriced': s['unpriced'], 'decided': dec,
+            'days': len(s['days']),
+            'rate': (s['w'] / dec) if dec else None,
+            'lo': lo, 'hi': hi, 'breakeven': be, 'p': p,
+            'units': round(s['units'], 2),
+            'roi': (round(s['units'] / dec, 3) if dec else None),
+            'verdict': verdict,
+            'n_needed': _n_needed(s['w'], dec, be),
+        }
+
+    return {'board': board, 'slip': slip, 'tier': tier}
+
+
+def _f(v, spec, na='n/a'):
+    """Format a value, or 'n/a' when it is None.
+
+    Exists so the table lines below contain no nested quotes. The
+    first version of this printer inlined conditionals inside the
+    f-strings and ended up with chr() calls in it to dodge the
+    quoting -- unreadable, and it did not even parse.
+    """
+    if v is None:
+        return na
+    return format(v, spec)
+
+
+def _ci(lo, hi):
+    return 'n/a' if lo is None else f'{lo:.3f}-{hi:.3f}'
+
+
+def show_market_breakdown(res):
+    board = res.get('board') or {}
+    slip = res.get('slip') or {}
+    tier = res.get('tier')
+    print('\nPER-MARKET: SHOULD THIS CATEGORY BE ON THE SLIP?')
+
+    # --- the slip ---------------------------------------------------
+    print(f'\nTHE SLIP  (slate.jsonl, tier={tier})')
+    print('  the only evidence that can drop a category')
+    if not slip:
+        # EMPTY AND MISSING MUST NOT LOOK THE SAME. The performance
+        # page rendered a 404 and an empty list identically, which
+        # cost an afternoon.
+        if not os.path.exists(SLATE):
+            print(f'  !! {SLATE} does not exist -- nothing has been '
+                  'logged as a bet,')
+            print('  !! so no category can be judged for the slip yet.')
+        else:
+            print(f'  !! {SLATE} exists but holds no tier={tier} rows.')
+            print('  !! try --by-market --tier core, or --tier all.')
+    else:
+        print(f"\n  {'market':8s} {'W-L':>8s} {'rate':>6s} {'95% CI':>13s} "
+              f"{'b/e':>6s} {'units':>7s} {'ROI':>7s}  verdict")
+        for mk in CATS:
+            s = slip.get(mk)
+            if not s:
+                print(f'  {mk:8s} {"--":>8s}   never on a logged slip')
+                continue
+            wl = f"{s['w']}-{s['l']}"
+            print(f'  {mk:8s} {wl:>8s} '
+                  f"{_f(s['rate'], '.3f'):>6s} "
+                  f'{_ci(s["lo"], s["hi"]):>13s} '
+                  f"{_f(s['breakeven'], '.3f'):>6s} "
+                  f"{_f(s['units'], '+.2f'):>7s} "
+                  f"{_f(s['roi'], '+.3f'):>7s}  "
+                  f"{s['verdict']}")
+            extra = []
+            for n, lbl in ((s['pending'], 'pending'), (s['push'], 'push'),
+                           (s['void'], 'void'),
+                           (s['unpriced'], 'unpriced')):
+                if n:
+                    extra.append(f'{n} {lbl}')
+            if extra:
+                print(f"           ({', '.join(extra)})")
+
+        under = [mk for mk in CATS
+                 if slip.get(mk) and slip[mk]['verdict'] == 'UNDERPOWERED']
+        if under:
+            print(f'\n  UNDERPOWERED means the interval still spans '
+                  f'breakeven, so the honest\n  answer is "not yet", '
+                  f'not "keep". A DROP needs {DROP_MIN_N} decided '
+                  f'bets minimum:')
+            for mk in under:
+                s = slip[mk]
+                need, rate = s['n_needed'], s['rate']
+                head = f"    {mk:8s} {s['decided']:>3d} decided"
+                if need:
+                    print(f'{head}; at {rate:.3f} it would take ~{need} '
+                          f'to justify a DROP')
+                elif rate is not None and s['breakeven']:
+                    print(f'{head}; at {rate:.3f} it is at or above '
+                          f'breakeven, so no n drops it')
+                else:
+                    print(head)
+        drops = [mk for mk in CATS
+                 if slip.get(mk) and slip[mk]['verdict'] == 'DROP']
+        if drops:
+            print(f"\n  DROP: {', '.join(drops)} -- 95% upper bound is "
+                  f"below breakeven.")
+
+    # --- the board --------------------------------------------------
+    print('\nTHE BOARD  (boards.jsonl, price-free)')
+    print('  projection quality. CANNOT drop a category: a market can')
+    print('  project well and still carry no edge against the number.')
+    if not board:
+        if not os.path.exists(BOARDLOG):
+            print(f'  !! {BOARDLOG} does not exist.')
+        else:
+            print('  !! nothing gradeable -- no logged row joined a box '
+                  'score.')
+            print('  !! usually season_logs.json is behind: run '
+                  'edges.py --build.')
+        return
+
+    print(f"\n  {'market':8s} {'n':>5s} {'days':>4s} {'obs':>6s} "
+          f"{'exp':>6s} {'z cal':>6s} {'brier':>6s} {'skill':>6s} "
+          f"{'p sd':>5s} {'level':>6s} {'z sd':>5s}")
+    for mk in CATS:
+        b = board.get(mk)
+        if not b:
+            print(f'  {mk:8s} {"--":>5s}   nothing logged')
+            continue
+        print(f'  {mk:8s} {b["n"]:>5d} {b["days"]:>4d} '
+              f"{_f(b['rate'], '.3f'):>6s} "
+              f"{_f(b['exp_rate'], '.3f'):>6s} "
+              f"{_f(b['z_cal'], '+.2f'):>6s} "
+              f"{_f(b['brier'], '.3f'):>6s} "
+              f"{_f(b['skill'], '+.3f'):>6s} "
+              f"{_f(b['p_sd'], '.3f'):>5s} "
+              f"{_f(b['level'], '.3f'):>6s} "
+              f"{_f(b['zsd'], '.2f'):>5s}")
+
+    print('\n  HOW TO READ IT. Each column has a null, because a hit '
+          'rate with')
+    print('  no null attached is a number that always looks like '
+          'something:')
+    print('    obs vs exp     observed hit rate against THE MODEL\'S '
+          'OWN')
+    print('                   probability for those same rows. The '
+          'null is exp,')
+    print('                   never 0.500: target is an integer, so a '
+          'projection')
+    print('                   of 20.0 only needs 19.5 to round up, and '
+          'on threes')
+    print('                   that free room is worth a lot more than '
+          'on points.')
+    print('    z cal   ~0.00  obs vs exp in SDs (Poisson-binomial, '
+          'exact).')
+    print('                   |z| > 2 means this market\'s '
+          'probabilities are')
+    print('                   wrong, and NEGATIVE means overconfident '
+          '-- it wins')
+    print('                   less than it claims, which is what loses '
+          'money.')
+    print('    brier    lower  proper score. Punishes confident-and-'
+          'wrong hardest.')
+    print('    skill   >0     Brier against predicting this market\'s '
+          'own base')
+    print('                   rate every time. Only meaningful when '
+          'p sd is')
+    print('                   non-trivial: with near-constant '
+          'probabilities')
+    print('                   skill is ~0 by construction, not as a '
+          'finding.')
+    print('    p sd           spread of the per-row probabilities. '
+          'Near 0 means')
+    print('                   this market prints nearly the same '
+          'number every')
+    print('                   time, so skill below it says nothing.')
+    print('    level  ~1.000  sum(actual) / sum(projected).')
+    print('    z sd    ~1.00  at 1.40 the per-player sd is too tight, '
+          'so every')
+    print('                   probability the slip prints is '
+          'overconfident.')
+
+    flags = []
+    for mk in CATS:
+        b = board.get(mk)
+        if not b:
+            continue
+        if b['zsd'] is not None and b['zsd'] > 1.25:
+            flags.append(f"{mk}: z sd {b['zsd']:.2f} -- slip "
+                         f"probabilities overconfident here")
+        if b['level'] is not None and abs(b['level'] - 1.0) > 0.06:
+            way = 'over' if b['level'] < 1.0 else 'under'
+            flags.append(f"{mk}: level {b['level']:.3f} -- "
+                         f"{way}-projecting by "
+                         f"{abs(1 - b['level']) * 100:.1f}%")
+        if (b['z_cal'] is not None and abs(b['z_cal']) > 2
+                and b['n'] >= 40):
+            way = ('OVERCONFIDENT -- wins less than it claims'
+                   if b['z_cal'] < 0 else
+                   'underconfident -- wins more than it claims')
+            flags.append(f"{mk}: obs {b['rate']:.3f} vs exp "
+                         f"{b['exp_rate']:.3f}, z={b['z_cal']:+.2f} "
+                         f"-- {way}")
+        if (b['skill'] is not None and b['skill'] < -0.02
+                and b['n'] >= 40
+                and b['p_sd'] is not None and b['p_sd'] > 0.05):
+            flags.append(f"{mk}: skill {b['skill']:+.3f} on p spread "
+                         f"{b['p_sd']:.3f} -- the per-row "
+                         f"probabilities are worse than this market's "
+                         f"own base rate")
+    if flags:
+        print('\n  FLAGGED:')
+        for f in flags:
+            print(f'    ! {f}')
+
+    goto = [f"{mk} {board[mk]['goto_hit']}/{board[mk]['goto_n']}"
+            for mk in CATS if board.get(mk) and board[mk]['goto_n']]
+    if goto:
+        print(f"\n  of which go-to five: {', '.join(goto)}")
+
+
 def settle_day(logs_days, day, path=None):
     """Every logged board row for one day against what happened.
 
@@ -4371,6 +4878,15 @@ def main():
     ap.add_argument('--repair-log', action='store_true',
                     help='backfill settler keys on rows written before '
                          '2026-11-02b (fixes publish.sh KeyError)')
+    ap.add_argument('--by-market', action='store_true',
+                    dest='by_market',
+                    help='per-market board accuracy and slip W/L, with '
+                         'a verdict on whether each category belongs on '
+                         'the slip')
+    ap.add_argument('--tier', default='board',
+                    help="which slate.jsonl tier --by-market reads: "
+                         "board (three.py's own slip, the default), "
+                         "core, log, or all")
     ap.add_argument('--calibrate', action='store_true',
                     help='does actual/baseline rise with the matchup z?')
     ap.add_argument('--publish', metavar='DIR',
@@ -4445,6 +4961,13 @@ def main():
 
     if a.margin_sd:
         show_margin_sd(logs_days)
+        return 0
+
+    if a.by_market:
+        # 'all' means do not filter on tier at all
+        _tier = None if (a.tier or '').lower() == 'all' else a.tier
+        show_market_breakdown(
+            market_breakdown(logs_days, tier=_tier))
         return 0
 
     if a.calibrate:
