@@ -147,7 +147,7 @@ SCRIPTS=(
   "edges.py:THE OPPONENT, RECORDED"
   "defense.py:via_w"
   "minutes.py:2026-10-30a"
-  "three.py:2026-11-16a"
+  "three.py:2026-11-16e"
   "boards.py:2026-10-28b"
   "card.py:2026-10-30g"
   "game.py:2026-10-28e"
@@ -161,7 +161,7 @@ SCRIPTS=(
   "why_thin.py:nomination rate"
   "check_grades.py:does not follow from"
   "college.py:2026-11-13b"
-  "nightly.sh:2026-11-14a-day"
+  "nightly.sh:2026-11-16a-settle"
 )
 
 ok=0; bad=0
@@ -266,11 +266,11 @@ else
   # TWO PAGES NOW. log.html was checked here and is no longer in the
   # bundle, so checking it would fail every install from here on --
   # the site check has to describe the site that exists.
-  if grep -q "SITE BUILD v38" "$SITE/index.html" 2>/dev/null \
-     && grep -q "SITE BUILD v38" "$SITE/performance.html" 2>/dev/null \
+  if grep -q "SITE BUILD v43" "$SITE/index.html" 2>/dev/null \
+     && grep -q "SITE BUILD v43" "$SITE/performance.html" 2>/dev/null \
      && grep -q "auditing the grader" "$SITE/update.sh"; then
     chmod +x "$SITE/update.sh" 2>/dev/null
-    echo "  v index.html and performance.html are v38 (the five, and the college calls by confidence band, and whether they were right), update.sh audits"
+    echo "  v index.html and performance.html are v43 (the five, and the college calls by confidence band, and whether they were right), update.sh audits"
     ok=$((ok+1))
   else
     echo "  X index.html is stale - $(basename "$TAR") was an old build"

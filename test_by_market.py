@@ -32,6 +32,30 @@ ck('breakeven(-110)=110/210',
    abs(T._breakeven(-110) - 110 / 210) < 1e-12)
 ck('breakeven(+120)=100/220',
    abs(T._breakeven(120) - 100 / 220) < 1e-12)
+# Kalshi cents vs American odds: the bug that printed b/e 0.271
+ck('breakeven(27 cents)=0.27', abs(T._breakeven(27) - 0.27) < 1e-12,
+   T._breakeven(27))
+ck('breakeven(-37) is None (illegal American price)',
+   T._breakeven(-37) is None, T._breakeven(-37))
+ck('breakeven(0) is None', T._breakeven(0) is None)
+ck('+100 reads as American, not cents',
+   abs(T._breakeven(100) - 0.5) < 1e-12, T._breakeven(100))
+ck('price_kind(-110)=american', T._price_kind(-110) == 'american')
+ck('price_kind(27)=cents', T._price_kind(27) == 'cents')
+ck('price_kind(-37)=bad', T._price_kind(-37) == 'bad')
+# averaging on the ODDS scale is invalid; the mean goes on the
+# probability scale
+_mb, _n = T._mean_breakeven([-110, 269])
+ck('mean_breakeven([-110,+269]) = mean of breakevens',
+   abs(_mb - (T._breakeven(-110) + T._breakeven(269)) / 2) < 1e-12,
+   f'{_mb:.4f}')
+ck('  ...and NOT breakeven of the mean odds',
+   abs(_mb - T._breakeven((-110 + 269) / 2)) > 0.1, f'{_mb:.4f}')
+ck('mean_breakeven skips unusable prices',
+   T._mean_breakeven([-110, -37, 0])[1] == 1,
+   T._mean_breakeven([-110, -37, 0]))
+ck('mean_breakeven of nothing is None',
+   T._mean_breakeven([])[0] is None)
 ck('binom_p(0,10,.5)=2*0.5^10',
    abs(T._binom_p(0, 10, 0.5) - 2 * 0.5 ** 10) < 1e-12)
 ck('binom_p(5,10,.5)=1.0', abs(T._binom_p(5, 10, 0.5) - 1.0) < 1e-12)
@@ -184,6 +208,41 @@ ck('reb hi < breakeven', s['reb']['hi'] < s['reb']['breakeven'],
    f"{s['reb']['hi']:.3f} vs {s['reb']['breakeven']:.3f}")
 ck('pts lo > breakeven', s['pts']['lo'] > s['pts']['breakeven'],
    f"{s['pts']['lo']:.3f} vs {s['pts']['breakeven']:.3f}")
+
+print('\n--- an unreadable price gets NO verdict ---')
+_bad = [{'day': '20261110', 'tier': 'board', 'subject': f'bad {i}',
+         'market': 'assists', 'result': 'win' if i < 20 else 'loss',
+         'odds': -37, 'units': 0.5, 'unpriced': False}
+        for i in range(40)]
+_bt = os.path.join(tmp, 'slate_bad.jsonl')
+with io.open(_bt, 'w', encoding='utf-8') as fh:
+    for r in _bad:
+        fh.write(json.dumps(r) + '\n')
+_br = T.market_breakdown(logs_days, boardlog=BOARD, slate=_bt,
+                         tier='board')['slip']
+ck('illegal price -> NO USABLE PRICE',
+   _br['ast']['verdict'] == 'NO USABLE PRICE', _br['ast']['verdict'])
+ck('illegal price -> breakeven None', _br['ast']['breakeven'] is None)
+ck('illegal prices counted', _br['ast']['bad_price'] == 40,
+   _br['ast']['bad_price'])
+
+print('\n--- cents are read as cents ---')
+_c = [{'day': '20261110', 'tier': 'board', 'subject': f'c {i}',
+       'market': 'assists', 'result': 'win' if i < 30 else 'loss',
+       'odds': 27, 'units': 0.5, 'unpriced': False}
+      for i in range(40)]
+_ct = os.path.join(tmp, 'slate_cents.jsonl')
+with io.open(_ct, 'w', encoding='utf-8') as fh:
+    for r in _c:
+        fh.write(json.dumps(r) + '\n')
+_cr = T.market_breakdown(logs_days, boardlog=BOARD, slate=_ct,
+                         tier='board')['slip']
+ck('27c -> breakeven 0.27', abs(_cr['ast']['breakeven'] - 0.27) < 1e-12,
+   _cr['ast']['breakeven'])
+ck('27c and .750 observed -> KEEP',
+   _cr['ast']['verdict'] == 'KEEP', _cr['ast']['verdict'])
+ck('price convention reported', _cr['ast']['price_kinds'] == ['cents'],
+   _cr['ast']['price_kinds'])
 
 print('\n--- pushes and voids are not bets ---')
 for r_ in ('push', 'void'):

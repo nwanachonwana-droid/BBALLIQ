@@ -88,7 +88,7 @@ except Exception as e:                                    # pragma: no cover
           f'it: {e}', file=sys.stderr)
     raise SystemExit(2)
 
-BUILD = '2026-11-16a'
+BUILD = '2026-11-16e'
 LOGS = os.path.join(DATA, 'season_logs.json')
 BOARDLOG = os.path.join(DATA, 'boards.jsonl')
 PRICES = os.path.join(DATA, 'external_picks.jsonl')
@@ -498,10 +498,17 @@ def blended_sd(mu, mk, spread, curve, key=None):
     prior = c * math.sqrt(max(mu, 0.1))
     got = spread.get((key or ('', '')) + (mk,)) if key else None
     if not got:
-        return prior, 0.0, 0
+        # SAME FACTOR ON THE PRIOR-ONLY PATH. Missing it here would
+        # leave every player with no own history priced on an
+        # uninflated SD -- a silent split in the pricing that would
+        # show up as a calibration gap nobody could place.
+        return prior * sd_inflation().get(mk, 1.0), 0.0, 0
     _mu_own, sd_own, n = got
     w = n / (n + SD_PRIOR_GAMES)
-    return (1 - w) * prior + w * sd_own, round(w, 3), n
+    sd = (1 - w) * prior + w * sd_own
+    # MEASURED INFLATION, applied at the one point the SD is made so
+    # nothing downstream can miss it. 1.0 until --fit-sd --apply.
+    return sd * sd_inflation().get(mk, 1.0), round(w, 3), n
 
 
 def _nb_over(mu, var, line):
@@ -940,6 +947,35 @@ def show_margin_sd(logs_days, boardlog=None):
           'biased,\n  which is a different and much bigger claim than '
           'the SD being off.')
     return sd
+
+
+def show_sd_inflation():
+    """Say out loud which SD the board is pricing with.
+
+    LOUD, ON STDOUT, BECAUSE SILENCE LOOKS LIKE SUCCESS -- the same
+    rule market_env already follows. The SD sets every probability on
+    the slip, and on 16 Nov the factors were applied and the question
+    came straight back as "board stayed the same. Is that accurate?"
+    It was accurate -- goto_picks is price-free and cannot move on an
+    SD -- but nothing in the run output said whether the factors were
+    even in force, so the only way to tell a working correction from
+    a file that never loaded was to ask.
+
+    A term that changes every price on the page must not be able to
+    switch itself off quietly.
+    """
+    inf = sd_inflation()
+    live = {mk: inf[mk] for mk in CATS if inf.get(mk, 1.0) != 1.0}
+    if not live:
+        print('  SD inflation: OFF (factor 1.0 everywhere). '
+              '--fit-sd to measure it.')
+        return
+    bits = ', '.join(f'{mk} x{live[mk]:.2f}' for mk in CATS
+                     if mk in live)
+    print(f'  SD inflation: {bits}')
+    print('  This widens every slip probability. It does NOT touch the '
+          'go-to five,')
+    print('  which scores on matchup z and consults no price.')
 
 
 def market_env(day, logs_days, before=None):
@@ -1511,6 +1547,7 @@ def build_boards(day, logs_days, gs, top=15, min_mpg=MIN_MPG,
     _blow_banner(blow)
     spread_tab = stat_spread(logs_days, before=day)
     sdc = sd_curve(spread_tab)
+    show_sd_inflation()
     sched = slate(day)
     if not sched:
         return None
@@ -3396,6 +3433,10 @@ def log_boards(day, boards, path=None, goto=None):
                 # while looking like it worked. Fifth time a field has
                 # gone missing at a boundary in this file.
                 'sd': r.get('sd'), 'sd_n': r.get('sd_n'),
+                # THE FACTOR THIS ROW WAS PRICED WITH, so fit_sd_props
+                # can divide it out. Without it a second --fit-sd on
+                # corrected rows would square the correction.
+                'sd_inf': sd_inflation().get(mk, 1.0),
                 'goto_rank': rank.get((mk, r['player'], r['team'])),
                 'build': BUILD,
             }
@@ -3737,6 +3778,235 @@ def seed_goto(day=None, picks=None, path=None):
     return hit
 
 
+SDINF = os.path.join(DATA, 'sd_inflation.json')
+
+# PER-MARKET SD INFLATION.
+#
+# WHY THE SD IS TOO TIGHT, STRUCTURALLY.
+#
+# blended_sd measures a player's game-to-game spread around HIS OWN
+# SEASON MEAN. zact then divides by that SD while the numerator is
+# (actual - base), and base is a matchup-adjusted, minutes-adjusted
+# PROJECTION. So the numerator carries projection error on top of game
+# noise and the denominator carries only game noise. sd(zact) is
+# therefore above 1.0 by construction, and on 16 Nov it measured
+# 1.26 / 1.30 / 1.06 / 1.12 across the four markets.
+#
+# That is the same error as the college MARGIN_SD: pure game noise
+# gives about 11, but a forecast margin also carries rating error, and
+# assuming 11.0 gave a calibration MAD of 3.10pp against 1.20pp
+# measured.
+#
+# The consequence is not academic. Every probability the slip prints
+# comes from this SD, so a 19% tight SD makes a leg priced at 70%
+# really about 66%, and the legs that flip from +EV to -EV are exactly
+# the marginal ones the slip is made of. It also explains why the slip
+# concentrated in threes, the market with the WORST z sd: overconfident
+# probabilities look like edges, so they get selected.
+#
+# THE FIX IS MEASURED, NOT ASSUMED, AND IT IS OPT-IN. --fit-sd reports
+# what the factors would be and writes nothing; --fit-sd --apply
+# writes them. Nothing silently reprices a board.
+
+SD_INF_MIN_N = 100      # graded rows per market before a factor is fit
+SD_INF_CAP = 2.0        # never widen by more than this
+SD_INF_FLOOR = 0.80     # nor tighten below it
+
+_SDINF_CACHE = None
+
+
+def sd_inflation(path=None):
+    """{market: factor}, default 1.0. Cached; missing file means off."""
+    global _SDINF_CACHE
+    if _SDINF_CACHE is not None:
+        return _SDINF_CACHE
+    path = path or SDINF
+    out = {}
+    try:
+        if os.path.exists(path):
+            d = json.load(io.open(path, encoding='utf-8'))
+            for mk, v in (d.get('factors') or {}).items():
+                f = float(v)
+                if SD_INF_FLOOR <= f <= SD_INF_CAP:
+                    out[mk] = f
+    except Exception:
+        out = {}
+    _SDINF_CACHE = out
+    return out
+
+
+def fit_sd_props(logs_days, boardlog=None):
+    """Per-market sd of zact, which IS the factor the SD needs.
+
+    Each logged row carries the sd it was priced with and the factor
+    already applied, so the raw blended sd is recoverable and the fit
+    does not compound across runs:
+
+        raw      = sd_stored / sd_inf_stored
+        z_raw    = (actual - base) / raw
+        factor   = sd(z_raw)
+
+    Reading sd(zact) off an already-inflated row and multiplying again
+    is how a correction like this runs away. Dividing out first means
+    a second --fit-sd on corrected rows returns the same factor rather
+    than its square.
+    """
+    path = boardlog or BOARDLOG
+    actual = {}
+    for day, rows in (logs_days or {}).items():
+        for r in rows:
+            actual[(day, norm_player(r.get('player')),
+                    code(r.get('team')))] = r
+    acc = {}
+    if os.path.exists(path):
+        for ln in io.open(path, encoding='utf-8'):
+            ln = ln.strip()
+            if not ln:
+                continue
+            try:
+                r = json.loads(ln)
+            except Exception:
+                continue
+            if r.get('market_on') is False:
+                continue
+            mk = r.get('market')
+            f = GOTO_FIELD.get(mk)
+            box = actual.get((r.get('day'), r.get('player'),
+                              r.get('team')))
+            act = None if (not box or not f) else box.get(f)
+            base, sd = r.get('base'), r.get('sd')
+            if act is None or base is None or not sd:
+                continue
+            # rows logged before inflation existed carry no factor,
+            # which means a factor of 1.0 was in force
+            inf = r.get('sd_inf') or 1.0
+            raw = sd / inf if inf else sd
+            if not raw:
+                continue
+            acc.setdefault(mk, []).append((act - base) / raw)
+    cur = sd_inflation()
+    out = {}
+    for mk, zs in acc.items():
+        n = len(zs)
+        sd_z = statistics.stdev(zs) if n > 1 else None
+        mean_z = statistics.fmean(zs) if zs else None
+        want = sd_z
+        clamped = None
+        if want is not None:
+            if want > SD_INF_CAP:
+                clamped, want = want, SD_INF_CAP
+            elif want < SD_INF_FLOOR:
+                clamped, want = want, SD_INF_FLOOR
+        # HOW WELL IS THE FACTOR ITSELF MEASURED?
+        #
+        # The SE of a sample SD is about sd/sqrt(2(n-1)). At n=110
+        # that is 0.08, so a measured 1.06 has a 95% interval of
+        # 0.92-1.20 -- it does not exclude 1.0 and is not evidence of
+        # a correction on its own, while 1.30 (1.13-1.47) clearly is.
+        # Printing both the same way is how a noise factor gets
+        # applied with the same confidence as a real one.
+        se = (sd_z / math.sqrt(2.0 * (n - 1))) if (sd_z and n > 1) else None
+        lo = hi = None
+        if se is not None:
+            lo, hi = sd_z - 1.96 * se, sd_z + 1.96 * se
+        out[mk] = {'n': n, 'sd_z': sd_z, 'mean_z': mean_z,
+                   'current': cur.get(mk, 1.0), 'want': want,
+                   'clamped_from': clamped, 'se': se, 'lo': lo, 'hi': hi,
+                   'solid': bool(lo is not None and lo > 1.0),
+                   'enough': n >= SD_INF_MIN_N}
+    return out
+
+
+def show_fit_sd(res, apply=False, path=None):
+    print('\nPER-PLAYER SD -- is it wide enough?')
+    if not res:
+        print('  nothing gradeable in the board log yet.')
+        return 1
+    print('\n  blended_sd measures spread around a player\'s OWN MEAN,')
+    print('  but zact divides (actual - base) by it, and base is a')
+    print('  PROJECTION. So the numerator carries projection error and')
+    print('  the denominator does not: sd(zact) is above 1.0 by')
+    print('  construction, and that ratio IS the correction.')
+    print(f"\n  {'market':8s} {'n':>6s} {'mean z':>7s} {'sd z':>6s} "
+          f"{'95% CI':>13s} {'now':>5s} {'->':>6s}  status")
+    ok = []
+    for mk in CATS:
+        d = res.get(mk)
+        if not d:
+            print(f'  {mk:8s} {"--":>6s}   nothing logged')
+            continue
+        status = 'ok' if d['enough'] else (
+            f"needs {SD_INF_MIN_N - d['n']} more rows")
+        if d['clamped_from'] is not None:
+            status += f" (clamped from {d['clamped_from']:.2f})"
+        if d['sd_z'] is not None and d['sd_z'] < 1.0 and d['enough']:
+            status += '  <-- BELOW 1.0, which the structure does not predict'
+        if d['enough'] and not d['solid']:
+            status += '  <-- CI spans 1.0, not evidence on its own'
+        ci = ('n/a' if d['lo'] is None
+              else f"{d['lo']:.2f}-{d['hi']:.2f}")
+        print(f'  {mk:8s} {d["n"]:>6d} '
+              f"{_f(d['mean_z'], '+.2f'):>7s} "
+              f"{_f(d['sd_z'], '.2f'):>6s} "
+              f"{ci:>13s} "
+              f"{d['current']:>5.2f} "
+              f"{_f(d['want'], '.2f'):>6s}  {status}")
+        if d['enough'] and d['want'] is not None:
+            ok.append(mk)
+    solid = [mk for mk in CATS
+             if res.get(mk) and res[mk].get('solid')]
+    soft = [mk for mk in CATS
+            if res.get(mk) and res[mk]['enough']
+            and not res[mk].get('solid')]
+    if soft:
+        print(f"\n  {', '.join(soft)}: the interval includes 1.0, so "
+              f"the measurement is\n  not by itself evidence of a "
+              f"correction. The STRUCTURE still says the\n  factor "
+              f"cannot be below 1.0 -- variance adds -- so applying it "
+              f"errs\n  conservative (fewer marginal legs) rather "
+              f"than wrong. It is also\n  refittable: the factor is "
+              f"divided out next time, so an overshoot\n  corrects "
+              f"rather than compounds.")
+    if solid:
+        print(f"\n  {', '.join(solid)}: interval clears 1.0. These are "
+              f"real.")
+    print('\n  mean z near 0 means the projection is UNBIASED; this')
+    print('  correction is about width, not level, and will not fix a')
+    print('  biased projection. Check level in --by-market for that.')
+    if not ok:
+        print(f'\n  Nothing has {SD_INF_MIN_N} graded rows yet. '
+              f'Writing nothing.')
+        return 1
+    if not apply:
+        print(f"\n  WOULD WRITE: {', '.join(ok)}.  Re-run with "
+              f"--fit-sd --apply to commit.")
+        print('  Nothing has been changed. Every probability the slip')
+        print('  prints comes from this SD, so it does not move on its')
+        print('  own.')
+        return 0
+    path = path or SDINF
+    factors = dict(sd_inflation())
+    for mk in ok:
+        factors[mk] = round(res[mk]['want'], 4)
+    payload = {'build': BUILD, 'factors': factors,
+               'fitted_on': {mk: res[mk]['n'] for mk in ok},
+               'written_at': (datetime.datetime.now().astimezone()
+                              .isoformat())}
+    with io.open(path, 'w', encoding='utf-8') as fh:
+        json.dump(payload, fh, indent=2, sort_keys=True)
+    global _SDINF_CACHE
+    _SDINF_CACHE = None
+    print(f'\n  wrote {path}')
+    for mk in CATS:
+        if mk in factors:
+            print(f'    {mk:8s} x{factors[mk]:.4f}')
+    print('\n  Every board from here prices with the wider SD, so fewer')
+    print('  legs will clear and the ones that do are honestly priced.')
+    print('  Expect the slip to shrink, most of all in whichever market')
+    print('  had the worst sd z.')
+    return 0
+
+
 # ------------------------------------------------------------------
 # PER-MARKET: should this category be on the slip?
 # ------------------------------------------------------------------
@@ -3807,13 +4077,66 @@ def _binom_p(k, n, p0):
 
 
 def _breakeven(odds):
-    """Win rate a bet at these American odds needs to break even."""
+    """Win rate this price needs to break even, or None.
+
+    TWO PRICE CONVENTIONS LIVE IN slate.jsonl AND THEY OVERLAP IN
+    NOTHING, so magnitude tells them apart:
+
+      |o| >= 100      American odds. -110 stakes 110 to win 100, so
+                      breakeven is 110/210 = 0.524.
+      1 <= o <= 99    a KALSHI price in cents. Paying 27c to win a
+                      dollar is a breakeven of exactly 0.27.
+
+    American odds can never fall strictly inside (-100, 100): the
+    minimum magnitude is 100, because -100 and +100 are both even
+    money. So a 27 in this field is not "odds of +27", it is 27
+    cents -- and reading it as American odds returns 0.787 where the
+    truth is 0.270, which makes a profitable market look like a
+    losing one. The first run of --by-market printed a breakeven of
+    0.271 for points, which is not a legal American price, and that
+    is how this was found.
+    """
     if odds is None:
         return None
-    o = float(odds)
-    if o < 0:
+    try:
+        o = float(odds)
+    except (TypeError, ValueError):
+        return None
+    if o >= 100.0:
+        return 100.0 / (o + 100.0)
+    if o <= -100.0:
         return (-o) / ((-o) + 100.0)
-    return 100.0 / (o + 100.0)
+    if 0.0 < o < 100.0:
+        return o / 100.0          # Kalshi cents
+    return None                   # 0, or a negative under 100: unusable
+
+
+def _price_kind(odds):
+    """Which convention a stored price is in, for the printout."""
+    if odds is None:
+        return None
+    try:
+        o = float(odds)
+    except (TypeError, ValueError):
+        return 'bad'
+    if o >= 100.0 or o <= -100.0:
+        return 'american'
+    if 0.0 < o < 100.0:
+        return 'cents'
+    return 'bad'
+
+
+def _mean_breakeven(odds_list):
+    """Mean breakeven over prices -- NOT the breakeven of the mean.
+
+    Averaging American odds is not a defined operation: -110 and
+    +269 average to +79.5, whose breakeven is 0.557, while the two
+    bets actually need 0.397 between them. The mean belongs on the
+    probabilities, which live on a common scale.
+    """
+    bes = [b for b in (_breakeven(o) for o in odds_list)
+           if b is not None]
+    return (statistics.fmean(bes) if bes else None), len(bes)
 
 
 def _n_needed(k, n, p0, cap=4000):
@@ -4015,11 +4338,17 @@ def market_breakdown(logs_days, boardlog=None, slate=None, tier='board'):
     slip = {}
     for mk, s in sl.items():
         dec = s['w'] + s['l']            # pushes and voids are not bets
-        be = (_breakeven(statistics.fmean(s['odds']))
-              if s['odds'] else _breakeven(-110))
+        be, n_be = _mean_breakeven(s['odds'])
+        kinds = sorted({k for k in (_price_kind(o) for o in s['odds'])
+                        if k})
         lo, hi = _wilson(s['w'], dec)
         p = _binom_p(s['w'], dec, be)
-        if dec < DROP_MIN_N:
+        if be is None:
+            # NO PRICE, NO VERDICT. A bet with an unreadable price has
+            # no breakeven, and inventing -110 for it is how a market
+            # gets kept or dropped on a number nobody wrote down.
+            verdict = 'NO USABLE PRICE'
+        elif dec < DROP_MIN_N:
             verdict = 'UNDERPOWERED'
         elif hi is not None and be is not None and hi < be:
             verdict = 'DROP'
@@ -4035,6 +4364,8 @@ def market_breakdown(logs_days, boardlog=None, slate=None, tier='board'):
             'rate': (s['w'] / dec) if dec else None,
             'lo': lo, 'hi': hi, 'breakeven': be, 'p': p,
             'units': round(s['units'], 2),
+            'price_kinds': kinds, 'n_priced': n_be,
+            'bad_price': len(s['odds']) - n_be,
             'roi': (round(s['units'] / dec, 3) if dec else None),
             'verdict': verdict,
             'n_needed': _n_needed(s['w'], dec, be),
@@ -4104,6 +4435,32 @@ def show_market_breakdown(res):
                     extra.append(f'{n} {lbl}')
             if extra:
                 print(f"           ({', '.join(extra)})")
+            # WHICH PRICE CONVENTION THESE WERE READ IN.
+            #
+            # American odds and Kalshi cents cannot both be assumed,
+            # and the first run of this printed a breakeven of 0.271
+            # for points -- not a legal American price -- because the
+            # odds were being averaged on the odds scale and read in
+            # the wrong convention. So the convention is now printed
+            # rather than trusted.
+            kinds = s.get('price_kinds') or []
+            if kinds and kinds != ['american']:
+                print(f"           prices read as: "
+                      f"{', '.join(kinds)}"
+                      + ('  <-- MIXED, so the breakeven above is an '
+                         'average across conventions'
+                         if len(kinds) > 1 else ''))
+            if s.get('bad_price'):
+                print(f"           !! {s['bad_price']} row(s) have a "
+                      f"price that is neither American odds nor cents")
+            # PENDING IS A GRADING GAP, not a neutral count. A market
+            # with more pending than decided is not being measured.
+            if s['pending'] > max(2, s['decided']):
+                print(f"           !! {s['pending']} pending vs "
+                      f"{s['decided']} decided -- this market is "
+                      f"mostly ungraded,")
+                print(f"           !! so its rate is built on the "
+                      f"minority that settled")
 
         under = [mk for mk in CATS
                  if slip.get(mk) and slip[mk]['verdict'] == 'UNDERPOWERED']
@@ -4124,6 +4481,15 @@ def show_market_breakdown(res):
                           f'breakeven, so no n drops it')
                 else:
                     print(head)
+        nop = [mk for mk in CATS
+               if slip.get(mk)
+               and slip[mk]['verdict'] == 'NO USABLE PRICE']
+        if nop:
+            print(f"\n  NO USABLE PRICE: {', '.join(nop)} -- no "
+                  f"breakeven can be computed, so these get no\n"
+                  f"  verdict at all. Inventing -110 for them is how "
+                  f"a category gets kept\n  or dropped on a number "
+                  f"nobody wrote down.")
         drops = [mk for mk in CATS
                  if slip.get(mk) and slip[mk]['verdict'] == 'DROP']
         if drops:
@@ -4878,6 +5244,12 @@ def main():
     ap.add_argument('--repair-log', action='store_true',
                     help='backfill settler keys on rows written before '
                          '2026-11-02b (fixes publish.sh KeyError)')
+    ap.add_argument('--fit-sd', action='store_true', dest='fit_sd',
+                    help='measure the per-player SD against what the '
+                         'board actually produced, per market. Reports '
+                         'only; add --apply to write it')
+    ap.add_argument('--apply', action='store_true',
+                    help='with --fit-sd, commit the measured factors')
     ap.add_argument('--by-market', action='store_true',
                     dest='by_market',
                     help='per-market board accuracy and slip W/L, with '
@@ -4962,6 +5334,9 @@ def main():
     if a.margin_sd:
         show_margin_sd(logs_days)
         return 0
+
+    if a.fit_sd:
+        return show_fit_sd(fit_sd_props(logs_days), apply=a.apply)
 
     if a.by_market:
         # 'all' means do not filter on tier at all

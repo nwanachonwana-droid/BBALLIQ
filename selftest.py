@@ -883,7 +883,7 @@ def main():
 
     if os.path.exists(idx):
         body = open(idx, errors='ignore').read()
-        check('index is the v38 build', 'SITE BUILD v38' in body)
+        check('index is the v43 build', 'SITE BUILD v43' in body)
         check('index renders the five and nothing else',
               'd.goto' in body and 'boardsBlock' not in body
               and 'function boards(d)' not in body)
@@ -903,7 +903,7 @@ def main():
 
     if os.path.exists(perf):
         body = open(perf, errors='ignore').read()
-        check('performance is the v38 build', 'SITE BUILD v38' in body)
+        check('performance is the v43 build', 'SITE BUILD v43' in body)
         check('performance reads its own file',
               "fetch('data/performance.json'" in body)
         # Production, not profit. Saying otherwise on a public page
@@ -1223,7 +1223,7 @@ def main():
                 st = os.path.join(td, 'site')
                 os.makedirs(sd); os.makedirs(st)
                 for s in ('edges.py', 'props_lines.py',
-                          'college.py', 'three.py'):
+                          'college.py', 'three.py', 'slate.py'):
                     with open(os.path.join(sd, s), 'w',
                               encoding='utf-8') as fh:
                         fh.write('import sys\n'
@@ -1256,6 +1256,23 @@ def main():
                       over.stdout[-300:])
                 check('nightly.sh rejects a non-date argument',
                       bad.returncode == 2, f'exit {bad.returncode}')
+
+                # THE SLIP WAS LOGGED NIGHTLY AND GRADED NEVER.
+                # publish.sh runs `slate.py report`, which only READS
+                # graded rows, so the record rebuilt every night from
+                # a file nothing settled. 22 legs sat pending.
+                check('nightly.sh settles the slip',
+                      "slate.py\" grade" in nsrc
+                      or '"$DL/slate.py" grade' in nsrc)
+                check('the settle step actually runs',
+                      "slate.py ['grade']" in bare.stdout,
+                      bare.stdout[-300:])
+                check('settle takes no day override (it does every '
+                      'ungraded day)',
+                      "slate.py ['grade']" in over.stdout,
+                      over.stdout[-300:])
+                check('settle is reported in the summary',
+                      'settle' in bare.stdout)
         except Exception as e:
             check('nightly.sh stub run', False,
                   f'{type(e).__name__}: {e}')
@@ -1286,12 +1303,48 @@ def main():
           and tsrc_bm.count("verdict = 'DROP'") == 1)
     check('pushes and voids are not decided bets',
           "dec = s['w'] + s['l']" in tsrc_bm)
-    check('breakeven comes from the logged odds',
-          "_breakeven(statistics.fmean(s['odds']))" in tsrc_bm)
+    check('breakeven averages probabilities, not odds',
+          '_mean_breakeven(' in tsrc_bm
+          and "_breakeven(statistics.fmean(s['odds']))" not in tsrc_bm)
+    check('Kalshi cents are told from American odds',
+          'o <= -100.0' in tsrc_bm and 'o / 100.0' in tsrc_bm)
+    check('an unreadable price gets no verdict',
+          "'NO USABLE PRICE'" in tsrc_bm)
     check('skill is gated on the spread of the predictions',
           "b['p_sd'] is not None and b['p_sd'] > 0.05" in tsrc_bm)
     check('unscaled rows excluded from the breakdown',
           tsrc_bm.count("if r.get('market_on') is False:") >= 4)
+
+    # --- --fit-sd: the per-player SD correction -------------------
+    #
+    # sd(zact) > 1 by construction: blended_sd measures spread around
+    # a player's own mean, while zact's numerator is (actual - base)
+    # and base is a projection, so projection error is in the
+    # numerator only. The ratio IS the correction.
+    check('--fit-sd is wired',
+          "'--fit-sd'" in tsrc_bm and 'a.fit_sd' in tsrc_bm)
+    check('--fit-sd writes nothing without --apply',
+          "if not apply:" in tsrc_bm
+          and "--fit-sd --apply to commit" in tsrc_bm)
+    check('the fit divides out the factor already applied',
+          'raw = sd / inf if inf else sd' in tsrc_bm,
+          'without this a refit squares the correction')
+    check('every logged row records the factor it was priced with',
+          "'sd_inf': sd_inflation().get(mk, 1.0)," in tsrc_bm)
+    check('inflation is applied on BOTH blended_sd exits',
+          tsrc_bm.count('sd_inflation().get(mk, 1.0)') >= 3)
+    check('a factor outside the guard rails is refused',
+          'SD_INF_FLOOR <= f <= SD_INF_CAP' in tsrc_bm)
+    check('a minimum n is required before fitting',
+          'SD_INF_MIN_N' in tsrc_bm)
+    check('the board says which SD it is pricing with',
+          'def show_sd_inflation' in tsrc_bm
+          and 'show_sd_inflation()' in tsrc_bm.split(
+              'def show_sd_inflation')[0]
+          + tsrc_bm.split('def show_sd_inflation')[1].split(
+              'def market_env')[1])
+    check('the announcement says the five are unaffected',
+          'consults no price' in tsrc_bm)
 
     # the arithmetic, against values computed by hand
     try:
@@ -1316,6 +1369,26 @@ def main():
               f'{_p:.4f}')
         check('n_needed is None at or above breakeven',
               _T._n_needed(6, 10, _T._breakeven(-110)) is None)
+        check('27 reads as 27 cents, breakeven 0.27',
+              abs(_T._breakeven(27) - 0.27) < 1e-12, _T._breakeven(27))
+        check('-37 is not a legal American price',
+              _T._breakeven(-37) is None)
+        _mb, _ = _T._mean_breakeven([-110, 269])
+        # the no-compounding property, exercised not just grepped
+        _T._SDINF_CACHE = {}
+        check('sd_inflation defaults to empty, so factor 1.0',
+              _T.sd_inflation(path='/nonexistent/x.json') == {})
+        _T._SDINF_CACHE = {'pts': 1.5}
+        _a = _T.blended_sd(16.0, 'pts', {}, {'pts': 1.0})[0]
+        _T._SDINF_CACHE = {}
+        _b = _T.blended_sd(16.0, 'pts', {}, {'pts': 1.0})[0]
+        check('blended_sd multiplies by the factor',
+              abs(_a / _b - 1.5) < 1e-9, f'{_a:.4f} vs {_b:.4f}')
+        check('mean breakeven is on the probability scale',
+              abs(_mb - (_T._breakeven(-110)
+                         + _T._breakeven(269)) / 2) < 1e-12
+              and abs(_mb - _T._breakeven((-110 + 269) / 2)) > 0.1,
+              f'{_mb:.4f}')
     except Exception as e:
         check('--by-market arithmetic', False,
               f'{type(e).__name__}: {e}')

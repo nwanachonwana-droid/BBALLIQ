@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# BUILD: 2026-11-14a-day
+# BUILD: 2026-11-16a-settle
 # The whole nightly run, in the one order that works.
 #
 # WHY THIS EXISTS
@@ -27,6 +27,10 @@
 #   box scores   soft. Tonight's picks do not need them; only GRADING
 #                does. A failure here leaves the performance page
 #                stale and says so.
+#   settle       soft. Settles logged slip legs against the box
+#                score. Was MISSING ENTIRELY until 16 Nov, so 22 legs
+#                sat ungraded and every per-market verdict read
+#                UNDERPOWERED.
 #   lines        soft. The slip needs them, the go-to five never has.
 #   board        HARD. This is the thing being published. If it fails
 #                there is nothing to push and pushing anyway is how
@@ -104,7 +108,7 @@ fi
 [ -f "$HOME/.sharpz_env" ] && . "$HOME/.sharpz_env"
 
 BOX="skipped"; LINES="skipped"; BOARD="skipped"; PUSH="skipped"
-COLLEGE="skipped"
+COLLEGE="skipped"; GRADE="skipped"
 FAILED=0
 
 say() { printf '\n=== %s\n' "$1"; }
@@ -129,6 +133,37 @@ else
   BOX="FAILED - yesterday's picks will not grade"
   echo "  ! season_logs.json is now behind. The performance page will"
   echo "  ! show blank rows until this succeeds."
+fi
+
+# --- 1b. settle the slip. --------------------------------------------
+#
+# THE SLIP WAS LOGGED NIGHTLY AND GRADED NEVER.
+#
+# three.py --publish calls log_picks, which appends every slip leg to
+# slate.jsonl with result=None. slate.py grade is what settles those
+# against the box score, and --day defaults to EVERY ungraded day.
+# Nothing in this script or in publish.sh ever called it. publish.sh
+# runs `slate.py report` -- which only READS graded rows -- so the
+# record was rebuilt nightly from a file nothing was settling.
+#
+# Found on 16 Nov from --by-market: threes showed 18 pending against
+# 5 decided, and points 4 pending against 11. Those 22 legs were not
+# missing, they were ungraded, which is why every per-market verdict
+# came back UNDERPOWERED. The W/L evidence existed; it had just never
+# been computed.
+#
+# Soft, because a grading failure must not cost tonight's picks --
+# but LOUD, because an ungraded slip looks exactly like a slip with
+# no results, which is the failure mode this whole script exists for.
+#
+# It fetches its own box scores, so it does not depend on step 1.
+say "settle the slip  (slate.py grade)"
+if step "grade" "$DL/slate.py" grade; then
+  GRADE="ok"
+else
+  GRADE="FAILED - slip legs stay pending, record.json will be thin"
+  echo "  ! slate.jsonl still has ungraded legs. --by-market will"
+  echo "  ! read UNDERPOWERED until they settle."
 fi
 
 # --- 2. lines. The slip needs them; the go-to five does not. --------
@@ -206,24 +241,27 @@ printf '\n%s\n' "===================================================="
 echo "RUN SUMMARY"
 printf '  %-12s %s\n' "built for" "${DAY:-$TODAY}${DAY:+  (override)}"
 printf '  %-12s %s\n' "box scores" "$BOX"
+printf '  %-12s %s\n' "settle"     "$GRADE"
 printf '  %-12s %s\n' "lines"      "$LINES"
 printf '  %-12s %s\n' "college"    "$COLLEGE"
 printf '  %-12s %s\n' "board"      "$BOARD"
 printf '  %-12s %s\n' "publish"    "$PUSH"
 if [ "$FAILED" = "0" ] && [ "$BOX" = "ok" ] && [ "$LINES" = "ok" ] \
-   && [ "$COLLEGE" = "ok" ] && [ -n "$DAY" ] && [ "$DAY" \> "$TODAY" ]; then
+   && [ "$COLLEGE" = "ok" ] && [ "$GRADE" = "ok" ] \
+   && [ -n "$DAY" ] && [ "$DAY" \> "$TODAY" ]; then
   # EVERY STEP RAN, AND THE PERFORMANCE PAGE IS STILL A DAY BEHIND.
   # Both halves are true and the old message only said the first, so
   # a clean run would have claimed "yesterday graded" on a night when
   # yesterday provably could not have.
   echo "
-  All five steps ran. $DAY's NBA and college picks are live.
+  All six steps ran. $DAY's NBA and college picks are live.
   $TODAY is NOT graded -- its box scores do not exist yet. Run
   nightly.sh again on $DAY to grade it."
 elif [ "$FAILED" = "0" ] && [ "$BOX" = "ok" ] && [ "$LINES" = "ok" ] \
-   && [ "$COLLEGE" = "ok" ]; then
+   && [ "$COLLEGE" = "ok" ] && [ "$GRADE" = "ok" ]; then
   echo "
-  All five steps ran. NBA and college picks are live, yesterday graded."
+  All six steps ran. NBA and college picks are live, yesterday graded,
+  and the slip is settled."
 elif [ "$FAILED" = "0" ]; then
   echo "
   Published, but read the FAILED line(s) above -- something the page
