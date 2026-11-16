@@ -1,15 +1,15 @@
 {
- "generated": "2026-11-15T09:41:48.219959-05:00",
- "day": "20261115",
+ "generated": "2026-11-16T08:00:52.946711-05:00",
+ "day": "20261116",
  "source": "Covers.com",
  "counts": {
   "writer_picks": 47,
   "projections": 76,
-  "kept": 41,
+  "kept": 30,
   "dropped": 6,
-  "shown": 28,
+  "shown": 21,
   "held_conflict": 0,
-  "held_unbacked": 13
+  "held_unbacked": 9
  },
  "rows": [
   {
@@ -50,18 +50,6 @@
   },
   {
    "status": "CORROBORATED",
-   "player": "Malik Monk",
-   "side": "over",
-   "line": 9.5,
-   "market": "Points Scored",
-   "projection": 11.98,
-   "ev_pct": 23.44,
-   "stars": 5,
-   "difference": 2.5,
-   "game": "SAC@LAC"
-  },
-  {
-   "status": "CORROBORATED",
    "player": "Desmond Bane",
    "side": "over",
    "line": 3.5,
@@ -71,18 +59,6 @@
    "stars": 5,
    "difference": 0.6,
    "game": "ATL@ORL"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "Mikel Brown Jr.",
-   "side": "over",
-   "line": 1.5,
-   "market": "Total Assists",
-   "projection": 4.26,
-   "ev_pct": 23.36,
-   "stars": 5,
-   "difference": 2.8,
-   "game": "CHA@BK"
   },
   {
    "status": "CORROBORATED",
@@ -155,54 +131,6 @@
    "stars": 4,
    "difference": -2.3,
    "game": "GS@LAL"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "Isaiah Hartenstein",
-   "side": "over",
-   "line": 7.5,
-   "market": "Points Scored",
-   "projection": 9.34,
-   "ev_pct": 21.23,
-   "stars": 4,
-   "difference": 1.8,
-   "game": "OKC@SA"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "Shai Gilgeous-Alexander",
-   "side": "under",
-   "line": 29.5,
-   "market": "Points Scored",
-   "projection": 26.81,
-   "ev_pct": 21.12,
-   "stars": 4,
-   "difference": -2.7,
-   "game": "OKC@SA"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "Darius Acuff Jr.",
-   "side": "over",
-   "line": 2.5,
-   "market": "Total Rebounds",
-   "projection": 3.34,
-   "ev_pct": 21.06,
-   "stars": 4,
-   "difference": 0.8,
-   "game": "SAC@LAC"
-  },
-  {
-   "status": "CORROBORATED",
-   "player": "Keldon Johnson",
-   "side": "over",
-   "line": 8.5,
-   "market": "Points Scored",
-   "projection": 9.69,
-   "ev_pct": 20.95,
-   "stars": 4,
-   "difference": 1.2,
-   "game": "OKC@SA"
   },
   {
    "status": "CORROBORATED",
@@ -326,18 +254,6 @@
   },
   {
    "status": "CORROBORATED",
-   "player": "De'Andre Hunter",
-   "side": "under",
-   "line": 2.5,
-   "market": "Total Assists",
-   "projection": 1.56,
-   "ev_pct": 18.45,
-   "stars": 4,
-   "difference": -0.9,
-   "game": "SAC@LAC"
-  },
-  {
-   "status": "CORROBORATED",
    "player": "DeMar DeRozan",
    "side": "over",
    "line": 2.5,
@@ -351,91 +267,47 @@
  ],
  "pra_watch": [
   {
-   "player": "Shai Gilgeous-Alexander",
-   "team": "OKC",
-   "pra_line": 42.5,
+   "player": "Nikola Jokic",
+   "team": "DEN",
+   "pra_line": 50.0,
    "minutes": "locked",
    "components": {
     "pts": {
-     "line": 32.5,
-     "side": "under",
-     "projection": 26.81,
-     "ev_pct": 21.12,
-     "src": "books",
-     "n_books": 6,
-     "prob_over": 0.4835
-    },
-    "reb": {
-     "line": 4.5,
-     "side": "over",
-     "projection": 3.83,
-     "ev_pct": -6.14,
-     "src": "books",
-     "n_books": 6,
-     "prob_over": 0.4275
-    },
-    "ast": {
-     "line": 5.5,
+     "line": 26.5,
      "side": null,
      "projection": null,
      "ev_pct": null,
      "src": "books",
      "n_books": 6,
-     "prob_over": 0.4378
+     "prob_over": 0.4756
+    },
+    "reb": {
+     "line": 11.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 6,
+     "prob_over": 0.4901
+    },
+    "ast": {
+     "line": 9.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 6,
+     "prob_over": 0.506
     }
    },
    "covered": 3,
    "covers_pra": null,
-   "market_pra": 42.5,
+   "market_pra": 45.5,
    "market_src": "books",
-   "book_prob_over": 0.4913,
-   "book_n": 6,
+   "book_prob_over": 0.4904,
+   "book_n": 5,
    "book_spread": 4.0,
-   "delta": 0.0,
-   "note": null
-  },
-  {
-   "player": "Jalen Brunson",
-   "team": "NYK",
-   "pra_line": 37.0,
-   "minutes": "locked",
-   "components": {
-    "pts": {
-     "line": 25.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 7,
-     "prob_over": 0.4692
-    },
-    "reb": {
-     "line": 2.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 7,
-     "prob_over": 0.5171
-    },
-    "ast": {
-     "line": 6.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 7,
-     "prob_over": 0.4839
-    }
-   },
-   "covered": 3,
-   "covers_pra": null,
-   "market_pra": 35.5,
-   "market_src": "books",
-   "book_prob_over": 0.4794,
-   "book_n": 6,
-   "book_spread": 4.0,
-   "delta": -1.5,
+   "delta": -4.5,
    "note": null
   },
   {
@@ -451,7 +323,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 6,
-     "prob_over": 0.4706
+     "prob_over": 0.4539
     },
     "reb": {
      "line": 5.5,
@@ -460,16 +332,16 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 6,
-     "prob_over": 0.438
+     "prob_over": 0.4269
     },
     "ast": {
-     "line": 3.5,
+     "line": 4.0,
      "side": null,
      "projection": null,
      "ev_pct": null,
      "src": "books",
-     "n_books": 6,
-     "prob_over": 0.5384
+     "n_books": 7,
+     "prob_over": 0.4776
     }
    },
    "covered": 3,
@@ -483,19 +355,63 @@
    "note": null
   },
   {
+   "player": "Donovan Mitchell",
+   "team": "CLE",
+   "pra_line": 35.5,
+   "minutes": "locked",
+   "components": {
+    "pts": {
+     "line": 13.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 6,
+     "prob_over": 0.4595
+    },
+    "reb": {
+     "line": 2.5,
+     "side": null,
+     "projection": null,
+     "ev_pct": null,
+     "src": "books",
+     "n_books": 4,
+     "prob_over": 0.4466
+    },
+    "ast": {
+     "line": 7.5,
+     "side": "over",
+     "projection": 5.25,
+     "ev_pct": 4.57,
+     "src": "books",
+     "n_books": 6,
+     "prob_over": 0.4783
+    }
+   },
+   "covered": 3,
+   "covers_pra": null,
+   "market_pra": 24.5,
+   "market_src": "books",
+   "book_prob_over": 0.4768,
+   "book_n": 6,
+   "book_spread": 4.0,
+   "delta": -11.0,
+   "note": null
+  },
+  {
    "player": "Alperen Sengun",
    "team": "HOU",
    "pra_line": 35.0,
    "minutes": "moved",
    "components": {
     "pts": {
-     "line": 20.5,
+     "line": 19.5,
      "side": null,
      "projection": null,
      "ev_pct": null,
      "src": "books",
      "n_books": 6,
-     "prob_over": 0.4665
+     "prob_over": 0.4751
     },
     "reb": {
      "line": 9.5,
@@ -503,17 +419,17 @@
      "projection": null,
      "ev_pct": null,
      "src": "books",
-     "n_books": 7,
-     "prob_over": 0.4544
+     "n_books": 6,
+     "prob_over": 0.4468
     },
     "ast": {
-     "line": 7.5,
+     "line": 6.5,
      "side": null,
      "projection": null,
      "ev_pct": null,
      "src": "books",
      "n_books": 6,
-     "prob_over": 0.4598
+     "prob_over": 0.5135
     }
    },
    "covered": 3,
@@ -527,107 +443,19 @@
    "note": null
   },
   {
-   "player": "Lauri Markkanen",
-   "team": "UTA",
-   "pra_line": 32.0,
-   "minutes": "moved",
-   "components": {
-    "pts": {
-     "line": 20.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 5,
-     "prob_over": 0.4717
-    },
-    "reb": {
-     "line": 6.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 5,
-     "prob_over": 0.4879
-    },
-    "ast": {
-     "line": 1.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 1,
-     "prob_over": 0.4948
-    }
-   },
-   "covered": 3,
-   "covers_pra": null,
-   "market_pra": 31.5,
-   "market_src": "books",
-   "book_prob_over": 0.49,
-   "book_n": 6,
-   "book_spread": 4.0,
-   "delta": -0.5,
-   "note": null
-  },
-  {
-   "player": "RJ Barrett",
-   "team": "TOR",
-   "pra_line": 30.0,
-   "minutes": "moved",
-   "components": {
-    "pts": {
-     "line": 20.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 7,
-     "prob_over": 0.4742
-    },
-    "reb": {
-     "line": 5.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 7,
-     "prob_over": 0.513
-    },
-    "ast": {
-     "line": 4.5,
-     "side": null,
-     "projection": null,
-     "ev_pct": null,
-     "src": "books",
-     "n_books": 7,
-     "prob_over": 0.4433
-    }
-   },
-   "covered": 3,
-   "covers_pra": null,
-   "market_pra": 34.0,
-   "market_src": "books",
-   "book_prob_over": 0.5001,
-   "book_n": 6,
-   "book_spread": 4.0,
-   "delta": 4.0,
-   "note": null
-  },
-  {
    "player": "Amen Thompson",
    "team": "HOU",
    "pra_line": 26.0,
    "minutes": "locked",
    "components": {
     "pts": {
-     "line": 17.5,
+     "line": 16.0,
      "side": null,
      "projection": null,
      "ev_pct": null,
      "src": "books",
      "n_books": 6,
-     "prob_over": 0.4591
+     "prob_over": 0.4714
     },
     "reb": {
      "line": 7.5,
@@ -636,16 +464,16 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 6,
-     "prob_over": 0.4475
+     "prob_over": 0.4356
     },
     "ast": {
-     "line": 4.5,
+     "line": 3.5,
      "side": null,
      "projection": null,
      "ev_pct": null,
      "src": "books",
      "n_books": 6,
-     "prob_over": 0.4625
+     "prob_over": 0.4815
     }
    },
    "covered": 3,
