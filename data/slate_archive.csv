@@ -102,3 +102,7 @@ day,subject,market,side,line,odds,tier,result,actual,units,logged_at,graded_at
 20261119,darius garland,threes,under,2.5,-110,board,loss,3,-1.0,2026-11-19T15:26:37.821341-05:00,2026-11-20T12:24:22.613420-05:00
 20261119,deaaron fox,threes,under,1.5,-110,board,win,0,0.9090909090909091,2026-11-19T15:26:37.727491-05:00,2026-11-20T12:24:22.613204-05:00
 20261119,jaden mcdaniels,threes,under,1.5,-110,board,loss,4,-1.0,2026-11-19T15:26:37.789883-05:00,2026-11-20T12:24:22.613402-05:00
+20261120,jabari smith jr,threes,under,2.5,-110,board,loss,3,-1.0,2026-11-20T12:24:31.194919-05:00,2026-11-21T10:57:11.194240-05:00
+20261120,jalen johnson,threes,under,1.5,-110,board,loss,3,-1.0,2026-11-20T12:24:31.131585-05:00,2026-11-21T10:57:11.194080-05:00
+20261120,shai gilgeousalexander,threes,over,1.5,-110,board,,,,2026-11-20T12:24:31.226722-05:00,
+20261120,trae young,threes,under,2.5,-110,board,loss,4,-1.0,2026-11-20T12:24:31.163156-05:00,2026-11-21T10:57:11.194217-05:00
