@@ -1,5 +1,5 @@
 {
- "build": "2026-11-13b",
+ "build": "2026-11-22a",
  "day": "20261122",
  "gate": 0.6,
  "picks": [
@@ -15,11 +15,12 @@
    "pick_name": "Texas",
    "side": "home",
    "conf": 0.9982,
+   "below_gate": false,
    "margin": 32.1,
    "venue_flag": "weak_road",
    "venue_note": "weak road team (0% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
    "venue_effect": "safer",
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -33,11 +34,12 @@
    "pick_name": "Marquette",
    "side": "home",
    "conf": 0.9931,
+   "below_gate": false,
    "margin": 27.1,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -51,11 +53,12 @@
    "pick_name": "UCLA",
    "side": "home",
    "conf": 0.9905,
+   "below_gate": false,
    "margin": 25.8,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -69,11 +72,12 @@
    "pick_name": "Cincinnati",
    "side": "home",
    "conf": 0.99,
+   "below_gate": false,
    "margin": 25.6,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -87,11 +91,12 @@
    "pick_name": "USC",
    "side": "home",
    "conf": 0.9843,
+   "below_gate": false,
    "margin": 23.7,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -105,11 +110,12 @@
    "pick_name": "Boston College",
    "side": "home",
    "conf": 0.9785,
+   "below_gate": false,
    "margin": 22.3,
    "venue_flag": "weak_road",
    "venue_note": "weak road team (0% away, 5g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
    "venue_effect": "safer",
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -123,11 +129,12 @@
    "pick_name": "Memphis",
    "side": "home",
    "conf": 0.9577,
+   "below_gate": false,
    "margin": 19.0,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -141,11 +148,12 @@
    "pick_name": "Nebraska",
    "side": "away",
    "conf": 0.8855,
+   "below_gate": false,
    "margin": -13.2,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -159,11 +167,12 @@
    "pick_name": "South Alabama",
    "side": "home",
    "conf": 0.8771,
+   "below_gate": false,
    "margin": 12.8,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -177,11 +186,12 @@
    "pick_name": "Portland",
    "side": "home",
    "conf": 0.7658,
+   "below_gate": false,
    "margin": 8.0,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -195,11 +205,12 @@
    "pick_name": "Minnesota",
    "side": "home",
    "conf": 0.7565,
+   "below_gate": false,
    "margin": 7.6,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -213,11 +224,12 @@
    "pick_name": "Valparaiso",
    "side": "home",
    "conf": 0.7547,
+   "below_gate": false,
    "margin": 7.6,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -231,11 +243,12 @@
    "pick_name": "Samford",
    "side": "home",
    "conf": 0.7317,
+   "below_gate": false,
    "margin": 6.8,
    "venue_flag": "weak_road",
    "venue_note": "weak road team (33% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
    "venue_effect": "safer",
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -249,11 +262,12 @@
    "pick_name": "Canisius",
    "side": "home",
    "conf": 0.7224,
+   "below_gate": false,
    "margin": 6.5,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -267,11 +281,12 @@
    "pick_name": "G Washington",
    "side": "away",
    "conf": 0.7182,
+   "below_gate": false,
    "margin": -6.4,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -285,11 +300,12 @@
    "pick_name": "UC Irvine",
    "side": "away",
    "conf": 0.7165,
+   "below_gate": false,
    "margin": -6.3,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -303,11 +319,12 @@
    "pick_name": "IU Indy",
    "side": "away",
    "conf": 0.7121,
+   "below_gate": false,
    "margin": -6.2,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -321,11 +338,12 @@
    "pick_name": "Fordham",
    "side": "home",
    "conf": 0.6703,
+   "below_gate": false,
    "margin": 4.8,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -339,11 +357,12 @@
    "pick_name": "New Mexico St",
    "side": "home",
    "conf": 0.6678,
+   "below_gate": false,
    "margin": 4.8,
    "venue_flag": "weak_road",
    "venue_note": "weak road team (0% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
    "venue_effect": "safer",
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -357,11 +376,12 @@
    "pick_name": "Richmond",
    "side": "away",
    "conf": 0.6635,
+   "below_gate": false,
    "margin": -4.6,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -375,11 +395,12 @@
    "pick_name": "Texas St",
    "side": "home",
    "conf": 0.6575,
+   "below_gate": false,
    "margin": 4.5,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -393,11 +414,12 @@
    "pick_name": "Troy",
    "side": "away",
    "conf": 0.6486,
+   "below_gate": false,
    "margin": -4.2,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -411,11 +433,12 @@
    "pick_name": "Wyoming",
    "side": "away",
    "conf": 0.6467,
+   "below_gate": false,
    "margin": -4.1,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -429,11 +452,12 @@
    "pick_name": "UC San Diego",
    "side": "home",
    "conf": 0.6431,
+   "below_gate": false,
    "margin": 4.0,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -447,11 +471,12 @@
    "pick_name": "Loyola Chicago",
    "side": "home",
    "conf": 0.6381,
+   "below_gate": false,
    "margin": 3.9,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -465,11 +490,12 @@
    "pick_name": "Portland St",
    "side": "home",
    "conf": 0.63,
+   "below_gate": false,
    "margin": 3.7,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -483,11 +509,12 @@
    "pick_name": "Utah Tech",
    "side": "home",
    "conf": 0.6214,
+   "below_gate": false,
    "margin": 3.4,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -501,11 +528,12 @@
    "pick_name": "Rhode Island",
    "side": "away",
    "conf": 0.6212,
+   "below_gate": false,
    "margin": -3.4,
    "venue_flag": null,
    "venue_note": null,
    "venue_effect": null,
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
   },
   {
    "day": "20261122",
@@ -519,14 +547,129 @@
    "pick_name": "Mercyhurst",
    "side": "away",
    "conf": 0.6086,
+   "below_gate": false,
    "margin": -3.0,
    "venue_flag": "weak_road",
    "venue_note": "weak road team (0% away, 3g). The paper has this system OVERESTIMATING them by 17.9% (n=58) -- so a pick ON them is the shakier side. Not corrected here: beta=0.0754, p=0.093.",
    "venue_effect": "shakier",
-   "build": "2026-11-13b"
+   "build": "2026-11-22a"
+  },
+  {
+   "day": "20261122",
+   "game_id": "401920736",
+   "home": "77",
+   "away": "2168",
+   "home_name": "Northwestern",
+   "away_name": "Dayton",
+   "neutral": true,
+   "pick": "77",
+   "pick_name": "Northwestern",
+   "side": "home",
+   "conf": 0.587,
+   "below_gate": true,
+   "margin": 2.4,
+   "venue_flag": null,
+   "venue_note": null,
+   "venue_effect": null,
+   "build": "2026-11-22a"
+  },
+  {
+   "day": "20261122",
+   "game_id": "401925013",
+   "home": "2320",
+   "away": "242",
+   "home_name": "Lamar",
+   "away_name": "Rice",
+   "neutral": true,
+   "pick": "242",
+   "pick_name": "Rice",
+   "side": "away",
+   "conf": 0.5798,
+   "below_gate": true,
+   "margin": -2.2,
+   "venue_flag": null,
+   "venue_note": null,
+   "venue_effect": null,
+   "build": "2026-11-22a"
+  },
+  {
+   "day": "20261122",
+   "game_id": "401918455",
+   "home": "2754",
+   "away": "2729",
+   "home_name": "Youngstown St",
+   "away_name": "William & Mary",
+   "neutral": false,
+   "pick": "2754",
+   "pick_name": "Youngstown St",
+   "side": "home",
+   "conf": 0.554,
+   "below_gate": true,
+   "margin": 1.5,
+   "venue_flag": null,
+   "venue_note": null,
+   "venue_effect": null,
+   "build": "2026-11-22a"
+  },
+  {
+   "day": "20261122",
+   "game_id": "401921205",
+   "home": "2617",
+   "away": "218",
+   "home_name": "SF Austin",
+   "away_name": "Temple",
+   "neutral": true,
+   "pick": "2617",
+   "pick_name": "SF Austin",
+   "side": "home",
+   "conf": 0.5124,
+   "below_gate": true,
+   "margin": 0.3,
+   "venue_flag": null,
+   "venue_note": null,
+   "venue_effect": null,
+   "build": "2026-11-22a"
+  },
+  {
+   "day": "20261122",
+   "game_id": "401920381",
+   "home": "197",
+   "away": "259",
+   "home_name": "Oklahoma St",
+   "away_name": "Virginia Tech",
+   "neutral": true,
+   "pick": "259",
+   "pick_name": "Virginia Tech",
+   "side": "away",
+   "conf": 0.5086,
+   "below_gate": true,
+   "margin": -0.2,
+   "venue_flag": null,
+   "venue_note": null,
+   "venue_effect": null,
+   "build": "2026-11-22a"
+  },
+  {
+   "day": "20261122",
+   "game_id": "401912212",
+   "home": "44",
+   "away": "119",
+   "home_name": "American",
+   "away_name": "Towson",
+   "neutral": false,
+   "pick": "44",
+   "pick_name": "American",
+   "side": "home",
+   "conf": 0.5046,
+   "below_gate": true,
+   "margin": 0.1,
+   "venue_flag": null,
+   "venue_note": null,
+   "venue_effect": null,
+   "build": "2026-11-22a"
   }
  ],
- "picks_all": 29,
+ "picks_all": 35,
  "max_conf": 1.01,
  "wins": 298,
  "graded": 374,

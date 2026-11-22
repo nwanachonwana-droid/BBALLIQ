@@ -110,3 +110,7 @@ day,subject,market,side,line,odds,tier,result,actual,units,logged_at,graded_at
 20261121,jalen brunson,points,under,27.5,-110,board,loss,30,-1.0,2026-11-21T10:57:19.102288-05:00,2026-11-22T08:36:27.188708-05:00
 20261121,keegan murray,points,under,11.5,-110,board,loss,15,-1.0,2026-11-21T10:57:19.069491-05:00,2026-11-22T08:36:27.188559-05:00
 20261121,vj edgecombe,threes,under,1.5,-110,board,win,1,0.9090909090909091,2026-11-21T10:57:19.167614-05:00,2026-11-22T08:36:27.188757-05:00
+20261122,ajay mitchell,points,under,20.5,-110,board,,,,2026-11-22T08:36:36.196471-05:00,
+20261122,andrew nembhard,threes,over,1.5,-110,board,,,,2026-11-22T08:36:36.289755-05:00,
+20261122,brandin podziemski,threes,under,2.5,-110,board,,,,2026-11-22T08:36:36.258959-05:00,
+20261122,jalen johnson,threes,under,1.5,-110,board,,,,2026-11-22T08:36:36.228509-05:00,
