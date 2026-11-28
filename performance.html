@@ -108,6 +108,7 @@
   <div id="collegeNote" class="mono" style="font-size: 12px;
        line-height: 1.75; color: var(--dim); margin: 12px 0 2px;
        max-width: 62ch"></div>
+  <div id="collegeSplits"></div>
   <div id="collegeLog" style="margin-bottom: 46px"></div>
 
   <div id="head"></div>
@@ -349,6 +350,94 @@ function render(d) {
 // cannot be one. Brier is carried because the paper graded itself on
 // Brier, and a winner call with a stated confidence deserves a proper
 // scoring rule rather than a bare hit count.
+// --- COLLEGE SPLITS --------------------------------------------------
+//
+// RANKED ON GAP, NOT WIN RATE, and the reason bites harder here than
+// it does on the NBA table. A conference whose November schedule is
+// full of buy games will show a high win rate that says nothing about
+// the model -- rank conferences by raw rate and you mostly rank them
+// by how soft their non-conference slates were. A league the model
+// wins 88% of while claiming 91% is doing WORSE than one it wins 62%
+// of while claiming 64%, and only the gap says so.
+//
+// MIN_N exists because the gap is noisy on small groups: a 4-game
+// conference will top the ranking on nothing. Those are listed, with
+// their n, below the ranked set rather than mixed into it.
+const SPLIT_MIN_N = 10;
+const SPLIT_TABS = [
+  { key: 'league', label: 'CONFERENCE' },
+  { key: 'venue',  label: 'HOME / ROAD' },
+  { key: 'margin', label: 'FAVOURITE SIZE' },
+];
+let SPLITS = null, SPLIT = 'league';
+
+function renderSplits() {
+  const el = document.getElementById('collegeSplits');
+  if (!el || !SPLITS) return;
+  const all = SPLITS[SPLIT] || [];
+  const big = all.filter(r => r.n >= SPLIT_MIN_N);
+  const small = all.filter(r => r.n < SPLIT_MIN_N);
+  const pc = v => (v * 100).toFixed(1) + '%';
+  const sgn = v => (v > 0 ? '+' : '') + (v * 100).toFixed(1);
+  const tabs = SPLIT_TABS.map(t => {
+    const on = t.key === SPLIT;
+    const n = (SPLITS[t.key] || []).filter(r => r.n >= SPLIT_MIN_N).length;
+    return `<button data-split="${t.key}" ${n ? '' : 'disabled'}
+      style="font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+      letter-spacing: 1.2px; padding: 7px 11px; border-radius: 999px;
+      cursor: ${n ? 'pointer' : 'default'};
+      border: 1px solid ${on ? 'var(--hot)' : 'var(--line)'};
+      background: ${on ? 'var(--hot)' : 'transparent'};
+      color: ${on ? '#0A0D12' : (n ? 'var(--mid)' : 'var(--dim)')};
+      opacity: ${n ? 1 : .45}">${t.label}</button>`;
+  }).join('');
+  const line = r => {
+    const flag = r.z !== null && r.z !== undefined && Math.abs(r.z) > 2;
+    const col = r.gap > 0 ? 'var(--win)' : 'var(--loss)';
+    return `<div class="catrow">
+      <div class="catname">${esc(r.key === '?' ? 'unrated' : r.key)}</div>
+      <div class="catn mono">${r.n}</div>
+      <div class="catc mono">${pc(r.rate)}</div>
+      <div class="catc mono" style="color: var(--dim)">${pc(r.claimed)}</div>
+      <div class="catc mono" style="color: ${col}">${sgn(r.gap)}${
+        flag ? ' !' : ''}</div></div>`;
+  };
+  el.innerHTML = `
+    <h3 class="arch" style="font-weight: 800; font-size: 20px;
+        letter-spacing: -0.5px; margin: 30px 0 10px">Where it is sharpest</h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px">
+      ${tabs}</div>
+    <div class="mono" style="font-size: 11px; color: var(--dim);
+         margin-bottom: 8px; line-height: 1.7; max-width: 62ch">
+      Ranked on GAP -- won minus claimed. Not on win rate: a group full
+      of lopsided games wins often and proves nothing, so the only
+      honest comparison is against what the model said about those
+      same games.</div>
+    ${!big.length ? `<div class="mono" style="font-size: 12px;
+        color: var(--dim)">Nothing with ${SPLIT_MIN_N} or more graded
+        games yet.</div>` : `
+    <div class="catrow cathead">
+      <div class="catname mono">${esc(
+        (SPLIT_TABS.find(t => t.key === SPLIT) || {}).label || '')}</div>
+      <div class="catn mono">N</div>
+      <div class="catc mono">WON</div>
+      <div class="catc mono">CLAIMED</div>
+      <div class="catc mono">GAP</div>
+    </div>${big.map(line).join('')}`}
+    ${!small.length ? '' : `<div class="mono" style="font-size: 11px;
+      color: var(--dim); margin-top: 10px; line-height: 1.7;
+      max-width: 62ch">Under ${SPLIT_MIN_N} graded and not ranked --
+      the gap is noise at that size: ${small.map(r =>
+        esc(r.key === '?' ? 'unrated' : r.key) + ' ' + r.n).join(', ')}.</div>`}
+    <div class="mono" style="font-size: 11px; color: var(--dim);
+      margin-top: 8px; line-height: 1.7; max-width: 62ch">A group marked
+      ! is more than 2 SD from what it claimed.</div>`;
+  el.querySelectorAll('button[data-split]').forEach(b => {
+    b.onclick = () => { if (!b.disabled) { SPLIT = b.dataset.split;
+      renderSplits(); } };
+  });
+}
+
 function collegeRecord(d) {
   const head = document.getElementById('collegeHead');
   const log = document.getElementById('collegeLog');
@@ -402,6 +491,7 @@ function collegeRecord(d) {
       + 'can win the game and miss the number, which is why both are '
       + 'shown.';
   }
+  if (d.splits) { SPLITS = d.splits; renderSplits(); }
   const hist = (d.history || []).slice().reverse().slice(0, 40);
   log.innerHTML = hist.map(r => `
     <div class="row">
