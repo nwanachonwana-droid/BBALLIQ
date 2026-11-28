@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-28T10:24:07.635160-05:00",
+ "generated": "2026-11-28T10:38:18.333493-05:00",
  "day": "20261128",
  "source": "Covers.com",
  "counts": {
@@ -171,7 +171,7 @@
      "ev_pct": 21.12,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4701
+     "prob_over": 0.4654
     },
     "reb": {
      "line": 4.5,
@@ -180,7 +180,7 @@
      "ev_pct": -6.14,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4356
+     "prob_over": 0.4338
     },
     "ast": {
      "line": 5.5,
@@ -189,7 +189,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4626
+     "prob_over": 0.4639
     }
    },
    "covered": 3,
@@ -215,7 +215,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4708
+     "prob_over": 0.4728
     },
     "reb": {
      "line": 5.5,
@@ -233,7 +233,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.5118
+     "prob_over": 0.5142
     }
    },
    "covered": 3,
@@ -259,7 +259,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4683
+     "prob_over": 0.4697
     },
     "reb": {
      "line": 9.5,
@@ -268,7 +268,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4603
+     "prob_over": 0.4596
     },
     "ast": {
      "line": 6.5,
@@ -277,7 +277,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 8,
-     "prob_over": 0.4996
+     "prob_over": 0.503
     }
    },
    "covered": 3,
@@ -303,7 +303,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4955
+     "prob_over": 0.4798
     },
     "reb": {
      "line": 6.5,
@@ -321,7 +321,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4532
+     "prob_over": 0.4513
     }
    },
    "covered": 3,
