@@ -1,7 +1,7 @@
 {
  "day": "20261128",
  "build": "2026-11-28b",
- "generated": "2026-11-28T09:31:02-05:00",
+ "generated": "2026-11-28T10:24:06-05:00",
  "reliability": {
   "misses": 0.461,
   "share": 0.418,
@@ -224,7 +224,7 @@
     "opp": "CHI",
     "base": 10.3,
     "mins": 25.6,
-    "zs": 0.375,
+    "zs": 0.379,
     "lift": 0.23,
     "why": "97 misses in CHI games (+0.88); CHI leaves 1.19 more on the floor than average",
     "parts": {
@@ -238,7 +238,7 @@
     "opp": "OKC",
     "base": 7.1,
     "mins": 19.0,
-    "zs": 0.528,
+    "zs": 0.527,
     "lift": 0.22,
     "why": "100 misses in OKC games (+1.96); OKC leaves 0.64 more on the floor than average",
     "parts": {
@@ -252,7 +252,7 @@
     "opp": "MIL",
     "base": 10.7,
     "mins": 25.4,
-    "zs": 0.321,
+    "zs": 0.327,
     "lift": 0.21,
     "why": "99 misses in MIL games (+1.45); MIL leaves 0.43 more on the floor than average",
     "parts": {
@@ -266,7 +266,7 @@
     "opp": "WSH",
     "base": 8.2,
     "mins": 31.5,
-    "zs": 0.409,
+    "zs": 0.412,
     "lift": 0.2,
     "why": "98 misses in WSH games (+0.91); WSH leaves 1.27 more on the floor than average",
     "parts": {
@@ -280,7 +280,7 @@
     "opp": "WSH",
     "base": 6.5,
     "mins": 35.6,
-    "zs": 0.409,
+    "zs": 0.412,
     "lift": 0.16,
     "why": "98 misses in WSH games (+0.91); WSH leaves 1.27 more on the floor than average",
     "parts": {
@@ -740,9 +740,9 @@
    "z": 2.067,
    "lift": 0.14,
    "why": "97 misses in CHI games (+0.88); CHI leaves 1.19 more on the floor than average",
-   "zs_raw": 0.775,
-   "zs": 0.375,
-   "goto": 0.797,
+   "zs_raw": 0.784,
+   "zs": 0.379,
+   "goto": 0.8,
    "goto_why": "13% blowout risk, 0.9m already off the minutes; share-led, not volume"
   }
  ],
