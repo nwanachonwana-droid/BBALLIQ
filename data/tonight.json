@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-28T08:30:22.266655-05:00",
+ "generated": "2026-11-28T08:30:39.148339-05:00",
  "day": "20261128",
  "source": "Covers.com",
  "counts": {
@@ -215,7 +215,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4765
+     "prob_over": 0.4757
     },
     "reb": {
      "line": 5.5,
@@ -259,7 +259,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4804
+     "prob_over": 0.4811
     },
     "reb": {
      "line": 9.5,
@@ -277,7 +277,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 8,
-     "prob_over": 0.489
+     "prob_over": 0.4898
     }
    },
    "covered": 3,
@@ -303,7 +303,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4869
+     "prob_over": 0.4862
     },
     "reb": {
      "line": 6.5,
@@ -321,7 +321,7 @@
      "ev_pct": null,
      "src": "books",
      "n_books": 7,
-     "prob_over": 0.4532
+     "prob_over": 0.4536
     }
    },
    "covered": 3,
