@@ -129,3 +129,7 @@ day,subject,market,side,line,odds,tier,result,actual,units,logged_at,graded_at
 20261127,ayo dosunmu,threes,under,2.5,-110,board,loss,4,-1.0,2026-11-27T13:08:02.867521-05:00,2026-11-28T08:08:58.148905-05:00
 20261127,daniss jenkins,threes,under,2.5,-110,board,loss,3,-1.0,2026-11-27T13:08:02.904611-05:00,2026-11-28T08:08:58.149019-05:00
 20261127,luka doncic,points,under,33.5,-110,board,win,31,0.9090909090909091,2026-11-27T13:08:02.942581-05:00,2026-11-28T08:08:58.149048-05:00
+20261128,jabari smith jr,threes,over,1.5,-110,board,,,,2026-11-28T08:09:05.968011-05:00,
+20261128,kevin durant,threes,under,1.5,-110,board,,,,2026-11-28T08:09:06.043308-05:00,
+20261128,shai gilgeousalexander,threes,under,2.5,-110,board,,,,2026-11-28T08:09:05.930232-05:00,
+20261128,tristan da silva,threes,over,2.5,-110,board,,,,2026-11-28T08:09:06.005716-05:00,
