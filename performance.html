@@ -46,6 +46,26 @@
      and the page scrolled sideways. The final score is the widest
      and the least urgent of the four, so below 620px it drops out
      of the row and reappears under the matchup, where it wraps. */
+  /* FIVE NARROW COLUMNS, SO THEY ARE GRID-LAID RATHER THAN FLEXED.
+     The log rows above flex because their middle column is elastic;
+     these are all fixed-width numbers and a grid keeps them in line
+     down the page without each row measuring itself. */
+  .catrow { display: grid; align-items: baseline;
+            grid-template-columns: 1fr 42px 62px 72px 62px;
+            gap: 8px; padding: 9px 0;
+            border-top: 1px solid var(--line); }
+  .cathead { border-top: none; font-size: 9px; letter-spacing: 1.2px;
+             color: var(--dim); padding-bottom: 4px; }
+  .cathead .catname { font-size: 9px; letter-spacing: 1.2px; }
+  .catname { font-size: 13px; font-weight: 600; letter-spacing: 0.4px; }
+  .catn, .catc { text-align: right; font-size: 13px; }
+  .cathead .catn, .cathead .catc { font-size: 9px; }
+  @media (max-width: 460px) {
+    .catrow { grid-template-columns: 1fr 30px 52px 58px 54px; gap: 5px; }
+    .catname { font-size: 12px; }
+    .catn, .catc { font-size: 12px; }
+  }
+
   @media (max-width: 620px) {
     .cfinal { display: none; }
     .mfinal { display: block !important; }
@@ -91,12 +111,14 @@
   <div id="collegeLog" style="margin-bottom: 46px"></div>
 
   <div id="head"></div>
+  <div id="cats"></div>
   <div id="log"></div>
   <div id="foot" class="mono" style="margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 12px; line-height: 1.8; color: var(--dim); letter-spacing: 0.3px"></div>
 </div>
 
 <script>
 const UNIT = { pts: 'POINTS', threes: 'THREES', reb: 'REBOUNDS', ast: 'ASSISTS' };
+const CATS = ['pts', 'threes', 'reb', 'ast'];
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g,
   c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // Graded rows carry the box score's own spelling, so most names
@@ -118,6 +140,106 @@ function title(s) {
     if (/^[od]'[a-z]+$/.test(k)) return cap(k.slice(0, 1)) + "'" + cap(k.slice(2));
     return k.split('-').map(cap).join('-');
   }).join(' ');
+}
+
+// --- CATEGORY RANKING ------------------------------------------------
+//
+// RANKED ON THE GAP, NOT THE HIT RATE, because the two do not agree
+// and only one of them is a statement about the model.
+//
+// "He reached the rounded projection" is not a coin, and the null is
+// NOT the same in every market: an integer target gives the actual
+// free room to round up, and on threes -- mean near 2.5, fat atoms --
+// that room is worth far more than on points. Measured over November,
+// points expects .532 and threes expects .567.
+//
+// So raw rate said threes beat points by 11.3 points, of which 3.5
+// was only the two markets being different. A third of the headline
+// gap was an artefact of what was being asked, not of how well it was
+// answered. Each row now carries `p`, the model's own probability for
+// that pick, and the comparison is observed against that.
+//
+// The flag is the same test the terminal runs: the hit count is
+// Poisson-binomial, whose variance is sum p(1-p) EXACTLY, so no error
+// term is estimated. Past 2 SD a category is out of line; inside it,
+// four categories bouncing is what four categories do.
+function categories(picks) {
+  const by = {}, skipped = [];
+  for (const r of picks) {
+    if (r.beat === null || r.beat === undefined) continue;
+    // A row with no probability has no null to be compared against.
+    // Counting it in the hit rate but not the expectation is how the
+    // two columns end up measured over different picks.
+    if (r.p == null) { skipped.push(r); continue; }
+    const b = by[r.market] || (by[r.market] = { n: 0, w: 0, exp: 0, v: 0 });
+    const p = Number(r.p);
+    b.n++; b.w += r.beat ? 1 : 0; b.exp += p; b.v += p * (1 - p);
+  }
+  const rows = CATS.filter(m => by[m]).map(m => {
+    const b = by[m];
+    return { market: m, n: b.n, obs: b.w / b.n, exp: b.exp / b.n,
+             gap: b.w / b.n - b.exp / b.n,
+             z: b.v > 0 ? (b.w - b.exp) / Math.sqrt(b.v) : null };
+  });
+  rows.sort((a, b) => b.gap - a.gap);
+  const tot = rows.reduce((a, r) => ({ n: a.n + r.n,
+    w: a.w + r.obs * r.n, e: a.e + r.exp * r.n }), { n: 0, w: 0, e: 0 });
+  const overall = tot.n ? { n: tot.n, obs: tot.w / tot.n,
+    exp: tot.e / tot.n, gap: (tot.w - tot.e) / tot.n } : null;
+  return { rows, overall, skipped: skipped.length };
+}
+
+function renderCats(picks) {
+  const el = document.getElementById('cats');
+  if (!el) return;
+  const { rows, overall, skipped } = categories(picks);
+  if (!rows.length) { el.innerHTML = ''; return; }
+  const pc = v => (v * 100).toFixed(1) + '%';
+  const sgn = v => (v > 0 ? '+' : '') + (v * 100).toFixed(1);
+  const line = r => {
+    const flag = r.z !== null && Math.abs(r.z) > 2;
+    const col = r.gap > 0 ? 'var(--win)' : 'var(--loss)';
+    return `<div class="catrow">
+      <div class="catname">${esc(UNIT[r.market] || r.market)}</div>
+      <div class="catn mono">${r.n}</div>
+      <div class="catc mono">${pc(r.obs)}</div>
+      <div class="catc mono" style="color: var(--dim)">${pc(r.exp)}</div>
+      <div class="catc mono" style="color: ${col}">${sgn(r.gap)}${
+        flag ? ' !' : ''}</div>
+    </div>`;
+  };
+  el.innerHTML = `
+    <h2 class="arch" style="font-weight: 800; font-size: 22px;
+        letter-spacing: -0.6px; margin: 30px 0 4px">NBA by category</h2>
+    <div class="mono" style="font-size: 11px; color: var(--dim);
+         margin-bottom: 10px; line-height: 1.7; max-width: 62ch">
+      Ranked on GAP, not on hit rate. Each market has its own null --
+      a projection of 20.0 only needs 19.5 to round up, and on threes
+      that free room is worth far more than on points -- so the rates
+      are not comparable to each other, only to what the model
+      claimed.</div>
+    <div class="catrow cathead">
+      <div class="catname mono">MARKET</div>
+      <div class="catn mono">N</div>
+      <div class="catc mono">HIT</div>
+      <div class="catc mono">CLAIMED</div>
+      <div class="catc mono">GAP</div>
+    </div>
+    ${rows.map(line).join('')}
+    ${!overall ? '' : `<div class="catrow" style="border-top-width: 2px">
+      <div class="catname" style="color: var(--mid)">ALL</div>
+      <div class="catn mono" style="color: var(--mid)">${overall.n}</div>
+      <div class="catc mono" style="color: var(--mid)">${pc(overall.obs)}</div>
+      <div class="catc mono" style="color: var(--dim)">${pc(overall.exp)}</div>
+      <div class="catc mono" style="color: var(--mid)">${sgn(overall.gap)}</div>
+    </div>`}
+    <div class="mono" style="font-size: 11px; color: var(--dim);
+         margin-top: 10px; line-height: 1.7; max-width: 62ch">
+      GAP is hit minus claimed, in points. A category marked ! is
+      more than 2 SD from what it claimed, which is the point at
+      which it is out of line rather than bouncing.${
+        skipped ? ` ${skipped} graded pick(s) carry no probability and
+        are left out of both columns.` : ''}</div>`;
 }
 
 function dayText(d) {
@@ -201,6 +323,7 @@ function render(d) {
       </div>`;
   }
   log.innerHTML = out;
+  renderCats(picks);
 
   const ungraded = picks.filter(r => r.beat === null
                                   || r.beat === undefined).length;

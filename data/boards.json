@@ -1,7 +1,7 @@
 {
  "day": "20261128",
  "build": "2026-11-26a",
- "generated": "2026-11-28T08:30:37-05:00",
+ "generated": "2026-11-28T09:05:12-05:00",
  "reliability": {
   "misses": 0.461,
   "share": 0.418,
@@ -224,8 +224,8 @@
     "opp": "CHI",
     "base": 10.3,
     "mins": 25.6,
-    "zs": 0.384,
-    "lift": 0.24,
+    "zs": 0.375,
+    "lift": 0.23,
     "why": "97 misses in CHI games (+0.88); CHI leaves 1.19 more on the floor than average",
     "parts": {
      "vol": 0.88,
@@ -238,26 +238,12 @@
     "opp": "OKC",
     "base": 7.1,
     "mins": 19.0,
-    "zs": 0.537,
-    "lift": 0.23,
+    "zs": 0.528,
+    "lift": 0.22,
     "why": "100 misses in OKC games (+1.96); OKC leaves 0.64 more on the floor than average",
     "parts": {
      "vol": 1.96,
      "shr": 0.64
-    }
-   },
-   {
-    "player": "wendell carter jr",
-    "team": "ORL",
-    "opp": "WSH",
-    "base": 8.2,
-    "mins": 31.5,
-    "zs": 0.418,
-    "lift": 0.21,
-    "why": "98 misses in WSH games (+0.91); WSH leaves 1.27 more on the floor than average",
-    "parts": {
-     "vol": 0.91,
-     "shr": 1.27
     }
    },
    {
@@ -266,7 +252,7 @@
     "opp": "MIL",
     "base": 10.7,
     "mins": 25.4,
-    "zs": 0.329,
+    "zs": 0.321,
     "lift": 0.21,
     "why": "99 misses in MIL games (+1.45); MIL leaves 0.43 more on the floor than average",
     "parts": {
@@ -275,12 +261,26 @@
     }
    },
    {
+    "player": "wendell carter jr",
+    "team": "ORL",
+    "opp": "WSH",
+    "base": 8.2,
+    "mins": 31.5,
+    "zs": 0.409,
+    "lift": 0.2,
+    "why": "98 misses in WSH games (+0.91); WSH leaves 1.27 more on the floor than average",
+    "parts": {
+     "vol": 0.91,
+     "shr": 1.27
+    }
+   },
+   {
     "player": "franz wagner",
     "team": "ORL",
     "opp": "WSH",
     "base": 6.5,
     "mins": 35.6,
-    "zs": 0.418,
+    "zs": 0.409,
     "lift": 0.16,
     "why": "98 misses in WSH games (+0.91); WSH leaves 1.27 more on the floor than average",
     "parts": {
@@ -296,7 +296,7 @@
     "opp": "ORL",
     "base": 9.1,
     "mins": 33.8,
-    "zs": 0.747,
+    "zs": 0.751,
     "lift": 0.41,
     "why": "ORL allows 29.3 ast/100 (+1.17 after shrinking to 48% reliability)",
     "parts": {}
@@ -307,7 +307,7 @@
     "opp": "BKN",
     "base": 4.1,
     "mins": 21.3,
-    "zs": 0.85,
+    "zs": 0.853,
     "lift": 0.21,
     "why": "BKN allows 29.5 ast/100 (+1.31 after shrinking to 48% reliability)",
     "parts": {}
@@ -318,7 +318,7 @@
     "opp": "ORL",
     "base": 4.4,
     "mins": 33.2,
-    "zs": 0.747,
+    "zs": 0.751,
     "lift": 0.2,
     "why": "ORL allows 29.3 ast/100 (+1.17 after shrinking to 48% reliability)",
     "parts": {}
@@ -329,18 +329,18 @@
     "opp": "BKN",
     "base": 3.1,
     "mins": 30.6,
-    "zs": 0.85,
+    "zs": 0.853,
     "lift": 0.16,
     "why": "BKN allows 29.5 ast/100 (+1.31 after shrinking to 48% reliability)",
     "parts": {}
    },
    {
-    "player": "ivica zubac",
+    "player": "aaron nesmith",
     "team": "IND",
     "opp": "CHI",
-    "base": 1.9,
-    "mins": 25.6,
-    "zs": -0.04,
+    "base": 2.1,
+    "mins": 26.7,
+    "zs": -0.029,
     "lift": -0.0,
     "why": "CHI allows 27.6 ast/100 (+0.11 after shrinking to 48% reliability)",
     "parts": {}
@@ -620,8 +620,8 @@
    "z": 1.305,
    "lift": 0.16,
    "why": "BKN allows 29.5 ast/100 (+1.31 after shrinking to 48% reliability)",
-   "zs_raw": 1.755,
-   "zs": 0.85,
+   "zs_raw": 1.763,
+   "zs": 0.853,
    "goto": 0.975,
    "goto_why": "16% blowout risk, 0.6m already off the minutes"
   },
@@ -700,9 +700,9 @@
    "z": 1.166,
    "lift": 0.41,
    "why": "ORL allows 29.3 ast/100 (+1.17 after shrinking to 48% reliability)",
-   "zs_raw": 1.542,
-   "zs": 0.747,
-   "goto": 0.858,
+   "zs_raw": 1.551,
+   "zs": 0.751,
+   "goto": 0.86,
    "goto_why": "14% blowout risk, 0.9m already off the minutes"
   },
   {
@@ -740,9 +740,9 @@
    "z": 2.067,
    "lift": 0.14,
    "why": "97 misses in CHI games (+0.88); CHI leaves 1.19 more on the floor than average",
-   "zs_raw": 0.793,
-   "zs": 0.384,
-   "goto": 0.799,
+   "zs_raw": 0.775,
+   "zs": 0.375,
+   "goto": 0.797,
    "goto_why": "13% blowout risk, 0.9m already off the minutes; share-led, not volume"
   }
  ],
